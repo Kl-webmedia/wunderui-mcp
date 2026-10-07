@@ -1,0 +1,3622 @@
+{
+  "$schema": "https://wunderui.com/design.schema.json",
+  "name": "@wunderui/react",
+  "version": "0.1.0",
+  "description": "WunderUI — a design system and component library for React.",
+  "site": "https://wunderui.com",
+  "generatedAt": "2026-10-04",
+  "install": {
+    "npm": "npm install @wunderui/react",
+    "import": "import { Button, Card } from \"@wunderui/react\"",
+    "styles": "@import \"@wunderui/react/styles.css\";"
+  },
+  "stack": {
+    "react": "^19",
+    "tailwind": "v4",
+    "primitives": "@base-ui/react",
+    "charts": "recharts"
+  },
+  "counts": {
+    "components": 201,
+    "categories": 12,
+    "exports": 594,
+    "templates": 5,
+    "free": 76,
+    "pro": 125
+  },
+  "plans": {
+    "free": "Free License (personal, non-commercial use): only components with tier \"free\". Commercial use and every \"pro\" component need WunderUI Core or Pro.",
+    "core": "WunderUI Core: every component, commercial license.",
+    "pro": "WunderUI Pro: everything in Core plus UI block and template source and all agent skills."
+  },
+  "tokens": {
+    "light": {
+      "--background": "#FFFFFF",
+      "--bg-page": "#F9FBFC",
+      "--foreground": "#000000",
+      "--card": "#FFFFFF",
+      "--card-foreground": "#000000",
+      "--popover": "#FFFFFF",
+      "--popover-foreground": "#000000",
+      "--primary": "var(--brand-600)",
+      "--primary-foreground": "#FFFFFF",
+      "--brand-primary": "var(--brand-600)",
+      "--brand-primary-foreground": "#FFFFFF",
+      "--brand-secondary": "#12AFF0",
+      "--brand-secondary-foreground": "#25272A",
+      "--brand-tertiary": "#F47690",
+      "--brand-tertiary-foreground": "#25272A",
+      "--brand-quaternary": "#FACA4A",
+      "--brand-quaternary-foreground": "#25272A",
+      "--secondary": "#FFFFFF",
+      "--secondary-foreground": "#000000",
+      "--muted": "#F1F5F7",
+      "--muted-foreground": "#5A7383",
+      "--accent": "#F1F5F7",
+      "--accent-foreground": "#000000",
+      "--destructive": "#D42A2D",
+      "--destructive-foreground": "#FFFFFF",
+      "--border": "#F1F5F7",
+      "--input": "#F1F5F7",
+      "--code-border": "var(--light-300)",
+      "--border-control": "var(--light-300)",
+      "--ring": "var(--brand-600)",
+      "--text-secondary": "#454648",
+      "--text-tertiary": "#6E6E70",
+      "--success": "#1AD598",
+      "--success-foreground": "#17181A",
+      "--chart-1": "var(--brand-600)",
+      "--chart-2": "#F3654A",
+      "--chart-3": "#A584F3",
+      "--chart-4": "#FACA4A",
+      "--chart-5": "#1AD598",
+      "--radius": "0.75rem",
+      "--sidebar": "#F9FBFC",
+      "--sidebar-foreground": "#000000",
+      "--sidebar-primary": "var(--brand-600)",
+      "--sidebar-primary-foreground": "#FFFFFF",
+      "--sidebar-accent": "#F1F5F7",
+      "--sidebar-accent-foreground": "#000000",
+      "--sidebar-border": "#F1F5F7",
+      "--sidebar-ring": "var(--brand-600)",
+      "--text-link": "var(--brand-600)",
+      "--text-success": "#10805B",
+      "--text-error": "#D42A2D",
+      "--text-warning": "#64511E",
+      "--inverse": "#000000",
+      "--text-error-inverse": "#F8ADBC",
+      "--text-inverse": "#FFFFFF",
+      "--subtle": "#F1F5F7",
+      "--tint-indigo": "var(--brand-50)",
+      "--tint-blue": "#E7F7FE",
+      "--tint-purple": "#F6F3FE",
+      "--tint-pink": "#FFF0F8",
+      "--tint-red": "#FEF1F4",
+      "--tint-orange": "#FEF0ED",
+      "--tint-yellow": "#FFFAED",
+      "--tint-green": "#E8FBF5",
+      "--tint-alternative": "#F1F0F3",
+      "--tint-text-indigo": "var(--brand-800)",
+      "--tint-text-blue": "#0B6990",
+      "--tint-text-purple": "#634F92",
+      "--tint-text-pink": "#984070",
+      "--tint-text-red": "#924756",
+      "--tint-text-orange": "#923D2C",
+      "--tint-text-yellow": "#64511E",
+      "--tint-text-green": "#10805B",
+      "--tint-text-alternative": "#424150",
+      "--brand-quinary": "#A584F3",
+      "--brand-senary": "#FE6BBA",
+      "--brand-septenary": "#F3654A",
+      "--brand-octonary": "#6E6D86",
+      "--effect-shadow": "rgb(0 0 0 / 0.08)",
+      "--effect-shadow-2": "rgb(16 24 40 / 0.05)",
+      "--effect-shadow-3": "rgb(0 0 0 / 0.05)",
+      "--gradient-start": "#494F60",
+      "--gradient-end": "#0B0C33",
+      "--gradient-start-2": "#777FA1",
+      "--gradient-end-2": "#1F2059",
+      "--gradient-start-3": "#6F74F5",
+      "--dark-100": "#E8E8E8",
+      "--dark-200": "#D1D1D1",
+      "--dark-300": "#A2A3A3",
+      "--dark-400": "#6E6E70",
+      "--dark-500": "#454648",
+      "--dark-600": "#17181A",
+      "--dark-700": "#121315",
+      "--dark-800": "#0E0E10",
+      "--dark-900": "#090A0A",
+      "--dark-1000": "#050505",
+      "--light-100": "#FFFFFF",
+      "--light-200": "#F1F5F7",
+      "--light-300": "#D9E1E7",
+      "--light-400": "#B3C5D4",
+      "--light-500": "#99B2C6",
+      "--light-600": "#809FB8",
+      "--light-700": "#5A7383",
+      "--light-800": "#4D5F6E",
+      "--light-900": "#33404A",
+      "--light-1000": "#1A2025",
+      "--blue-100": "#E7F7FE",
+      "--blue-200": "#D0EFFC",
+      "--blue-300": "#A0DFF9",
+      "--blue-400": "#71CFF6",
+      "--blue-500": "#41BFF3",
+      "--blue-600": "#12AFF0",
+      "--blue-700": "#0E8CC0",
+      "--blue-800": "#0B6990",
+      "--blue-900": "#074660",
+      "--blue-1000": "#042330",
+      "--indigo-100": "#EEEFFE",
+      "--indigo-200": "#DDDEFD",
+      "--indigo-300": "#BBBEFA",
+      "--indigo-400": "#999DF8",
+      "--indigo-500": "#777DF5",
+      "--indigo-600": "#555CF3",
+      "--indigo-700": "#444AC2",
+      "--indigo-800": "#333792",
+      "--indigo-900": "#222561",
+      "--indigo-1000": "#111231",
+      "--brand-50": "#F4F5FF",
+      "--brand-100": "var(--indigo-100)",
+      "--brand-200": "var(--indigo-200)",
+      "--brand-300": "var(--indigo-300)",
+      "--brand-400": "var(--indigo-400)",
+      "--brand-500": "var(--indigo-500)",
+      "--brand-600": "var(--indigo-600)",
+      "--brand-700": "var(--indigo-700)",
+      "--brand-800": "var(--indigo-800)",
+      "--brand-900": "var(--indigo-900)",
+      "--brand-1000": "var(--indigo-1000)",
+      "--purple-100": "#F6F3FE",
+      "--purple-200": "#EDE6FD",
+      "--purple-300": "#DBCEFA",
+      "--purple-400": "#C9B5F8",
+      "--purple-500": "#B79DF5",
+      "--purple-600": "#A584F3",
+      "--purple-700": "#846AC2",
+      "--purple-800": "#634F92",
+      "--purple-900": "#423561",
+      "--purple-1000": "#211A31",
+      "--pink-100": "#FFF0F8",
+      "--pink-200": "#FFE1F1",
+      "--pink-300": "#FFC4E3",
+      "--pink-400": "#FEA6D6",
+      "--pink-500": "#FE89C8",
+      "--pink-600": "#FE6BBA",
+      "--pink-700": "#CB5695",
+      "--pink-800": "#984070",
+      "--pink-900": "#662B4A",
+      "--pink-1000": "#331525",
+      "--red-100": "#FEF1F4",
+      "--red-200": "#FDE4E9",
+      "--red-300": "#FBC8D3",
+      "--red-400": "#F8ADBC",
+      "--red-500": "#F691A6",
+      "--red-600": "#F47690",
+      "--red-700": "#C35E73",
+      "--red-800": "#924756",
+      "--red-900": "#622F3A",
+      "--red-1000": "#31181D",
+      "--orange-100": "#FEF0ED",
+      "--orange-200": "#FDE0DB",
+      "--orange-300": "#FAC1B7",
+      "--orange-400": "#F8A392",
+      "--orange-500": "#F5846E",
+      "--orange-600": "#F3654A",
+      "--orange-700": "#C2513B",
+      "--orange-800": "#923D2C",
+      "--orange-900": "#61281E",
+      "--orange-1000": "#31140F",
+      "--yellow-100": "#FFFAED",
+      "--yellow-200": "#FEF4DB",
+      "--yellow-300": "#FDEAB7",
+      "--yellow-400": "#FCDF92",
+      "--yellow-500": "#FBD56E",
+      "--yellow-600": "#FACA4A",
+      "--yellow-700": "#C8A23B",
+      "--yellow-800": "#96792C",
+      "--yellow-900": "#64511E",
+      "--yellow-1000": "#32280F",
+      "--green-100": "#E8FBF5",
+      "--green-200": "#D1F7EA",
+      "--green-300": "#A3EED6",
+      "--green-400": "#76E6C1",
+      "--green-500": "#48DDAD",
+      "--green-600": "#1AD598",
+      "--green-700": "#15AA7A",
+      "--green-800": "#10805B",
+      "--green-900": "#0A553D",
+      "--green-1000": "#052B1E",
+      "--alternative-100": "#F1F0F3",
+      "--alternative-200": "#E2E2E7",
+      "--alternative-300": "#C5C5CF",
+      "--alternative-400": "#A8A7B6",
+      "--alternative-500": "#8B8A9E",
+      "--alternative-600": "#6E6D86",
+      "--alternative-700": "#58576B",
+      "--alternative-800": "#424150",
+      "--alternative-900": "#2C2C36",
+      "--alternative-1000": "#16161B",
+      "--neutral-black": "#000000",
+      "--neutral-white": "#FFFFFF",
+      "--neutral-dark-secondary": "#1C1D20",
+      "--neutral-dark-content": "#25272A",
+      "--neutral-dark-borders": "#323438",
+      "--neutral-dark-grey": "#384455",
+      "--neutral-light-background": "#F9FBFC",
+      "--neutral-alternative-secondary": "#ACB3C7",
+      "--neutral-error-base": "#D42A2D",
+      "--neutral-dark-muted": "#8791A0"
+    },
+    "dark": {
+      "--background": "#17181A",
+      "--bg-page": "#17181A",
+      "--foreground": "#FFFFFF",
+      "--card": "#1C1D20",
+      "--card-foreground": "#FFFFFF",
+      "--popover": "#1C1D20",
+      "--popover-foreground": "#FFFFFF",
+      "--primary": "var(--brand-600)",
+      "--primary-foreground": "#FFFFFF",
+      "--brand-primary": "var(--brand-600)",
+      "--brand-primary-foreground": "#FFFFFF",
+      "--brand-secondary": "#12AFF0",
+      "--brand-secondary-foreground": "#25272A",
+      "--brand-tertiary": "#F47690",
+      "--brand-tertiary-foreground": "#25272A",
+      "--brand-quaternary": "#FACA4A",
+      "--brand-quaternary-foreground": "#25272A",
+      "--secondary": "#1C1D20",
+      "--secondary-foreground": "#FFFFFF",
+      "--muted": "#323438",
+      "--muted-foreground": "#8791A0",
+      "--accent": "#323438",
+      "--accent-foreground": "#FFFFFF",
+      "--destructive": "#D42A2D",
+      "--destructive-foreground": "#FFFFFF",
+      "--border": "#323438",
+      "--input": "#323438",
+      "--code-border": "color-mix(in srgb, var(--foreground) 14%, var(--muted))",
+      "--border-control": "#323438",
+      "--ring": "var(--brand-400)",
+      "--text-secondary": "#D1D1D1",
+      "--text-tertiary": "#A2A3A3",
+      "--success": "#1AD598",
+      "--success-foreground": "#17181A",
+      "--chart-1": "var(--brand-600)",
+      "--chart-2": "#F3654A",
+      "--chart-3": "#A584F3",
+      "--chart-4": "#FACA4A",
+      "--chart-5": "#1AD598",
+      "--sidebar": "#17181A",
+      "--sidebar-foreground": "#FFFFFF",
+      "--sidebar-primary": "var(--brand-600)",
+      "--sidebar-primary-foreground": "#FFFFFF",
+      "--sidebar-accent": "#323438",
+      "--sidebar-accent-foreground": "#FFFFFF",
+      "--sidebar-border": "#323438",
+      "--sidebar-ring": "var(--brand-400)",
+      "--text-link": "var(--brand-400)",
+      "--text-success": "#76E6C1",
+      "--text-error": "#F8ADBC",
+      "--text-warning": "#FCDF92",
+      "--inverse": "#FFFFFF",
+      "--text-error-inverse": "#D42A2D",
+      "--text-inverse": "#000000",
+      "--subtle": "#25272A",
+      "--tint-indigo": "var(--brand-900)",
+      "--tint-blue": "#074660",
+      "--tint-purple": "#423561",
+      "--tint-pink": "#662B4A",
+      "--tint-red": "#622F3A",
+      "--tint-orange": "#61281E",
+      "--tint-yellow": "#64511E",
+      "--tint-green": "#0A553D",
+      "--tint-alternative": "#2C2C36",
+      "--tint-text-indigo": "var(--brand-300)",
+      "--tint-text-blue": "#A0DFF9",
+      "--tint-text-purple": "#DBCEFA",
+      "--tint-text-pink": "#FFC4E3",
+      "--tint-text-red": "#FBC8D3",
+      "--tint-text-orange": "#FAC1B7",
+      "--tint-text-yellow": "#FDEAB7",
+      "--tint-text-green": "#A3EED6",
+      "--tint-text-alternative": "#C5C5CF"
+    }
+  },
+  "motion": {
+    "durations": [
+      {
+        "token": "duration-instant",
+        "value": "80ms",
+        "use": "Tooltip dismiss, press release. Barely reads as motion."
+      },
+      {
+        "token": "duration-fast",
+        "value": "150ms",
+        "use": "The default exit. Hover, focus ring, checkbox, switch track."
+      },
+      {
+        "token": "duration-base",
+        "value": "250ms",
+        "use": "Dropdown, popover, context menu, backdrop, collapse."
+      },
+      {
+        "token": "duration-slow",
+        "value": "350ms",
+        "use": "Dialog, toast, switch thumb — a surface arriving."
+      },
+      {
+        "token": "duration-deliberate",
+        "value": "450ms",
+        "use": "Sheet and full-width panel. Rare."
+      },
+      {
+        "token": "duration-ambient",
+        "value": "700ms",
+        "use": "Progress and meter fills. Data moving, not chrome."
+      }
+    ],
+    "easings": [
+      {
+        "token": "ease-entrance",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "use": "Anything arriving. Fast start, long settle. The house curve."
+      },
+      {
+        "token": "ease-exit",
+        "value": "cubic-bezier(0.4, 0, 1, 1)",
+        "use": "Anything leaving. Accelerates away."
+      },
+      {
+        "token": "ease-move",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "use": "Anything repositioning while staying on screen."
+      },
+      {
+        "token": "ease-overshoot",
+        "value": "cubic-bezier(0.34, 1.35, 0.64, 1)",
+        "use": "Dialog, popover, switch. At most one per screen."
+      }
+    ],
+    "amplitudes": [
+      {
+        "token": "--travel-xs",
+        "value": "2px",
+        "use": "Tooltip — stays glued to its anchor."
+      },
+      {
+        "token": "--travel-sm",
+        "value": "4px",
+        "use": "Popover, dropdown, context menu."
+      },
+      {
+        "token": "--travel-md",
+        "value": "8px",
+        "use": "Dialog, toast, inline panel."
+      },
+      {
+        "token": "--travel-lg",
+        "value": "16px",
+        "use": "Section reveal on scroll."
+      },
+      {
+        "token": "--scale-press",
+        "value": "0.97",
+        "use": "Pressed button."
+      },
+      {
+        "token": "--scale-enter",
+        "value": "0.96",
+        "use": "Dialog arriving."
+      }
+    ],
+    "rules": [
+      "**Duration and easing are class names, not numbers.** `duration-base`, `ease-entrance`. Tailwind has no `--duration-*` theme namespace, so WunderUI ships these as `@utility` rules that also set `--tw-duration` — which means they work on `animate-in` / `animate-out` too.",
+      "**Only `transform` and `opacity`.** Everything else goes through layout or paint. Height animates via `grid-template-rows: 0fr → 1fr`, never via `height`.",
+      "**Entrances decelerate, exits accelerate.** `ease-entrance` in, `ease-exit` out — and the exit is one step shorter on the duration scale, never the entrance duration reversed.",
+      "**Never fade in the LCP element.** An element at `opacity: 0` is not an LCP candidate, so a 600ms hero fade adds 600ms to your LCP. Render headline copy at full opacity; animate `transform` only.",
+      "**Restrain the travel.** Anything anchored to a trigger moves `--travel-xs` or `--travel-sm`. A menu that slides 20px looks like it fell in.",
+      "**One overshoot per screen.** `ease-overshoot` is punctuation. Two of them on one view and the interface reads as a toy.",
+      "**Reduced motion is opt-in, not a kill switch.** Wrap the animation in `@media (prefers-reduced-motion: no-preference)` so the still state is the default and you cannot forget a selector.",
+      "**Never `transition-all`.** Name the properties — `transition-[opacity,transform]` — or use bare `transition`, which covers colour, shadow, transform and opacity but no layout property. `transition-all` animates things you did not mean to animate, including on first paint.",
+      "**Loading keeps its height.** A skeleton occupies the same box as the content it stands in for, and crossfades — it never collapses and reflows.",
+      "**A looping ambient animation is the one place `ease-in-out` belongs.** A shimmer that runs forever has no entrance and no exit, so symmetry is correct there and nowhere else."
+    ],
+    "recipes": {
+      "Overlay enter and exit": "/* Dialog, sheet, popover, dropdown, context menu — one pattern for all of them.\n   Base UI exposes data-open / data-closed; tw-animate-css turns them into keyframes. */\n<Dialog.Popup className=\"\n  data-open:animate-in   data-open:fade-in-0   data-open:zoom-in-92\n  data-open:slide-in-from-bottom-2\n  data-open:duration-slow  data-open:ease-overshoot\n  data-closed:animate-out  data-closed:fade-out-0 data-closed:zoom-out-96\n  data-closed:duration-fast data-closed:ease-exit\n\" />",
+      "Collapse without a fixed height": "<div className=\"grid grid-rows-[0fr] transition-[grid-template-rows]\n                duration-base ease-entrance\n                data-open:grid-rows-[1fr]\">\n  <div className=\"min-h-0 overflow-hidden\">{children}</div>\n</div>",
+      "Press feedback": "<Button className=\"transition duration-fast ease-entrance\n                   active:scale-[var(--scale-press)]\" />",
+      "A bar that carries data": "/* Progress, meter, cost bar — the pace says \"this is a value\", not \"this is chrome\". */\n<div className=\"h-full bg-primary transition-[width] duration-ambient ease-entrance\"\n     style={{ width: `${percent}%` }} />",
+      "Reduced motion, done as opt-in": "@media (prefers-reduced-motion: no-preference) {\n  .reveal {\n    animation: rise var(--duration-slow) var(--ease-entrance) both;\n    animation-timeline: view();\n  }\n}\n/* Firefox has no scroll-driven animations yet — without this the element\n   stays invisible there. */\n@supports not (animation-timeline: view()) {\n  .reveal { animation: none; }\n}"
+    }
+  },
+  "categories": [
+    "Primitives",
+    "Overlays",
+    "Charts",
+    "Data Display",
+    "KPI",
+    "Navigation",
+    "Forms",
+    "AI",
+    "Agents",
+    "Feedback",
+    "Layout",
+    "Block Parts"
+  ],
+  "components": [
+    {
+      "slug": "accordion",
+      "title": "Accordion",
+      "category": "Primitives",
+      "description": "A vertically stacked set of collapsible panels, in card or divider style.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Accordion",
+        "AccordionContent",
+        "AccordionItem",
+        "AccordionTrigger"
+      ],
+      "props": "function Accordion({ className, ...props }: Accordion.Root.Props): React.JSX.Element;",
+      "example": "<Accordion className=\"gap-0\">\n  <AccordionItem value=\"profile\" variant=\"divider\">\n    <AccordionTrigger icon={<User />} iconVariant=\"plain\" indicatorVariant=\"plus\">\n      Profile Settings\n    </AccordionTrigger>\n    <AccordionContent>Name, avatar and the handle other people see.</AccordionContent>\n  </AccordionItem>\n</Accordion>",
+      "docs": "https://wunderui.com/components/accordion"
+    },
+    {
+      "slug": "avatar",
+      "title": "Avatar",
+      "category": "Primitives",
+      "description": "A user or entity's profile image with a text fallback.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Avatar",
+        "AvatarBadge",
+        "AvatarColor",
+        "AvatarFallback",
+        "AvatarGroup",
+        "AvatarGroupCount",
+        "AvatarImage",
+        "AvatarStack"
+      ],
+      "props": "function Avatar({ className, size, shape, variant, color, ...props }: Avatar.Root.Props & {\n    /** Figma Avatar sizes: sm = 24px (2xs), xs = 28px, default = 36px (small), lg = 40px (medium), xl = 44px (large) */\n    size?: \"sm\" | \"xs\" | \"default\" | \"lg\" | \"xl\";\n    shape?: \"circle\" | \"square\";\n    variant?: \"plain\" | \"primary\";\n    /** Soft tint for initials avatars; ignored when an image renders. */\n    color?: AvatarColor;\n}): React.JSX.Element;\ntype AvatarColor = \"indigo\" | \"blue\" | \"purple\" | \"pink\" | \"red\" | \"orange\" | \"yellow\" | \"green\" | \"alternative\" | \"grey\";",
+      "example": "<Avatar size=\"lg\">\n  <AvatarImage src=\"/avatars/03.png\" alt=\"Alina Lorenz\" />\n  <AvatarFallback>AL</AvatarFallback>\n</Avatar>\n<Avatar size=\"lg\" variant=\"primary\">\n  <AvatarFallback>PM</AvatarFallback>\n</Avatar>",
+      "docs": "https://wunderui.com/components/avatar"
+    },
+    {
+      "slug": "avatar-group",
+      "title": "Avatar Group",
+      "category": "Primitives",
+      "description": "A stack of overlapping avatars, with an optional overflow count.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "AvatarGroup",
+        "AvatarGroupCount"
+      ],
+      "props": "function AvatarGroup({ className, children, ...props }: React.ComponentProps<\"div\">): React.JSX.Element;",
+      "example": "<AvatarGroup>\n  <Avatar><AvatarImage src=\"/avatars/01.png\" alt=\"Alina\" /><AvatarFallback>AL</AvatarFallback></Avatar>\n  <Avatar><AvatarImage src=\"/avatars/08.png\" alt=\"Mira\" /><AvatarFallback>MC</AvatarFallback></Avatar>\n  <AvatarGroupCount>+3</AvatarGroupCount>\n</AvatarGroup>",
+      "docs": "https://wunderui.com/components/avatar-group"
+    },
+    {
+      "slug": "badge",
+      "title": "Badge",
+      "category": "Primitives",
+      "description": "A small status or category label in 12 colors and 6 styles.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Badge",
+        "BadgeCell",
+        "BadgeColor",
+        "BadgeStyle"
+      ],
+      "props": "function Badge({ className, shape, color, badgeStyle, style, render, ...props }: useRender.ComponentProps<\"span\"> & VariantProps<typeof badgeVariants> & {\n    color?: BadgeColor;\n    badgeStyle?: BadgeStyle;\n}): React.ReactElement<unknown, string | React.JSXElementConstructor<any>>;\ntype BadgeColor = keyof typeof BADGE_COLORS;\ntype BadgeStyle = \"plain\" | \"light\" | \"light_border\" | \"border_color\" | \"border_grey\" | \"ghost\";",
+      "example": "<Badge color=\"green\" badgeStyle=\"light\">Active</Badge>",
+      "docs": "https://wunderui.com/components/badge"
+    },
+    {
+      "slug": "breadcrumb",
+      "title": "Breadcrumb",
+      "category": "Primitives",
+      "description": "Shows the user's location in a hierarchy, in \"plain\" or bordered \"border\" style.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Breadcrumb",
+        "BreadcrumbItem",
+        "BreadcrumbLink",
+        "BreadcrumbList",
+        "BreadcrumbPage",
+        "BreadcrumbSeparator"
+      ],
+      "props": "function Breadcrumb({ variant, ...props }: React.ComponentProps<\"nav\"> & {\n    variant?: BreadcrumbVariant;\n}): React.JSX.Element;\ntype BreadcrumbVariant = \"plain\" | \"border\" | \"underline\";",
+      "example": "import { Home } from \"lucide-react\"\n\n<Breadcrumb>\n  <BreadcrumbList>\n    <BreadcrumbItem>\n      <BreadcrumbLink href=\"/\"><Home /></BreadcrumbLink>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <BreadcrumbLink href=\"/components\">Components</BreadcrumbLink>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n    </BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>",
+      "docs": "https://wunderui.com/components/breadcrumb"
+    },
+    {
+      "slug": "button",
+      "title": "Button",
+      "category": "Primitives",
+      "description": "The main action trigger, in 10 variants, 2 shapes and 5 sizes.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Button",
+        "ButtonCell",
+        "ButtonGroup"
+      ],
+      "props": "function Button({ className, variant, shape, size, ...props }: Button.Props & VariantProps<typeof buttonVariants>): React.JSX.Element;",
+      "example": "import { Button } from \"@wunderui/react\"\nimport { Plus } from \"lucide-react\"\n\n// Solid, WCAG AA-safe blue button — the default call to action\n<Button variant=\"primary\" size=\"md\">\n  <Plus /> Add item\n</Button>",
+      "docs": "https://wunderui.com/components/button"
+    },
+    {
+      "slug": "icon-button",
+      "title": "Icon Button",
+      "category": "Primitives",
+      "description": "A square or circular button for a single icon action.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "IconButton",
+        "IconButtonTextCell"
+      ],
+      "props": "function IconButton({ className, variant, shape, size, ...props }: Button.Props & VariantProps<typeof iconButtonVariants>): React.JSX.Element;",
+      "example": "<IconButton variant=\"primary\" shape=\"circle\">\n  <Plus />\n</IconButton>",
+      "docs": "https://wunderui.com/components/icon-button"
+    },
+    {
+      "slug": "button-group",
+      "title": "Button Group",
+      "category": "Primitives",
+      "description": "A row of connected buttons sharing borders and outer corners, for view switchers or segmented actions.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "ButtonGroup"
+      ],
+      "props": "function ButtonGroup({ shape, className, ...props }: React.ComponentProps<\"div\"> & {\n    shape?: ButtonGroupShape;\n}): React.JSX.Element;\ntype ButtonGroupShape = \"rounded\" | \"pill\";",
+      "example": "<ButtonGroup>\n  <Button variant=\"plain\">Day</Button>\n  <Button variant=\"plain\">Week</Button>\n  <Button variant=\"plain\">Month</Button>\n</ButtonGroup>",
+      "docs": "https://wunderui.com/components/button-group"
+    },
+    {
+      "slug": "card",
+      "title": "Card",
+      "category": "Primitives",
+      "description": "A bordered container for grouping related content.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Card",
+        "CardAction",
+        "CardContent",
+        "CardDescription",
+        "CardFooter",
+        "CardHeader",
+        "CardMedia",
+        "CardTitle",
+        "CardVariant"
+      ],
+      "props": "function Card({ className, size, variant, ...props }: React.ComponentProps<\"div\"> & {\n    size?: \"default\" | \"sm\";\n    variant?: CardVariant;\n}): React.JSX.Element;\ntype CardVariant = keyof typeof CARD_VARIANT;",
+      "example": "<Card>\n  <CardHeader>\n    <CardTitle>Card title</CardTitle>\n    <CardDescription>Supporting text.</CardDescription>\n  </CardHeader>\n</Card>",
+      "docs": "https://wunderui.com/components/card"
+    },
+    {
+      "slug": "checkbox",
+      "title": "Checkbox",
+      "category": "Primitives",
+      "description": "A single choice that is on or off, with an indeterminate state for “some selected”.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Checkbox",
+        "CheckboxButtonGroup",
+        "CheckboxField",
+        "CheckboxFieldProps"
+      ],
+      "props": "function Checkbox({ className, ...props }: Checkbox.Root.Props): React.JSX.Element;",
+      "example": "<Checkbox aria-label=\"Example checkbox\" defaultChecked onCheckedChange={setValue} />",
+      "docs": "https://wunderui.com/components/checkbox"
+    },
+    {
+      "slug": "switch",
+      "title": "Switch",
+      "category": "Primitives",
+      "description": "A toggle control for a binary setting.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Switch",
+        "SwitchItemCell"
+      ],
+      "props": "function Switch({ className, size, ...props }: Switch.Root.Props & {\n    size?: \"sm\" | \"default\";\n}): React.JSX.Element;",
+      "example": "<Switch aria-label=\"Example switch\" defaultChecked onCheckedChange={setValue} />",
+      "docs": "https://wunderui.com/components/switch"
+    },
+    {
+      "slug": "radio-group",
+      "title": "Radio Group",
+      "category": "Primitives",
+      "description": "A set of mutually exclusive options.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "RadioGroup",
+        "RadioGroupItem"
+      ],
+      "props": "function RadioGroup({ className, ...props }: RadioGroup.Props): React.JSX.Element;",
+      "example": "<RadioGroup defaultValue=\"pro\">\n  <SelectorItemGroup>\n    <SelectorItem title=\"Starter\" description=\"1 project · community support\" control={<RadioGroupItem value=\"starter\" />} />\n    <SelectorItem title=\"Pro\" description=\"Unlimited projects · €12 per month\" control={<RadioGroupItem value=\"pro\" />} />\n    <SelectorItem title=\"Team\" description=\"Shared libraries · €49 per month\" control={<RadioGroupItem value=\"team\" />} />\n  </SelectorItemGroup>\n</RadioGroup>",
+      "docs": "https://wunderui.com/components/radio-group"
+    },
+    {
+      "slug": "input",
+      "title": "Input",
+      "category": "Primitives",
+      "description": "A single-line text field with sm/default/lg sizes and error state.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Input",
+        "InputGroup",
+        "InputGroupAddon"
+      ],
+      "props": "function Input({ className, type, size, ref, onInvalid, onInput, onBlur, ...props }: Omit<React.ComponentProps<\"input\">, \"size\"> & VariantProps<typeof inputVariants>): React.JSX.Element;",
+      "example": "<Input size=\"default\" placeholder=\"Email\" />",
+      "docs": "https://wunderui.com/components/input"
+    },
+    {
+      "slug": "textarea",
+      "title": "Textarea",
+      "category": "Primitives",
+      "description": "A multi-line text field with sm/default/lg sizes and an optional character counter.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Textarea",
+        "TextareaField",
+        "TextareaFieldProps"
+      ],
+      "props": "function Textarea({ className, size, showCount, maxLength, value, defaultValue, onChange, ...props }: Omit<React.ComponentProps<\"textarea\">, \"size\"> & VariantProps<typeof textareaVariants> & {\n    /** Show a \"n/maxLength\" character counter in the bottom-right corner. Requires maxLength. */\n    showCount?: boolean;\n}): React.JSX.Element;",
+      "example": "<Textarea placeholder=\"Write a message...\" />",
+      "docs": "https://wunderui.com/components/textarea"
+    },
+    {
+      "slug": "progress",
+      "title": "Progress",
+      "category": "Primitives",
+      "description": "A horizontal bar showing completion of a task.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Progress",
+        "ProgressCell",
+        "ProgressIndicator",
+        "ProgressLabel",
+        "ProgressTrack",
+        "ProgressValue"
+      ],
+      "props": "function Progress({ className, children, value, ...props }: Progress.Root.Props): React.JSX.Element;",
+      "example": "<Progress value={65} />",
+      "docs": "https://wunderui.com/components/progress"
+    },
+    {
+      "slug": "slider",
+      "title": "Slider",
+      "category": "Primitives",
+      "description": "A draggable control for selecting one value or a range along a track.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Slider",
+        "SliderControl",
+        "SliderIndicator",
+        "SliderLabel",
+        "SliderThumb",
+        "SliderTrack",
+        "SliderValue"
+      ],
+      "props": "function Slider({ className, children, value, defaultValue, \"aria-label\": ariaLabel, \"aria-labelledby\": ariaLabelledBy, ...props }: Slider.Root.Props): React.JSX.Element;",
+      "example": "<Slider aria-label=\"Value\" defaultValue={40} onValueChange={setValue} />",
+      "docs": "https://wunderui.com/components/slider"
+    },
+    {
+      "slug": "pagination",
+      "title": "Pagination",
+      "category": "Primitives",
+      "description": "Page navigation with Prev/Next and numbered pages, or a simple \"Page X of Y\" mode.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Pagination",
+        "PaginationSimple"
+      ],
+      "props": "function Pagination({ page, pageCount, onPageChange, className }: PaginationProps): React.JSX.Element;",
+      "example": "<Pagination page={page} pageCount={12} onPageChange={setPage} />",
+      "docs": "https://wunderui.com/components/pagination"
+    },
+    {
+      "slug": "separator",
+      "title": "Separator",
+      "category": "Primitives",
+      "description": "A thin dividing line, horizontal or vertical, solid or dashed.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Separator"
+      ],
+      "props": "function Separator({ className, orientation, dashed, ...props }: Separator.Props & {\n    dashed?: boolean;\n}): React.JSX.Element;",
+      "example": "<Separator orientation=\"horizontal\" dashed={false} />",
+      "docs": "https://wunderui.com/components/separator"
+    },
+    {
+      "slug": "divider-with-label",
+      "title": "Divider with Label",
+      "category": "Primitives",
+      "description": "A separator with a centered text label, e.g. for \"or\" between two sign-in options.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "DividerWithLabel"
+      ],
+      "props": "function DividerWithLabel({ children, className, }: {\n    children: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<DividerWithLabel>OR</DividerWithLabel>",
+      "docs": "https://wunderui.com/components/divider-with-label"
+    },
+    {
+      "slug": "skeleton",
+      "title": "Skeleton",
+      "category": "Primitives",
+      "description": "A pulsing placeholder shown while content is loading.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Skeleton"
+      ],
+      "props": "function Skeleton({ className, variant, ...props }: React.ComponentProps<\"div\"> & VariantProps<typeof skeletonVariants>): React.JSX.Element;",
+      "example": "<Skeleton variant=\"title\" />\n<Skeleton variant=\"text\" />",
+      "docs": "https://wunderui.com/components/skeleton"
+    },
+    {
+      "slug": "tooltip",
+      "title": "Tooltip",
+      "category": "Primitives",
+      "description": "A short label shown on hover, in any of 4 directions.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Tooltip",
+        "TooltipContent",
+        "TooltipTrigger"
+      ],
+      "props": "function Tooltip({ ...props }: Tooltip.Root.Props): React.JSX.Element;",
+      "example": "<Tooltip>\n  <TooltipTrigger render={<Button variant=\"plain\" />}>Hover</TooltipTrigger>\n  <TooltipContent>Tooltip text</TooltipContent>\n</Tooltip>",
+      "docs": "https://wunderui.com/components/tooltip"
+    },
+    {
+      "slug": "dialog",
+      "title": "Dialog",
+      "category": "Primitives",
+      "description": "A modal window for focused tasks, built on Base UI.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Dialog",
+        "DialogClose",
+        "DialogContent",
+        "DialogDescription",
+        "DialogFooter",
+        "DialogHeader",
+        "DialogIcon",
+        "DialogOverlay",
+        "DialogPortal",
+        "DialogTitle",
+        "DialogTrigger"
+      ],
+      "props": "function Dialog({ ...props }: Dialog.Root.Props): React.JSX.Element;",
+      "example": "<Dialog>\n  <DialogTrigger render={<Button />}>Open</DialogTrigger>\n  <DialogContent>\n    <DialogHeader>\n      <DialogTitle>Title</DialogTitle>\n    </DialogHeader>\n  </DialogContent>\n</Dialog>",
+      "docs": "https://wunderui.com/components/dialog"
+    },
+    {
+      "slug": "alert-dialog",
+      "title": "Alert Dialog",
+      "category": "Primitives",
+      "description": "A dialog for confirmations and destructive actions: a click outside does not close it, only a button or Escape does.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "AlertDialog",
+        "AlertDialogAction",
+        "AlertDialogCancel",
+        "AlertDialogContent",
+        "AlertDialogDescription",
+        "AlertDialogFooter",
+        "AlertDialogHeader",
+        "AlertDialogOverlay",
+        "AlertDialogPortal",
+        "AlertDialogTitle",
+        "AlertDialogTrigger"
+      ],
+      "props": "function AlertDialog({ ...props }: AlertDialog.Root.Props): React.JSX.Element;",
+      "example": "<AlertDialog>\n  <AlertDialogTrigger render={<Button />}>Delete account</AlertDialogTrigger>\n  <AlertDialogContent>\n    <AlertDialogHeader>\n      <AlertDialogTitle>Delete account?</AlertDialogTitle>\n      <AlertDialogDescription>This cannot be undone.</AlertDialogDescription>\n    </AlertDialogHeader>\n    <AlertDialogFooter>\n      <AlertDialogCancel>Cancel</AlertDialogCancel>\n      <AlertDialogAction variant=\"destructive\">Delete</AlertDialogAction>\n    </AlertDialogFooter>\n  </AlertDialogContent>\n</AlertDialog>",
+      "docs": "https://wunderui.com/components/alert-dialog"
+    },
+    {
+      "slug": "collapsible",
+      "title": "Collapsible",
+      "category": "Primitives",
+      "description": "A single collapsible panel controlled by a trigger button.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Collapsible",
+        "CollapsibleContent",
+        "CollapsibleTrigger"
+      ],
+      "props": "function Collapsible({ ...props }: Collapsible.Root.Props): React.JSX.Element;",
+      "example": "<Collapsible defaultOpen>\n  <CollapsibleTrigger>Show details</CollapsibleTrigger>\n  <CollapsibleContent>Lorem ipsum dolor sit amet...</CollapsibleContent>\n</Collapsible>",
+      "docs": "https://wunderui.com/components/collapsible"
+    },
+    {
+      "slug": "toggle",
+      "title": "Toggle",
+      "category": "Primitives",
+      "description": "A standalone two-state button that can be pressed or unpressed.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Toggle",
+        "ToggleButton"
+      ],
+      "props": "function Toggle({ className, size, ...props }: Toggle.Props & VariantProps<typeof toggleVariants>): React.JSX.Element;",
+      "example": "<Toggle defaultPressed aria-label=\"Bold\">\n  <Bold />\n</Toggle>",
+      "docs": "https://wunderui.com/components/toggle"
+    },
+    {
+      "slug": "meter",
+      "title": "Meter",
+      "category": "Primitives",
+      "description": "A graphical display of a fixed value within a range, e.g. disk usage.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Meter",
+        "MeterIndicator",
+        "MeterLabel",
+        "MeterTrack",
+        "MeterValue"
+      ],
+      "props": "function Meter({ className, children, value, ...props }: Meter.Root.Props): React.JSX.Element;",
+      "example": "<Meter value={72}>\n  <MeterLabel>Storage used</MeterLabel>\n  <MeterValue />\n</Meter>",
+      "docs": "https://wunderui.com/components/meter"
+    },
+    {
+      "slug": "kbd",
+      "title": "Kbd",
+      "category": "Primitives",
+      "description": "Displays a keyboard key or shortcut, e.g. inside a search input.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Kbd",
+        "KbdGroup"
+      ],
+      "props": "function Kbd({ className, ...props }: React.ComponentProps<\"kbd\">): React.JSX.Element;",
+      "example": "<KbdGroup>\n  <Kbd>⌘</Kbd>\n  <Kbd>K</Kbd>\n</KbdGroup>",
+      "docs": "https://wunderui.com/components/kbd"
+    },
+    {
+      "slug": "spinner",
+      "title": "Spinner",
+      "category": "Primitives",
+      "description": "A spinning indicator for an in-progress loading state.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Spinner"
+      ],
+      "props": "function Spinner({ className, ...props }: React.ComponentProps<\"svg\">): React.JSX.Element;",
+      "example": "<Spinner />",
+      "docs": "https://wunderui.com/components/spinner"
+    },
+    {
+      "slug": "toolbar",
+      "title": "Toolbar",
+      "category": "Primitives",
+      "description": "A container for grouping a set of buttons and controls.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Toolbar",
+        "ToolbarButton",
+        "ToolbarGroup",
+        "ToolbarLink",
+        "ToolbarSeparator"
+      ],
+      "props": "function Toolbar({ className, ...props }: Toolbar.Root.Props): React.JSX.Element;",
+      "example": "<Toolbar>\n  <ToolbarGroup>\n    <ToolbarButton aria-label=\"Bold\"><Bold /></ToolbarButton>\n    <ToolbarButton aria-label=\"Italic\"><Italic /></ToolbarButton>\n  </ToolbarGroup>\n  <ToolbarSeparator />\n</Toolbar>",
+      "docs": "https://wunderui.com/components/toolbar"
+    },
+    {
+      "slug": "dropdown-menu",
+      "title": "Dropdown Menu",
+      "category": "Primitives",
+      "description": "A menu of actions: icons, shortcuts, checkbox and radio entries, submenus, two-line entries, loading and empty states.",
+      "group": "Core Elements",
+      "tier": "pro",
+      "exports": [
+        "DropdownMenu",
+        "DropdownMenuCheckboxItem",
+        "DropdownMenuContent",
+        "DropdownMenuEmpty",
+        "DropdownMenuGroup",
+        "DropdownMenuItem",
+        "DropdownMenuLabel",
+        "DropdownMenuLoading",
+        "DropdownMenuPortal",
+        "DropdownMenuRadioGroup",
+        "DropdownMenuRadioItem",
+        "DropdownMenuSeparator",
+        "DropdownMenuShortcut",
+        "DropdownMenuSub",
+        "DropdownMenuSubContent",
+        "DropdownMenuSubTrigger",
+        "DropdownMenuTrigger"
+      ],
+      "props": "function DropdownMenu({ ...props }: Menu.Root.Props): React.JSX.Element;",
+      "example": "<DropdownMenu>\n  <DropdownMenuTrigger render={<Button />}>Options</DropdownMenuTrigger>\n  <DropdownMenuContent>\n    <DropdownMenuItem>Edit</DropdownMenuItem>\n  </DropdownMenuContent>\n</DropdownMenu>",
+      "docs": "https://wunderui.com/components/dropdown-menu"
+    },
+    {
+      "slug": "hover-card",
+      "title": "Hover Card",
+      "category": "Primitives",
+      "description": "A rich preview popup shown on hovering a trigger.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "HoverCard",
+        "HoverCardContent",
+        "HoverCardTrigger"
+      ],
+      "props": "function HoverCard({ ...props }: PreviewCard.Root.Props): React.JSX.Element;",
+      "example": "<HoverCard>\n  <HoverCardTrigger render={<Button />}>@handle</HoverCardTrigger>\n  <HoverCardContent>Profile preview</HoverCardContent>\n</HoverCard>",
+      "docs": "https://wunderui.com/components/hover-card"
+    },
+    {
+      "slug": "popover",
+      "title": "Popover",
+      "category": "Overlays",
+      "description": "A floating panel anchored to a trigger element.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "Popover",
+        "PopoverClose",
+        "PopoverContent",
+        "PopoverTrigger"
+      ],
+      "props": "function Popover({ ...props }: Popover.Root.Props): React.JSX.Element;",
+      "example": "<Popover>\n  <PopoverTrigger render={<Button />}>Open</PopoverTrigger>\n  <PopoverContent>Content</PopoverContent>\n</Popover>",
+      "docs": "https://wunderui.com/components/popover"
+    },
+    {
+      "slug": "table",
+      "title": "Table",
+      "category": "Primitives",
+      "description": "Rows and columns with 23 ready-made cell types; for sorting and search use Data Grid.",
+      "group": "Core Elements",
+      "tier": "pro",
+      "exports": [
+        "Table",
+        "TableBody",
+        "TableCaption",
+        "TableCell",
+        "TableFooter",
+        "TableHead",
+        "TableHeader",
+        "TableRow"
+      ],
+      "props": "function Table({ className, ...props }: React.ComponentProps<\"table\">): React.JSX.Element;",
+      "example": "<Table>\n  <TableHeader><TableRow><TableHead>Name</TableHead></TableRow></TableHeader>\n  <TableBody><TableRow><TableCell>Jane</TableCell></TableRow></TableBody>\n</Table>",
+      "docs": "https://wunderui.com/components/table"
+    },
+    {
+      "slug": "tabs",
+      "title": "Tabs",
+      "category": "Primitives",
+      "description": "Switches between related views in the same context.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Tabs",
+        "TabsContent",
+        "TabsIndicator",
+        "TabsList",
+        "TabsTrigger"
+      ],
+      "props": "function Tabs({ className, orientation, ...props }: Tabs.Root.Props): React.JSX.Element;",
+      "example": "<Tabs defaultValue=\"day\">\n  <TabsList>\n    <TabsTrigger value=\"day\">Day</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"day\">...</TabsContent>\n</Tabs>",
+      "docs": "https://wunderui.com/components/tabs"
+    },
+    {
+      "slug": "area-chart",
+      "title": "Area Chart",
+      "category": "Charts",
+      "description": "A gradient-filled area chart for visualizing trends over time.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "AreaChart"
+      ],
+      "props": "function AreaChart({ data, index, categories, colors, height, stacked, curveType, variant, fillOpacity, dashed, outline, fillOnly, strokeWidth, strokeWidths, showGrid, showAxis, showTooltip, showLegend, yDomain, baseline, yTicks, xTicks, xAxisFormatter, sparkline, yAxisFormatter, valueFormatter, animate, loading, className, }: AreaChartProps): React.JSX.Element;",
+      "example": "<AreaChart data={data} index=\"month\" categories={[\"revenue\", \"cost\"]} />",
+      "docs": "https://wunderui.com/components/area-chart"
+    },
+    {
+      "slug": "bar-chart",
+      "title": "Bar Chart",
+      "category": "Charts",
+      "description": "Compares categorical data with grouped or stacked bars.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "BarChart"
+      ],
+      "props": "function BarChart({ data, index, categories, colors, height, layout, stacked, stackGap, radius, barSize, maxBarSize, barGap, lollipop, segments, background, showGrid, showAxis, showTooltip, showLegend, yAxisFormatter, yDomain, yTicks, valueFormatter, animate, loading, className, }: BarChartProps): React.JSX.Element;",
+      "example": "<BarChart data={data} index=\"month\" categories={[\"revenue\", \"cost\"]} stacked={false} />",
+      "docs": "https://wunderui.com/components/bar-chart"
+    },
+    {
+      "slug": "line-chart",
+      "title": "Line Chart",
+      "category": "Charts",
+      "description": "Plots one or more series as smooth or linear lines.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "LineChart",
+        "LineChartReferenceLine"
+      ],
+      "props": "function LineChart({ data, index, categories, colors, height, showGrid, showAxis, showXAxis, showTooltip, showLegend, showDots, endDot, curved, curveType, dashed, area, strokeWidth, strokeWidths, xTicks, xAxisFormatter, yDomain, yTicks, activeIndex, referenceLines, yAxisFormatter, valueFormatter, animate, loading, className, }: LineChartProps): React.JSX.Element;",
+      "example": "<LineChart data={data} index=\"month\" categories={[\"revenue\", \"cost\"]} curved />",
+      "docs": "https://wunderui.com/components/line-chart"
+    },
+    {
+      "slug": "composed-chart",
+      "title": "Composed Chart",
+      "category": "Charts",
+      "description": "Combines bars and a trend line in a single chart.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "ComposedChart"
+      ],
+      "props": "function ComposedChart({ data, index, bars, lines, colors, height, showGrid, showAxis, showTooltip, valueFormatter, animate, loading, className, }: ComposedChartProps): React.JSX.Element;",
+      "example": "<ComposedChart data={data} index=\"month\" bars={[\"revenue\"]} lines={[\"cost\"]} />",
+      "docs": "https://wunderui.com/components/composed-chart"
+    },
+    {
+      "slug": "pie-chart",
+      "title": "Pie Chart",
+      "category": "Charts",
+      "description": "Shows proportions of a whole, with an optional donut mode.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "PieChart"
+      ],
+      "props": "function PieChart({ data, colors, height, donut, variant, innerRadius, paddingAngle, cornerRadius, startAngle, endAngle, track, centerLabel, legend, showLabel, showTooltip, valueFormatter, animate, loading, className, }: PieChartProps): React.JSX.Element;",
+      "example": "<PieChart data={[{ name: \"Direct\", value: 42 }]} donut />",
+      "docs": "https://wunderui.com/components/pie-chart"
+    },
+    {
+      "slug": "radar-chart",
+      "title": "Radar Chart",
+      "category": "Charts",
+      "description": "Compares multiple series across shared axes on a polar grid.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "RadarChart"
+      ],
+      "props": "function RadarChart({ data, index, categories, colors, height, showTooltip, fillOpacity, showDots, animate, loading, className, }: RadarChartProps): React.JSX.Element;",
+      "example": "<RadarChart data={data} index=\"metric\" categories={[\"a\", \"b\"]} />",
+      "docs": "https://wunderui.com/components/radar-chart"
+    },
+    {
+      "slug": "radial-chart",
+      "title": "Radial Chart",
+      "category": "Charts",
+      "description": "A circular progress-style chart for a single goal value.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "RadialChart"
+      ],
+      "props": "function RadialChart({ data, colors, height, showTooltip, innerRadius, centerLabel, animate, loading, className, }: RadialChartProps): React.JSX.Element;",
+      "example": "<RadialChart data={[{ name: \"Goal\", value: 72 }]} />",
+      "docs": "https://wunderui.com/components/radial-chart"
+    },
+    {
+      "slug": "radial-gauge",
+      "title": "Radial Gauge",
+      "category": "Charts",
+      "description": "A half ring split into segments — shares of a whole with the legend underneath.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "RadialGauge"
+      ],
+      "props": "function RadialGauge({ data, colors, max, height, thickness, paddingAngle, cornerRadius, track, centerLabel, legend, showTooltip, valueFormatter, animate, loading, className, }: RadialGaugeProps): React.JSX.Element;",
+      "example": "import { ChartCard, RadialGauge } from \"@wunderui/react\"\n\n<ChartCard title=\"Radial Gauge\">\n  <RadialGauge data={[{ name: \"Audience\", value: 46 }, { name: \"Earnings\", value: 24 }, { name: \"Visitors\", value: 7 }]} max={100} />\n</ChartCard>",
+      "docs": "https://wunderui.com/components/radial-gauge"
+    },
+    {
+      "slug": "bubble-chart",
+      "title": "Bubble Chart",
+      "category": "Charts",
+      "description": "A scatter plot where marker size encodes a third dimension of the data.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "BubbleChart"
+      ],
+      "props": "function BubbleChart({ data, xKey, yKey, sizeKey, name, color, height, sizeRange, showGrid, showAxis, showTooltip, valueFormatter, groupKey, colors, animate, loading, className, }: BubbleChartProps): React.JSX.Element;",
+      "example": "<BubbleChart data={data} xKey=\"visits\" yKey=\"revenue\" sizeKey=\"deals\" />",
+      "docs": "https://wunderui.com/components/bubble-chart"
+    },
+    {
+      "slug": "candlestick-chart",
+      "title": "Candlestick Chart",
+      "category": "Charts",
+      "description": "An OHLC (open/high/low/close) chart for visualizing price movement over time.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "CandlestickChart"
+      ],
+      "props": "function CandlestickChart({ data, index, height, upColor, downColor, lines, bandKey, volumeKey, lastPrice, yAxisSide, yDomain, yTicks, xTicks, yAxisFormatter, xAxisFormatter, showGrid, showAxis, showTooltip, showLegend, priceLabel, animate, loading, className, }: CandlestickChartProps): React.JSX.Element;",
+      "example": "<CandlestickChart\n  data={candles}            // { day, month, open, high, low, close, sma20, sma50 }\n  index=\"day\"\n  bandKey=\"month\"           // alternating month bands\n  lines={[{ key: \"sma20\", label: \"20 Day SMA\" }, { key: \"sma50\", label: \"50 Day SMA\" }]}\n  yAxisSide=\"right\"\n  showLegend\n/>",
+      "docs": "https://wunderui.com/components/candlestick-chart"
+    },
+    {
+      "slug": "sparkline",
+      "title": "Sparkline",
+      "category": "Charts",
+      "description": "A tiny trend line without axes — green when it rises, red when it falls — for table cells, price cards and metric tiles.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "Sparkline",
+        "SparklineProps"
+      ],
+      "props": "function Sparkline({ data, variant, trend, color, width, height, strokeWidth, animate, loading, className, \"aria-label\": ariaLabel, }: SparklineProps): React.JSX.Element;",
+      "example": "import { Sparkline } from \"@wunderui/react\"\n\n<Sparkline data={[40, 44, 41, 48, 52, 50, 58]} aria-label=\"Up 45 % over seven days\" />\n<Sparkline data={prices} variant=\"area\" width=\"100%\" height={96} />",
+      "docs": "https://wunderui.com/components/sparkline"
+    },
+    {
+      "slug": "funnel-chart",
+      "title": "Funnel Chart",
+      "category": "Charts",
+      "description": "Shows drop-off across sequential stages, each with a label and value.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "FunnelChart"
+      ],
+      "props": "function FunnelChart({ data, series, labels, max, height, color, variant, direction, fillOpacity, showAxis, showHeader, showTooltip, seriesLabel, yAxisFormatter, animate, loading, className, }: FunnelChartProps): React.JSX.Element;",
+      "example": "<FunnelChart data={[\n  { label: \"Impressions\", value: \"2,620,120\", percent: 100 },\n  { label: \"Purchases\", value: \"246\", percent: 18 },\n]} />",
+      "docs": "https://wunderui.com/components/funnel-chart"
+    },
+    {
+      "slug": "column-chart",
+      "title": "Column Chart",
+      "category": "Charts",
+      "description": "Vertical bars for comparing categories side by side.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "ColumnChart"
+      ],
+      "props": null,
+      "example": "import { ColumnChart } from \"@wunderui/react\"\n\n<ColumnChart data={data} index=\"month\" categories={[\"revenue\", \"cost\"]} />",
+      "docs": "https://wunderui.com/components/column-chart"
+    },
+    {
+      "slug": "agenda",
+      "title": "Agenda",
+      "category": "Primitives",
+      "description": "A time-ordered list of scheduled events.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Agenda",
+        "AgendaEvent",
+        "AgendaEventProps",
+        "AgendaItem"
+      ],
+      "props": "function Agenda({ items, className, }: {\n    items: AgendaItem[];\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<Agenda items={[{ id, time, title, description, color }]} />",
+      "docs": "https://wunderui.com/components/agenda"
+    },
+    {
+      "slug": "action-bar",
+      "title": "Action Bar",
+      "category": "Primitives",
+      "description": "A floating bar of bulk actions for a selection.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "ActionBar"
+      ],
+      "props": "function ActionBar({ label, children, className, }: {\n    label?: ReactNode;\n    children: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ActionBar label=\"3 selected\">\n  <Button variant=\"plain\" size=\"sm\">Archive</Button>\n</ActionBar>",
+      "docs": "https://wunderui.com/components/action-bar"
+    },
+    {
+      "slug": "carousel",
+      "title": "Carousel",
+      "category": "Primitives",
+      "description": "A horizontally scrollable row of items with arrow controls.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Carousel"
+      ],
+      "props": "function Carousel({ children, className, label, }: {\n    children: React.ReactNode;\n    className?: string;\n    /** Accessible name of the scrolling region. */\n    label?: string;\n}): React.JSX.Element;",
+      "example": "<Carousel>\n  {items.map((item) => <Card key={item.id}>{item.label}</Card>)}\n</Carousel>",
+      "docs": "https://wunderui.com/components/carousel"
+    },
+    {
+      "slug": "data-grid",
+      "title": "Data Grid",
+      "category": "Data Display",
+      "description": "A full-featured table: sort, search, select, resize columns, paginate.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "DataGrid",
+        "DataGridColumn"
+      ],
+      "props": "function DataGrid<T extends {\n    id: string | number;\n}>({ columns, data, selectable, pageSize, searchable, className, }: {\n    columns: DataGridColumn<T>[];\n    data: T[];\n    /** Row checkboxes and the \"n of m selected\" footer. Default true; false shows the row count instead. */\n    selectable?: boolean;\n    /** Rows per page. Default 5. */\n    pageSize?: number;\n    /** Search field above the grid (uses each column's filterValue). Default true. */\n    searchable?: boolean;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<DataGrid\n  columns={[{ key: \"name\", header: \"Name\", sortable: true, render: (r) => r.name }]}\n  data={rows}\n/>",
+      "docs": "https://wunderui.com/components/data-grid"
+    },
+    {
+      "slug": "empty-state",
+      "title": "Empty State",
+      "category": "Primitives",
+      "description": "Placeholder shown when a list or search has no results.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "EmptyState"
+      ],
+      "props": "function EmptyState({ icon, title, description, action, variant, className, }: {\n    icon?: ReactNode;\n    title: string;\n    description?: string;\n    action?: ReactNode;\n    /** Frame style — mirrors the Figma Empty State \"Style\" variants. */\n    variant?: keyof typeof EMPTY_STATE_VARIANTS;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<EmptyState title=\"No results\" description=\"...\" action={<Button>Reset</Button>} />",
+      "docs": "https://wunderui.com/components/empty-state"
+    },
+    {
+      "slug": "file-tree",
+      "title": "File Tree",
+      "category": "Primitives",
+      "description": "A collapsible, indented tree of folders and files.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "FileTree",
+        "FileTreeNode"
+      ],
+      "props": "function FileTree({ data, className, }: {\n    data: FileTreeNode[];\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<FileTree data={[{ id, name, children: [...] }]} />",
+      "docs": "https://wunderui.com/components/file-tree"
+    },
+    {
+      "slug": "floating-toc",
+      "title": "Floating TOC",
+      "category": "Primitives",
+      "description": "A sticky table of contents with an active-section indicator.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "FloatingToc"
+      ],
+      "props": "function FloatingToc({ items, activeId, onSelect, scrollContainer, className, }: {\n    items: TocItem[];\n    activeId?: string;\n    onSelect?: (id: string) => void;\n    /** The element that scrolls the sections, if it is not the page. */\n    scrollContainer?: React.RefObject<HTMLElement | null>;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "const articleRef = React.useRef<HTMLDivElement>(null)\n\n<div ref={articleRef} className=\"overflow-y-auto\">\n  <section id=\"why\">…</section>\n  <section id=\"setup\">…</section>\n</div>\n<FloatingToc\n  items={[{ id: \"why\", label: \"Why tokens\" }, { id: \"setup\", label: \"Set up the theme\" }]}\n  scrollContainer={articleRef}\n/>",
+      "docs": "https://wunderui.com/components/floating-toc"
+    },
+    {
+      "slug": "holo-card",
+      "title": "Holo Card",
+      "category": "Primitives",
+      "description": "A card with a mouse-tracking spotlight/gradient shine effect.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "HoloCard"
+      ],
+      "props": "function HoloCard({ children, className, }: {\n    children: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<HoloCard>\n  <p>Hover to reveal the spotlight effect.</p>\n</HoloCard>",
+      "docs": "https://wunderui.com/components/holo-card"
+    },
+    {
+      "slug": "kanban",
+      "title": "Kanban",
+      "category": "Primitives",
+      "description": "A drag-and-drop board of columns and cards.",
+      "group": "Core Elements",
+      "tier": "pro",
+      "exports": [
+        "Kanban",
+        "KanbanCard",
+        "KanbanCardItem",
+        "KanbanCardProps",
+        "KanbanColumn"
+      ],
+      "props": "function Kanban({ columns: controlledColumns, onColumnsChange, className, }: {\n    columns: KanbanColumn[];\n    onColumnsChange?: (columns: KanbanColumn[]) => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<Kanban columns={columns} onColumnsChange={setColumns} />",
+      "docs": "https://wunderui.com/components/kanban"
+    },
+    {
+      "slug": "item-card",
+      "title": "Item Card",
+      "category": "Primitives",
+      "description": "A generic row card: icon, title, description, meta, action.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "ItemCard",
+        "ItemCardGroup"
+      ],
+      "props": "function ItemCard({ icon, title, description, meta, action, className, }: {\n    icon?: ReactNode;\n    title: ReactNode;\n    description?: ReactNode;\n    meta?: ReactNode;\n    action?: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ItemCardGroup>\n  <ItemCard icon={<FileText />} title=\"...\" description=\"...\" />\n</ItemCardGroup>",
+      "docs": "https://wunderui.com/components/item-card"
+    },
+    {
+      "slug": "kpi",
+      "title": "KPI",
+      "category": "KPI",
+      "description": "A single metric with its change, as a card with a dot and delta, a plain card with a caption, or an inline value.",
+      "group": "KPI / Metric Card",
+      "tier": "pro",
+      "exports": [
+        "StatCard"
+      ],
+      "props": "function StatCard({ label, value, prev, delta, trend, trendGood, dotColor, caption, variant, className, }: StatCardProps): React.JSX.Element;",
+      "example": "<StatCard label=\"Revenue\" value=\"$48.2K\" delta=\"12.4%\" trend=\"up\" trendGood />",
+      "docs": "https://wunderui.com/components/kpi"
+    },
+    {
+      "slug": "kpi-group",
+      "title": "KPI Group",
+      "category": "KPI",
+      "description": "A row of KPIs sharing one bordered container.",
+      "group": "KPI / Metric Card",
+      "tier": "pro",
+      "exports": [
+        "KPIGroup"
+      ],
+      "props": "function KPIGroup({ children, columns, className, }: {\n    children: ReactNode;\n    columns?: 2 | 3 | 4;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<KPIGroup columns={3}>\n  <StatCard label=\"MRR\" value=\"$12.4K\" />\n</KPIGroup>",
+      "docs": "https://wunderui.com/components/kpi-group"
+    },
+    {
+      "slug": "metric-card",
+      "title": "Metric Card",
+      "category": "KPI",
+      "description": "One number with its trend and, per variant, a sparkline, progress, breakdown, comparison, distribution, status, action or AI insight.",
+      "group": "KPI / Metric Card",
+      "tier": "pro",
+      "exports": [
+        "MetricCard"
+      ],
+      "props": "function MetricCard({ label, value, icon, iconVariant, onIconClick, info, menu, onMenuSelect, trend, caption, previous, aside, asideAlign, children, className, }: {\n    label: string;\n    value: string;\n    /** Figma Show icon: a 32 px tile before the label. */\n    icon?: React.ReactNode;\n    /** Figma Type=Icon (muted tile) or Type=Icon Button (bordered button). */\n    iconVariant?: \"tile\" | \"button\";\n    /** Makes the icon button do something; without it the button is decorative. */\n    onIconClick?: () => void;\n    /** Text behind the (i) next to the label. */\n    info?: React.ReactNode;\n    /** Figma Show menu: `true` for the ⋯ menu (View details · Customize · Export data · Remove), or your own trigger. */\n    menu?: boolean | React.ReactNode;\n    /** Called with the chosen entry of the built-in ⋯ menu. */\n    onMenuSelect?: (action: MetricMenuAction) => void;\n    /** Figma Show trend: the Trend Chip under the value. */\n    trend?: MetricTrend;\n    /** Figma Caption, beside the chip — \"vs last month\". */\n    caption?: React.ReactNode;\n    /** Figma Comparison · Period: the previous value under the chip. */\n    previous?: React.ReactNode;\n    /** Sits beside the value: a radial progress, a donut, or a chart (Figma Area right / Bar right). */\n    aside?: React.ReactNode;\n    /**\n     * Rings sit centred beside the value (`center`); charts sit on the trend\n     * chip's baseline (`end`), so the bottom of the chart and the bottom of the\n     * chip form one line. Defaults to `end` for a MetricSparkline, else `center`.\n     */\n    asideAlign?: \"center\" | \"end\";\n    /** The visualization under the value: MetricSparkline, MetricProgress, … */\n    children?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;\ntype MetricMenuAction = \"view\" | \"customize\" | \"export\" | \"remove\";",
+      "example": "<MetricCard label=\"Revenue\" value=\"$85,250\" icon={<Activity />} menu trend={{ value: \"12.4%\", direction: \"up\" }}>\n  <MetricSparkline data={series} variant=\"area\" />\n</MetricCard>",
+      "docs": "https://wunderui.com/components/metric-card"
+    },
+    {
+      "slug": "list-view",
+      "title": "List View",
+      "category": "Primitives",
+      "description": "A simple bordered list of rows with leading/trailing content.",
+      "group": "Core Elements",
+      "tier": "pro",
+      "exports": [
+        "ListView",
+        "ListViewItem"
+      ],
+      "props": "function ListView({ children, className, }: {\n    children: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ListView>\n  <ListViewItem leading={<Icon />} title=\"...\" description=\"...\" />\n</ListView>",
+      "docs": "https://wunderui.com/components/list-view"
+    },
+    {
+      "slug": "timeline",
+      "title": "Timeline",
+      "category": "Primitives",
+      "description": "A vertical sequence of dated, dot-connected events.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Timeline",
+        "TimelineEvent",
+        "TimelineEventProps",
+        "TimelineItem"
+      ],
+      "props": "function Timeline({ items, className, }: {\n    items: TimelineItem[];\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<Timeline items={[{ id, title, timestamp, color }]} />",
+      "docs": "https://wunderui.com/components/timeline"
+    },
+    {
+      "slug": "widget",
+      "title": "Widget",
+      "category": "Primitives",
+      "description": "A generic dashboard widget shell: header, body, footer.",
+      "group": "Core Elements",
+      "tier": "free",
+      "exports": [
+        "Widget"
+      ],
+      "props": "function Widget({ title, description, action, footer, children, className, }: {\n    title?: ReactNode;\n    description?: ReactNode;\n    action?: ReactNode;\n    footer?: ReactNode;\n    children: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<Widget title=\"Title\" description=\"...\">\n  <YourContent />\n</Widget>",
+      "docs": "https://wunderui.com/components/widget"
+    },
+    {
+      "slug": "app-layout",
+      "title": "App Layout",
+      "category": "Navigation",
+      "description": "The app shell: sticky navbar and sidebar over a scrolling page, aside, banner and footer, skip link, and a drawer below 64rem.",
+      "group": "Navigation & Layout",
+      "tier": "pro",
+      "exports": [
+        "AppLayout",
+        "AppLayoutAsideTrigger",
+        "AppLayoutNavigationTrigger",
+        "AppLayoutProps"
+      ],
+      "props": "function AppLayout({ banner, navbar, sidebar, aside, asideLabel, asideOpen: asideOpenProp, onAsideOpenChange, footer, children, embedded, scroll, width, padding, skipLinkLabel, drawerBelow, className, }: AppLayoutProps): React.JSX.Element;",
+      "example": "<AppLayout sidebar={<Sidebar>...</Sidebar>} navbar={<Navbar>...</Navbar>}>\n  <YourPage />\n</AppLayout>",
+      "docs": "https://wunderui.com/components/app-layout"
+    },
+    {
+      "slug": "sidebar",
+      "title": "Sidebar",
+      "category": "Navigation",
+      "description": "App navigation in six modes: docked, offcanvas, icon rail, rail with flyouts, double sidebar and overlay drawer.",
+      "group": "Navigation & Layout",
+      "tier": "pro",
+      "exports": [
+        "Sidebar",
+        "SidebarCta",
+        "SidebarGroup",
+        "SidebarHeading",
+        "SidebarItem",
+        "SidebarItemProps",
+        "SidebarNotification",
+        "SidebarSearch",
+        "SidebarSection",
+        "SidebarSwitchItem",
+        "SidebarUser",
+        "SidebarWorkspace"
+      ],
+      "props": "function Sidebar({ logo, footer, collapsed, children, className, ...props }: Omit<ComponentProps<\"aside\">, \"children\"> & {\n    logo?: ReactNode;\n    footer?: ReactNode;\n    /** Icon-only rail (Figma: Sidebar Collapsed). */\n    collapsed?: boolean;\n    children: ReactNode;\n}): React.JSX.Element;",
+      "example": "<Sidebar logo={<Logo />} footer={<SidebarUser name=\"...\" email=\"...\" />}>\n  <SidebarSection>\n    <SidebarItem icon={<Home />} label=\"Dashboard\" active />\n  </SidebarSection>\n</Sidebar>",
+      "docs": "https://wunderui.com/components/sidebar"
+    },
+    {
+      "slug": "navbar",
+      "title": "Navbar",
+      "category": "Navigation",
+      "description": "The top bar in four scroll modes — static, sticky, hide on scroll, transparent — with mega menu, search, overflow and a mobile drawer.",
+      "group": "Navigation & Layout",
+      "tier": "pro",
+      "exports": [
+        "Navbar",
+        "NavbarLink",
+        "NavbarLinkProps",
+        "NavbarMenu",
+        "NavbarMenuLink",
+        "NavbarMode",
+        "NavbarProps",
+        "NavbarSearch",
+        "NavbarSearchField",
+        "NavbarSearchProps"
+      ],
+      "props": "function Navbar({ logo, children, actions, search, command, mode, label, className }: NavbarProps): React.JSX.Element;",
+      "example": "<Navbar logo={<Logo />} actions={<Avatar />}>\n  <NavbarLink active>Overview</NavbarLink>\n</Navbar>",
+      "docs": "https://wunderui.com/components/navbar"
+    },
+    {
+      "slug": "segment",
+      "title": "Segment",
+      "category": "Navigation",
+      "description": "A pill-shaped single-select toggle group, like a compact tab bar.",
+      "group": "Navigation & Layout",
+      "tier": "pro",
+      "exports": [
+        "Segment",
+        "SegmentOption",
+        "SegmentSize"
+      ],
+      "props": "function Segment({ options, value, onValueChange, size, className, }: {\n    options: SegmentOption[];\n    value: string;\n    onValueChange: (value: string) => void;\n    size?: SegmentSize;\n    className?: string;\n}): React.JSX.Element;\ntype SegmentSize = \"xs\" | \"sm\" | \"md\" | \"lg\";",
+      "example": "<Segment value={value} onValueChange={setValue} options={[{ value: \"day\", label: \"Day\" }]} />",
+      "docs": "https://wunderui.com/components/segment"
+    },
+    {
+      "slug": "stepper",
+      "title": "Stepper",
+      "category": "Navigation",
+      "description": "A horizontal multi-step progress indicator with connectors.",
+      "group": "Navigation & Layout",
+      "tier": "pro",
+      "exports": [
+        "Stepper",
+        "StepperProps",
+        "StepperStep"
+      ],
+      "props": "function Stepper({ steps, currentStep, orientation, numbered, onStepClick, navigable, className }: StepperProps): React.JSX.Element;",
+      "example": "const [step, setStep] = useState(1)\n\n<Stepper currentStep={step} steps={steps} navigable=\"all\" onStepClick={setStep} />",
+      "docs": "https://wunderui.com/components/stepper"
+    },
+    {
+      "slug": "command",
+      "title": "Command",
+      "category": "Navigation",
+      "description": "A searchable command palette dialog with keyboard navigation (⌘K pattern).",
+      "group": "Navigation & Layout",
+      "tier": "pro",
+      "exports": [
+        "Command",
+        "CommandDialog",
+        "CommandEmpty",
+        "CommandGroup",
+        "CommandInput",
+        "CommandItem",
+        "CommandItemRow",
+        "CommandItemRowProps",
+        "CommandList",
+        "CommandSeparator"
+      ],
+      "props": "function Command({ className, children }: {\n    className?: string;\n    children: React.ReactNode;\n}): React.JSX.Element;",
+      "example": "<CommandDialog open={open} onOpenChange={setOpen}>\n  <CommandInput />\n  <CommandList>\n    <CommandGroup heading=\"Suggestions\">\n      <CommandItem value=\"dashboard\" onSelect={...}>Go to Dashboard</CommandItem>\n    </CommandGroup>\n  </CommandList>\n</CommandDialog>",
+      "docs": "https://wunderui.com/components/command"
+    },
+    {
+      "slug": "context-menu",
+      "title": "Context Menu",
+      "category": "Navigation",
+      "description": "Actions that open on right-click, styled like the dropdown menu.",
+      "group": "Navigation & Layout",
+      "tier": "pro",
+      "exports": [
+        "ContextMenu",
+        "ContextMenuContent",
+        "ContextMenuGroup",
+        "ContextMenuItem",
+        "ContextMenuLabel",
+        "ContextMenuSeparator",
+        "ContextMenuTrigger"
+      ],
+      "props": "function ContextMenu({ ...props }: ContextMenu.Root.Props): React.JSX.Element;",
+      "example": "<ContextMenu>\n  <ContextMenuTrigger>Right-click me</ContextMenuTrigger>\n  <ContextMenuContent>\n    <ContextMenuItem>Copy</ContextMenuItem>\n  </ContextMenuContent>\n</ContextMenu>",
+      "docs": "https://wunderui.com/components/context-menu"
+    },
+    {
+      "slug": "native-select",
+      "title": "Native Select",
+      "category": "Forms",
+      "description": "A full-width styled select trigger and popup list.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "NativeSelect",
+        "NativeSelectContent",
+        "NativeSelectItem",
+        "NativeSelectTrigger",
+        "NativeSelectValue"
+      ],
+      "props": "function NativeSelect({ items, children, ...props }: Select.Root.Props<string>): React.JSX.Element;",
+      "example": "<NativeSelect value={value} onValueChange={setValue}>\n  <NativeSelectTrigger aria-label=\"Choose an option\"><NativeSelectValue /></NativeSelectTrigger>\n  <NativeSelectContent>\n    <NativeSelectItem value=\"us\">United States</NativeSelectItem>\n  </NativeSelectContent>\n</NativeSelect>",
+      "docs": "https://wunderui.com/components/native-select"
+    },
+    {
+      "slug": "inline-select",
+      "title": "Inline Select",
+      "category": "Forms",
+      "description": "A compact select meant to sit inline within a sentence of text.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "InlineSelect",
+        "InlineSelectContent",
+        "InlineSelectItem",
+        "InlineSelectTrigger",
+        "InlineSelectValue"
+      ],
+      "props": "function InlineSelect({ items, children, ...props }: Select.Root.Props<string>): React.JSX.Element;",
+      "example": "<InlineSelect defaultValue=\"newest\">\n  <InlineSelectTrigger aria-label=\"Choose an option\"><InlineSelectValue /></InlineSelectTrigger>\n  <InlineSelectContent>...</InlineSelectContent>\n</InlineSelect>",
+      "docs": "https://wunderui.com/components/inline-select"
+    },
+    {
+      "slug": "checkbox-button-group",
+      "title": "Checkbox Button Group",
+      "category": "Forms",
+      "description": "A multi-select group of toggle-styled buttons.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "CheckboxButtonGroup"
+      ],
+      "props": "function CheckboxButtonGroup<Value extends string>({ className, ...props }: ToggleGroup.Props<Value>): React.JSX.Element;",
+      "example": "<CheckboxButtonGroup value={value} onValueChange={setValue}>\n  <ToggleButton aria-label=\"Bold\" value=\"bold\"><Bold /></ToggleButton>\n</CheckboxButtonGroup>",
+      "docs": "https://wunderui.com/components/checkbox-button-group"
+    },
+    {
+      "slug": "radio-button-group",
+      "title": "Radio Button Group",
+      "category": "Forms",
+      "description": "A single-select group of toggle-styled buttons.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "RadioButtonGroup"
+      ],
+      "props": "function RadioButtonGroup<Value extends string>({ className, ...props }: Omit<ToggleGroup.Props<Value>, \"multiple\">): React.JSX.Element;",
+      "example": "<RadioButtonGroup value={value} onValueChange={setValue}>\n  <ToggleButton aria-label=\"Align left\" value=\"left\"><AlignLeft /></ToggleButton>\n</RadioButtonGroup>",
+      "docs": "https://wunderui.com/components/radio-button-group"
+    },
+    {
+      "slug": "number-stepper",
+      "title": "Number Stepper",
+      "category": "Forms",
+      "description": "A +/- increment control for a bounded numeric value.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "NumberStepper"
+      ],
+      "props": "function NumberStepper({ value, onValueChange, min, max, step, format, className, ...props }: Omit<React.ComponentProps<\"div\">, \"children\"> & {\n    value: number;\n    onValueChange: (value: number) => void;\n    min?: number;\n    max?: number;\n    step?: number;\n    /** Formats the displayed value, e.g. `(n) => `${n}%`` */\n    format?: (value: number) => React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<NumberStepper value={value} onValueChange={setValue} min={0} max={10} />",
+      "docs": "https://wunderui.com/components/number-stepper"
+    },
+    {
+      "slug": "drop-zone",
+      "title": "Drop Zone",
+      "category": "Forms",
+      "description": "A drag-and-drop file upload target with a click-to-browse fallback.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "DropZone"
+      ],
+      "props": "function DropZone({ onFiles, accept, hint, className, }: {\n    onFiles?: (files: FileList) => void;\n    accept?: string;\n    /** Line under the prompt. Defaults to the accepted types, or \"Any file type\". State your size limit here. */\n    hint?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<DropZone onFiles={(files) => upload(files)} accept=\"image/*\" />",
+      "docs": "https://wunderui.com/components/drop-zone"
+    },
+    {
+      "slug": "rich-text-editor",
+      "title": "Rich Text Editor",
+      "category": "Forms",
+      "description": "A Tiptap-powered WYSIWYG editor with a formatting toolbar.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "RichTextEditor",
+        "RichTextEditorProps",
+        "RichTextEditorSkeleton"
+      ],
+      "props": "function RichTextEditor(props: RichTextEditorProps): React.JSX.Element;",
+      "example": "<RichTextEditor content={html} onChange={setHtml} placeholder=\"Write something...\" />",
+      "docs": "https://wunderui.com/components/rich-text-editor"
+    },
+    {
+      "slug": "color-picker",
+      "title": "Color Picker",
+      "category": "Forms",
+      "description": "Pick a colour: saturation and brightness, hue, opacity, eyedropper, HEX/RGB/HSL values and saved colours — inline or from a trigger field.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "ColorPicker",
+        "ColorPickerProps",
+        "ColorPickerTrigger"
+      ],
+      "props": "function ColorPicker({ variant, value, defaultValue, onValueChange, alpha, defaultAlpha, onAlphaChange, showAlpha, format, defaultFormat, onFormatChange, swatches, defaultSwatches, onSwatchesChange, title, onClose, className, }: ColorPickerProps): React.JSX.Element;",
+      "example": "<ColorPicker value={hex} onValueChange={setHex} />",
+      "docs": "https://wunderui.com/components/color-picker"
+    },
+    {
+      "slug": "cell-color-picker",
+      "title": "Cell Color Picker",
+      "category": "Forms",
+      "description": "A compact color swatch picker for inline use in a Data Grid cell.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "CellColorPicker"
+      ],
+      "props": "function CellColorPicker({ value, onValueChange, }: {\n    value: string;\n    onValueChange: (value: string) => void;\n}): React.JSX.Element;",
+      "example": "<CellColorPicker value={color} onValueChange={setColor} />",
+      "docs": "https://wunderui.com/components/cell-color-picker"
+    },
+    {
+      "slug": "cell-slider",
+      "title": "Cell Slider",
+      "category": "Forms",
+      "description": "A compact progress/value slider for inline use in a Data Grid cell.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "CellSlider"
+      ],
+      "props": "function CellSlider({ value, max }: {\n    value: number;\n    max?: number;\n}): React.JSX.Element;",
+      "example": "<CellSlider value={68} max={100} />",
+      "docs": "https://wunderui.com/components/cell-slider"
+    },
+    {
+      "slug": "cell-select",
+      "title": "Cell Select",
+      "category": "Forms",
+      "description": "A compact select for inline use in a Data Grid cell.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "CellSelect"
+      ],
+      "props": "function CellSelect({ value, onValueChange, options, \"aria-label\": ariaLabel, }: {\n    value: string;\n    onValueChange: (value: string) => void;\n    options: string[];\n    /** Name for screen readers — a combobox is not named by its current value. */\n    \"aria-label\"?: string;\n}): React.JSX.Element;",
+      "example": "<CellSelect value={value} onValueChange={setValue} options={[\"Active\", \"Paused\"]} />",
+      "docs": "https://wunderui.com/components/cell-select"
+    },
+    {
+      "slug": "cell-switch",
+      "title": "Cell Switch",
+      "category": "Forms",
+      "description": "A compact switch for inline use in a Data Grid cell.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "CellSwitch"
+      ],
+      "props": "function CellSwitch({ checked, onCheckedChange, \"aria-label\": ariaLabel, }: {\n    checked: boolean;\n    onCheckedChange: (checked: boolean) => void;\n    /** Name for screen readers — a cell has no visible label of its own. */\n    \"aria-label\"?: string;\n}): React.JSX.Element;",
+      "example": "<CellSwitch aria-label=\"Example switch\" checked={checked} onCheckedChange={setChecked} />",
+      "docs": "https://wunderui.com/components/cell-switch"
+    },
+    {
+      "slug": "selector-item",
+      "title": "Selector Item",
+      "category": "Forms",
+      "description": "A list row pairing a leading icon/avatar and label/description with a trailing radio, checkbox, or switch.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "SelectorItem",
+        "SelectorItemGroup"
+      ],
+      "props": "function SelectorItem({ leading, title, description, control, className, }: {\n    leading?: ReactNode;\n    title: ReactNode;\n    description?: ReactNode;\n    control: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<SelectorItem\n  leading={<CreditCard />}\n  title=\"Mastercard\"\n  description=\"Ending in 4242 · expires 08/28\"\n  control={<RadioGroupItem value=\"mastercard\" />}\n/>",
+      "docs": "https://wunderui.com/components/selector-item"
+    },
+    {
+      "slug": "label",
+      "title": "Label",
+      "category": "Forms",
+      "description": "An accessible label for a form control.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "Label"
+      ],
+      "props": "function Label({ className, ...props }: React.ComponentProps<\"label\">): React.JSX.Element;",
+      "example": "<Label htmlFor=\"email\">Email</Label>",
+      "docs": "https://wunderui.com/components/label"
+    },
+    {
+      "slug": "field",
+      "title": "Field",
+      "category": "Forms",
+      "description": "Labelling and validation for a single form control — label, description, and error message.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "Field",
+        "FieldControl",
+        "FieldDescription",
+        "FieldError",
+        "FieldLabel",
+        "Fieldset",
+        "FieldsetLegend"
+      ],
+      "props": "function Field({ className, ...props }: Field.Root.Props): React.JSX.Element;",
+      "example": "<Field>\n  <FieldLabel>Email</FieldLabel>\n  <FieldControl render={<Input type=\"email\" />} />\n  <FieldDescription>We&apos;ll never share your email.</FieldDescription>\n</Field>",
+      "docs": "https://wunderui.com/components/field"
+    },
+    {
+      "slug": "fieldset",
+      "title": "Fieldset",
+      "category": "Forms",
+      "description": "A native fieldset with a legend, for grouping related fields.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "Fieldset",
+        "FieldsetLegend"
+      ],
+      "props": "function Fieldset({ className, ...props }: Fieldset.Root.Props): React.JSX.Element;",
+      "example": "<Fieldset>\n  <FieldsetLegend>Shipping address</FieldsetLegend>\n  <Field>\n    <FieldLabel>Street</FieldLabel>\n    <FieldControl render={<Input />} />\n  </Field>\n</Fieldset>",
+      "docs": "https://wunderui.com/components/fieldset"
+    },
+    {
+      "slug": "form",
+      "title": "Form",
+      "category": "Forms",
+      "description": "A form wrapper that simplifies validation and submission.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "Form",
+        "FormActions"
+      ],
+      "props": "function Form({ className, ...props }: Form.Props): React.JSX.Element;",
+      "example": "<Form onSubmit={handleSubmit}>\n  <Field>\n    <FieldLabel>Name</FieldLabel>\n    <FieldControl render={<Input />} />\n  </Field>\n  <Button type=\"submit\">Submit</Button>\n</Form>",
+      "docs": "https://wunderui.com/components/form"
+    },
+    {
+      "slug": "input-group",
+      "title": "Input Group",
+      "category": "Forms",
+      "description": "Groups an input with leading/trailing addons — icons, buttons, or text.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "InputGroup",
+        "InputGroupAddon"
+      ],
+      "props": "function InputGroup({ className, ...props }: React.ComponentProps<\"div\">): React.JSX.Element;",
+      "example": "<InputGroup>\n  <InputGroupAddon><Mail /></InputGroupAddon>\n  <input placeholder=\"you@example.com\" />\n</InputGroup>",
+      "docs": "https://wunderui.com/components/input-group"
+    },
+    {
+      "slug": "number-field",
+      "title": "Number Field",
+      "category": "Forms",
+      "description": "A numeric input with increment/decrement buttons.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "NumberField",
+        "NumberFieldDecrement",
+        "NumberFieldGroup",
+        "NumberFieldIncrement",
+        "NumberFieldInput"
+      ],
+      "props": "function NumberField({ ...props }: NumberField.Root.Props): React.JSX.Element;",
+      "example": "<NumberField defaultValue={3} min={0} max={10}>\n  <NumberFieldGroup>\n    <NumberFieldDecrement />\n    <NumberFieldInput />\n    <NumberFieldIncrement />\n  </NumberFieldGroup>\n</NumberField>",
+      "docs": "https://wunderui.com/components/number-field"
+    },
+    {
+      "slug": "otp-field",
+      "title": "OTP Field",
+      "category": "Forms",
+      "description": "A segmented input for one-time passwords and verification codes.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "OtpField",
+        "OtpFieldInput"
+      ],
+      "props": "function OtpField({ className, ...props }: OTPField.Root.Props): React.JSX.Element;",
+      "example": "<OtpField length={4}>\n  <OtpFieldInput />\n  <OtpFieldInput />\n  <OtpFieldInput />\n  <OtpFieldInput />\n</OtpField>",
+      "docs": "https://wunderui.com/components/otp-field"
+    },
+    {
+      "slug": "combobox",
+      "title": "Combobox",
+      "category": "Forms",
+      "description": "An input combined with a filterable list of predefined items to select.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "Combobox",
+        "ComboboxEmpty",
+        "ComboboxGroup",
+        "ComboboxGroupLabel",
+        "ComboboxInput",
+        "ComboboxInputGroup",
+        "ComboboxItem",
+        "ComboboxList",
+        "ComboboxPopup",
+        "ComboboxPortal",
+        "ComboboxTrigger"
+      ],
+      "props": "function Combobox(props: Combobox.Root.Props<any, any>): React.JSX.Element;",
+      "example": "<Combobox items={frameworks} value={value} onValueChange={setValue}>\n  <ComboboxInputGroup>\n    <ComboboxInput placeholder=\"Search...\" />\n    <ComboboxTrigger />\n  </ComboboxInputGroup>\n  <ComboboxPopup>\n    <ComboboxEmpty>No results.</ComboboxEmpty>\n    <ComboboxList>\n      {(item) => <ComboboxItem key={item} value={item}>{item}</ComboboxItem>}\n    </ComboboxList>\n  </ComboboxPopup>\n</Combobox>",
+      "docs": "https://wunderui.com/components/combobox"
+    },
+    {
+      "slug": "autocomplete",
+      "title": "Autocomplete",
+      "category": "Forms",
+      "description": "An input that suggests options as you type.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "Autocomplete",
+        "AutocompleteEmpty",
+        "AutocompleteInput",
+        "AutocompleteInputGroup",
+        "AutocompleteItem",
+        "AutocompleteList",
+        "AutocompletePopup",
+        "AutocompletePortal"
+      ],
+      "props": "function Autocomplete(props: Autocomplete.Root.Props<any>): React.JSX.Element;",
+      "example": "<Autocomplete items={fruits}>\n  <AutocompleteInputGroup>\n    <AutocompleteInput placeholder=\"Type a fruit...\" />\n  </AutocompleteInputGroup>\n  <AutocompletePopup>\n    <AutocompleteEmpty>No matches.</AutocompleteEmpty>\n    <AutocompleteList>\n      {(item) => <AutocompleteItem key={item}>{item}</AutocompleteItem>}\n    </AutocompleteList>\n  </AutocompletePopup>\n</Autocomplete>",
+      "docs": "https://wunderui.com/components/autocomplete"
+    },
+    {
+      "slug": "calendar",
+      "title": "Calendar",
+      "category": "Forms",
+      "description": "A month-grid date picker with single or range selection.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "Calendar",
+        "CalendarProps"
+      ],
+      "props": "function Calendar({ mode, selected, onSelect, month, defaultMonth, onMonthChange, className }: CalendarProps): React.JSX.Element;",
+      "example": "<Calendar mode=\"single\" selected={date} onSelect={setDate} />",
+      "docs": "https://wunderui.com/components/calendar"
+    },
+    {
+      "slug": "date-picker",
+      "title": "Date Picker",
+      "category": "Forms",
+      "description": "A Calendar inside a Popover, with Cancel/Apply actions.",
+      "group": "Forms",
+      "tier": "free",
+      "exports": [
+        "DatePicker",
+        "DatePickerProps"
+      ],
+      "props": "function DatePicker(props: DatePickerProps): React.JSX.Element;",
+      "example": "<DatePicker value={date} onValueChange={setDate} placeholder=\"Pick a date\" />",
+      "docs": "https://wunderui.com/components/date-picker"
+    },
+    {
+      "slug": "chat-message",
+      "title": "Chat Message",
+      "category": "AI",
+      "description": "A single message bubble on the indigo tint, aligned right for the user and left for the assistant.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ChatMessage",
+        "ChatMessageActions"
+      ],
+      "props": "function ChatMessage({ role, avatar, children, className, }: {\n    role: \"user\" | \"assistant\";\n    avatar?: ReactNode;\n    children: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ChatConversation>\n  <ChatMessage role=\"user\" avatar={<Avatar />}>Question...</ChatMessage>\n  <ChatMessage role=\"assistant\">Answer...</ChatMessage>\n</ChatConversation>",
+      "docs": "https://wunderui.com/components/chat-message"
+    },
+    {
+      "slug": "chat-message-actions",
+      "title": "Chat Message Actions",
+      "category": "AI",
+      "description": "Copy / retry / thumbs up-down actions shown under an assistant message.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ChatMessageActions"
+      ],
+      "props": "function ChatMessageActions({ className }: {\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ChatMessageActions />",
+      "docs": "https://wunderui.com/components/chat-message-actions"
+    },
+    {
+      "slug": "chat-loader",
+      "title": "Chat Loader",
+      "category": "AI",
+      "description": "A bouncing-dots indicator shown while the assistant is composing a reply.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ChatLoader"
+      ],
+      "props": "function ChatLoader({ className }: {\n    className?: string;\n}): React.JSX.Element;",
+      "example": "{isStreaming && <ChatLoader />}",
+      "docs": "https://wunderui.com/components/chat-loader"
+    },
+    {
+      "slug": "chat-attachment",
+      "title": "Chat Attachment",
+      "category": "AI",
+      "description": "A file chip attached to a chat message, with an optional remove button.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ChatAttachment"
+      ],
+      "props": "function ChatAttachment({ name, size, onRemove, className, }: {\n    name: string;\n    size?: string;\n    onRemove?: () => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ChatAttachment name=\"file.pdf\" size=\"2.4 MB\" onRemove={() => remove(file)} />",
+      "docs": "https://wunderui.com/components/chat-attachment"
+    },
+    {
+      "slug": "chat-source",
+      "title": "Chat Source",
+      "category": "AI",
+      "description": "A citation chip linking to a source referenced in an answer.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ChatSource"
+      ],
+      "props": "function ChatSource({ title, domain, index, href, onClick, className, }: {\n    title: string;\n    domain: string;\n    index?: number;\n    href?: string;\n    onClick?: () => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ChatSource title=\"Page title\" domain=\"example.com\" index={1} />",
+      "docs": "https://wunderui.com/components/chat-source"
+    },
+    {
+      "slug": "chat-tool",
+      "title": "Chat Tool",
+      "category": "AI",
+      "description": "A collapsible card showing a tool/function call's name, status, and result.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ChatTool"
+      ],
+      "props": "function ChatTool({ name, status, children, className, }: {\n    name: string;\n    status?: \"running\" | \"done\";\n    children?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ChatTool name=\"search_web(query)\" status=\"running\">\n  Optional result content\n</ChatTool>",
+      "docs": "https://wunderui.com/components/chat-tool"
+    },
+    {
+      "slug": "chain-of-thought",
+      "title": "Chain of Thought",
+      "category": "AI",
+      "description": "A collapsible list of the model's intermediate reasoning steps.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ChainOfThought"
+      ],
+      "props": "function ChainOfThought({ steps, defaultOpen, className, }: {\n    steps: string[];\n    defaultOpen?: boolean;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ChainOfThought steps={[\"Step one.\", \"Step two.\"]} />",
+      "docs": "https://wunderui.com/components/chain-of-thought"
+    },
+    {
+      "slug": "code-block",
+      "title": "Code Block",
+      "category": "AI",
+      "description": "A syntax-styled code block with a language label and copy button.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "CodeBlock"
+      ],
+      "props": "function CodeBlock({ code, language, className, onCopy, }: {\n    code: string;\n    language?: string;\n    className?: string;\n    /** Called after the code landed on the clipboard. The block already confirms it with a tooltip. */\n    onCopy?: () => void;\n}): React.JSX.Element;",
+      "example": "<CodeBlock language=\"tsx\" code={source} />",
+      "docs": "https://wunderui.com/components/code-block"
+    },
+    {
+      "slug": "markdown",
+      "title": "Markdown",
+      "category": "AI",
+      "description": "Prose styling wrapper for rendered markdown/HTML assistant output.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "Markdown"
+      ],
+      "props": "function Markdown({ children, className, }: {\n    children: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<Markdown>{/* rendered markdown output */}</Markdown>",
+      "docs": "https://wunderui.com/components/markdown"
+    },
+    {
+      "slug": "prompt-input",
+      "title": "Prompt Input",
+      "category": "AI",
+      "description": "An auto-resizing chat input with attach and send buttons.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "PromptInput"
+      ],
+      "props": "function PromptInput({ value, onValueChange, onSubmit, placeholder, models, model, defaultModel, onModelChange, tools, className, }: {\n    value: string;\n    onValueChange: (value: string) => void;\n    onSubmit?: () => void;\n    placeholder?: string;\n    /** Models for the model chip; the chip opens a popover to switch between them. */\n    models?: ModelOption[];\n    model?: string;\n    defaultModel?: string;\n    onModelChange?: (id: string) => void;\n    /** Extra buttons after the attach button (link, web search …). */\n    tools?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<PromptInput value={value} onValueChange={setValue} onSubmit={handleSubmit} models={models} />",
+      "docs": "https://wunderui.com/components/prompt-input"
+    },
+    {
+      "slug": "prompt-suggestion",
+      "title": "Prompt Suggestion",
+      "category": "AI",
+      "description": "A pill-shaped suggested-prompt chip shown above an empty chat input.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "PromptSuggestion"
+      ],
+      "props": "function PromptSuggestion({ children, onClick, className, }: {\n    children: React.ReactNode;\n    onClick?: () => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<PromptSuggestion onClick={() => setPrompt(text)}>{text}</PromptSuggestion>",
+      "docs": "https://wunderui.com/components/prompt-suggestion"
+    },
+    {
+      "slug": "text-shimmer",
+      "title": "Text Shimmer",
+      "category": "AI",
+      "description": "A shimmering-gradient text effect for a 'thinking...' loading label.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "TextShimmer"
+      ],
+      "props": "function TextShimmer({ children, className }: {\n    children: string;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<TextShimmer>Thinking...</TextShimmer>",
+      "docs": "https://wunderui.com/components/text-shimmer"
+    },
+    {
+      "slug": "chat-list-view",
+      "title": "Chat List View",
+      "category": "AI",
+      "description": "A sidebar list of past conversations with preview and timestamp.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ChatListView"
+      ],
+      "props": "function ChatListView({ items, onSelect, className, }: {\n    items: ChatListItem[];\n    /** Called with the clicked item; the default \"#\" navigation is prevented. */\n    onSelect?: (item: ChatListItem) => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ChatListView items={[{ id, title, preview, timestamp, active }]} />",
+      "docs": "https://wunderui.com/components/chat-list-view"
+    },
+    {
+      "slug": "agent-status",
+      "title": "Agent Status",
+      "category": "Agents",
+      "description": "A pill showing what a run is doing right now, with a live elapsed counter.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "AgentStatus"
+      ],
+      "props": "function AgentStatus({ status, since, label, showElapsed, size, className, }: {\n    status: AgentRunStatus;\n    /** When the run entered this status. Drives the elapsed counter. */\n    since?: Date | string | number;\n    /** Overrides the default status label. */\n    label?: string;\n    showElapsed?: boolean;\n    size?: \"sm\" | \"default\";\n    className?: string;\n}): React.JSX.Element;\ntype AgentRunStatus = \"idle\" | \"running\" | \"waiting\" | \"done\" | \"failed\" | \"cancelled\";",
+      "example": "<AgentStatus status=\"running\" since={run.startedAt} />",
+      "docs": "https://wunderui.com/components/agent-status"
+    },
+    {
+      "slug": "approval-card",
+      "title": "Approval Card",
+      "category": "Agents",
+      "description": "The human-in-the-loop gate: what the agent wants to do, how risky it is, approve or reject.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ApprovalCard"
+      ],
+      "props": "function ApprovalCard({ title, summary, preview, risk, requestedAt, expiresAt, state, defaultOpen, kind, cost, approveLabel, rejectLabel, secondaryAction, onApprove, onReject, onEdit, className, ref, }: {\n    title: React.ReactNode;\n    /** One sentence: what happens if this is approved. */\n    summary?: React.ReactNode;\n    /** The payload, diff or command behind the request. Renders in a disclosure. */\n    preview?: React.ReactNode;\n    risk?: ApprovalRisk;\n    /** Shown verbatim next to the title, e.g. \"2 min ago\". */\n    requestedAt?: React.ReactNode;\n    /** After this moment the card resolves itself as `expired`. */\n    expiresAt?: Date | string | number;\n    /** Controlled state. Omit to let the card manage its own. */\n    state?: ApprovalState;\n    defaultOpen?: boolean;\n    kind?: ApprovalKind;\n    /** high-cost: the banner, e.g. { estimate: \"8.40\", budget: \"0.00\", note: \"…\" }. */\n    cost?: {\n        estimate: React.ReactNode;\n        budget?: React.ReactNode;\n        note?: React.ReactNode;\n    };\n    /** Defaults per kind: Approve / Allow once / Allow / Run anyway. */\n    approveLabel?: string;\n    /** Defaults per kind: Reject / Reject / Deny / Cancel. */\n    rejectLabel?: string;\n    /** A second, softer way to say yes — e.g. \"Always allow\" or \"Render 400 only\". Resolves as approved. */\n    secondaryAction?: {\n        label: string;\n        onClick?: () => void;\n    };\n    onApprove?: () => void;\n    onReject?: () => void;\n    /** When given, an \"Edit\" action appears beside reject. */\n    onEdit?: () => void;\n    className?: string;\n    /** The card is focusable (tabIndex -1): call ref.current.focus() when a new request needs attention, instead of focusing Approve. */\n    ref?: React.Ref<HTMLDivElement>;\n}): React.JSX.Element;\ntype ApprovalRisk = \"low\" | \"medium\" | \"high\";\ntype ApprovalState = \"pending\" | \"approved\" | \"rejected\" | \"expired\";\ntype ApprovalKind = \"inline\" | \"dialog-diff\" | \"permission\" | \"high-cost\";",
+      "example": "<ApprovalCard\n  title=\"Send 14 payment reminders\"\n  summary=\"Emails the contact on every invoice more than 30 days overdue.\"\n  risk=\"medium\"\n  requestedAt=\"2 min ago\"\n  expiresAt={request.expiresAt}\n  preview={<pre>{request.payload}</pre>}\n  onApprove={() => approve(request.id)}\n  onReject={() => reject(request.id)}\n/>",
+      "docs": "https://wunderui.com/components/approval-card"
+    },
+    {
+      "slug": "run-timeline",
+      "title": "Run Timeline",
+      "category": "Agents",
+      "description": "Every step of a run in order, with duration, tokens and expandable input/output.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "RunTimeline"
+      ],
+      "props": "function RunTimeline({ steps, activeStepId, defaultExpandedId, className, }: {\n    steps: RunStep[];\n    /** Highlights the row the run is currently on. */\n    activeStepId?: string;\n    /** Opens one step's detail on first render. */\n    defaultExpandedId?: string;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<RunTimeline steps={run.steps} activeStepId={run.currentStepId} />",
+      "docs": "https://wunderui.com/components/run-timeline"
+    },
+    {
+      "slug": "cost-meter",
+      "title": "Cost Meter",
+      "category": "Agents",
+      "description": "Spend against budget for a run, a day or a month — amber at 80%, red when it is gone.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "CostMeter"
+      ],
+      "props": "function CostMeter({ spent, budget, unit, currency, period, label, warnAt, showRemaining, className, }: {\n    spent: number;\n    budget: number;\n    unit?: CostUnit;\n    /** ISO code, used when `unit` is \"currency\". */\n    currency?: string;\n    period?: CostPeriod;\n    /** Overrides the default \"Spend this run\" heading. */\n    label?: string;\n    /** Fraction of the budget at which the meter turns amber. */\n    warnAt?: number;\n    showRemaining?: boolean;\n    className?: string;\n}): React.JSX.Element;\ntype CostUnit = \"currency\" | \"tokens\" | \"requests\";\ntype CostPeriod = \"run\" | \"day\" | \"month\";",
+      "example": "<CostMeter spent={17.4} budget={20} currency=\"EUR\" period=\"day\" />",
+      "docs": "https://wunderui.com/components/cost-meter"
+    },
+    {
+      "slug": "run-error",
+      "title": "Run Error",
+      "category": "Agents",
+      "description": "A failed run: which step threw, how many attempts are left, retry or resume.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "RunError"
+      ],
+      "props": "function RunError({ message, failedStep, attempt, maxAttempts, detail, detailLanguage, onRetry, onRetryFrom, onCancel, defaultOpen, className, }: {\n    message: React.ReactNode;\n    /** The step that threw, e.g. \"fetch_invoices\". */\n    failedStep?: React.ReactNode;\n    attempt?: number;\n    maxAttempts?: number;\n    /** Stack trace or raw error body, shown in a CodeBlock behind a disclosure. */\n    detail?: string;\n    detailLanguage?: string;\n    /** Start the whole run over. */\n    onRetry?: () => void;\n    /** Resume from the failed step, keeping everything before it. */\n    onRetryFrom?: () => void;\n    onCancel?: () => void;\n    defaultOpen?: boolean;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<RunError\n  message=\"The invoice API refused the request\"\n  failedStep=\"fetch_invoices\"\n  attempt={2}\n  maxAttempts={3}\n  detail={error.stack}\n  onRetryFrom={() => resume(run.id)}\n  onRetry={() => restart(run.id)}\n  onCancel={() => cancel(run.id)}\n/>",
+      "docs": "https://wunderui.com/components/run-error"
+    },
+    {
+      "slug": "agent-grid",
+      "title": "Agent Grid",
+      "category": "Agents",
+      "description": "The fleet view — every agent, its current status and how long it has been there.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "AgentGrid"
+      ],
+      "props": "function AgentGrid({ agents, onSelect, selectedId, columns, className, }: {\n    agents: AgentSummary[];\n    onSelect?: (agent: AgentSummary) => void;\n    selectedId?: string;\n    columns?: 1 | 2 | 3 | 4;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<AgentGrid\n  agents={agents}\n  columns={2}\n  selectedId={selected}\n  onSelect={(agent) => setSelected(agent.id)}\n/>",
+      "docs": "https://wunderui.com/components/agent-grid"
+    },
+    {
+      "slug": "plan-step",
+      "title": "Plan Step",
+      "category": "Agents",
+      "description": "One step of an agent plan: number or status icon, title, status in words and how long it took.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "PlanStep",
+        "PlanStepDensity",
+        "PlanStepMeta",
+        "PlanStepStatus"
+      ],
+      "props": "function PlanStep({ index, status, title, detail, meta, duration, since, action, density, className, }: {\n    /** Shown in the marker while the step is queued or blocked. */\n    index?: number;\n    status?: PlanStepStatus;\n    title: React.ReactNode;\n    /** What the step is doing, shown below the title. */\n    detail?: React.ReactNode;\n    /** Label and value pairs under the detail, e.g. Target and Estimate. */\n    meta?: PlanStepMeta[];\n    /** Already formatted, e.g. \"1m 12s\" or \"0:16\". Shows \"—\" when empty. */\n    duration?: React.ReactNode;\n    /** When the step started. A running step then counts up from it. */\n    since?: Date | string | number;\n    /** A control on the right, e.g. a Retry button for a failed step. */\n    action?: React.ReactNode;\n    density?: PlanStepDensity;\n    className?: string;\n}): React.JSX.Element;\ntype PlanStepStatus = \"queued\" | \"running\" | \"done\" | \"failed\" | \"skipped\" | \"blocked\";\ntype PlanStepDensity = \"default\" | \"compact\";",
+      "example": "<PlanStep\n  status=\"running\"\n  title=\"Sync tokens from Figma\"\n  detail=\"Rewriting the variant map so legacy props keep resolving after the rename.\"\n  meta={[\n    { label: \"Target\", value: \"packages/react/tabs.tsx\" },\n    { label: \"Estimate\", value: \"4 min\" },\n  ]}\n  since={step.startedAt}\n/>",
+      "docs": "https://wunderui.com/components/plan-step"
+    },
+    {
+      "slug": "agent-plan",
+      "title": "Agent Plan",
+      "category": "Agents",
+      "description": "The agent's plan as a checklist: follow it live, edit it before the run, or group it into phases.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "AgentPlan",
+        "AgentPlanDraftStep",
+        "AgentPlanGroup",
+        "AgentPlanMode",
+        "AgentPlanStep"
+      ],
+      "props": "function AgentPlan({ title, subtitle, mode, steps, groups, onStop, stopLabel, onStart, onStepsChange, hint, className, }: {\n    title: React.ReactNode;\n    /** Overrides the computed \"2 of 7 done\" / \"4 to run · 1 skipped\" line. */\n    subtitle?: React.ReactNode;\n    mode?: AgentPlanMode;\n    /** Steps for `live` and `editable`. In `editable` only `id`, `title` and a skipped status are used. */\n    steps?: AgentPlanStep[];\n    /** Phases for `tree`. */\n    groups?: AgentPlanGroup[];\n    /** Shows the Stop button in `live`. */\n    onStop?: () => void;\n    stopLabel?: string;\n    /** Shows the Start button in `editable`; receives the steps that will run. */\n    onStart?: (steps: AgentPlanDraftStep[]) => void;\n    /** Called in `editable` after every reorder, skip or add. */\n    onStepsChange?: (steps: AgentPlanDraftStep[]) => void;\n    /** Footer hint in `editable`. */\n    hint?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;\ntype AgentPlanMode = \"live\" | \"editable\" | \"tree\";",
+      "example": "<AgentPlan mode=\"tree\" title=\"Migrate icons to Lucide 1.4\" groups={plan.phases} />",
+      "docs": "https://wunderui.com/components/agent-plan"
+    },
+    {
+      "slug": "plan-summary",
+      "title": "Plan Summary",
+      "category": "Agents",
+      "description": "A plan on one card before it runs: goal, steps, time, cost, tools and phases.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "PlanSummary",
+        "PlanSummaryPhase",
+        "PlanSummaryStat"
+      ],
+      "props": "function PlanSummary({ goal, description, stats, tools, phases, onEdit, onRun, editLabel, runLabel, className, }: {\n    goal: React.ReactNode;\n    /** Where the plan came from, e.g. \"Drafted 3 min ago from the release notes\". */\n    description?: React.ReactNode;\n    /** Usually Steps, Est. time and Est. cost. */\n    stats?: PlanSummaryStat[];\n    /** Tool names, shown as chips. */\n    tools?: string[];\n    phases?: PlanSummaryPhase[];\n    onEdit?: () => void;\n    onRun?: () => void;\n    editLabel?: string;\n    runLabel?: string;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<PlanSummary\n  goal=\"Ship the Tabs v2 release\"\n  description=\"Drafted 3 min ago from the release notes\"\n  stats={[\n    { label: \"Steps\", value: 7 },\n    { label: \"Est. time\", value: \"18 min\" },\n    { label: \"Est. cost\", value: \"$0.42\" },\n  ]}\n  tools={[\"Figma API\", \"GitHub\", \"npm\"]}\n  phases={[\n    { title: \"Map the old icons\", steps: 3 },\n    { title: \"Swap the components\", steps: 4 },\n    { title: \"Publish and announce\", steps: 3 },\n  ]}\n  onEdit={openEditor}\n  onRun={() => run(plan.id)}\n/>",
+      "docs": "https://wunderui.com/components/plan-summary"
+    },
+    {
+      "slug": "activity-item",
+      "title": "Activity Item",
+      "category": "Agents",
+      "description": "One line in a live activity stream: status, action, tool and elapsed time.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ActivityItem"
+      ],
+      "props": "function ActivityItem({ status, label, tool, elapsed, since, wrap, className, }: {\n    status: ActivityStatus;\n    label: React.ReactNode;\n    /** Tool or file name, shown as a chip. */\n    tool?: React.ReactNode;\n    /** Already formatted, e.g. \"6.3s\". Shows \"—\" when empty. */\n    elapsed?: React.ReactNode;\n    /** When the action started. A running item then counts up from it. */\n    since?: Date | string | number;\n    /** Lets a long label break onto a second line instead of truncating. */\n    wrap?: boolean;\n    className?: string;\n}): React.JSX.Element;\ntype ActivityStatus = \"running\" | \"done\" | \"failed\" | \"waiting\";",
+      "example": "<ActivityItem status=\"running\" label=\"Comparing Figma and code tokens\" tool=\"tokens.diff\" since={action.startedAt} />\n<ActivityItem status=\"done\" label=\"Read 214 variables from Figma\" tool=\"figma.read\" elapsed=\"3.6s\" />",
+      "docs": "https://wunderui.com/components/activity-item"
+    },
+    {
+      "slug": "log-stream",
+      "title": "Log Stream",
+      "category": "Agents",
+      "description": "A run's log with an All or Errors filter and auto-scroll.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "LogStream"
+      ],
+      "props": "function LogStream({ title, lines, level: levelProp, defaultLevel, onLevelChange, autoScroll: autoScrollProp, defaultAutoScroll, onAutoScrollChange, maxHeight, emptyLabel, className, }: {\n    title?: React.ReactNode;\n    lines: LogLine[];\n    /** Controlled filter. */\n    level?: LogLevelFilter;\n    defaultLevel?: LogLevelFilter;\n    onLevelChange?: (level: LogLevelFilter) => void;\n    /** Controlled auto-scroll. */\n    autoScroll?: boolean;\n    defaultAutoScroll?: boolean;\n    onAutoScrollChange?: (autoScroll: boolean) => void;\n    /** Height in px after which the log scrolls. */\n    maxHeight?: number;\n    /** Shown when the filter leaves no lines. */\n    emptyLabel?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;\ntype LogLevelFilter = \"all\" | \"errors\";",
+      "example": "<LogStream\n  lines={[\n    { time: \"0:05.2\", level: \"warn\", message: \"Figma API busy, retrying in 2s\" },\n    { time: \"0:12.0\", level: \"error\", message: \"Push to docs-preview timed out\" },\n  ]}\n/>",
+      "docs": "https://wunderui.com/components/log-stream"
+    },
+    {
+      "slug": "agent-lane",
+      "title": "Agent Lane",
+      "category": "Agents",
+      "description": "One parallel worker: its status, queue, throughput and the tasks it holds.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "AgentLane",
+        "AgentLaneStatus",
+        "AgentLaneTask"
+      ],
+      "props": "function AgentLane({ name, status, queue, throughput, tasks, more, emptyLabel, className, }: {\n    name: React.ReactNode;\n    status: AgentLaneStatus;\n    /** Tasks waiting in this lane. */\n    queue: number;\n    /** Tasks per minute. Shows \"—\" when empty. */\n    throughput?: number;\n    tasks?: AgentLaneTask[];\n    /** Tasks not shown as chips, rendered as \"+16 more waiting\". */\n    more?: number;\n    /** Shown when the lane holds no tasks. */\n    emptyLabel?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;\ntype AgentLaneStatus = \"active\" | \"idle\" | \"saturated\";",
+      "example": "<AgentLane\n  name=\"Figma sync\"\n  status=\"saturated\"\n  queue={18}\n  throughput={96}\n  tasks={[\n    { title: \"Binding 214 variables\", state: \"Running\" },\n    { title: \"Rebuild the icon sets\", state: \"Queued\" },\n  ]}\n  more={16}\n/>",
+      "docs": "https://wunderui.com/components/agent-lane"
+    },
+    {
+      "slug": "duration-bar",
+      "title": "Duration Bar",
+      "category": "Agents",
+      "description": "A step's share of the run as a bar, with a tick at the estimate and red when it runs over.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "DurationBar",
+        "DurationBarTone"
+      ],
+      "props": "function DurationBar({ label, value, max, planned, tone: toneProp, formatValue, valueLabel, fill, className, }: {\n    label: React.ReactNode;\n    /** How long the step took, in seconds unless you pass `formatValue`. */\n    value: number;\n    /** The longest step or the whole run — the full width of the bar. */\n    max: number;\n    /** The estimate. Draws a tick and turns the bar red when `value` is past it. */\n    planned?: number;\n    /** Overrides the tone derived from `planned`. */\n    tone?: DurationBarTone;\n    formatValue?: (value: number) => string;\n    /** Replaces the visible time on the right, e.g. \"6 min actual · planned 4 min\". Screen readers still hear the value text. */\n    valueLabel?: React.ReactNode;\n    /** Lets the bar take the free width; the label and the time keep their own width. */\n    fill?: boolean;\n    className?: string;\n}): React.JSX.Element;\ntype DurationBarTone = \"default\" | \"over\";",
+      "example": "<DurationBar label=\"Build the docs\" value={8.3} max={12.4} />\n<DurationBar label=\"Check the stroke widths\" value={12.4} max={12.4} planned={9.6} />",
+      "docs": "https://wunderui.com/components/duration-bar"
+    },
+    {
+      "slug": "diff-view",
+      "title": "Diff View",
+      "category": "Agents",
+      "description": "The result of an edit tool call: file, added and removed lines, and the changed code.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "DiffView"
+      ],
+      "props": "function DiffView({ file, hunks, mode, additions, deletions, defaultOpen, className, }: {\n    file: React.ReactNode;\n    hunks: DiffHunk[];\n    mode?: DiffMode;\n    /** Defaults to the number of added lines. */\n    additions?: number;\n    /** Defaults to the number of removed lines. */\n    deletions?: number;\n    defaultOpen?: boolean;\n    className?: string;\n}): React.JSX.Element;\ntype DiffMode = \"unified\" | \"compact\";",
+      "example": "<DiffView\n  file=\"packages/react/src/components/ui/tabs.tsx\"\n  hunks={[{ header: \"@@ -41,3 +41,6 @@ TabsList\", lines: [\n    { type: \"del\", old: 42, content: '  return <div role=\"tablist\" {...props} />' },\n    { type: \"add\", new: 42, content: \"  const ref = useRovingFocus()\" },\n  ] }]}\n/>",
+      "docs": "https://wunderui.com/components/diff-view"
+    },
+    {
+      "slug": "terminal-output",
+      "title": "Terminal Output",
+      "category": "Agents",
+      "description": "The result of a code-execution tool call: command, exit code, run time, stdout and stderr.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "TerminalOutput"
+      ],
+      "props": "function TerminalOutput({ command, exitCode, duration, stdout, stderr, defaultStream, maxHeight, className, }: {\n    command: React.ReactNode;\n    exitCode?: number;\n    /** Already formatted, e.g. \"3.8 s\". */\n    duration?: React.ReactNode;\n    stdout?: TerminalLine[];\n    stderr?: TerminalLine[];\n    defaultStream?: TerminalStream;\n    /** Height in px after which the output scrolls. */\n    maxHeight?: number;\n    className?: string;\n}): React.JSX.Element;\ntype TerminalStream = \"stdout\" | \"stderr\";",
+      "example": "<TerminalOutput\n  command=\"pnpm vitest run tabs\"\n  exitCode={0}\n  duration=\"3.8 s\"\n  stdout={run.stdout}\n  stderr={run.stderr}\n/>",
+      "docs": "https://wunderui.com/components/terminal-output"
+    },
+    {
+      "slug": "search-result-card",
+      "title": "Search Result Card",
+      "category": "Agents",
+      "description": "One ranked result of a web-search tool call: source, relevance, title and snippet.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "SearchResultCard"
+      ],
+      "props": "function SearchResultCard({ rank, title, url, snippet, relevance, selected, className, }: {\n    rank?: number;\n    title: React.ReactNode;\n    url: string;\n    snippet?: React.ReactNode;\n    /** 0–1 or 0–100. Shown as \"94% match\". */\n    relevance?: number;\n    selected?: boolean;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<SearchResultCard\n  rank={1}\n  title=\"Tabs pattern — keyboard interaction\"\n  url=\"https://www.w3.org/WAI/ARIA/apg/patterns/tabs/\"\n  snippet=\"Arrow keys move focus between tabs; …\"\n  relevance={0.94}\n/>",
+      "docs": "https://wunderui.com/components/search-result-card"
+    },
+    {
+      "slug": "tool-permission-row",
+      "title": "Tool Permission Row",
+      "category": "Agents",
+      "description": "Whether an agent may call a tool: Allow, Ask or Deny, with the scope it covers.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ToolPermissionRow"
+      ],
+      "props": "function ToolPermissionRow({ tool, description, value: valueProp, defaultValue, onValueChange, scope, scopeDetail, className, }: {\n    /** The tool id, shown in monospace, e.g. \"figma.write_variables\". */\n    tool: React.ReactNode;\n    description?: React.ReactNode;\n    value?: ToolPermission;\n    defaultValue?: ToolPermission;\n    onValueChange?: (value: ToolPermission) => void;\n    scope?: React.ReactNode;\n    scopeDetail?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;\ntype ToolPermission = \"allow\" | \"ask\" | \"deny\";",
+      "example": "<ToolPermissionRow\n  tool=\"figma.write_variables\"\n  description=\"Create and update variables in the WunderUI Figma file\"\n  defaultValue=\"ask\"\n  scope=\"Asks before each write · current file only\"\n  onValueChange={(value) => save(\"figma.write_variables\", value)}\n/>",
+      "docs": "https://wunderui.com/components/tool-permission-row"
+    },
+    {
+      "slug": "expiry-timer",
+      "title": "Expiry Timer",
+      "category": "Agents",
+      "description": "Countdown until an approval or permission request lapses — amber at the end, red once expired.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ExpiryTimer"
+      ],
+      "props": "function ExpiryTimer({ expiresAt, warnAt, onExpire, label, expiredLabel, className, }: {\n    expiresAt: Date | string | number;\n    /** Milliseconds left at which the timer turns amber. */\n    warnAt?: number;\n    onExpire?: () => void;\n    label?: React.ReactNode;\n    expiredLabel?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ExpiryTimer expiresAt={request.expiresAt} warnAt={60_000} onExpire={() => expire(request.id)} />",
+      "docs": "https://wunderui.com/components/expiry-timer"
+    },
+    {
+      "slug": "scope-list",
+      "title": "Scope List",
+      "category": "Agents",
+      "description": "What an agent asks to access, one scope per row, with a countdown until the request lapses.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ScopeList"
+      ],
+      "props": "function ScopeList({ title, scopes, expiresAt, warnAt, onExpire, bare, className, }: {\n    title?: React.ReactNode;\n    scopes: Scope[];\n    expiresAt?: Date | string | number;\n    warnAt?: number;\n    onExpire?: () => void;\n    /** Drop the card frame, e.g. inside an Approval Card. */\n    bare?: boolean;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ScopeList\n  scopes={[\n    { title: \"Read the docs site\", detail: \"apps/docs · 412 files\" },\n    { title: \"Open a pull request\", detail: \"Kl-webmedia/wunderui · branch tokens-sync\" },\n  ]}\n  expiresAt={request.expiresAt}\n/>",
+      "docs": "https://wunderui.com/components/scope-list"
+    },
+    {
+      "slug": "usage-meter",
+      "title": "Usage Meter",
+      "category": "Agents",
+      "description": "One limit as a row: what is used, what is allowed, and a warning before it runs out.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "UsageMeter"
+      ],
+      "props": "function UsageMeter({ label, used, limit, unit, sub, warnAt, format, className, }: {\n    label: React.ReactNode;\n    used: number;\n    limit: number;\n    /** Word after the overage, e.g. \"tokens\" → \"Over by 20k tokens\". */\n    unit?: string;\n    /** Small print under the bar, e.g. \"Resets at 00:00 UTC\". */\n    sub?: React.ReactNode;\n    /** Fraction of the limit at which the meter turns amber. */\n    warnAt?: number;\n    /** Formats `used`, `limit` and the overage. Defaults to 420k / 1M. */\n    format?: (value: number) => string;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<UsageMeter label=\"Tokens today\" used={420_000} limit={1_000_000} unit=\"tokens\" sub=\"Resets at 00:00 UTC\" />",
+      "docs": "https://wunderui.com/components/usage-meter"
+    },
+    {
+      "slug": "context-meter",
+      "title": "Context Meter",
+      "category": "Agents",
+      "description": "How full the model's context window is: a ring for the prompt toolbar or a bar with a breakdown.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ContextMeter"
+      ],
+      "props": "function ContextMeter({ used, limit, breakdown, variant, label, warnAt, warning, className, }: {\n    used: number;\n    limit: number;\n    /** What fills the window, e.g. system prompt, files, conversation. */\n    breakdown?: ContextPart[];\n    variant?: \"ring\" | \"bar\";\n    label?: string;\n    warnAt?: number;\n    /** Shown under the bar once `warnAt` is reached. */\n    warning?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ContextMeter used={42_000} limit={200_000} breakdown={parts} />",
+      "docs": "https://wunderui.com/components/context-meter"
+    },
+    {
+      "slug": "slash-command-menu",
+      "title": "Slash Command Menu",
+      "category": "Agents",
+      "description": "The popover that opens when someone types / in the prompt: commands with a short description, filtered as they type.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "SlashCommandMenu"
+      ],
+      "props": "function SlashCommandMenu({ commands, query, activeIndex, onActiveIndexChange, onSelect, id, className, }: {\n    commands: SlashCommand[];\n    /** Text typed after \"/\", e.g. \"t\". */\n    query?: string;\n    activeIndex?: number;\n    onActiveIndexChange?: (index: number) => void;\n    onSelect?: (command: SlashCommand) => void;\n    id?: string;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "const menu = useMenuKeys(list.length, { open, onEnter: (i) => run(list[i]) })\n\n<SlashCommandMenu commands={commands} query={query} activeIndex={menu.index} onSelect={run} />",
+      "docs": "https://wunderui.com/components/slash-command-menu"
+    },
+    {
+      "slug": "mention-picker",
+      "title": "Mention Picker",
+      "category": "Agents",
+      "description": "The @ picker for adding context to a prompt: files, people and channels in groups.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "MentionPicker"
+      ],
+      "props": "function MentionPicker({ groups, query, activeId, onActiveIdChange, onSelect, id, className, }: {\n    groups: MentionGroup[];\n    query?: string;\n    activeId?: string;\n    onActiveIdChange?: (id: string) => void;\n    onSelect?: (item: MentionItem) => void;\n    id?: string;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<MentionPicker groups={groups} query={query} onSelect={(item) => addPill(item)} />",
+      "docs": "https://wunderui.com/components/mention-picker"
+    },
+    {
+      "slug": "context-pill",
+      "title": "Context Pill",
+      "category": "Agents",
+      "description": "A removable chip for what the prompt refers to: a file, a person, a channel or a link.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ContextPill"
+      ],
+      "props": "function ContextPill({ kind, label, initials, color, onRemove, className, }: {\n    kind: MentionKind;\n    label: string;\n    initials?: string;\n    color?: AvatarColor;\n    onRemove?: () => void;\n    className?: string;\n}): React.JSX.Element;\ntype MentionKind = \"file\" | \"person\" | \"channel\" | \"link\";\ntype AvatarColor = \"indigo\" | \"blue\" | \"purple\" | \"pink\" | \"red\" | \"orange\" | \"yellow\" | \"green\" | \"alternative\" | \"grey\";",
+      "example": "<ContextPill kind=\"file\" label=\"tabs.tsx\" onRemove={() => remove(\"tabs\")} />",
+      "docs": "https://wunderui.com/components/context-pill"
+    },
+    {
+      "slug": "prompt-mode-switch",
+      "title": "Prompt Mode Switch",
+      "category": "Agents",
+      "description": "What the agent may do with the next prompt — answer, act or edit — with the send keys underneath.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "PromptModeSwitch"
+      ],
+      "props": "function PromptModeSwitch({ value, defaultValue, onValueChange, hints, showKeys, className, }: {\n    value?: PromptMode;\n    defaultValue?: PromptMode;\n    onValueChange?: (mode: PromptMode) => void;\n    hints?: Record<PromptMode, string>;\n    showKeys?: boolean;\n    className?: string;\n}): React.JSX.Element;\ntype PromptMode = \"ask\" | \"agent\" | \"edit\";",
+      "example": "<PromptModeSwitch value={mode} onValueChange={setMode} />",
+      "docs": "https://wunderui.com/components/prompt-mode-switch"
+    },
+    {
+      "slug": "model-picker",
+      "title": "Model Picker",
+      "category": "Agents",
+      "description": "The model chip in a prompt box: always clickable, it opens a popover to switch models.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ModelPicker"
+      ],
+      "props": "function ModelPicker({ models, value, defaultValue, onValueChange, side, align, label, className, }: {\n    models: ModelOption[];\n    value?: string;\n    defaultValue?: string;\n    onValueChange?: (id: string) => void;\n    side?: \"top\" | \"bottom\";\n    align?: \"start\" | \"center\" | \"end\";\n    /** Heading above the list. */\n    label?: string;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ModelPicker models={models} value={model} onValueChange={setModel} />",
+      "docs": "https://wunderui.com/components/model-picker"
+    },
+    {
+      "slug": "model-select",
+      "title": "Model Select",
+      "category": "Agents",
+      "description": "Pick the model and how hard it should think, with context size and price at a glance.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ModelSelect"
+      ],
+      "props": "function ModelSelect({ models, value, defaultValue, onValueChange, effort, defaultEffort, onEffortChange, className, }: {\n    models: ModelOption[];\n    value?: string;\n    defaultValue?: string;\n    onValueChange?: (id: string) => void;\n    effort?: Effort;\n    defaultEffort?: Effort;\n    onEffortChange?: (effort: Effort) => void;\n    className?: string;\n}): React.JSX.Element;\ntype Effort = \"low\" | \"medium\" | \"high\";",
+      "example": "<ModelSelect models={models} value={model} onValueChange={setModel} effort={effort} onEffortChange={setEffort} />",
+      "docs": "https://wunderui.com/components/model-select"
+    },
+    {
+      "slug": "voice-input",
+      "title": "Voice Input",
+      "category": "Agents",
+      "description": "Talk instead of typing: idle, listening with a live waveform and transcript, then transcribing.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "VoiceInput"
+      ],
+      "props": "function VoiceInput({ state, transcript, seconds, onStart, onStop, hint, className, }: {\n    state?: VoiceState;\n    /** The words heard so far (listening). */\n    transcript?: React.ReactNode;\n    seconds?: number;\n    onStart?: () => void;\n    onStop?: () => void;\n    hint?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;\ntype VoiceState = \"idle\" | \"listening\" | \"transcribing\";",
+      "example": "<VoiceInput state={state} seconds={seconds} transcript={text} onStart={start} onStop={stop} />",
+      "docs": "https://wunderui.com/components/voice-input"
+    },
+    {
+      "slug": "artifact-panel",
+      "title": "Artifact Panel",
+      "category": "Agents",
+      "description": "The side panel for what the agent made — code or a document — with versions, copy and download.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "ArtifactPanel"
+      ],
+      "props": "function ArtifactPanel({ title, meta, versions, version, onVersionChange, code, children, onCopy, onDownload, onClose, className, }: {\n    title: React.ReactNode;\n    meta?: React.ReactNode;\n    versions?: string[];\n    version?: string;\n    onVersionChange?: (v: string) => void;\n    /** Renders the code view with line numbers. Omit and pass `children` for a document. */\n    code?: string;\n    children?: React.ReactNode;\n    onCopy?: () => void;\n    onDownload?: () => void;\n    onClose?: () => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ArtifactPanel title=\"tabs.tsx\" versions={[\"v1\", \"v2\", \"v3\"]} version={v} onVersionChange={setV} code={source} onCopy={copy} onClose={close} />",
+      "docs": "https://wunderui.com/components/artifact-panel"
+    },
+    {
+      "slug": "source-list",
+      "title": "Source List",
+      "category": "Agents",
+      "description": "Numbered sources pinned to a chat; citations like [1] in answers point here.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "SourceList"
+      ],
+      "props": "function SourceList({ sources, title, className, id }: {\n    sources: Source[];\n    title?: React.ReactNode;\n    className?: string;\n    id?: string;\n}): React.JSX.Element;",
+      "example": "<SourceList sources={[{ title: \"Tabs pattern — WAI-ARIA\", meta: \"w3.org · web page\", kind: \"web\" }]} />",
+      "docs": "https://wunderui.com/components/source-list"
+    },
+    {
+      "slug": "agent-avatar",
+      "title": "Agent Avatar",
+      "category": "Agents",
+      "description": "Who is talking in a multi-agent chat: tint colour, name and role.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "AgentAvatar"
+      ],
+      "props": "function AgentAvatar({ name, role, initials, color, className }: {\n    name: React.ReactNode;\n    role?: React.ReactNode;\n    initials: string;\n    color?: AvatarColor;\n    className?: string;\n}): React.JSX.Element;\ntype AvatarColor = \"indigo\" | \"blue\" | \"purple\" | \"pink\" | \"red\" | \"orange\" | \"yellow\" | \"green\" | \"alternative\" | \"grey\";",
+      "example": "<AgentAvatar name=\"Planner\" role=\"Breaks the task into steps\" initials=\"PL\" color=\"indigo\" />",
+      "docs": "https://wunderui.com/components/agent-avatar"
+    },
+    {
+      "slug": "handoff-divider",
+      "title": "Handoff Divider",
+      "category": "Agents",
+      "description": "Marks the moment one agent passes the conversation to another.",
+      "group": "AI & Agents",
+      "tier": "pro",
+      "exports": [
+        "HandoffDivider"
+      ],
+      "props": "function HandoffDivider({ from, to, className }: {\n    from: React.ReactNode;\n    to: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<HandoffDivider from=\"Planner\" to=\"Writer\" />",
+      "docs": "https://wunderui.com/components/handoff-divider"
+    },
+    {
+      "slug": "alert",
+      "title": "Alert",
+      "category": "Feedback",
+      "description": "An inline banner in 5 colors and 2 sizes, with an optional close button and action.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "Alert",
+        "AlertDescription",
+        "AlertDialog",
+        "AlertDialogAction",
+        "AlertDialogCancel",
+        "AlertDialogContent",
+        "AlertDialogDescription",
+        "AlertDialogFooter",
+        "AlertDialogHeader",
+        "AlertDialogOverlay",
+        "AlertDialogPortal",
+        "AlertDialogTitle",
+        "AlertDialogTrigger",
+        "AlertTitle"
+      ],
+      "props": "function Alert({ variant, size, icon, onClose, className, children, ...props }: React.ComponentProps<\"div\"> & {\n    variant?: AlertVariant;\n    size?: AlertSize;\n    /** Replaces the leading icon (default: a check circle, a warning triangle for negative and warning). `null` hides it. */\n    icon?: React.ReactNode;\n    onClose?: () => void;\n}): React.JSX.Element;\ntype AlertVariant = \"plain\" | \"positive\" | \"primary\" | \"negative\" | \"warning\";\ntype AlertSize = \"small\" | \"large\";",
+      "example": "<Alert variant=\"positive\">\n  <AlertTitle>Positive</AlertTitle>\n  <AlertDescription>Text for notifications here.</AlertDescription>\n</Alert>",
+      "docs": "https://wunderui.com/components/alert"
+    },
+    {
+      "slug": "toast",
+      "title": "Toast",
+      "category": "Feedback",
+      "description": "A temporary notification that appears in the corner of the screen, with success/error/warning/info types.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "ToastProvider",
+        "ToastViewport",
+        "Toaster"
+      ],
+      "props": "function ToastProvider({ children, timeout, ...props }: Toast.Provider.Props): React.JSX.Element;",
+      "example": "import { Toaster, useToast } from \"@wunderui/react\"\n\n// wrap your app once\n<Toaster>{children}</Toaster>\n\n// then anywhere inside it\nconst { add } = useToast()\nadd({ type: \"success\", title: \"Successfully saved\", description: \"Your changes have been saved.\" })",
+      "docs": "https://wunderui.com/components/toast"
+    },
+    {
+      "slug": "pull-to-refresh",
+      "title": "Pull to Refresh",
+      "category": "Feedback",
+      "description": "Drag down from the top of any content past a threshold to trigger an async refresh, with a rotating spinner and a rubber-band release.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "PullToRefresh"
+      ],
+      "props": "function PullToRefresh({ onRefresh, threshold, maxPull, children, className, }: PullToRefreshProps): React.JSX.Element;",
+      "example": "<PullToRefresh onRefresh={async () => { await refetch() }}>\n  <YourCardContent />\n</PullToRefresh>",
+      "docs": "https://wunderui.com/components/pull-to-refresh"
+    },
+    {
+      "slug": "rating",
+      "title": "Rating",
+      "category": "Feedback",
+      "description": "An interactive star rating input.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "Rating",
+        "RatingCell",
+        "RatingLabel",
+        "RatingType"
+      ],
+      "props": "function Rating({ value, onValueChange, max, type, label, readOnly, className, }: {\n    value: number;\n    onValueChange?: (value: number) => void;\n    max?: number;\n    type?: RatingType;\n    label?: RatingLabel;\n    readOnly?: boolean;\n    className?: string;\n}): React.JSX.Element;\ntype RatingType = \"stars\" | \"hearts\" | \"emojis\" | \"scale\";\ntype RatingLabel = \"none\" | \"left\" | \"right\" | \"tooltip\";",
+      "example": "<Rating value={value} onValueChange={setValue} max={5} />",
+      "docs": "https://wunderui.com/components/rating"
+    },
+    {
+      "slug": "number-value",
+      "title": "Number Value",
+      "category": "Feedback",
+      "description": "A large number with its change beside it: caret up or down, green or red.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "NumberValue"
+      ],
+      "props": "function NumberValue({ value, delta, trend, trendGood, className, }: {\n    value: string;\n    delta?: string;\n    trend?: \"up\" | \"down\";\n    trendGood?: boolean;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<NumberValue value=\"1,204\" delta=\"4.2%\" trend=\"up\" trendGood />",
+      "docs": "https://wunderui.com/components/number-value"
+    },
+    {
+      "slug": "trend-chip",
+      "title": "Trend Chip",
+      "category": "Feedback",
+      "description": "A small pill showing a change, up or down, in seven icon styles.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "TrendChip",
+        "TrendChipIcon"
+      ],
+      "props": "function TrendChip({ value, direction, icon, className, }: {\n    value: string;\n    /** Figma Trend Chip · Trend; `flat` is the old name for `neutral`. */\n    direction?: \"up\" | \"down\" | \"neutral\" | \"flat\";\n    /** Figma Trend Chip · Icon; the same glyph turns for `down`. */\n    icon?: TrendChipIcon;\n    className?: string;\n}): React.JSX.Element;\ntype TrendChipIcon = \"trending\" | \"arrow\" | \"arrow-diagonal\" | \"triangle\" | \"circle-trending\" | \"circle-diagonal\" | \"circle-arrow\";",
+      "example": "<TrendChip value=\"12.4%\" direction=\"up\" />",
+      "docs": "https://wunderui.com/components/trend-chip"
+    },
+    {
+      "slug": "pressable-feedback",
+      "title": "Pressable Feedback",
+      "category": "Feedback",
+      "description": "Wraps any content with a scale-down press animation.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "PressableFeedback"
+      ],
+      "props": "function PressableFeedback({ children, onPress, className, asChild, }: {\n    children: React.ReactNode;\n    onPress?: () => void;\n    className?: string;\n    /** Apply the press effect to the child element instead of wrapping it. */\n    asChild?: boolean;\n}): React.JSX.Element;",
+      "example": "<PressableFeedback onPress={handlePress}>{children}</PressableFeedback>",
+      "docs": "https://wunderui.com/components/pressable-feedback"
+    },
+    {
+      "slug": "emoji-reaction-button",
+      "title": "Emoji Reaction Button",
+      "category": "Feedback",
+      "description": "A toggleable emoji reaction with a count, like a Slack reaction.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "EmojiReactionButton"
+      ],
+      "props": "function EmojiReactionButton({ emoji, count, active, onToggle, className, }: {\n    emoji: string;\n    count: number;\n    active?: boolean;\n    onToggle?: () => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<EmojiReactionButton emoji=\"🔥\" count={12} active={active} onToggle={toggle} />",
+      "docs": "https://wunderui.com/components/emoji-reaction-button"
+    },
+    {
+      "slug": "emoji-picker",
+      "title": "Emoji Picker",
+      "category": "Overlays",
+      "description": "A grid of selectable emoji, typically shown inside a Popover.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "EmojiPicker"
+      ],
+      "props": "function EmojiPicker({ emojis, onSelect, className, }: {\n    emojis?: string[];\n    onSelect?: (emoji: string) => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<EmojiPicker onSelect={(emoji) => insert(emoji)} />",
+      "docs": "https://wunderui.com/components/emoji-picker"
+    },
+    {
+      "slug": "sheet",
+      "title": "Sheet",
+      "category": "Overlays",
+      "description": "A panel that slides in from an edge of the screen — left, right, or bottom.",
+      "group": "Feedback & Overlays",
+      "tier": "free",
+      "exports": [
+        "Sheet",
+        "SheetClose",
+        "SheetContent",
+        "SheetDescription",
+        "SheetHeader",
+        "SheetTitle",
+        "SheetTrigger"
+      ],
+      "props": "function Sheet({ ...props }: Dialog.Root.Props): React.JSX.Element;",
+      "example": "<Sheet open={open} onOpenChange={setOpen}>\n  <SheetTrigger render={<Button />}>Open</SheetTrigger>\n  <SheetContent side=\"right\">...</SheetContent>\n</Sheet>",
+      "docs": "https://wunderui.com/components/sheet"
+    },
+    {
+      "slug": "resizable",
+      "title": "Resizable",
+      "category": "Layout",
+      "description": "A two-pane layout with a draggable divider between them.",
+      "group": "Navigation & Layout",
+      "tier": "pro",
+      "exports": [
+        "Resizable"
+      ],
+      "props": "function Resizable({ children, direction, defaultSize, min, max, side, onSizeChange, handleLabel, className, }: {\n    children: [React.ReactNode, React.ReactNode];\n    direction?: \"horizontal\" | \"vertical\";\n    defaultSize?: number;\n    min?: number;\n    max?: number;\n    side?: ResizableSide;\n    onSizeChange?: (size: number) => void;\n    /** Accessible name of the handle, e.g. \"Resize sidebar\". */\n    handleLabel?: string;\n    className?: string;\n}): React.JSX.Element;\ntype ResizableSide = \"start\" | \"end\" | \"left\" | \"right\" | \"top\" | \"bottom\";",
+      "example": "<Resizable defaultSize={280} min={160} max={480}>\n  <PanelA />\n  <PanelB />\n</Resizable>",
+      "docs": "https://wunderui.com/components/resizable"
+    },
+    {
+      "slug": "scroll-area",
+      "title": "Scroll Area",
+      "category": "Layout",
+      "description": "A scrollable container with custom, always-styled scrollbars.",
+      "group": "Navigation & Layout",
+      "tier": "pro",
+      "exports": [
+        "ScrollArea"
+      ],
+      "props": "function ScrollArea({ className, children, ...props }: ScrollArea.Root.Props): React.JSX.Element;",
+      "example": "<ScrollArea className=\"h-40 w-64 rounded-lg border border-border\">\n  <div className=\"flex flex-col gap-2 p-4\">\n    {items.map((item) => <p key={item.id}>{item.label}</p>)}\n  </div>\n</ScrollArea>",
+      "docs": "https://wunderui.com/components/scroll-area"
+    },
+    {
+      "slug": "page-header",
+      "title": "Page Header",
+      "category": "Block Parts",
+      "description": "The title row at the top of a page or section, with an optional description, buttons or a text link.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "PageHeader",
+        "PageHeaderProps"
+      ],
+      "props": "function PageHeader({ title, description, level, actions, link, href, onLinkClick, className }: PageHeaderProps): React.JSX.Element;",
+      "example": "<PageHeader\n  title=\"Audit log\"\n  description=\"Every security event in your workspace, newest first.\"\n  actions={\n    <>\n      <Button variant=\"plain\" size=\"sm\">Export</Button>\n      <Button variant=\"primary\" size=\"sm\">New rule</Button>\n    </>\n  }\n/>\n\n<PageHeader level=\"section\" title=\"Recent orders\" description=\"Last 5 transactions\" link=\"View all\" href=\"/orders\" />",
+      "docs": "https://wunderui.com/components/page-header"
+    },
+    {
+      "slug": "keyboard-hint",
+      "title": "Keyboard Hint",
+      "category": "Block Parts",
+      "description": "One or more key caps with a short label, for the shortcut legend at the bottom of a command menu.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "KeyboardHint"
+      ],
+      "props": "function KeyboardHint({ keys, label, className }: {\n    keys: string[];\n    label: string;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<KeyboardHint keys={[\"↑\", \"↓\"]} label=\"Navigate\" />\n<KeyboardHint keys={[\"↵\"]} label=\"Open\" />\n<KeyboardHint keys={[\"esc\"]} label=\"Close\" />",
+      "docs": "https://wunderui.com/components/keyboard-hint"
+    },
+    {
+      "slug": "command-item-row",
+      "title": "Command Item Row",
+      "category": "Block Parts",
+      "description": "One row in a command menu: an icon, a label, optional context and its shortcut keys.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "CommandItemRow",
+        "CommandItemRowProps"
+      ],
+      "props": "function CommandItemRow({ icon, label, meta, keys, active, onSelect, className }: CommandItemRowProps): React.JSX.Element;",
+      "example": "const [active, setActive] = useState(0)\n\n<CommandItemRow icon={<Search />} label=\"Search files\" keys={[\"⌘\", \"K\"]} active={active === 0} onSelect={() => setActive(0)} />\n<CommandItemRow icon={<Plus />} label=\"New project\" keys={[\"⌘\", \"N\"]} active={active === 1} onSelect={() => setActive(1)} />\n{/* No keys: a chevron is shown instead */}\n<CommandItemRow icon={<UserPlus />} label=\"Invite teammates\" meta=\"Workspace\" active={active === 2} onSelect={() => setActive(2)} />",
+      "docs": "https://wunderui.com/components/command-item-row"
+    },
+    {
+      "slug": "search-result",
+      "title": "Search Result",
+      "category": "Block Parts",
+      "description": "A search hit with an icon, a title, a short excerpt and where it lives.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "SearchResult",
+        "SearchResultCard",
+        "SearchResultProps"
+      ],
+      "props": "function SearchResult({ icon, title, description, meta, href, onSelect, className }: SearchResultProps): React.JSX.Element;",
+      "example": "<SearchResult\n  icon={<FileText />}\n  title=\"Onboarding checklist\"\n  description=\"Five steps every new teammate completes in their first week.\"\n  meta=\"Docs · Updated 2 days ago\"\n  href=\"/docs/onboarding\"\n/>",
+      "docs": "https://wunderui.com/components/search-result"
+    },
+    {
+      "slug": "notification-item",
+      "title": "Notification Item",
+      "category": "Block Parts",
+      "description": "One entry in a notification list, with an avatar or icon, the message, optional actions and an unread dot.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "NotificationItem",
+        "NotificationItemProps"
+      ],
+      "props": "function NotificationItem({ icon, avatar, children, quote, actions, time, unread, onClick, className }: NotificationItemProps): React.JSX.Element;",
+      "example": "<NotificationItem\n  avatar={{ src: \"/avatars/05.png\" }}\n  quote=\"Can we move the launch review to Thursday?\"\n  time=\"2 min ago\"\n  unread\n  onClick={() => markRead(id)}\n>\n  <strong>Sarah Lindqvist</strong> commented on Q3 roadmap\n</NotificationItem>\n\n<NotificationItem\n  avatar={{ initials: \"LM\", color: \"blue\" }}\n  time=\"1 hour ago\"\n  unread\n  actions={\n    <>\n      <Button size=\"sm\" variant=\"primary\">Accept</Button>\n      <Button size=\"sm\" variant=\"plain\">Decline</Button>\n    </>\n  }\n>\n  <strong>Lucas Meyer</strong> invited you to WunderUI Design\n</NotificationItem>\n\n<NotificationItem icon={<Rocket />} time=\"Yesterday\">\n  <strong>Deploy</strong> finished for main in 42 seconds\n</NotificationItem>",
+      "docs": "https://wunderui.com/components/notification-item"
+    },
+    {
+      "slug": "checklist-task",
+      "title": "Checklist Task",
+      "category": "Block Parts",
+      "description": "One step of an onboarding checklist that can be ticked off, with the next step to do highlighted.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "ChecklistTask"
+      ],
+      "props": "function ChecklistTask({ done, current, children, meta, action, onClick, className, }: {\n    done?: boolean;\n    /** The step to do next — tinted, with room for `meta` and an `action`. */\n    current?: boolean;\n    children: React.ReactNode;\n    meta?: React.ReactNode;\n    /** A button shown on the current step, e.g. \"Start\". */\n    action?: React.ReactNode;\n    /** Toggle the step. */\n    onClick?: () => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<ul>\n  <li>\n    <ChecklistTask done onClick={() => toggle(\"profile\")}>Complete your profile</ChecklistTask>\n  </li>\n  <li>\n    <ChecklistTask\n      current\n      meta=\"Takes about 2 min\"\n      action={<Button size=\"sm\" variant=\"primary\">Start</Button>}\n      onClick={() => toggle(\"invite\")}\n    >\n      Invite your team\n    </ChecklistTask>\n  </li>\n  <li>\n    <ChecklistTask meta=\"3 min\" onClick={() => toggle(\"project\")}>Create your first project</ChecklistTask>\n  </li>\n</ul>",
+      "docs": "https://wunderui.com/components/checklist-task"
+    },
+    {
+      "slug": "project-card",
+      "title": "Project Card",
+      "category": "Block Parts",
+      "description": "A clickable project tile with a colored cover, a name and a short line of detail.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "ProjectCard"
+      ],
+      "props": "function ProjectCard({ name, meta, color, cover, onClick, className }: {\n    name: React.ReactNode;\n    meta?: React.ReactNode;\n    color?: TintColor;\n    cover?: React.ReactNode;\n    onClick?: () => void;\n    className?: string;\n}): React.JSX.Element;\ntype TintColor = \"indigo\" | \"blue\" | \"purple\" | \"pink\" | \"red\" | \"orange\" | \"yellow\" | \"green\" | \"alternative\";",
+      "example": "<ProjectCard\n  name=\"Website redesign\"\n  meta=\"Edited 2 hours ago\"\n  color=\"indigo\"\n  cover={<LayoutDashboard className=\"size-8\" />}\n  onClick={() => openProject(\"website\")}\n/>",
+      "docs": "https://wunderui.com/components/project-card"
+    },
+    {
+      "slug": "file-card",
+      "title": "File Card",
+      "category": "Block Parts",
+      "description": "A file tile with a preview, a name and details, plus optional selection, a menu and a deleted state.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "FileCard",
+        "FileCardProps"
+      ],
+      "props": "function FileCard({ name, meta, icon, color, thumbnail, selected, onSelectedChange, deletedAt, onMenu, onOpen, className }: FileCardProps): React.JSX.Element;",
+      "example": "const [selected, setSelected] = useState(false)\n\n<FileCard\n  name=\"Q3 report.pdf\"\n  meta=\"PDF · 2.4 MB\"\n  icon={<FileText />}\n  color=\"red\"\n  selected={selected}\n  onSelectedChange={setSelected}\n  onMenu={() => openMenu()}\n/>\n\n{/* In the trash */}\n<FileCard name=\"Old logo.svg\" meta=\"Image · 12 KB\" color=\"blue\" icon={<ImageIcon />} deletedAt=\"Deleted 3 days ago\" />",
+      "docs": "https://wunderui.com/components/file-card"
+    },
+    {
+      "slug": "status-bar",
+      "title": "Status Bar",
+      "category": "Block Parts",
+      "description": "The phone status bar with the time, for the top of a mobile screen mockup.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "StatusBar"
+      ],
+      "props": "function StatusBar({ time, className }: {\n    time?: string;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<div className=\"overflow-hidden rounded-2xl border border-border bg-card\">\n  <StatusBar time=\"9:41\" />\n  {/* screen content */}\n</div>",
+      "docs": "https://wunderui.com/components/status-bar"
+    },
+    {
+      "slug": "tab-item",
+      "title": "Tab Item",
+      "category": "Block Parts",
+      "description": "A single underlined tab that shows a count while it is active, used inside a Tab Bar.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "TabItem"
+      ],
+      "props": "function TabItem({ active, count, children, onClick, className }: {\n    active?: boolean;\n    count?: React.ReactNode;\n    children: React.ReactNode;\n    onClick?: () => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "const [tab, setTab] = useState(\"All\")\n\n<TabBar>\n  <TabItem active={tab === \"All\"} count={24} onClick={() => setTab(\"All\")}>All</TabItem>\n  <TabItem active={tab === \"Unread\"} count={3} onClick={() => setTab(\"Unread\")}>Unread</TabItem>\n  <TabItem active={tab === \"Mentions\"} count={5} onClick={() => setTab(\"Mentions\")}>Mentions</TabItem>\n</TabBar>",
+      "docs": "https://wunderui.com/components/tab-item"
+    },
+    {
+      "slug": "tab-bar",
+      "title": "Tab Bar",
+      "category": "Block Parts",
+      "description": "A horizontal row of underlined tabs on a bottom border that scrolls sideways when space runs out.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "TabBar"
+      ],
+      "props": "function TabBar({ children, className }: {\n    children: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "const tabs = [\"Overview\", \"Activity\", \"Members\", \"Billing\", \"Settings\"]\nconst [tab, setTab] = useState(\"Overview\")\n\n<TabBar>\n  {tabs.map((t) => (\n    <TabItem key={t} active={tab === t} onClick={() => setTab(t)}>\n      {t}\n    </TabItem>\n  ))}\n</TabBar>",
+      "docs": "https://wunderui.com/components/tab-bar"
+    },
+    {
+      "slug": "timeline-event",
+      "title": "Timeline Event",
+      "category": "Block Parts",
+      "description": "One entry in an activity feed or history, with an avatar or status dot and a line to the next entry.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "TimelineEvent",
+        "TimelineEventProps"
+      ],
+      "props": "function TimelineEvent({ avatar, status, title, time, object, badge, badgeColor, meta, children, last, className }: TimelineEventProps): React.JSX.Element;",
+      "example": "<TimelineEvent\n  avatar={{ src: \"/avatars/01.png\" }}\n  title={<><strong>Alina Lorenz</strong> created a project</>}\n  time=\"9:12\"\n  object={{ label: \"Checkout redesign\" }}\n/>\n<TimelineEvent avatar={{ initials: \"LM\", color: \"blue\" }} title={<><strong>Lucas Meyer</strong> commented</>} time=\"10:30\">\n  <p>Looks great. Can we ship the new cart before Friday?</p>\n</TimelineEvent>\n<TimelineEvent\n  status={{ tone: \"success\", icon: <GitMerge /> }}\n  title=\"Merged into main\"\n  badge=\"v2.4.0\"\n  badgeColor=\"green\"\n  meta=\"Sep 17, 2026 · 14:25\"\n  last\n/>",
+      "docs": "https://wunderui.com/components/timeline-event"
+    },
+    {
+      "slug": "price",
+      "title": "Price",
+      "category": "Block Parts",
+      "description": "A price with an optional billing period, a crossed-out old price and a savings badge.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "Price",
+        "PriceProps"
+      ],
+      "props": "function Price({ amount, period, compareAt, badge, size, className }: PriceProps): React.JSX.Element;",
+      "example": "<Price amount=\"$39\" period=\"/ seat / month\" size=\"lg\" />\n<Price amount=\"$489\" compareAt=\"$599\" badge=\"Save 18%\" size=\"md\" />\n<Price amount=\"$24.00\" size=\"sm\" />",
+      "docs": "https://wunderui.com/components/price"
+    },
+    {
+      "slug": "text-link-row",
+      "title": "Text Link Row",
+      "category": "Block Parts",
+      "description": "A line of text followed by a link, like “Don't have an account? Sign up”, or a back link with an arrow.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "TextLinkRow",
+        "TextLinkRowProps"
+      ],
+      "props": "function TextLinkRow({ text, link, href, onLinkClick, variant, className, }: TextLinkRowProps): React.JSX.Element;",
+      "example": "<TextLinkRow text=\"Don't have an account?\" link=\"Sign up\" href=\"/sign-up\" />\n<TextLinkRow variant=\"small\" text=\"Didn't get the email?\" link=\"Resend\" />\n<TextLinkRow variant=\"icon\" text=\"Need help?\" link=\"Contact support\" />\n<TextLinkRow variant=\"back\" text=\"Use a different method\" href=\"/sign-in\" />",
+      "docs": "https://wunderui.com/components/text-link-row"
+    },
+    {
+      "slug": "social-sign-in-buttons",
+      "title": "Social Sign In Buttons",
+      "category": "Block Parts",
+      "description": "Sign-in buttons for Google, Apple, GitHub and Microsoft, side by side or stacked.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "SocialSignInButtons"
+      ],
+      "props": "function SocialSignInButtons({ providers, layout, prefix, onSelect, className, }: SocialSignInButtonsProps): React.JSX.Element;",
+      "example": "<SocialSignInButtons\n  providers={[\"google\", \"apple\", \"github\"]}\n  layout=\"vertical\"\n  onSelect={(provider) => signIn(provider)}\n/>\n\n{/* Icon and name only */}\n<SocialSignInButtons providers={[\"google\", \"github\"]} prefix=\"\" />",
+      "docs": "https://wunderui.com/components/social-sign-in-buttons"
+    },
+    {
+      "slug": "option-row",
+      "title": "Option Row",
+      "category": "Block Parts",
+      "description": "A selectable card with a radio button or checkbox, a title and a short description.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "OptionRow",
+        "OptionRowGroup",
+        "OptionRowProps"
+      ],
+      "props": "function OptionRow({ title, description, icon, badge, badgeColor, selected, variant, value, disabled, onSelect, href, className, }: OptionRowProps): React.JSX.Element;",
+      "example": "const [picked, setPicked] = useState([\"dashboards\"])\nconst toggle = (id: string) =>\n  setPicked((list) => (list.includes(id) ? list.filter((x) => x !== id) : [...list, id]))\n\n<OptionRow\n  variant=\"checkbox\"\n  value=\"dashboards\"\n  title=\"Dashboards\"\n  description=\"Analytics, admin panels and internal tools\"\n  selected={picked.includes(\"dashboards\")}\n  onSelect={() => toggle(\"dashboards\")}\n/>",
+      "docs": "https://wunderui.com/components/option-row"
+    },
+    {
+      "slug": "option-row-group",
+      "title": "Option Row Group",
+      "category": "Block Parts",
+      "description": "Wraps radio Option Rows so that exactly one of them is selected.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "OptionRowGroup"
+      ],
+      "props": "function OptionRowGroup({ value, onValueChange, children, className, }: {\n    value?: string;\n    onValueChange?: (value: string) => void;\n    children: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "const [method, setMethod] = useState(\"app\")\n\n<OptionRowGroup value={method} onValueChange={setMethod}>\n  <OptionRow variant=\"icon\" value=\"app\" icon={<ShieldCheck />} title=\"Authenticator app\"\n    description=\"Use a code from an app like 1Password\" badge=\"Recommended\" selected={method === \"app\"} />\n  <OptionRow variant=\"icon\" value=\"sms\" icon={<Smartphone />} title=\"Text message\"\n    description=\"We send a code to your phone\" selected={method === \"sms\"} />\n  <OptionRow variant=\"icon\" value=\"key\" icon={<KeyRound />} title=\"Security key\"\n    description=\"Use a hardware key or passkey\" selected={method === \"key\"} />\n</OptionRowGroup>",
+      "docs": "https://wunderui.com/components/option-row-group"
+    },
+    {
+      "slug": "user-info",
+      "title": "User Info",
+      "category": "Block Parts",
+      "description": "An avatar with a name and a second line, for account menus, sidebars and quotes.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "UserInfo",
+        "UserInfoProps"
+      ],
+      "props": "function UserInfo({ name, subtext, src, initials, color, variant, onMenu, className }: UserInfoProps): React.JSX.Element;",
+      "example": "<UserInfo name=\"Sarah Lindqvist\" subtext=\"Head of Product, WunderUI\" src=\"/avatars/05.png\" />\n<UserInfo name=\"Alina Lorenz\" subtext=\"Free plan\" initials=\"AL\" color=\"indigo\" variant=\"sidebar\" />\n<UserInfo name=\"Lucas Meyer\" subtext=\"lucas@initech.dev\" src=\"/avatars/02.png\" variant=\"menu\" onMenu={openMenu} />",
+      "docs": "https://wunderui.com/components/user-info"
+    },
+    {
+      "slug": "password-requirement",
+      "title": "Password Requirement",
+      "category": "Block Parts",
+      "description": "One password rule in a checklist that turns green once the password meets it.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "PasswordRequirement"
+      ],
+      "props": "function PasswordRequirement({ met, children, className }: {\n    met: boolean;\n    children: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "const rules = [\n  { id: \"length\", label: \"At least 8 characters\", test: (p: string) => p.length >= 8 },\n  { id: \"number\", label: \"At least one number\", test: (p: string) => /\\\\d/.test(p) },\n]\n\n<ul className=\"flex flex-col gap-1.5\">\n  {rules.map((r) => (\n    <PasswordRequirement key={r.id} met={r.test(password)}>\n      {r.label}\n    </PasswordRequirement>\n  ))}\n</ul>",
+      "docs": "https://wunderui.com/components/password-requirement"
+    },
+    {
+      "slug": "password-strength",
+      "title": "Password Strength",
+      "category": "Block Parts",
+      "description": "A four-step meter with a label that shows how strong a password is.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "PasswordStrength",
+        "PasswordStrengthLevel"
+      ],
+      "props": "function PasswordStrength({ strength, label, className, }: {\n    strength: PasswordStrengthLevel;\n    label?: string;\n    className?: string;\n}): React.JSX.Element;\ntype PasswordStrengthLevel = \"weak\" | \"fair\" | \"good\" | \"strong\";",
+      "example": "import { PasswordField, PasswordStrength, getPasswordStrength } from \"@wunderui/react\"\n\nconst [password, setPassword] = useState(\"\")\nconst strength = getPasswordStrength(password) // null while empty\n\n<PasswordField label=\"New password\" value={password} onChange={(e) => setPassword(e.target.value)} />\n{strength && <PasswordStrength strength={strength} />}",
+      "docs": "https://wunderui.com/components/password-strength"
+    },
+    {
+      "slug": "otp-code-input",
+      "title": "OTP Code Input",
+      "category": "Block Parts",
+      "description": "Large boxes for typing a 4- or 6-digit verification code.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "OtpCodeInput",
+        "OtpCodeInputProps"
+      ],
+      "props": "function OtpCodeInput({ length, value, onValueChange, onComplete, invalid, disabled, autoFocus, className, }: OtpCodeInputProps): React.JSX.Element;",
+      "example": "const [code, setCode] = useState(\"\")\n\n<OtpCodeInput length={6} value={code} onValueChange={setCode} onComplete={(value) => verify(value)} autoFocus />",
+      "docs": "https://wunderui.com/components/otp-code-input"
+    },
+    {
+      "slug": "backup-code",
+      "title": "Backup Code",
+      "category": "Block Parts",
+      "description": "A recovery code that copies itself when clicked and is crossed out once it has been used.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "BackupCode"
+      ],
+      "props": "function BackupCode({ code, used, onCopy, className }: {\n    code: string;\n    used?: boolean;\n    onCopy?: (code: string) => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<div className=\"grid grid-cols-2 gap-2\">\n  <BackupCode code=\"4F7K-2M9Q\" onCopy={(code) => notify(`Copied ${code}`)} />\n  <BackupCode code=\"8XJD-P3LW\" used />\n</div>",
+      "docs": "https://wunderui.com/components/backup-code"
+    },
+    {
+      "slug": "invite-row",
+      "title": "Invite Row",
+      "category": "Block Parts",
+      "description": "An email field and a role picker for inviting one person, with a button to remove the row.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "InviteRow",
+        "InviteRowProps"
+      ],
+      "props": "function InviteRow({ email, role, roles, onEmailChange, onRoleChange, onRemove, stacked, className, }: InviteRowProps): React.JSX.Element;",
+      "example": "const [rows, setRows] = useState([{ email: \"lucas@wunderui.dev\", role: \"Admin\" }])\nconst update = (i: number, patch: Partial<Row>) =>\n  setRows((list) => list.map((r, j) => (j === i ? { ...r, ...patch } : r)))\n\n{rows.map((r, i) => (\n  <InviteRow\n    key={i}\n    email={r.email}\n    role={r.role}\n    roles={[\"Admin\", \"Member\", \"Viewer\"]}\n    onEmailChange={(email) => update(i, { email })}\n    onRoleChange={(role) => update(i, { role })}\n    onRemove={() => setRows((list) => list.filter((_, j) => j !== i))}\n  />\n))}",
+      "docs": "https://wunderui.com/components/invite-row"
+    },
+    {
+      "slug": "invite-link-row",
+      "title": "Invite Link Row",
+      "category": "Block Parts",
+      "description": "A read-only invite link with a copy button that confirms when the link is copied.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "InviteLinkRow"
+      ],
+      "props": "function InviteLinkRow({ link, onCopy, className }: {\n    link: string;\n    onCopy?: () => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<InviteLinkRow link=\"https://wunderui.app/invite/wunderui/8f3k2m9q\" onCopy={() => track(\"invite_link_copied\")} />",
+      "docs": "https://wunderui.com/components/invite-link-row"
+    },
+    {
+      "slug": "settings-row",
+      "title": "Settings Row",
+      "category": "Block Parts",
+      "description": "A setting's title and description with a switch, or any other control, on the right.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "SettingsRow",
+        "SettingsRowProps"
+      ],
+      "props": "function SettingsRow({ title, description, control, checked, onCheckedChange, className }: SettingsRowProps): React.JSX.Element;",
+      "example": "const [email, setEmail] = useState(true)\n\n{/* checked or onCheckedChange turns the row into a switch */}\n<SettingsRow title=\"Email notifications\" description=\"Mentions, replies and invites\" checked={email} onCheckedChange={setEmail} />\n\n{/* any other control */}\n<SettingsRow\n  title=\"Two-factor authentication\"\n  description=\"Add a second step when you sign in\"\n  control={<Button variant=\"plain\" size=\"sm\">Set up</Button>}\n/>",
+      "docs": "https://wunderui.com/components/settings-row"
+    },
+    {
+      "slug": "inline-note",
+      "title": "Inline Note",
+      "category": "Block Parts",
+      "description": "A small line of supporting text with an icon, either neutral or as a warning.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "InlineNote"
+      ],
+      "props": "function InlineNote({ tone, icon, children, className, }: {\n    tone?: \"neutral\" | \"warning\";\n    icon?: React.ReactNode;\n    children: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<InlineNote>14-day free trial of Pro included. No credit card required.</InlineNote>\n<InlineNote tone=\"warning\">Billing stops immediately. Unused credit of $184.00 is not refunded.</InlineNote>\n<InlineNote icon={<Bell />}>Links expire after 15 minutes and can only be used once.</InlineNote>",
+      "docs": "https://wunderui.com/components/inline-note"
+    },
+    {
+      "slug": "auth-heading",
+      "title": "Auth Heading",
+      "category": "Block Parts",
+      "description": "The title and subtitle at the top of a sign-in, sign-up or onboarding form.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "AuthHeading"
+      ],
+      "props": "function AuthHeading({ title, subtitle, align, className, }: {\n    title: React.ReactNode;\n    subtitle?: React.ReactNode;\n    align?: \"start\" | \"center\";\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<AuthHeading title=\"Create your workspace\" subtitle=\"A workspace is where your team designs and ships together.\" />\n<AuthHeading align=\"center\" title=\"You're all set, Alina!\" subtitle=\"Your workspace is ready. Here's what you've set up.\" />",
+      "docs": "https://wunderui.com/components/auth-heading"
+    },
+    {
+      "slug": "avatar-stack",
+      "title": "Avatar Stack",
+      "category": "Block Parts",
+      "description": "Overlapping avatars with a “+N” count for everyone past the limit.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "AvatarStack"
+      ],
+      "props": "function AvatarStack({ people, size, max, className }: {\n    people: Person[];\n    size?: \"sm\" | \"xs\" | \"default\";\n    max?: number;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "const team = [\n  { name: \"Alina Lorenz\", src: \"/avatars/01.png\" },\n  { name: \"Lucas Meyer\", src: \"/avatars/02.png\" },\n  { name: \"Jonas Berg\", initials: \"JB\", color: \"purple\" },\n  // …\n]\n\n<AvatarStack people={team} size=\"default\" max={4} />",
+      "docs": "https://wunderui.com/components/avatar-stack"
+    },
+    {
+      "slug": "kanban-card-item",
+      "title": "Kanban Card Item",
+      "category": "Block Parts",
+      "description": "A task card for a Kanban board, with labels, due date, comments, checklist progress and assignees.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "KanbanCardItem"
+      ],
+      "props": "function KanbanCardItem({ title, labels, due, comments, checklist, assignees, selected, onClick, className }: KanbanCardProps): React.JSX.Element;",
+      "example": "<KanbanCardItem\n  title=\"Redesign the onboarding checklist\"\n  labels={[\n    { label: \"Design\", color: \"purple\" },\n    { label: \"High\", color: \"red\" },\n  ]}\n  due=\"Oct 4\"\n  comments={6}\n  checklist={{ done: 3, total: 5 }}\n  assignees={team}\n  selected={selected}\n  onClick={() => setSelected((s) => !s)}\n/>",
+      "docs": "https://wunderui.com/components/kanban-card-item"
+    },
+    {
+      "slug": "column-header",
+      "title": "Column Header",
+      "category": "Block Parts",
+      "description": "The top of a Kanban column, with a colored dot, a card count and buttons to add a card or open a menu.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "ColumnHeader",
+        "ColumnHeaderProps"
+      ],
+      "props": "function ColumnHeader({ title, count, dotClassName, onAdd, onMenu, className }: ColumnHeaderProps): React.JSX.Element;",
+      "example": "<ColumnHeader title=\"In progress\" count={4} dotClassName=\"bg-primary\" onAdd={addCard} onMenu={openMenu} />\n\n{/* With a work-in-progress limit */}\n<ColumnHeader title=\"Review\" count=\"3 / 3\" dotClassName=\"bg-brand-quaternary\" />",
+      "docs": "https://wunderui.com/components/column-header"
+    },
+    {
+      "slug": "event-chip",
+      "title": "Event Chip",
+      "category": "Block Parts",
+      "description": "A small colored event label that fits in a calendar day cell.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "EventChip"
+      ],
+      "props": "function EventChip({ color, children, className, ...props }: React.ComponentProps<\"button\"> & {\n    color?: EventColor;\n}): React.JSX.Element;\ntype EventColor = \"indigo\" | \"blue\" | \"purple\" | \"pink\" | \"red\" | \"orange\" | \"yellow\" | \"green\";",
+      "example": "<EventChip color=\"indigo\" onClick={() => open(\"standup\")}>Standup</EventChip>\n<EventChip color=\"purple\">Design review</EventChip>\n\n{/* As a popover trigger */}\n<PopoverTrigger render={<EventChip color=\"green\" />}>Lunch with Mira</PopoverTrigger>",
+      "docs": "https://wunderui.com/components/event-chip"
+    },
+    {
+      "slug": "agenda-event",
+      "title": "Agenda Event",
+      "category": "Block Parts",
+      "description": "One event in an agenda list, with its start and end time, a color bar, details and guests.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "AgendaEvent",
+        "AgendaEventProps"
+      ],
+      "props": "function AgendaEvent({ start, end, title, meta, color, guests, onMenu, onClick, className }: AgendaEventProps): React.JSX.Element;",
+      "example": "<AgendaEvent\n  start=\"9:00\"\n  end=\"9:15\"\n  title=\"Daily standup\"\n  meta=\"Zoom\"\n  color=\"indigo\"\n  guests={team}\n  onClick={() => openEvent(\"standup\")}\n  onMenu={openMenu}\n/>",
+      "docs": "https://wunderui.com/components/agenda-event"
+    },
+    {
+      "slug": "conversation-item",
+      "title": "Conversation Item",
+      "category": "Block Parts",
+      "description": "One conversation in an inbox list, with sender, subject, preview, tags and an unread state.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "ConversationItem",
+        "ConversationItemProps"
+      ],
+      "props": "function ConversationItem({ person, time, subject, preview, tags, unread, active, onClick, className }: ConversationItemProps): React.JSX.Element;",
+      "example": "<ConversationItem\n  person={{ name: \"Sarah Lindqvist\", src: \"/avatars/05.png\" }}\n  time=\"10:42\"\n  subject=\"Q3 roadmap review\"\n  preview=\"I left a few notes on the launch dates, can you take a look before Thursday?\"\n  tags={[{ label: \"Urgent\", color: \"red\" }]}\n  unread\n  active={selectedId === 1}\n  onClick={() => select(1)}\n/>",
+      "docs": "https://wunderui.com/components/conversation-item"
+    },
+    {
+      "slug": "person-cell",
+      "title": "Person Cell",
+      "category": "Block Parts",
+      "description": "An avatar with a name and role for tables and lists, with an optional capacity bar.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "PersonCell",
+        "PersonCellProps"
+      ],
+      "props": "function PersonCell({ person, role, capacity, className }: PersonCellProps): React.JSX.Element;",
+      "example": "<PersonCell person={{ name: \"Sarah Lindqvist\", src: \"/avatars/05.png\" }} role=\"sarah@wunderui.dev\" />\n<PersonCell person={{ name: \"Jonas Berg\", color: \"purple\" }} role=\"Product designer\" capacity={{ value: 80, label: \"32h\" }} />",
+      "docs": "https://wunderui.com/components/person-cell"
+    },
+    {
+      "slug": "task-row",
+      "title": "Task Row",
+      "category": "Block Parts",
+      "description": "A row in a Gantt task list: either a task with its color, assignee and dates, or a group header that folds open and closed.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "TaskRow",
+        "TaskRowProps"
+      ],
+      "props": "function TaskRow({ name, group, open, onToggle, barClassName, assignee, dates, className }: TaskRowProps): React.JSX.Element;",
+      "example": "const [open, setOpen] = useState(true)\n\n<TaskRow group name=\"Checkout redesign\" open={open} onToggle={() => setOpen((o) => !o)} />\n{open && (\n  <>\n    <TaskRow name=\"Research and interviews\" barClassName=\"bg-success\" assignee={ada} dates=\"Sep 1 – Sep 12\" />\n    <TaskRow name=\"Wireframes\" barClassName=\"bg-primary\" assignee={sarah} dates=\"Sep 15 – Sep 26\" />\n  </>\n)}",
+      "docs": "https://wunderui.com/components/task-row"
+    },
+    {
+      "slug": "record-card",
+      "title": "Record Card",
+      "category": "Block Parts",
+      "description": "A card that stands in for a table row on small screens: who it is, a status and a few key fields.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "RecordCard",
+        "RecordCardProps"
+      ],
+      "props": "function RecordCard({ person, title, subtitle, badge, fields, onClick, className }: RecordCardProps): React.JSX.Element;",
+      "example": "<RecordCard\n  person={{ name: \"Sarah Lindqvist\", src: \"/avatars/05.png\" }}\n  title=\"Sarah Lindqvist\"\n  subtitle=\"sarah@wunderui.dev\"\n  badge={{ label: \"Active\", color: \"green\" }}\n  fields={[\n    { label: \"Plan\", value: \"Pro\" },\n    { label: \"Seats\", value: \"12\" },\n    { label: \"MRR\", value: \"$468\" },\n  ]}\n  onClick={() => openCustomer(\"sarah\")}\n/>",
+      "docs": "https://wunderui.com/components/record-card"
+    },
+    {
+      "slug": "stars",
+      "title": "Stars",
+      "category": "Block Parts",
+      "description": "A small, read-only row of stars that shows a rating.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "Stars"
+      ],
+      "props": "function Stars({ value, max, className }: {\n    value: number;\n    max?: number;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<Stars value={4.8} />\n<Stars value={7} max={10} />",
+      "docs": "https://wunderui.com/components/stars"
+    },
+    {
+      "slug": "product-image",
+      "title": "Product Image",
+      "category": "Block Parts",
+      "description": "A product photo, or a colored placeholder with an icon when there is no photo yet.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "ProductImage"
+      ],
+      "props": "function ProductImage({ src, alt, tint, icon, className }: {\n    src?: string;\n    alt?: string;\n    tint?: Tint;\n    icon?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;\ntype Tint = \"indigo\" | \"blue\" | \"purple\" | \"pink\" | \"red\" | \"orange\" | \"yellow\" | \"green\" | \"alternative\";",
+      "example": "{/* Placeholder until there is a photo */}\n<ProductImage tint=\"yellow\" className=\"size-24 rounded-xl\" />\n<ProductImage tint=\"green\" icon={<Send className=\"size-6\" />} className=\"size-24 rounded-xl\" />\n\n{/* With a photo */}\n<ProductImage src={product.photo} alt={product.name} className=\"aspect-[3/2] w-full rounded-xl\" />",
+      "docs": "https://wunderui.com/components/product-image"
+    },
+    {
+      "slug": "product-card",
+      "title": "Product Card",
+      "category": "Block Parts",
+      "description": "A shop tile with image, name, price and rating, plus optional wishlist and add-to-cart buttons.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "ProductCard",
+        "ProductCardProps"
+      ],
+      "props": "function ProductCard({ name, price, compareAt, rating, reviews, availability, badge, image, tint, wishlisted, onWishlist, onAddToCart, addToCartLabel, onClick, className }: ProductCardProps): React.JSX.Element;",
+      "example": "<ProductCard\n  name=\"Standing desk Pro\"\n  price=\"$489\"\n  compareAt=\"$599\"\n  rating={4.8}\n  reviews={312}\n  badge={{ label: \"Sale\" }}\n  tint=\"indigo\"\n  wishlisted={wishlisted}\n  onWishlist={() => setWishlisted((w) => !w)}\n  onAddToCart={() => cart.add(\"desk-pro\")}\n/>\n\n<ProductCard name=\"Ergonomic chair\" price=\"$329\" availability=\"In stock\" tint=\"green\" onAddToCart={() => cart.add(\"chair\")} />",
+      "docs": "https://wunderui.com/components/product-card"
+    },
+    {
+      "slug": "line-item",
+      "title": "Line Item",
+      "category": "Block Parts",
+      "description": "One product line in a cart or order summary, with image, variant, quantity and price.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "LineItem",
+        "LineItemProps"
+      ],
+      "props": "function LineItem({ name, variant, price, quantity, image, tint, size, trailing, className }: LineItemProps): React.JSX.Element;",
+      "example": "<LineItem name=\"Standing desk Pro\" variant=\"Oak · 160 × 80 cm\" price=\"$489.00\" tint=\"indigo\" />\n<LineItem name=\"Monitor arm\" variant=\"Black\" quantity={2} price=\"$258.00\" tint=\"blue\" />\n\n{/* Tighter, for an order summary */}\n<LineItem size=\"compact\" name=\"Cable tray\" variant=\"White\" price=\"$39.00\" />",
+      "docs": "https://wunderui.com/components/line-item"
+    },
+    {
+      "slug": "product-mini-card",
+      "title": "Product Mini Card",
+      "category": "Block Parts",
+      "description": "A compact product row with a quick add button, for recommendations next to a cart.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "ProductMiniCard"
+      ],
+      "props": "function ProductMiniCard({ name, price, image, tint, onAdd, onClick, className }: {\n    name: React.ReactNode;\n    price: React.ReactNode;\n    image?: string;\n    tint?: Tint;\n    onAdd?: () => void;\n    onClick?: () => void;\n    className?: string;\n}): React.JSX.Element;\ntype Tint = \"indigo\" | \"blue\" | \"purple\" | \"pink\" | \"red\" | \"orange\" | \"yellow\" | \"green\" | \"alternative\";",
+      "example": "<ProductMiniCard name=\"Cable tray\" price=\"$39\" tint=\"yellow\" onAdd={() => cart.add(\"cable-tray\")} />\n<ProductMiniCard name=\"Monitor arm\" price=\"$129\" tint=\"blue\" onAdd={() => cart.add(\"monitor-arm\")} />",
+      "docs": "https://wunderui.com/components/product-mini-card"
+    },
+    {
+      "slug": "checkout-steps",
+      "title": "Checkout Steps",
+      "category": "Block Parts",
+      "description": "The numbered steps of a checkout, where finished steps can be clicked to go back.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "CheckoutSteps"
+      ],
+      "props": "function CheckoutSteps({ steps, current, onStepClick, className }: {\n    steps: string[];\n    current: number;\n    onStepClick?: (index: number) => void;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "const [step, setStep] = useState(1)\n\n<CheckoutSteps steps={[\"Information\", \"Shipping\", \"Payment\", \"Review\"]} current={step} onStepClick={setStep} />",
+      "docs": "https://wunderui.com/components/checkout-steps"
+    },
+    {
+      "slug": "histogram-bar",
+      "title": "Histogram Bar",
+      "category": "Block Parts",
+      "description": "One row of a rating breakdown: the star level, a filled bar and its share.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "HistogramBar"
+      ],
+      "props": "function HistogramBar({ label, value, count, className }: {\n    label: React.ReactNode;\n    value: number;\n    count?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<HistogramBar label={5} value={78} />\n<HistogramBar label={4} value={14} />\n<HistogramBar label={3} value={5} count=\"16\" />",
+      "docs": "https://wunderui.com/components/histogram-bar"
+    },
+    {
+      "slug": "review-card",
+      "title": "Review Card",
+      "category": "Block Parts",
+      "description": "A customer review with author, rating, text, photos, a reply from the store and a helpful button.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "ReviewCard",
+        "ReviewCardProps"
+      ],
+      "props": "function ReviewCard({ author, verified, rating, date, title, children, photos, reply, helpfulCount, helpful, onHelpful, onReport, onMenu, flagged, className }: ReviewCardProps): React.JSX.Element;",
+      "example": "<ReviewCard\n  author={{ name: \"Mira K.\", color: \"green\" }}\n  verified\n  rating={5}\n  date=\"Sep 12, 2026\"\n  title=\"Rock solid at standing height\"\n  reply={{ from: \"WunderUI Store\", date: \"Sep 13\", text: \"Thanks, Mira! Glad the desk fits your setup.\" }}\n  helpfulCount={24}\n  helpful={helpful}\n  onHelpful={() => setHelpful((h) => !h)}\n  onReport={report}\n>\n  No wobble at all, even fully raised. Setup took about 30 minutes and the motor is quiet.\n</ReviewCard>",
+      "docs": "https://wunderui.com/components/review-card"
+    },
+    {
+      "slug": "payment-methods",
+      "title": "Payment Methods",
+      "category": "Block Parts",
+      "description": "A row of small labels for the payment methods a shop accepts.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "PaymentMethods"
+      ],
+      "props": "function PaymentMethods({ methods, className }: {\n    methods?: string[];\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<PaymentMethods methods={[\"VISA\", \"MC\", \"AMEX\", \"PayPal\", \" Pay\"]} className=\"justify-center\" />",
+      "docs": "https://wunderui.com/components/payment-methods"
+    },
+    {
+      "slug": "text-field",
+      "title": "Text Field",
+      "category": "Block Parts",
+      "description": "A text input with a label, helper or error text, and optional icons or add-ons on either side.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "TextField",
+        "TextFieldProps"
+      ],
+      "props": "function TextField({ label, labelTrailing, optional, helper, error, leading, trailing, size, id: idProp, className, wrapperClassName, ...props }: TextFieldProps): React.JSX.Element;",
+      "example": "<TextField\n  label=\"Work email\"\n  type=\"email\"\n  placeholder=\"name@company.com\"\n  leading={<Mail className=\"size-4\" />}\n  value={email}\n  onChange={(e) => setEmail(e.target.value)}\n  helper=\"We'll send a sign-in link to this address.\"\n  error={valid ? undefined : \"Enter a full email address, like alina@wunderui.dev.\"}\n/>\n<TextField label=\"Company\" optional placeholder=\"WunderUI\" leading={<Building2 className=\"size-4\" />} />",
+      "docs": "https://wunderui.com/components/text-field"
+    },
+    {
+      "slug": "password-field",
+      "title": "Password Field",
+      "category": "Block Parts",
+      "description": "A password input with a button to show or hide what was typed.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "PasswordField"
+      ],
+      "props": "function PasswordField({ trailing, ...props }: TextFieldProps): React.JSX.Element;",
+      "example": "<PasswordField\n  label=\"Password\"\n  placeholder=\"Enter your password\"\n  labelTrailing={<a href=\"/reset\" className=\"text-xs font-medium text-text-link hover:underline\">Forgot password?</a>}\n/>",
+      "docs": "https://wunderui.com/components/password-field"
+    },
+    {
+      "slug": "textarea-field",
+      "title": "Textarea Field",
+      "category": "Block Parts",
+      "description": "A multi-line text input with a label and helper or error text.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "TextareaField",
+        "TextareaFieldProps"
+      ],
+      "props": "function TextareaField({ label, helper, error, optional, id: idProp, wrapperClassName, ...props }: TextareaFieldProps): React.JSX.Element;",
+      "example": "const [text, setText] = useState(\"\")\n\n<TextareaField\n  label=\"Message\"\n  optional\n  placeholder=\"Tell us what you're working on\"\n  maxLength={280}\n  value={text}\n  onChange={(e) => setText(e.target.value)}\n  helper={`${text.length} / 280 characters`}\n/>",
+      "docs": "https://wunderui.com/components/textarea-field"
+    },
+    {
+      "slug": "checkbox-field",
+      "title": "Checkbox Field",
+      "category": "Block Parts",
+      "description": "A checkbox with a clickable label and an optional description below it.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "CheckboxField",
+        "CheckboxFieldProps"
+      ],
+      "props": "function CheckboxField({ label, description, id: idProp, wrapperClassName, className, ...props }: CheckboxFieldProps): React.JSX.Element;",
+      "example": "<CheckboxField\n  checked={terms}\n  onCheckedChange={(v) => setTerms(!!v)}\n  label={<>I agree to the <a href=\"/terms\">Terms</a> and <a href=\"/privacy\">Privacy Policy</a></>}\n/>\n<CheckboxField\n  checked={news}\n  onCheckedChange={(v) => setNews(!!v)}\n  label=\"Product updates\"\n  description=\"One email a month about new components and blocks.\"\n/>",
+      "docs": "https://wunderui.com/components/checkbox-field"
+    },
+    {
+      "slug": "form-actions",
+      "title": "Form Actions",
+      "category": "Block Parts",
+      "description": "The row of buttons at the end of a form, aligned right, left or spread to both edges.",
+      "group": "Block Parts",
+      "tier": "pro",
+      "exports": [
+        "FormActions"
+      ],
+      "props": "function FormActions({ children, align, className }: {\n    children: React.ReactNode;\n    align?: \"start\" | \"end\" | \"between\";\n    className?: string;\n}): React.JSX.Element;",
+      "example": "<FormActions>\n  <Button variant=\"plain\" size=\"sm\">Cancel</Button>\n  <Button variant=\"primary\" size=\"sm\" type=\"submit\">Save changes</Button>\n</FormActions>\n\n<FormActions align=\"between\">\n  <Button variant=\"ghost\" size=\"sm\">Delete workspace</Button>\n  <Button variant=\"primary\" size=\"sm\">Save</Button>\n</FormActions>",
+      "docs": "https://wunderui.com/components/form-actions"
+    }
+  ],
+  "templates": [
+    {
+      "slug": "dashboard",
+      "title": "Analytics dashboard",
+      "description": "KPI row, two charts, a transactions table and an activity rail — the page every internal tool starts with.",
+      "uses": [
+        "AppLayout",
+        "KPIGroup",
+        "AreaChart",
+        "BarChart",
+        "DataGrid",
+        "Timeline"
+      ],
+      "url": "https://wunderui.com/templates/dashboard"
+    },
+    {
+      "slug": "settings",
+      "title": "Settings page",
+      "description": "Profile, preferences, notifications and a danger zone, grouped into sections with real form controls.",
+      "uses": [
+        "AppLayout",
+        "Input",
+        "Textarea",
+        "Switch",
+        "RadioGroup",
+        "Alert"
+      ],
+      "url": "https://wunderui.com/templates/settings"
+    },
+    {
+      "slug": "inbox",
+      "title": "AI inbox",
+      "description": "Conversation list, threaded messages with tool calls and sources, and a prompt input that sends.",
+      "uses": [
+        "ChatListView",
+        "ChatMessage",
+        "ChatTool",
+        "ChainOfThought",
+        "PromptInput"
+      ],
+      "url": "https://wunderui.com/templates/inbox"
+    },
+    {
+      "slug": "agent-workspace",
+      "title": "Agent workspace",
+      "description": "Run list, a run's timeline with an approval waiting inside it, and a context rail with sources, tools and spend.",
+      "uses": [
+        "AgentGrid",
+        "AgentStatus",
+        "RunTimeline",
+        "ApprovalCard",
+        "CostMeter",
+        "RunError"
+      ],
+      "url": "https://wunderui.com/templates/agent-workspace"
+    },
+    {
+      "slug": "sign-in",
+      "title": "Sign in",
+      "description": "Split authentication screen with email and password, provider buttons and a product panel.",
+      "uses": [
+        "Input",
+        "Checkbox",
+        "Button",
+        "DividerWithLabel",
+        "Badge"
+      ],
+      "url": "https://wunderui.com/templates/sign-in"
+    }
+  ]
+}
