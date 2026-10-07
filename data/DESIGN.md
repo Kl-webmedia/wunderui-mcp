@@ -2,7 +2,7 @@
 
 > Design context for AI coding agents. Paste this into your prompt, or let your
 > agent pull it from https://wunderui.com/DESIGN.md.
-> Generated from the WunderUI source on 2026-10-04 · @wunderui/react@0.1.0
+> Generated from the WunderUI source on 2026-10-07 · @wunderui/react@0.1.0
 
 WunderUI is a React component library and design system: 201
 documented components in 6 groups, built on Base UI
@@ -295,13 +295,13 @@ Light is `:root`, dark is `.dark`. Same names in both themes.
 | `--secondary` | `#FFFFFF` | `#1C1D20` |
 | `--secondary-foreground` | `#000000` | `#FFFFFF` |
 | `--muted` | `#F1F5F7` | `#323438` |
-| `--muted-foreground` | `#5A7383` | `#8791A0` |
+| `--muted-foreground` | `#5A7383` | `#949EAD` |
 | `--accent` | `#F1F5F7` | `#323438` |
 | `--accent-foreground` | `#000000` | `#FFFFFF` |
 | `--destructive` | `#D42A2D` | `#D42A2D` |
 | `--destructive-foreground` | `#FFFFFF` | `#FFFFFF` |
 | `--border` | `#F1F5F7` | `#323438` |
-| `--input` | `#F1F5F7` | `#323438` |
+| `--input` | `#7694AD` | `#6E6E70` |
 | `--code-border` | `var(--light-300)` | `color-mix(in srgb, var(--foreground) 14%, var(--muted))` |
 | `--border-control` | `var(--light-300)` | `#323438` |
 | `--ring` | `var(--brand-600)` | `var(--brand-400)` |
@@ -323,7 +323,7 @@ Light is `:root`, dark is `.dark`. Same names in both themes.
 | `--sidebar-border` | `#F1F5F7` | `#323438` |
 | `--sidebar-ring` | `var(--brand-600)` | `var(--brand-400)` |
 | `--text-link` | `var(--brand-600)` | `var(--brand-400)` |
-| `--text-success` | `#10805B` | `#76E6C1` |
+| `--text-success` | `#0C7E5A` | `#76E6C1` |
 | `--text-error` | `#D42A2D` | `#F8ADBC` |
 | `--text-warning` | `#64511E` | `#FCDF92` |
 | `--inverse` | `#000000` | `#FFFFFF` |
@@ -507,7 +507,7 @@ Mode-independent hue scales from the Figma Primitives collection, exposed as
 | `--neutral-light-background` | `#F9FBFC` |
 | `--neutral-alternative-secondary` | `#ACB3C7` |
 | `--neutral-error-base` | `#D42A2D` |
-| `--neutral-dark-muted` | `#8791A0` |
+| `--neutral-dark-muted` | `#949EAD` |
 
 ### Gradients
 
