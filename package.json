@@ -1,5 +1,5 @@
 {
-  "name": "@wunderui/mcp",
+  "name": "wunderui-mcp",
   "version": "0.1.0",
   "description": "MCP server that gives AI coding agents the WunderUI design system: tokens, component props, templates and starters. Works with Claude Code, Cursor, Windsurf, Cline and Codex.",
   "keywords": [

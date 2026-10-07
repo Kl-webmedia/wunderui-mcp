@@ -3,7 +3,7 @@
 An MCP server that gives an AI coding agent the [WunderUI](https://wunderui.com) design system: design tokens, the component inventory with real prop signatures, page templates and starter snippets. The agent builds *with* the library instead of reinventing a data grid out of raw divs.
 
 ```bash
-claude mcp add wunderui -- npx -y @wunderui/mcp
+claude mcp add wunderui -- npx -y wunderui-mcp
 ```
 
 Works with Claude Code, Cursor, Windsurf, Cline, Codex, VS Code and any other client that speaks MCP over stdio. No key and no account needed.
@@ -27,7 +27,7 @@ Every component carries its plan. On the Free plan, an agent should only use com
 **Claude Code**
 
 ```bash
-claude mcp add wunderui -- npx -y @wunderui/mcp
+claude mcp add wunderui -- npx -y wunderui-mcp
 ```
 
 **Cursor**: `.cursor/mcp.json`
@@ -35,7 +35,7 @@ claude mcp add wunderui -- npx -y @wunderui/mcp
 ```json
 {
   "mcpServers": {
-    "wunderui": { "command": "npx", "args": ["-y", "@wunderui/mcp"] }
+    "wunderui": { "command": "npx", "args": ["-y", "wunderui-mcp"] }
   }
 }
 ```
