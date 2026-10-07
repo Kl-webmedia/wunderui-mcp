@@ -32,7 +32,7 @@
     "provenance": true
   },
   "bin": {
-    "wunderui-mcp": "./src/index.mjs"
+    "wunderui-mcp": "src/index.mjs"
   },
   "files": [
     "src",
