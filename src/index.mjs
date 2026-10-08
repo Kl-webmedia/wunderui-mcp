@@ -188,7 +188,7 @@ server.registerTool(
     inputSchema: {
       category: z.string().optional().describe(`One of: ${design.categories.join(", ")}`),
       query: z.string().optional().describe("Free text, matched against name, description and category"),
-      plan: z.enum(["free", "pro"]).optional().describe("Only components of this plan. Free = Free License (personal use); pro needs WunderUI Core or Pro."),
+      plan: z.enum(["free", "pro"]).optional().describe("Only components of this plan. Free = open source under MIT (github.com/wunder-ui/wunderui); pro needs WunderUI Core or Pro."),
     },
   },
   async ({ category, query, plan }) => {
@@ -241,7 +241,9 @@ server.registerTool(
       title: component.title,
       category: component.category,
       plan: component.tier ?? "pro",
-      planNote: (component.tier ?? "pro") === "free" ? "Free License: personal, non-commercial use." : "Needs WunderUI Core or Pro.",
+      planNote: (component.tier ?? "pro") === "free" ? "Free: MIT source, any project — fetch it from sourceRaw." : "Needs WunderUI Core or Pro.",
+      source: component.source ?? undefined,
+      sourceRaw: component.sourceRaw ?? undefined,
       description: component.description,
       import: `import { ${component.exports.slice(0, 4).join(", ")} } from "${design.name}"`,
       exports: component.exports,

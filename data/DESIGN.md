@@ -15,7 +15,7 @@ Core and Pro licence holders (the wunderui-core download from the purchase). Not
 
 Unzip the wunderui-core download, run `npm install && npm run build` in it once, then in your project: `npm pack <wunderui-core>/packages/react --pack-destination .wunderui` and `npm install ./.wunderui/<the .tgz>`. The wunderui-setup agent skill does all of it.
 
-Do not run `npm install @wunderui/react` — the package is not published, the command fails. Free plan: the Figma preview and the documentation at https://wunderui.com. The React package comes with Core or Pro (https://wunderui.com/#pricing).
+Do not run `npm install @wunderui/react` — the package is not published, the command fails. Free plan: the 76 free components are MIT source at https://github.com/wunder-ui/wunderui — copy components/, lib/ and styles/wunderui.css into your project (each free component in design.json has a sourceRaw URL). Core and Pro components come with a plan (https://wunderui.com/#pricing).
 
 Then wire up the styles and import:
 
@@ -653,7 +653,7 @@ on an `animate-in` the same way it works on a `transition`.
 
 ## Component inventory
 
-**Plans.** 76 components are **Free** (Free License: personal, non-commercial use); 125 are **Pro** and need WunderUI Core or Pro — charts, KPI cards, the data grid, the app layout and navigation, AI & agents. On the Free plan, build only with components marked Free and name the Pro component that would do the job better.
+**Plans.** 76 components are **Free** (MIT, source at https://github.com/wunder-ui/wunderui); 125 are **Pro** and need WunderUI Core or Pro — charts, KPI cards, the data grid, the app layout and navigation, AI & agents. On the Free plan, build only with components marked Free and name the Pro component that would do the job better.
 
 ### Primitives
 

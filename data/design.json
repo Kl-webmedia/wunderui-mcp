@@ -9,7 +9,7 @@
     "available": "Core and Pro licence holders (the wunderui-core download from the purchase). Not on the public npm registry.",
     "package": "Unzip the wunderui-core download, run `npm install && npm run build` in it once, then in your project: `npm pack <wunderui-core>/packages/react --pack-destination .wunderui` and `npm install ./.wunderui/<the .tgz>`. The wunderui-setup agent skill does all of it.",
     "doNot": "Do not run `npm install @wunderui/react` — the package is not published, the command fails.",
-    "free": "Free plan: the Figma preview and the documentation at https://wunderui.com. The React package comes with Core or Pro (https://wunderui.com/#pricing).",
+    "free": "Free plan: the 76 free components are MIT source at https://github.com/wunder-ui/wunderui — copy components/, lib/ and styles/wunderui.css into your project (each free component in design.json has a sourceRaw URL). Core and Pro components come with a plan (https://wunderui.com/#pricing).",
     "import": "import { Button, Card } from \"@wunderui/react\"",
     "styles": "@import \"@wunderui/react/styles.css\";"
   },
@@ -28,7 +28,7 @@
     "pro": 125
   },
   "plans": {
-    "free": "Free License (personal, non-commercial use): only components with tier \"free\". Commercial use and every \"pro\" component need WunderUI Core or Pro.",
+    "free": "WunderUI Free: the components with tier \"free\" are open source under the MIT License (https://github.com/wunder-ui/wunderui) — any project, commercial included. Every \"pro\" component needs WunderUI Core or Pro.",
     "core": "WunderUI Core: every component, commercial license.",
     "pro": "WunderUI Pro: everything in Core plus UI block and template source and all agent skills."
   },
@@ -465,7 +465,9 @@
       ],
       "props": "function Accordion({ className, ...props }: Accordion.Root.Props): React.JSX.Element;",
       "example": "<Accordion className=\"gap-0\">\n  <AccordionItem value=\"profile\" variant=\"divider\">\n    <AccordionTrigger icon={<User />} iconVariant=\"plain\" indicatorVariant=\"plus\">\n      Profile Settings\n    </AccordionTrigger>\n    <AccordionContent>Name, avatar and the handle other people see.</AccordionContent>\n  </AccordionItem>\n</Accordion>",
-      "docs": "https://wunderui.com/components/accordion"
+      "docs": "https://wunderui.com/components/accordion",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/accordion.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/accordion.tsx"
     },
     {
       "slug": "avatar",
@@ -486,7 +488,9 @@
       ],
       "props": "function Avatar({ className, size, shape, variant, color, ...props }: Avatar.Root.Props & {\n    /** Figma Avatar sizes: sm = 24px (2xs), xs = 28px, default = 36px (small), lg = 40px (medium), xl = 44px (large) */\n    size?: \"sm\" | \"xs\" | \"default\" | \"lg\" | \"xl\";\n    shape?: \"circle\" | \"square\";\n    variant?: \"plain\" | \"primary\";\n    /** Soft tint for initials avatars; ignored when an image renders. */\n    color?: AvatarColor;\n}): React.JSX.Element;\ntype AvatarColor = \"indigo\" | \"blue\" | \"purple\" | \"pink\" | \"red\" | \"orange\" | \"yellow\" | \"green\" | \"alternative\" | \"grey\";",
       "example": "<Avatar size=\"lg\">\n  <AvatarImage src=\"/avatars/03.png\" alt=\"Alina Lorenz\" />\n  <AvatarFallback>AL</AvatarFallback>\n</Avatar>\n<Avatar size=\"lg\" variant=\"primary\">\n  <AvatarFallback>PM</AvatarFallback>\n</Avatar>",
-      "docs": "https://wunderui.com/components/avatar"
+      "docs": "https://wunderui.com/components/avatar",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/avatar.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/avatar.tsx"
     },
     {
       "slug": "avatar-group",
@@ -501,7 +505,9 @@
       ],
       "props": "function AvatarGroup({ className, children, ...props }: React.ComponentProps<\"div\">): React.JSX.Element;",
       "example": "<AvatarGroup>\n  <Avatar><AvatarImage src=\"/avatars/01.png\" alt=\"Alina\" /><AvatarFallback>AL</AvatarFallback></Avatar>\n  <Avatar><AvatarImage src=\"/avatars/08.png\" alt=\"Mira\" /><AvatarFallback>MC</AvatarFallback></Avatar>\n  <AvatarGroupCount>+3</AvatarGroupCount>\n</AvatarGroup>",
-      "docs": "https://wunderui.com/components/avatar-group"
+      "docs": "https://wunderui.com/components/avatar-group",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/avatar.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/avatar.tsx"
     },
     {
       "slug": "badge",
@@ -518,7 +524,9 @@
       ],
       "props": "function Badge({ className, shape, color, badgeStyle, style, render, ...props }: useRender.ComponentProps<\"span\"> & VariantProps<typeof badgeVariants> & {\n    color?: BadgeColor;\n    badgeStyle?: BadgeStyle;\n}): React.ReactElement<unknown, string | React.JSXElementConstructor<any>>;\ntype BadgeColor = keyof typeof BADGE_COLORS;\ntype BadgeStyle = \"plain\" | \"light\" | \"light_border\" | \"border_color\" | \"border_grey\" | \"ghost\";",
       "example": "<Badge color=\"green\" badgeStyle=\"light\">Active</Badge>",
-      "docs": "https://wunderui.com/components/badge"
+      "docs": "https://wunderui.com/components/badge",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/badge.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/badge.tsx"
     },
     {
       "slug": "breadcrumb",
@@ -537,7 +545,9 @@
       ],
       "props": "function Breadcrumb({ variant, ...props }: React.ComponentProps<\"nav\"> & {\n    variant?: BreadcrumbVariant;\n}): React.JSX.Element;\ntype BreadcrumbVariant = \"plain\" | \"border\" | \"underline\";",
       "example": "import { Home } from \"lucide-react\"\n\n<Breadcrumb>\n  <BreadcrumbList>\n    <BreadcrumbItem>\n      <BreadcrumbLink href=\"/\"><Home /></BreadcrumbLink>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <BreadcrumbLink href=\"/components\">Components</BreadcrumbLink>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n    </BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>",
-      "docs": "https://wunderui.com/components/breadcrumb"
+      "docs": "https://wunderui.com/components/breadcrumb",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/breadcrumb.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/breadcrumb.tsx"
     },
     {
       "slug": "button",
@@ -553,7 +563,9 @@
       ],
       "props": "function Button({ className, variant, shape, size, ...props }: Button.Props & VariantProps<typeof buttonVariants>): React.JSX.Element;",
       "example": "import { Button } from \"@wunderui/react\"\nimport { Plus } from \"lucide-react\"\n\n// Solid, WCAG AA-safe blue button — the default call to action\n<Button variant=\"primary\" size=\"md\">\n  <Plus /> Add item\n</Button>",
-      "docs": "https://wunderui.com/components/button"
+      "docs": "https://wunderui.com/components/button",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/button.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/button.tsx"
     },
     {
       "slug": "icon-button",
@@ -568,7 +580,9 @@
       ],
       "props": "function IconButton({ className, variant, shape, size, ...props }: Button.Props & VariantProps<typeof iconButtonVariants>): React.JSX.Element;",
       "example": "<IconButton variant=\"primary\" shape=\"circle\">\n  <Plus />\n</IconButton>",
-      "docs": "https://wunderui.com/components/icon-button"
+      "docs": "https://wunderui.com/components/icon-button",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/icon-button.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/icon-button.tsx"
     },
     {
       "slug": "button-group",
@@ -582,7 +596,9 @@
       ],
       "props": "function ButtonGroup({ shape, className, ...props }: React.ComponentProps<\"div\"> & {\n    shape?: ButtonGroupShape;\n}): React.JSX.Element;\ntype ButtonGroupShape = \"rounded\" | \"pill\";",
       "example": "<ButtonGroup>\n  <Button variant=\"plain\">Day</Button>\n  <Button variant=\"plain\">Week</Button>\n  <Button variant=\"plain\">Month</Button>\n</ButtonGroup>",
-      "docs": "https://wunderui.com/components/button-group"
+      "docs": "https://wunderui.com/components/button-group",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/button-group.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/button-group.tsx"
     },
     {
       "slug": "card",
@@ -604,7 +620,9 @@
       ],
       "props": "function Card({ className, size, variant, ...props }: React.ComponentProps<\"div\"> & {\n    size?: \"default\" | \"sm\";\n    variant?: CardVariant;\n}): React.JSX.Element;\ntype CardVariant = keyof typeof CARD_VARIANT;",
       "example": "<Card>\n  <CardHeader>\n    <CardTitle>Card title</CardTitle>\n    <CardDescription>Supporting text.</CardDescription>\n  </CardHeader>\n</Card>",
-      "docs": "https://wunderui.com/components/card"
+      "docs": "https://wunderui.com/components/card",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/card.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/card.tsx"
     },
     {
       "slug": "checkbox",
@@ -621,7 +639,9 @@
       ],
       "props": "function Checkbox({ className, ...props }: Checkbox.Root.Props): React.JSX.Element;",
       "example": "<Checkbox aria-label=\"Example checkbox\" defaultChecked onCheckedChange={setValue} />",
-      "docs": "https://wunderui.com/components/checkbox"
+      "docs": "https://wunderui.com/components/checkbox",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/checkbox.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/checkbox.tsx"
     },
     {
       "slug": "switch",
@@ -636,7 +656,9 @@
       ],
       "props": "function Switch({ className, size, ...props }: Switch.Root.Props & {\n    size?: \"sm\" | \"default\";\n}): React.JSX.Element;",
       "example": "<Switch aria-label=\"Example switch\" defaultChecked onCheckedChange={setValue} />",
-      "docs": "https://wunderui.com/components/switch"
+      "docs": "https://wunderui.com/components/switch",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/switch.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/switch.tsx"
     },
     {
       "slug": "radio-group",
@@ -651,7 +673,9 @@
       ],
       "props": "function RadioGroup({ className, ...props }: RadioGroup.Props): React.JSX.Element;",
       "example": "<RadioGroup defaultValue=\"pro\">\n  <SelectorItemGroup>\n    <SelectorItem title=\"Starter\" description=\"1 project · community support\" control={<RadioGroupItem value=\"starter\" />} />\n    <SelectorItem title=\"Pro\" description=\"Unlimited projects · €12 per month\" control={<RadioGroupItem value=\"pro\" />} />\n    <SelectorItem title=\"Team\" description=\"Shared libraries · €49 per month\" control={<RadioGroupItem value=\"team\" />} />\n  </SelectorItemGroup>\n</RadioGroup>",
-      "docs": "https://wunderui.com/components/radio-group"
+      "docs": "https://wunderui.com/components/radio-group",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/radio-group.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/radio-group.tsx"
     },
     {
       "slug": "input",
@@ -667,7 +691,9 @@
       ],
       "props": "function Input({ className, type, size, ref, onInvalid, onInput, onBlur, ...props }: Omit<React.ComponentProps<\"input\">, \"size\"> & VariantProps<typeof inputVariants>): React.JSX.Element;",
       "example": "<Input size=\"default\" placeholder=\"Email\" />",
-      "docs": "https://wunderui.com/components/input"
+      "docs": "https://wunderui.com/components/input",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/input.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/input.tsx"
     },
     {
       "slug": "textarea",
@@ -683,7 +709,9 @@
       ],
       "props": "function Textarea({ className, size, showCount, maxLength, value, defaultValue, onChange, ...props }: Omit<React.ComponentProps<\"textarea\">, \"size\"> & VariantProps<typeof textareaVariants> & {\n    /** Show a \"n/maxLength\" character counter in the bottom-right corner. Requires maxLength. */\n    showCount?: boolean;\n}): React.JSX.Element;",
       "example": "<Textarea placeholder=\"Write a message...\" />",
-      "docs": "https://wunderui.com/components/textarea"
+      "docs": "https://wunderui.com/components/textarea",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/textarea.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/textarea.tsx"
     },
     {
       "slug": "progress",
@@ -702,7 +730,9 @@
       ],
       "props": "function Progress({ className, children, value, ...props }: Progress.Root.Props): React.JSX.Element;",
       "example": "<Progress value={65} />",
-      "docs": "https://wunderui.com/components/progress"
+      "docs": "https://wunderui.com/components/progress",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/progress.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/progress.tsx"
     },
     {
       "slug": "slider",
@@ -722,7 +752,9 @@
       ],
       "props": "function Slider({ className, children, value, defaultValue, \"aria-label\": ariaLabel, \"aria-labelledby\": ariaLabelledBy, ...props }: Slider.Root.Props): React.JSX.Element;",
       "example": "<Slider aria-label=\"Value\" defaultValue={40} onValueChange={setValue} />",
-      "docs": "https://wunderui.com/components/slider"
+      "docs": "https://wunderui.com/components/slider",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/slider.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/slider.tsx"
     },
     {
       "slug": "pagination",
@@ -737,7 +769,9 @@
       ],
       "props": "function Pagination({ page, pageCount, onPageChange, className }: PaginationProps): React.JSX.Element;",
       "example": "<Pagination page={page} pageCount={12} onPageChange={setPage} />",
-      "docs": "https://wunderui.com/components/pagination"
+      "docs": "https://wunderui.com/components/pagination",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/pagination.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/pagination.tsx"
     },
     {
       "slug": "separator",
@@ -751,7 +785,9 @@
       ],
       "props": "function Separator({ className, orientation, dashed, ...props }: Separator.Props & {\n    dashed?: boolean;\n}): React.JSX.Element;",
       "example": "<Separator orientation=\"horizontal\" dashed={false} />",
-      "docs": "https://wunderui.com/components/separator"
+      "docs": "https://wunderui.com/components/separator",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/separator.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/separator.tsx"
     },
     {
       "slug": "divider-with-label",
@@ -765,7 +801,9 @@
       ],
       "props": "function DividerWithLabel({ children, className, }: {\n    children: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<DividerWithLabel>OR</DividerWithLabel>",
-      "docs": "https://wunderui.com/components/divider-with-label"
+      "docs": "https://wunderui.com/components/divider-with-label",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/divider-label.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/divider-label.tsx"
     },
     {
       "slug": "skeleton",
@@ -779,7 +817,9 @@
       ],
       "props": "function Skeleton({ className, variant, ...props }: React.ComponentProps<\"div\"> & VariantProps<typeof skeletonVariants>): React.JSX.Element;",
       "example": "<Skeleton variant=\"title\" />\n<Skeleton variant=\"text\" />",
-      "docs": "https://wunderui.com/components/skeleton"
+      "docs": "https://wunderui.com/components/skeleton",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/skeleton.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/skeleton.tsx"
     },
     {
       "slug": "tooltip",
@@ -795,7 +835,9 @@
       ],
       "props": "function Tooltip({ ...props }: Tooltip.Root.Props): React.JSX.Element;",
       "example": "<Tooltip>\n  <TooltipTrigger render={<Button variant=\"plain\" />}>Hover</TooltipTrigger>\n  <TooltipContent>Tooltip text</TooltipContent>\n</Tooltip>",
-      "docs": "https://wunderui.com/components/tooltip"
+      "docs": "https://wunderui.com/components/tooltip",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/tooltip.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/tooltip.tsx"
     },
     {
       "slug": "dialog",
@@ -819,7 +861,9 @@
       ],
       "props": "function Dialog({ ...props }: Dialog.Root.Props): React.JSX.Element;",
       "example": "<Dialog>\n  <DialogTrigger render={<Button />}>Open</DialogTrigger>\n  <DialogContent>\n    <DialogHeader>\n      <DialogTitle>Title</DialogTitle>\n    </DialogHeader>\n  </DialogContent>\n</Dialog>",
-      "docs": "https://wunderui.com/components/dialog"
+      "docs": "https://wunderui.com/components/dialog",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/dialog.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/dialog.tsx"
     },
     {
       "slug": "alert-dialog",
@@ -843,7 +887,9 @@
       ],
       "props": "function AlertDialog({ ...props }: AlertDialog.Root.Props): React.JSX.Element;",
       "example": "<AlertDialog>\n  <AlertDialogTrigger render={<Button />}>Delete account</AlertDialogTrigger>\n  <AlertDialogContent>\n    <AlertDialogHeader>\n      <AlertDialogTitle>Delete account?</AlertDialogTitle>\n      <AlertDialogDescription>This cannot be undone.</AlertDialogDescription>\n    </AlertDialogHeader>\n    <AlertDialogFooter>\n      <AlertDialogCancel>Cancel</AlertDialogCancel>\n      <AlertDialogAction variant=\"destructive\">Delete</AlertDialogAction>\n    </AlertDialogFooter>\n  </AlertDialogContent>\n</AlertDialog>",
-      "docs": "https://wunderui.com/components/alert-dialog"
+      "docs": "https://wunderui.com/components/alert-dialog",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/alert-dialog.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/alert-dialog.tsx"
     },
     {
       "slug": "collapsible",
@@ -859,7 +905,9 @@
       ],
       "props": "function Collapsible({ ...props }: Collapsible.Root.Props): React.JSX.Element;",
       "example": "<Collapsible defaultOpen>\n  <CollapsibleTrigger>Show details</CollapsibleTrigger>\n  <CollapsibleContent>Lorem ipsum dolor sit amet...</CollapsibleContent>\n</Collapsible>",
-      "docs": "https://wunderui.com/components/collapsible"
+      "docs": "https://wunderui.com/components/collapsible",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/collapsible.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/collapsible.tsx"
     },
     {
       "slug": "toggle",
@@ -874,7 +922,9 @@
       ],
       "props": "function Toggle({ className, size, ...props }: Toggle.Props & VariantProps<typeof toggleVariants>): React.JSX.Element;",
       "example": "<Toggle defaultPressed aria-label=\"Bold\">\n  <Bold />\n</Toggle>",
-      "docs": "https://wunderui.com/components/toggle"
+      "docs": "https://wunderui.com/components/toggle",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/toggle.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/toggle.tsx"
     },
     {
       "slug": "meter",
@@ -892,7 +942,9 @@
       ],
       "props": "function Meter({ className, children, value, ...props }: Meter.Root.Props): React.JSX.Element;",
       "example": "<Meter value={72}>\n  <MeterLabel>Storage used</MeterLabel>\n  <MeterValue />\n</Meter>",
-      "docs": "https://wunderui.com/components/meter"
+      "docs": "https://wunderui.com/components/meter",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/meter.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/meter.tsx"
     },
     {
       "slug": "kbd",
@@ -907,7 +959,9 @@
       ],
       "props": "function Kbd({ className, ...props }: React.ComponentProps<\"kbd\">): React.JSX.Element;",
       "example": "<KbdGroup>\n  <Kbd>⌘</Kbd>\n  <Kbd>K</Kbd>\n</KbdGroup>",
-      "docs": "https://wunderui.com/components/kbd"
+      "docs": "https://wunderui.com/components/kbd",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/kbd.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/kbd.tsx"
     },
     {
       "slug": "spinner",
@@ -921,7 +975,9 @@
       ],
       "props": "function Spinner({ className, ...props }: React.ComponentProps<\"svg\">): React.JSX.Element;",
       "example": "<Spinner />",
-      "docs": "https://wunderui.com/components/spinner"
+      "docs": "https://wunderui.com/components/spinner",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/spinner.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/spinner.tsx"
     },
     {
       "slug": "toolbar",
@@ -939,7 +995,9 @@
       ],
       "props": "function Toolbar({ className, ...props }: Toolbar.Root.Props): React.JSX.Element;",
       "example": "<Toolbar>\n  <ToolbarGroup>\n    <ToolbarButton aria-label=\"Bold\"><Bold /></ToolbarButton>\n    <ToolbarButton aria-label=\"Italic\"><Italic /></ToolbarButton>\n  </ToolbarGroup>\n  <ToolbarSeparator />\n</Toolbar>",
-      "docs": "https://wunderui.com/components/toolbar"
+      "docs": "https://wunderui.com/components/toolbar",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/toolbar.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/toolbar.tsx"
     },
     {
       "slug": "dropdown-menu",
@@ -985,7 +1043,9 @@
       ],
       "props": "function HoverCard({ ...props }: PreviewCard.Root.Props): React.JSX.Element;",
       "example": "<HoverCard>\n  <HoverCardTrigger render={<Button />}>@handle</HoverCardTrigger>\n  <HoverCardContent>Profile preview</HoverCardContent>\n</HoverCard>",
-      "docs": "https://wunderui.com/components/hover-card"
+      "docs": "https://wunderui.com/components/hover-card",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/hover-card.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/hover-card.tsx"
     },
     {
       "slug": "popover",
@@ -1002,7 +1062,9 @@
       ],
       "props": "function Popover({ ...props }: Popover.Root.Props): React.JSX.Element;",
       "example": "<Popover>\n  <PopoverTrigger render={<Button />}>Open</PopoverTrigger>\n  <PopoverContent>Content</PopoverContent>\n</Popover>",
-      "docs": "https://wunderui.com/components/popover"
+      "docs": "https://wunderui.com/components/popover",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/popover.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/popover.tsx"
     },
     {
       "slug": "table",
@@ -1041,7 +1103,9 @@
       ],
       "props": "function Tabs({ className, orientation, ...props }: Tabs.Root.Props): React.JSX.Element;",
       "example": "<Tabs defaultValue=\"day\">\n  <TabsList>\n    <TabsTrigger value=\"day\">Day</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"day\">...</TabsContent>\n</Tabs>",
-      "docs": "https://wunderui.com/components/tabs"
+      "docs": "https://wunderui.com/components/tabs",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/tabs.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/tabs.tsx"
     },
     {
       "slug": "area-chart",
@@ -1242,7 +1306,9 @@
       ],
       "props": "function Agenda({ items, className, }: {\n    items: AgendaItem[];\n    className?: string;\n}): React.JSX.Element;",
       "example": "<Agenda items={[{ id, time, title, description, color }]} />",
-      "docs": "https://wunderui.com/components/agenda"
+      "docs": "https://wunderui.com/components/agenda",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/agenda.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/agenda.tsx"
     },
     {
       "slug": "action-bar",
@@ -1256,7 +1322,9 @@
       ],
       "props": "function ActionBar({ label, children, className, }: {\n    label?: ReactNode;\n    children: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<ActionBar label=\"3 selected\">\n  <Button variant=\"plain\" size=\"sm\">Archive</Button>\n</ActionBar>",
-      "docs": "https://wunderui.com/components/action-bar"
+      "docs": "https://wunderui.com/components/action-bar",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/action-bar.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/action-bar.tsx"
     },
     {
       "slug": "carousel",
@@ -1270,7 +1338,9 @@
       ],
       "props": "function Carousel({ children, className, label, }: {\n    children: React.ReactNode;\n    className?: string;\n    /** Accessible name of the scrolling region. */\n    label?: string;\n}): React.JSX.Element;",
       "example": "<Carousel>\n  {items.map((item) => <Card key={item.id}>{item.label}</Card>)}\n</Carousel>",
-      "docs": "https://wunderui.com/components/carousel"
+      "docs": "https://wunderui.com/components/carousel",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/carousel.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/carousel.tsx"
     },
     {
       "slug": "data-grid",
@@ -1299,7 +1369,9 @@
       ],
       "props": "function EmptyState({ icon, title, description, action, variant, className, }: {\n    icon?: ReactNode;\n    title: string;\n    description?: string;\n    action?: ReactNode;\n    /** Frame style — mirrors the Figma Empty State \"Style\" variants. */\n    variant?: keyof typeof EMPTY_STATE_VARIANTS;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<EmptyState title=\"No results\" description=\"...\" action={<Button>Reset</Button>} />",
-      "docs": "https://wunderui.com/components/empty-state"
+      "docs": "https://wunderui.com/components/empty-state",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/stat-card.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/stat-card.tsx"
     },
     {
       "slug": "file-tree",
@@ -1314,7 +1386,9 @@
       ],
       "props": "function FileTree({ data, className, }: {\n    data: FileTreeNode[];\n    className?: string;\n}): React.JSX.Element;",
       "example": "<FileTree data={[{ id, name, children: [...] }]} />",
-      "docs": "https://wunderui.com/components/file-tree"
+      "docs": "https://wunderui.com/components/file-tree",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/file-tree.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/file-tree.tsx"
     },
     {
       "slug": "floating-toc",
@@ -1328,7 +1402,9 @@
       ],
       "props": "function FloatingToc({ items, activeId, onSelect, scrollContainer, className, }: {\n    items: TocItem[];\n    activeId?: string;\n    onSelect?: (id: string) => void;\n    /** The element that scrolls the sections, if it is not the page. */\n    scrollContainer?: React.RefObject<HTMLElement | null>;\n    className?: string;\n}): React.JSX.Element;",
       "example": "const articleRef = React.useRef<HTMLDivElement>(null)\n\n<div ref={articleRef} className=\"overflow-y-auto\">\n  <section id=\"why\">…</section>\n  <section id=\"setup\">…</section>\n</div>\n<FloatingToc\n  items={[{ id: \"why\", label: \"Why tokens\" }, { id: \"setup\", label: \"Set up the theme\" }]}\n  scrollContainer={articleRef}\n/>",
-      "docs": "https://wunderui.com/components/floating-toc"
+      "docs": "https://wunderui.com/components/floating-toc",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/floating-toc.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/floating-toc.tsx"
     },
     {
       "slug": "holo-card",
@@ -1342,7 +1418,9 @@
       ],
       "props": "function HoloCard({ children, className, }: {\n    children: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<HoloCard>\n  <p>Hover to reveal the spotlight effect.</p>\n</HoloCard>",
-      "docs": "https://wunderui.com/components/holo-card"
+      "docs": "https://wunderui.com/components/holo-card",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/holo-card.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/holo-card.tsx"
     },
     {
       "slug": "kanban",
@@ -1375,7 +1453,9 @@
       ],
       "props": "function ItemCard({ icon, title, description, meta, action, className, }: {\n    icon?: ReactNode;\n    title: ReactNode;\n    description?: ReactNode;\n    meta?: ReactNode;\n    action?: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<ItemCardGroup>\n  <ItemCard icon={<FileText />} title=\"...\" description=\"...\" />\n</ItemCardGroup>",
-      "docs": "https://wunderui.com/components/item-card"
+      "docs": "https://wunderui.com/components/item-card",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/item-card.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/item-card.tsx"
     },
     {
       "slug": "kpi",
@@ -1449,7 +1529,9 @@
       ],
       "props": "function Timeline({ items, className, }: {\n    items: TimelineItem[];\n    className?: string;\n}): React.JSX.Element;",
       "example": "<Timeline items={[{ id, title, timestamp, color }]} />",
-      "docs": "https://wunderui.com/components/timeline"
+      "docs": "https://wunderui.com/components/timeline",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/timeline.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/timeline.tsx"
     },
     {
       "slug": "widget",
@@ -1463,7 +1545,9 @@
       ],
       "props": "function Widget({ title, description, action, footer, children, className, }: {\n    title?: ReactNode;\n    description?: ReactNode;\n    action?: ReactNode;\n    footer?: ReactNode;\n    children: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<Widget title=\"Title\" description=\"...\">\n  <YourContent />\n</Widget>",
-      "docs": "https://wunderui.com/components/widget"
+      "docs": "https://wunderui.com/components/widget",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/widget.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/widget.tsx"
     },
     {
       "slug": "app-layout",
@@ -1621,7 +1705,9 @@
       ],
       "props": "function NativeSelect({ items, children, ...props }: Select.Root.Props<string>): React.JSX.Element;",
       "example": "<NativeSelect value={value} onValueChange={setValue}>\n  <NativeSelectTrigger aria-label=\"Choose an option\"><NativeSelectValue /></NativeSelectTrigger>\n  <NativeSelectContent>\n    <NativeSelectItem value=\"us\">United States</NativeSelectItem>\n  </NativeSelectContent>\n</NativeSelect>",
-      "docs": "https://wunderui.com/components/native-select"
+      "docs": "https://wunderui.com/components/native-select",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/native-select.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/native-select.tsx"
     },
     {
       "slug": "inline-select",
@@ -1639,7 +1725,9 @@
       ],
       "props": "function InlineSelect({ items, children, ...props }: Select.Root.Props<string>): React.JSX.Element;",
       "example": "<InlineSelect defaultValue=\"newest\">\n  <InlineSelectTrigger aria-label=\"Choose an option\"><InlineSelectValue /></InlineSelectTrigger>\n  <InlineSelectContent>...</InlineSelectContent>\n</InlineSelect>",
-      "docs": "https://wunderui.com/components/inline-select"
+      "docs": "https://wunderui.com/components/inline-select",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/inline-select.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/inline-select.tsx"
     },
     {
       "slug": "checkbox-button-group",
@@ -1653,7 +1741,9 @@
       ],
       "props": "function CheckboxButtonGroup<Value extends string>({ className, ...props }: ToggleGroup.Props<Value>): React.JSX.Element;",
       "example": "<CheckboxButtonGroup value={value} onValueChange={setValue}>\n  <ToggleButton aria-label=\"Bold\" value=\"bold\"><Bold /></ToggleButton>\n</CheckboxButtonGroup>",
-      "docs": "https://wunderui.com/components/checkbox-button-group"
+      "docs": "https://wunderui.com/components/checkbox-button-group",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/toggle-button-group.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/toggle-button-group.tsx"
     },
     {
       "slug": "radio-button-group",
@@ -1667,7 +1757,9 @@
       ],
       "props": "function RadioButtonGroup<Value extends string>({ className, ...props }: Omit<ToggleGroup.Props<Value>, \"multiple\">): React.JSX.Element;",
       "example": "<RadioButtonGroup value={value} onValueChange={setValue}>\n  <ToggleButton aria-label=\"Align left\" value=\"left\"><AlignLeft /></ToggleButton>\n</RadioButtonGroup>",
-      "docs": "https://wunderui.com/components/radio-button-group"
+      "docs": "https://wunderui.com/components/radio-button-group",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/toggle-button-group.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/toggle-button-group.tsx"
     },
     {
       "slug": "number-stepper",
@@ -1681,7 +1773,9 @@
       ],
       "props": "function NumberStepper({ value, onValueChange, min, max, step, format, className, ...props }: Omit<React.ComponentProps<\"div\">, \"children\"> & {\n    value: number;\n    onValueChange: (value: number) => void;\n    min?: number;\n    max?: number;\n    step?: number;\n    /** Formats the displayed value, e.g. `(n) => `${n}%`` */\n    format?: (value: number) => React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<NumberStepper value={value} onValueChange={setValue} min={0} max={10} />",
-      "docs": "https://wunderui.com/components/number-stepper"
+      "docs": "https://wunderui.com/components/number-stepper",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/number-stepper.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/number-stepper.tsx"
     },
     {
       "slug": "drop-zone",
@@ -1695,7 +1789,9 @@
       ],
       "props": "function DropZone({ onFiles, accept, hint, className, }: {\n    onFiles?: (files: FileList) => void;\n    accept?: string;\n    /** Line under the prompt. Defaults to the accepted types, or \"Any file type\". State your size limit here. */\n    hint?: React.ReactNode;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<DropZone onFiles={(files) => upload(files)} accept=\"image/*\" />",
-      "docs": "https://wunderui.com/components/drop-zone"
+      "docs": "https://wunderui.com/components/drop-zone",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/drop-zone.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/drop-zone.tsx"
     },
     {
       "slug": "rich-text-editor",
@@ -1711,7 +1807,9 @@
       ],
       "props": "function RichTextEditor(props: RichTextEditorProps): React.JSX.Element;",
       "example": "<RichTextEditor content={html} onChange={setHtml} placeholder=\"Write something...\" />",
-      "docs": "https://wunderui.com/components/rich-text-editor"
+      "docs": "https://wunderui.com/components/rich-text-editor",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/rich-text-editor.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/rich-text-editor.tsx"
     },
     {
       "slug": "color-picker",
@@ -1727,7 +1825,9 @@
       ],
       "props": "function ColorPicker({ variant, value, defaultValue, onValueChange, alpha, defaultAlpha, onAlphaChange, showAlpha, format, defaultFormat, onFormatChange, swatches, defaultSwatches, onSwatchesChange, title, onClose, className, }: ColorPickerProps): React.JSX.Element;",
       "example": "<ColorPicker value={hex} onValueChange={setHex} />",
-      "docs": "https://wunderui.com/components/color-picker"
+      "docs": "https://wunderui.com/components/color-picker",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/color-picker.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/color-picker.tsx"
     },
     {
       "slug": "cell-color-picker",
@@ -1741,7 +1841,9 @@
       ],
       "props": "function CellColorPicker({ value, onValueChange, }: {\n    value: string;\n    onValueChange: (value: string) => void;\n}): React.JSX.Element;",
       "example": "<CellColorPicker value={color} onValueChange={setColor} />",
-      "docs": "https://wunderui.com/components/cell-color-picker"
+      "docs": "https://wunderui.com/components/cell-color-picker",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/table-cells.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/table-cells.tsx"
     },
     {
       "slug": "cell-slider",
@@ -1755,7 +1857,9 @@
       ],
       "props": "function CellSlider({ value, max }: {\n    value: number;\n    max?: number;\n}): React.JSX.Element;",
       "example": "<CellSlider value={68} max={100} />",
-      "docs": "https://wunderui.com/components/cell-slider"
+      "docs": "https://wunderui.com/components/cell-slider",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/table-cells.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/table-cells.tsx"
     },
     {
       "slug": "cell-select",
@@ -1769,7 +1873,9 @@
       ],
       "props": "function CellSelect({ value, onValueChange, options, \"aria-label\": ariaLabel, }: {\n    value: string;\n    onValueChange: (value: string) => void;\n    options: string[];\n    /** Name for screen readers — a combobox is not named by its current value. */\n    \"aria-label\"?: string;\n}): React.JSX.Element;",
       "example": "<CellSelect value={value} onValueChange={setValue} options={[\"Active\", \"Paused\"]} />",
-      "docs": "https://wunderui.com/components/cell-select"
+      "docs": "https://wunderui.com/components/cell-select",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/table-cells.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/table-cells.tsx"
     },
     {
       "slug": "cell-switch",
@@ -1783,7 +1889,9 @@
       ],
       "props": "function CellSwitch({ checked, onCheckedChange, \"aria-label\": ariaLabel, }: {\n    checked: boolean;\n    onCheckedChange: (checked: boolean) => void;\n    /** Name for screen readers — a cell has no visible label of its own. */\n    \"aria-label\"?: string;\n}): React.JSX.Element;",
       "example": "<CellSwitch aria-label=\"Example switch\" checked={checked} onCheckedChange={setChecked} />",
-      "docs": "https://wunderui.com/components/cell-switch"
+      "docs": "https://wunderui.com/components/cell-switch",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/table-cells.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/table-cells.tsx"
     },
     {
       "slug": "selector-item",
@@ -1798,7 +1906,9 @@
       ],
       "props": "function SelectorItem({ leading, title, description, control, className, }: {\n    leading?: ReactNode;\n    title: ReactNode;\n    description?: ReactNode;\n    control: ReactNode;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<SelectorItem\n  leading={<CreditCard />}\n  title=\"Mastercard\"\n  description=\"Ending in 4242 · expires 08/28\"\n  control={<RadioGroupItem value=\"mastercard\" />}\n/>",
-      "docs": "https://wunderui.com/components/selector-item"
+      "docs": "https://wunderui.com/components/selector-item",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/selector-item.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/selector-item.tsx"
     },
     {
       "slug": "label",
@@ -1812,7 +1922,9 @@
       ],
       "props": "function Label({ className, ...props }: React.ComponentProps<\"label\">): React.JSX.Element;",
       "example": "<Label htmlFor=\"email\">Email</Label>",
-      "docs": "https://wunderui.com/components/label"
+      "docs": "https://wunderui.com/components/label",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/label.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/label.tsx"
     },
     {
       "slug": "field",
@@ -1832,7 +1944,9 @@
       ],
       "props": "function Field({ className, ...props }: Field.Root.Props): React.JSX.Element;",
       "example": "<Field>\n  <FieldLabel>Email</FieldLabel>\n  <FieldControl render={<Input type=\"email\" />} />\n  <FieldDescription>We&apos;ll never share your email.</FieldDescription>\n</Field>",
-      "docs": "https://wunderui.com/components/field"
+      "docs": "https://wunderui.com/components/field",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/field.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/field.tsx"
     },
     {
       "slug": "fieldset",
@@ -1847,7 +1961,9 @@
       ],
       "props": "function Fieldset({ className, ...props }: Fieldset.Root.Props): React.JSX.Element;",
       "example": "<Fieldset>\n  <FieldsetLegend>Shipping address</FieldsetLegend>\n  <Field>\n    <FieldLabel>Street</FieldLabel>\n    <FieldControl render={<Input />} />\n  </Field>\n</Fieldset>",
-      "docs": "https://wunderui.com/components/fieldset"
+      "docs": "https://wunderui.com/components/fieldset",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/fieldset.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/fieldset.tsx"
     },
     {
       "slug": "form",
@@ -1862,7 +1978,9 @@
       ],
       "props": "function Form({ className, ...props }: Form.Props): React.JSX.Element;",
       "example": "<Form onSubmit={handleSubmit}>\n  <Field>\n    <FieldLabel>Name</FieldLabel>\n    <FieldControl render={<Input />} />\n  </Field>\n  <Button type=\"submit\">Submit</Button>\n</Form>",
-      "docs": "https://wunderui.com/components/form"
+      "docs": "https://wunderui.com/components/form",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/form.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/form.tsx"
     },
     {
       "slug": "input-group",
@@ -1877,7 +1995,9 @@
       ],
       "props": "function InputGroup({ className, ...props }: React.ComponentProps<\"div\">): React.JSX.Element;",
       "example": "<InputGroup>\n  <InputGroupAddon><Mail /></InputGroupAddon>\n  <input placeholder=\"you@example.com\" />\n</InputGroup>",
-      "docs": "https://wunderui.com/components/input-group"
+      "docs": "https://wunderui.com/components/input-group",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/input-group.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/input-group.tsx"
     },
     {
       "slug": "number-field",
@@ -1895,7 +2015,9 @@
       ],
       "props": "function NumberField({ ...props }: NumberField.Root.Props): React.JSX.Element;",
       "example": "<NumberField defaultValue={3} min={0} max={10}>\n  <NumberFieldGroup>\n    <NumberFieldDecrement />\n    <NumberFieldInput />\n    <NumberFieldIncrement />\n  </NumberFieldGroup>\n</NumberField>",
-      "docs": "https://wunderui.com/components/number-field"
+      "docs": "https://wunderui.com/components/number-field",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/number-field.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/number-field.tsx"
     },
     {
       "slug": "otp-field",
@@ -1910,7 +2032,9 @@
       ],
       "props": "function OtpField({ className, ...props }: OTPField.Root.Props): React.JSX.Element;",
       "example": "<OtpField length={4}>\n  <OtpFieldInput />\n  <OtpFieldInput />\n  <OtpFieldInput />\n  <OtpFieldInput />\n</OtpField>",
-      "docs": "https://wunderui.com/components/otp-field"
+      "docs": "https://wunderui.com/components/otp-field",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/otp-field.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/otp-field.tsx"
     },
     {
       "slug": "combobox",
@@ -1934,7 +2058,9 @@
       ],
       "props": "function Combobox(props: Combobox.Root.Props<any, any>): React.JSX.Element;",
       "example": "<Combobox items={frameworks} value={value} onValueChange={setValue}>\n  <ComboboxInputGroup>\n    <ComboboxInput placeholder=\"Search...\" />\n    <ComboboxTrigger />\n  </ComboboxInputGroup>\n  <ComboboxPopup>\n    <ComboboxEmpty>No results.</ComboboxEmpty>\n    <ComboboxList>\n      {(item) => <ComboboxItem key={item} value={item}>{item}</ComboboxItem>}\n    </ComboboxList>\n  </ComboboxPopup>\n</Combobox>",
-      "docs": "https://wunderui.com/components/combobox"
+      "docs": "https://wunderui.com/components/combobox",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/combobox.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/combobox.tsx"
     },
     {
       "slug": "autocomplete",
@@ -1955,7 +2081,9 @@
       ],
       "props": "function Autocomplete(props: Autocomplete.Root.Props<any>): React.JSX.Element;",
       "example": "<Autocomplete items={fruits}>\n  <AutocompleteInputGroup>\n    <AutocompleteInput placeholder=\"Type a fruit...\" />\n  </AutocompleteInputGroup>\n  <AutocompletePopup>\n    <AutocompleteEmpty>No matches.</AutocompleteEmpty>\n    <AutocompleteList>\n      {(item) => <AutocompleteItem key={item}>{item}</AutocompleteItem>}\n    </AutocompleteList>\n  </AutocompletePopup>\n</Autocomplete>",
-      "docs": "https://wunderui.com/components/autocomplete"
+      "docs": "https://wunderui.com/components/autocomplete",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/autocomplete.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/autocomplete.tsx"
     },
     {
       "slug": "calendar",
@@ -1970,7 +2098,9 @@
       ],
       "props": "function Calendar({ mode, selected, onSelect, month, defaultMonth, onMonthChange, className }: CalendarProps): React.JSX.Element;",
       "example": "<Calendar mode=\"single\" selected={date} onSelect={setDate} />",
-      "docs": "https://wunderui.com/components/calendar"
+      "docs": "https://wunderui.com/components/calendar",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/calendar.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/calendar.tsx"
     },
     {
       "slug": "date-picker",
@@ -1985,7 +2115,9 @@
       ],
       "props": "function DatePicker(props: DatePickerProps): React.JSX.Element;",
       "example": "<DatePicker value={date} onValueChange={setDate} placeholder=\"Pick a date\" />",
-      "docs": "https://wunderui.com/components/date-picker"
+      "docs": "https://wunderui.com/components/date-picker",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/date-picker.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/date-picker.tsx"
     },
     {
       "slug": "chat-message",
@@ -2655,7 +2787,9 @@
       ],
       "props": "function Alert({ variant, size, icon, onClose, className, children, ...props }: React.ComponentProps<\"div\"> & {\n    variant?: AlertVariant;\n    size?: AlertSize;\n    /** Replaces the leading icon (default: a check circle, a warning triangle for negative and warning). `null` hides it. */\n    icon?: React.ReactNode;\n    onClose?: () => void;\n}): React.JSX.Element;\ntype AlertVariant = \"plain\" | \"positive\" | \"primary\" | \"negative\" | \"warning\";\ntype AlertSize = \"small\" | \"large\";",
       "example": "<Alert variant=\"positive\">\n  <AlertTitle>Positive</AlertTitle>\n  <AlertDescription>Text for notifications here.</AlertDescription>\n</Alert>",
-      "docs": "https://wunderui.com/components/alert"
+      "docs": "https://wunderui.com/components/alert",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/alert.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/alert.tsx"
     },
     {
       "slug": "toast",
@@ -2671,7 +2805,9 @@
       ],
       "props": "function ToastProvider({ children, timeout, ...props }: Toast.Provider.Props): React.JSX.Element;",
       "example": "import { Toaster, useToast } from \"@wunderui/react\"\n\n// wrap your app once\n<Toaster>{children}</Toaster>\n\n// then anywhere inside it\nconst { add } = useToast()\nadd({ type: \"success\", title: \"Successfully saved\", description: \"Your changes have been saved.\" })",
-      "docs": "https://wunderui.com/components/toast"
+      "docs": "https://wunderui.com/components/toast",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/toast.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/toast.tsx"
     },
     {
       "slug": "pull-to-refresh",
@@ -2685,7 +2821,9 @@
       ],
       "props": "function PullToRefresh({ onRefresh, threshold, maxPull, children, className, }: PullToRefreshProps): React.JSX.Element;",
       "example": "<PullToRefresh onRefresh={async () => { await refetch() }}>\n  <YourCardContent />\n</PullToRefresh>",
-      "docs": "https://wunderui.com/components/pull-to-refresh"
+      "docs": "https://wunderui.com/components/pull-to-refresh",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/pull-to-refresh.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/pull-to-refresh.tsx"
     },
     {
       "slug": "rating",
@@ -2702,7 +2840,9 @@
       ],
       "props": "function Rating({ value, onValueChange, max, type, label, readOnly, className, }: {\n    value: number;\n    onValueChange?: (value: number) => void;\n    max?: number;\n    type?: RatingType;\n    label?: RatingLabel;\n    readOnly?: boolean;\n    className?: string;\n}): React.JSX.Element;\ntype RatingType = \"stars\" | \"hearts\" | \"emojis\" | \"scale\";\ntype RatingLabel = \"none\" | \"left\" | \"right\" | \"tooltip\";",
       "example": "<Rating value={value} onValueChange={setValue} max={5} />",
-      "docs": "https://wunderui.com/components/rating"
+      "docs": "https://wunderui.com/components/rating",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/rating.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/rating.tsx"
     },
     {
       "slug": "number-value",
@@ -2716,7 +2856,9 @@
       ],
       "props": "function NumberValue({ value, delta, trend, trendGood, className, }: {\n    value: string;\n    delta?: string;\n    trend?: \"up\" | \"down\";\n    trendGood?: boolean;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<NumberValue value=\"1,204\" delta=\"4.2%\" trend=\"up\" trendGood />",
-      "docs": "https://wunderui.com/components/number-value"
+      "docs": "https://wunderui.com/components/number-value",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/number-value.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/number-value.tsx"
     },
     {
       "slug": "trend-chip",
@@ -2731,7 +2873,9 @@
       ],
       "props": "function TrendChip({ value, direction, icon, className, }: {\n    value: string;\n    /** Figma Trend Chip · Trend; `flat` is the old name for `neutral`. */\n    direction?: \"up\" | \"down\" | \"neutral\" | \"flat\";\n    /** Figma Trend Chip · Icon; the same glyph turns for `down`. */\n    icon?: TrendChipIcon;\n    className?: string;\n}): React.JSX.Element;\ntype TrendChipIcon = \"trending\" | \"arrow\" | \"arrow-diagonal\" | \"triangle\" | \"circle-trending\" | \"circle-diagonal\" | \"circle-arrow\";",
       "example": "<TrendChip value=\"12.4%\" direction=\"up\" />",
-      "docs": "https://wunderui.com/components/trend-chip"
+      "docs": "https://wunderui.com/components/trend-chip",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/trend-chip.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/trend-chip.tsx"
     },
     {
       "slug": "pressable-feedback",
@@ -2745,7 +2889,9 @@
       ],
       "props": "function PressableFeedback({ children, onPress, className, asChild, }: {\n    children: React.ReactNode;\n    onPress?: () => void;\n    className?: string;\n    /** Apply the press effect to the child element instead of wrapping it. */\n    asChild?: boolean;\n}): React.JSX.Element;",
       "example": "<PressableFeedback onPress={handlePress}>{children}</PressableFeedback>",
-      "docs": "https://wunderui.com/components/pressable-feedback"
+      "docs": "https://wunderui.com/components/pressable-feedback",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/pressable-feedback.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/pressable-feedback.tsx"
     },
     {
       "slug": "emoji-reaction-button",
@@ -2759,7 +2905,9 @@
       ],
       "props": "function EmojiReactionButton({ emoji, count, active, onToggle, className, }: {\n    emoji: string;\n    count: number;\n    active?: boolean;\n    onToggle?: () => void;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<EmojiReactionButton emoji=\"🔥\" count={12} active={active} onToggle={toggle} />",
-      "docs": "https://wunderui.com/components/emoji-reaction-button"
+      "docs": "https://wunderui.com/components/emoji-reaction-button",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/emoji-reaction-button.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/emoji-reaction-button.tsx"
     },
     {
       "slug": "emoji-picker",
@@ -2773,7 +2921,9 @@
       ],
       "props": "function EmojiPicker({ emojis, onSelect, className, }: {\n    emojis?: string[];\n    onSelect?: (emoji: string) => void;\n    className?: string;\n}): React.JSX.Element;",
       "example": "<EmojiPicker onSelect={(emoji) => insert(emoji)} />",
-      "docs": "https://wunderui.com/components/emoji-picker"
+      "docs": "https://wunderui.com/components/emoji-picker",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/emoji-picker.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/wunderui/emoji-picker.tsx"
     },
     {
       "slug": "sheet",
@@ -2793,7 +2943,9 @@
       ],
       "props": "function Sheet({ ...props }: Dialog.Root.Props): React.JSX.Element;",
       "example": "<Sheet open={open} onOpenChange={setOpen}>\n  <SheetTrigger render={<Button />}>Open</SheetTrigger>\n  <SheetContent side=\"right\">...</SheetContent>\n</Sheet>",
-      "docs": "https://wunderui.com/components/sheet"
+      "docs": "https://wunderui.com/components/sheet",
+      "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/sheet.tsx",
+      "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/sheet.tsx"
     },
     {
       "slug": "resizable",
