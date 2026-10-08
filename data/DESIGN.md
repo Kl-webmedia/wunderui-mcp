@@ -2,7 +2,7 @@
 
 > Design context for AI coding agents. Paste this into your prompt, or let your
 > agent pull it from https://wunderui.com/DESIGN.md.
-> Generated from the WunderUI source on 2026-10-07 · @wunderui/react@0.1.0
+> Generated from the WunderUI source on 2026-10-08 · @wunderui/react@0.1.0
 
 WunderUI is a React component library and design system: 201
 documented components in 6 groups, built on Base UI
@@ -11,9 +11,13 @@ kanban, charts, an application shell and a full AI chat set.
 
 ## Install
 
-```bash
-npm install @wunderui/react
-```
+Core and Pro licence holders (the wunderui-core download from the purchase). Not on the public npm registry.
+
+Unzip the wunderui-core download, run `npm install && npm run build` in it once, then in your project: `npm pack <wunderui-core>/packages/react --pack-destination .wunderui` and `npm install ./.wunderui/<the .tgz>`. The wunderui-setup agent skill does all of it.
+
+Do not run `npm install @wunderui/react` — the package is not published, the command fails. Free plan: the Figma preview and the documentation at https://wunderui.com. The React package comes with Core or Pro (https://wunderui.com/#pricing).
+
+Then wire up the styles and import:
 
 ```css
 /* your Tailwind entry point */

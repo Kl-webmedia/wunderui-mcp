@@ -4,9 +4,12 @@
   "version": "0.1.0",
   "description": "WunderUI — a design system and component library for React.",
   "site": "https://wunderui.com",
-  "generatedAt": "2026-10-07",
+  "generatedAt": "2026-10-08",
   "install": {
-    "npm": "npm install @wunderui/react",
+    "available": "Core and Pro licence holders (the wunderui-core download from the purchase). Not on the public npm registry.",
+    "package": "Unzip the wunderui-core download, run `npm install && npm run build` in it once, then in your project: `npm pack <wunderui-core>/packages/react --pack-destination .wunderui` and `npm install ./.wunderui/<the .tgz>`. The wunderui-setup agent skill does all of it.",
+    "doNot": "Do not run `npm install @wunderui/react` — the package is not published, the command fails.",
+    "free": "Free plan: the Figma preview and the documentation at https://wunderui.com. The React package comes with Core or Pro (https://wunderui.com/#pricing).",
     "import": "import { Button, Card } from \"@wunderui/react\"",
     "styles": "@import \"@wunderui/react/styles.css\";"
   },

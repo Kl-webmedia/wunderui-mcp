@@ -42,6 +42,10 @@ claude mcp add wunderui -- npx -y wunderui-mcp
 
 **Windsurf, Cline, Codex, VS Code**: the same shape, in that editor's MCP config.
 
+## Installing WunderUI itself
+
+The server describes the library; it does not ship it. `@wunderui/react` is not on the public npm registry: Core and Pro licence holders install it from the wunderui-core download (the `wunderui-setup` agent skill does it for you), and the server tells agents exactly that. The Free plan covers the Figma preview and the documentation at [wunderui.com](https://wunderui.com).
+
 ## Where the data comes from
 
 `data/design.json` and `data/DESIGN.md` are generated from the WunderUI source with every release: tokens from the stylesheet, props from the built type definitions, names and descriptions from the docs.
