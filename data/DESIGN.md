@@ -15,7 +15,7 @@ Core and Pro licence holders (the wunderui-core download from the purchase). Not
 
 Unzip the wunderui-core download, run `npm install && npm run build` in it once, then in your project: `npm pack <wunderui-core>/packages/react --pack-destination .wunderui` and `npm install ./.wunderui/<the .tgz>`. The wunderui-setup agent skill does all of it.
 
-Do not run `npm install @wunderui/react` — the package is not published, the command fails. Free plan: the 76 free components are MIT source at https://github.com/wunder-ui/wunderui — copy components/, lib/ and styles/wunderui.css into your project (each free component in design.json has a sourceRaw URL). Core and Pro components come with a plan (https://wunderui.com/#pricing).
+Do not run `npm install @wunderui/react` — the package is not published, the command fails. Free plan: the 76 free components are MIT source at https://github.com/wunder-ui/wunderui — add them with `npx wunderui-cli add <name>` (files, dependencies and styles), or copy components/, lib/ and styles/wunderui.css (each free component in design.json has a sourceRaw URL). Core and Pro components come with a plan (https://wunderui.com/#pricing).
 
 Then wire up the styles and import:
 
