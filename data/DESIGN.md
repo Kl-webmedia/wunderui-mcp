@@ -2,9 +2,9 @@
 
 > Design context for AI coding agents. Paste this into your prompt, or let your
 > agent pull it from https://wunderui.com/DESIGN.md.
-> Generated from the WunderUI source on 2026-10-08 · @wunderui/react@0.1.0
+> Generated from the WunderUI source on 2026-10-09 · @wunderui/react@0.1.0
 
-WunderUI is a React component library and design system: 201
+WunderUI is a React component library and design system: 204
 documented components in 6 groups, built on Base UI
 primitives and Tailwind CSS v4. It covers the parts most kits skip — data grid,
 kanban, charts, an application shell and a full AI chat set.
@@ -314,10 +314,10 @@ Light is `:root`, dark is `.dark`. Same names in both themes.
 | `--success` | `#1AD598` | `#1AD598` |
 | `--success-foreground` | `#17181A` | `#17181A` |
 | `--chart-1` | `var(--brand-600)` | `var(--brand-600)` |
-| `--chart-2` | `#F3654A` | `#F3654A` |
-| `--chart-3` | `#A584F3` | `#A584F3` |
-| `--chart-4` | `#FACA4A` | `#FACA4A` |
-| `--chart-5` | `#1AD598` | `#1AD598` |
+| `--chart-2` | `#12AFF0` | `#3CC2F5` |
+| `--chart-3` | `#A584F3` | `#B79CF6` |
+| `--chart-4` | `#1AD598` | `#3DDBA6` |
+| `--chart-5` | `#A2A3A3` | `#6E7078` |
 | `--sidebar` | `#F9FBFC` | `#17181A` |
 | `--sidebar-foreground` | `#000000` | `#FFFFFF` |
 | `--sidebar-primary` | `var(--brand-600)` | `var(--brand-600)` |
@@ -589,10 +589,15 @@ on an `animate-in` the same way it works on a `transition`.
 4. **Never fade in the LCP element.** An element at `opacity: 0` is not an LCP candidate, so a 600ms hero fade adds 600ms to your LCP. Render headline copy at full opacity; animate `transform` only.
 5. **Restrain the travel.** Anything anchored to a trigger moves `--travel-xs` or `--travel-sm`. A menu that slides 20px looks like it fell in.
 6. **One overshoot per screen.** `ease-overshoot` is punctuation. Two of them on one view and the interface reads as a toy.
-7. **Reduced motion is opt-in, not a kill switch.** Wrap the animation in `@media (prefers-reduced-motion: no-preference)` so the still state is the default and you cannot forget a selector.
+7. **Reduced motion is opt-in, not a kill switch.** Wrap the animation in `@media (prefers-reduced-motion: no-preference)` so the still state is the default and you cannot forget a selector. Reduced means calmer, not nothing: drop transforms and travel, keep opacity and colour changes (rule 15).
 8. **Never `transition-all`.** Name the properties — `transition-[opacity,transform]` — or use bare `transition`, which covers colour, shadow, transform and opacity but no layout property. `transition-all` animates things you did not mean to animate, including on first paint.
 9. **Loading keeps its height.** A skeleton occupies the same box as the content it stands in for, and crossfades — it never collapses and reflows.
 10. **A looping ambient animation is the one place `ease-in-out` belongs.** A shimmer that runs forever has no entrance and no exit, so symmetry is correct there and nowhere else.
+11. **Animate by frequency.** Keyboard-driven and 100+/day actions (command palette, shortcuts, moving between tooltips) get no motion; tens a day get a short fade; rare moments may delight. Tooltips skip their entrance when another one was just open (`data-open:data-instant:animate-none`).
+12. **Anchored surfaces grow from their trigger.** Popover, dropdown, tooltip, hover card and select use `origin-(--transform-origin)`. Never start from `scale(0)` — start at 0.92–0.97 with opacity. Centred dialogs are exempt.
+13. **Toggles stay interruptible.** Animate switches, checkboxes, tabs and other repeated state changes with transitions — they retarget from wherever they are — never with keyframes bound to the state, which restart from zero. An overshoot transition (`transition-transform duration-base ease-overshoot`) still swings past the end.
+14. **Hover only where hover exists.** Tailwind v4's `hover:` is already gated to `(hover: hover)`; hand-written `:hover` in CSS goes inside `@media (hover: hover) and (pointer: fine)`, so a tap on a phone does not leave a hover state stuck.
+15. **Reduced motion keeps the fade.** WunderUI's global rule zeroes the scale, slide, spin and blur of every `animate-in` / `animate-out` and every transform transition, and keeps opacity and colour — so do not add `motion-reduce:transition-none` or `motion-reduce:animate-none` to a fade.
 
 ### Motion recipes
 
@@ -651,9 +656,39 @@ on an `animate-in` the same way it works on a `transition`.
 }
 ```
 
+## Copy
+
+Rules for the words inside the product — buttons, labels, errors and empty states.
+
+1. **Buttons say what happens.** A verb and, where it helps, the object: `Save changes`, `Invite member`, `Delete project` — never `OK`, `Submit` or `Yes`. The destructive button repeats the action, the other one is `Cancel`.
+2. **Sentence case everywhere in the product.** Buttons, menu items, headings, labels and tabs start with one capital: `Billing history`, not `Billing History`.
+3. **Errors say what happened and what to do.** `The card was declined. Try another card or contact your bank.` — no `Oops`, no `Something went wrong` on its own, no blame, no error codes without words.
+4. **Empty states explain and offer one action.** What will appear here, why it is empty, and the one button that fills it: `No invoices yet — your first one appears after the first payment.`
+5. **Labels are nouns, hints are sentences.** A field label names the thing (`Work email`); help text under it explains a rule in a full sentence.
+6. **Numbers carry their unit.** Money with the ISO currency or symbol and two decimals (`$299.00`, `EUR 41.80`), percentages with `%`, durations and sizes with units (`12 GB`, `3 min`). Use tabular numbers in tables.
+7. **No filler.** No `please`, `simply`, `just` or `easily`; no exclamation marks in the interface; no `Lorem ipsum`. Sample people are invented (`Alina Lorenz`, `Felix Brandt`).
+8. **Confirmations name the object.** `Delete “Q4 report”?` with what is lost, not `Are you sure?`.
+
+## Skills
+
+Agent skills that build and check with these rules (https://wunderui.com/skills):
+
+- **wunderui-screen** (Free) — Builds a complete React screen with WunderUI from a one-sentence request, within the user's plan (Free uses only the free components) — picks the components and a matching block layout, fills props from design.json, adds the empty, loading and error states that generated screens usually forget, uses motion tokens instead of raw milliseconds, and finishes with a typecheck and a build.
+- **wunderui-setup** (Free) — Sets up WunderUI in a React project from scratch to the first rendered screen — detects the framework, Tailwind version and existing tokens, puts DESIGN.md and design.json into the project, registers the WunderUI MCP server, wires styles.css and the @source path, renders a probe component and writes a setup report.
+- **wunderui-theme** (Free) — Generates a complete WunderUI brand theme from one brand colour (hex) — optionally an accent colour, a radius preference and a font — the eleven-step brand scale (--brand-50 … --brand-1000), the brand tokens derived from it (primary, primary-foreground, text-link, ring, tint and tint text, chart 1) for light and dark, a WCAG AA check of every key pair with shades moved automatically until they pass, and one CSS file to import after @wunderui/react/styles.css (globally or for one subtree), plus a report.
+- **wunderui-token-check** (Free) — Finds hard-coded colours, spacing and radii that bypass the WunderUI design tokens, maps each literal to the nearest token with a measured distance (ΔE for colour, px for spacing and radius), separates safe swaps from values too far from any token, replaces the safe ones and reports how much the look changed.
+- **wunderui-a11y** (Pro) — Accessibility check per component or screen in a WunderUI project — renders every variant, walks the focus order and checks that focus is visible, measures WCAG AA contrast of every text in light and dark, verifies the reduced-motion fallback, and delivers each finding with a patch instead of just a report.
+- **wunderui-agent-ui** (Pro) — Builds the interface of an AI agent with WunderUI's agent components — describes the run (steps, tools, costs, approvals), picks RunTimeline, ApprovalCard, CostMeter, AgentStatus, RunError and their relatives, plays through every state including failure and abort, applies the agent motion tokens and checks the approval moment separately.
+- **wunderui-compose** (Pro) — Composes WunderUI blocks into a complete page — clarifies the page's goal and audience, proposes a block order that follows the visitor's questions, inserts the blocks and fills them with real content, checks the rhythm (one notable effect per section) and protects the LCP element from entrance animation.
+- **wunderui-figma-screen** (Pro) — Builds a screen in Figma from the WunderUI library — real component instances instead of drawn rectangles, every fill and text bound to the theme variables and text styles, auto layout throughout, a light frame first, then the dark frame as a clone with the Dark mode and a 390 px mobile frame — and checks the result with screenshots and an audit (unbound paints, unstyled text, absolute children).
+- **wunderui-figma-sync** (Pro) — Keeps Figma variables and the project's CSS tokens (styles.css) identical in both directions — reads the Figma variable collections and text styles through the Figma MCP server, diffs them against the CSS custom properties (colour per light/dark mode, spacing, radius, type, motion), lists every conflict with the measured difference, asks which side wins and writes only in that direction, then reports what changed.
+- **wunderui-motion-audit** (Pro) — Audits a codebase's animations and transitions against the WunderUI motion rules — transition-all, raw millisecond durations, ease-in-out and other generic curves, scroll-driven animations without an @supports fallback, missing prefers-reduced-motion handling, layout-property animation and fades on the LCP element — justifies every finding with the rule from DESIGN.md, proposes and applies a patch with motion tokens and verifies the build.
+- **wunderui-refactor** (Pro) — Migrates an existing React app to WunderUI — scans the project and detects the UI stack per file (shadcn/ui, Radix primitives, MUI, Chakra, Headless UI, Mantine, hand-built components and hard-coded Tailwind colours), maps every component to its WunderUI equivalent with prop notes, writes a migration plan with effort and order, applies the safe codemods (shadcn imports → @wunderui/react, raw colours → token utilities) and measures before → after (raw colours, foreign UI imports, WunderUI coverage) with the project's typecheck.
+- **wunderui-uiux-design-auditor** (Pro) — Evidence-based UI/UX and accessibility audit of any product — live websites, landing pages, component libraries / front-end code (React, Vue, Svelte, HTML/CSS, Tailwind) and Figma files — against a 497-rule catalog (WCAG 2.2 A/AA, platform guidance, design-system rules).
+
 ## Component inventory
 
-**Plans.** 76 components are **Free** (MIT, source at https://github.com/wunder-ui/wunderui); 125 are **Pro** and need WunderUI Core or Pro — charts, KPI cards, the data grid, the app layout and navigation, AI & agents. On the Free plan, build only with components marked Free and name the Pro component that would do the job better.
+**Plans.** 76 components are **Free** (MIT, source at https://github.com/wunder-ui/wunderui); 128 are **Pro** and need WunderUI Core or Pro — charts, KPI cards, the data grid, the app layout and navigation, AI & agents. On the Free plan, build only with components marked Free and name the Pro component that would do the job better.
 
 ### Primitives
 
@@ -730,6 +765,9 @@ on an `animate-in` the same way it works on a `transition`.
 | `Sparkline` | Pro | A tiny trend line without axes — green when it rises, red when it falls — for table cells, price cards and metric tiles. | SparklineProps |
 | `FunnelChart` | Pro | Shows drop-off across sequential stages, each with a label and value. | — |
 | `ColumnChart` | Pro | Vertical bars for comparing categories side by side. | — |
+| `Heatmap` | Pro | A grid of rounded cells whose shade shows how much happened — commits per day, tickets per hour, deploys per week. | HeatmapCell, HeatmapProps |
+| `StatusStrip` | Pro | A row of day bars from a status page — green when all was well, amber when degraded, red for an outage. | StatusStripDay, StatusStripProps, StatusStripStatus |
+| `Gauge` | Pro | One value against its limit on a half circle, with a needle that swings in and re-aims with a spring. | GaugeProps, GaugeSegment |
 
 ### Data Display
 
@@ -1481,7 +1519,9 @@ function Tabs({ className, orientation, ...props }: Tabs.Root.Props): React.JSX.
 A gradient-filled area chart for visualizing trends over time.
 
 ```tsx
-<AreaChart data={data} index="month" categories={["revenue", "cost"]} />
+<ChartCard title="Revenue" value="$84,250" delta={{ value: "18.2%", caption: "vs last year" }} periods={["12M", "30D"]}>
+  <AreaChart data={data} index="month" categories={["revenue"]} height={200} />
+</ChartCard>
 ```
 
 ```ts
@@ -1493,11 +1533,13 @@ function AreaChart({ data, index, categories, colors, height, stacked, curveType
 Compares categorical data with grouped or stacked bars.
 
 ```tsx
-<BarChart data={data} index="month" categories={["revenue", "cost"]} stacked={false} />
+<ChartCard title="Active users" value="349k" delta={{ value: "6.4%", caption: "this week" }} periods={["Week", "Month"]}>
+  <BarChart data={data} index="day" categories={["users"]} height={200} highlight={3} />
+</ChartCard>
 ```
 
 ```ts
-function BarChart({ data, index, categories, colors, height, layout, stacked, stackGap, radius, barSize, maxBarSize, barGap, lollipop, segments, background, showGrid, showAxis, showTooltip, showLegend, yAxisFormatter, yDomain, yTicks, valueFormatter, animate, loading, className, }: BarChartProps): React.JSX.Element;
+function BarChart({ data, index, categories, colors, height, layout, stacked, stackGap, radius, barSize, maxBarSize, barGap, lollipop, segments, background, showGrid, showAxis, showTooltip, showLegend, yAxisFormatter, yDomain, yTicks, valueFormatter, animate, highlight, loading, className, }: BarChartProps): React.JSX.Element;
 ```
 
 #### LineChart
@@ -1505,7 +1547,9 @@ function BarChart({ data, index, categories, colors, height, layout, stacked, st
 Plots one or more series as smooth or linear lines.
 
 ```tsx
-<LineChart data={data} index="month" categories={["revenue", "cost"]} curved />
+<ChartCard title="Monthly revenue" value="$94k" delta={{ value: "46.9%", caption: "vs 2025" }} legend={[{ label: "2026" }, { label: "2025", color: "var(--chart-5)" }]}>
+  <LineChart data={data} index="month" categories={["y2026", "y2025"]} colors={["var(--chart-1)", "var(--chart-5)"]} dashed={["y2025"]} height={200} />
+</ChartCard>
 ```
 
 ```ts
@@ -1517,7 +1561,9 @@ function LineChart({ data, index, categories, colors, height, showGrid, showAxis
 Combines bars and a trend line in a single chart.
 
 ```tsx
-<ComposedChart data={data} index="month" bars={["revenue"]} lines={["cost"]} />
+<ChartCard title="Revenue and cost" value="$365k" delta={{ value: "12.8%", caption: "margin up" }} legend={[{ label: "Revenue" }, { label: "Cost", color: "var(--chart-2)" }]}>
+  <ComposedChart data={data} index="month" bars={["revenue"]} lines={["cost"]} height={200} />
+</ChartCard>
 ```
 
 ```ts
@@ -1529,7 +1575,9 @@ function ComposedChart({ data, index, bars, lines, colors, height, showGrid, sho
 Shows proportions of a whole, with an optional donut mode.
 
 ```tsx
-<PieChart data={[{ name: "Direct", value: 42 }]} donut />
+<ChartCard title="Traffic sources" description="Last 30 days">
+  <PieChart data={data} variant="donut" legend="right" height={180} centerLabel={{ label: "Visits", value: "48,230" }} cornerRadius={4} />
+</ChartCard>
 ```
 
 ```ts
@@ -1541,7 +1589,9 @@ function PieChart({ data, colors, height, donut, variant, innerRadius, paddingAn
 Compares multiple series across shared axes on a polar grid.
 
 ```tsx
-<RadarChart data={data} index="metric" categories={["a", "b"]} />
+<ChartCard title="Team profile" description="Two teams compared" legend={[{ label: "Team A" }, { label: "Team B", color: "var(--chart-2)" }]}>
+  <RadarChart data={data} index="metric" categories={["a", "b"]} height={240} />
+</ChartCard>
 ```
 
 ```ts
@@ -1553,7 +1603,9 @@ function RadarChart({ data, index, categories, colors, height, showTooltip, fill
 A circular progress-style chart for a single goal value.
 
 ```tsx
-<RadialChart data={[{ name: "Goal", value: 72 }]} />
+<ChartCard title="Quarterly goal" value="72%" description="$360k of $500k · 23 days left">
+  <RadialChart data={[{ name: "Goal", value: 72 }]} height={200} />
+</ChartCard>
 ```
 
 ```ts
@@ -1645,6 +1697,30 @@ Vertical bars for comparing categories side by side.
 import { ColumnChart } from "@wunderui/react"
 
 <ColumnChart data={data} index="month" categories={["revenue", "cost"]} />
+```
+
+#### Heatmap
+
+A grid of rounded cells whose shade shows how much happened — commits per day, tickets per hour, deploys per week.
+
+```ts
+function Heatmap({ data, rowLabels, columnLabels, max, levels, color, cellSize, gap, legend, valueFormatter, cellLabel, animate, tooltip, onCellHover, className, "aria-label": ariaLabel, }: HeatmapProps): React.JSX.Element;
+```
+
+#### StatusStrip
+
+A row of day bars from a status page — green when all was well, amber when degraded, red for an outage.
+
+```ts
+function StatusStrip({ days, startLabel, endLabel, height, animate, tooltip, onDayHover, className, "aria-label": ariaLabel, }: StatusStripProps): React.JSX.Element;
+```
+
+#### Gauge
+
+One value against its limit on a half circle, with a needle that swings in and re-aims with a spring.
+
+```ts
+function Gauge({ value, max, label, format, minLabel, maxLabel, color, dangerAt, ticks, size, animate, className, "aria-label": ariaLabel, }: GaugeProps): React.JSX.Element;
 ```
 
 #### Agenda

@@ -19,6 +19,10 @@ Works with Claude Code, Cursor, Windsurf, Cline, Codex, VS Code and any other cl
 | `list_templates` | The full-page templates and what each is built from |
 | `get_starter` | Copy-paste TSX: app shell, dashboard, data grid, AI chat, theming |
 | `get_library_info` | Package name, version, install commands, stack, counts, data source |
+| `get_instructions` | The short, always-on rules (components, tokens, motion, copy) for CLAUDE.md / AGENTS.md |
+| `list_skills` | The WunderUI agent skills, free and Pro |
+| `get_skill` | One skill's instructions (SKILL.md), so the agent can follow it without installing — Pro skills need `WUNDERUI_LICENSE_KEY` |
+| `get_block_source` | The React source of a UI block and its shared helpers — needs a Pro key in `WUNDERUI_LICENSE_KEY` |
 
 Every component carries its plan. On the Free plan, an agent should only use components marked `free`; the others need WunderUI Core or Pro.
 
@@ -56,6 +60,7 @@ The server starts with the bundled copy and answers immediately. In the backgrou
 | --- | --- |
 | `WUNDERUI_OFFLINE=1` | never touch the network, use the bundled copy |
 | `WUNDERUI_SITE=<url>` | fetch the live data from another origin |
+| `WUNDERUI_LICENSE_KEY=<key>` | your WunderUI Pro key — unlocks Pro skills (`get_skill`) and block source (`get_block_source`); sent only to wunderui.com |
 
 ## Without MCP
 

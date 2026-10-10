@@ -12,7 +12,8 @@ const here = dirname(fileURLToPath(import.meta.url))
 const entry = resolve(here, "../src/index.mjs")
 
 const client = new Client({ name: "wunderui-smoke", version: "1.0.0" })
-await client.connect(new StdioClientTransport({ command: process.execPath, args: [entry] }))
+// pass the environment through, so WUNDERUI_SITE / WUNDERUI_LICENSE_KEY reach the server under test
+await client.connect(new StdioClientTransport({ command: process.execPath, args: [entry], env: { ...process.env } }))
 
 const { tools } = await client.listTools()
 console.log(`tools: ${tools.map((tool) => tool.name).join(", ")}`)
@@ -29,6 +30,11 @@ const calls = [
   ["get_design_md", { section: "rules" }],
   ["list_templates", {}],
   ["get_starter", { kind: "dashboard" }],
+  ["get_instructions", {}],
+  ["list_skills", {}],
+  ["get_skill", { name: "wunderui-token-check" }],
+  ["get_skill", { name: "wunderui-motion-audit" }],
+  ["get_block_source", { category: "app", block: "billing" }],
 ]
 
 let failed = 0

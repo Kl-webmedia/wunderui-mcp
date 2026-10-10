@@ -373,6 +373,88 @@ server.registerTool(
     })
 )
 
+/* ---------------------------------------------- skills, instructions, Pro */
+
+const siteUrl = () => (process.env.WUNDERUI_SITE ?? design.site ?? "https://wunderui.com").replace(/\/$/, "")
+const licenseKey = () => process.env.WUNDERUI_LICENSE_KEY?.trim() || null
+const authHeaders = () => (licenseKey() ? { authorization: `Bearer ${licenseKey()}` } : {})
+let instructions = null
+try {
+  instructions = readFileSync(resolve(dataDir, "INSTRUCTIONS.md"), "utf8")
+} catch {}
+
+server.registerTool(
+  "get_instructions",
+  {
+    title: "Get the short WunderUI rules",
+    description:
+      "The short, always-on rules for building with WunderUI (components, tokens, motion, copy) — the text to keep in CLAUDE.md / AGENTS.md. Read this first; use get_design_md for the full context.",
+    inputSchema: {},
+  },
+  async () => {
+    if (instructions) return text(instructions)
+    const r = await fetch(`${siteUrl()}/INSTRUCTIONS.md`, { signal: AbortSignal.timeout(8000) }).catch(() => null)
+    return text(r?.ok ? await r.text() : "INSTRUCTIONS.md is not available offline; use get_design_md.")
+  }
+)
+
+server.registerTool(
+  "list_skills",
+  {
+    title: "List WunderUI agent skills",
+    description:
+      "The agent skills that build and check with WunderUI (set up a project, build screens, theme from a brand colour, migrate from shadcn/MUI/Chakra, token check, motion and accessibility audits, Figma). Free skills work for everyone; Pro skills need WUNDERUI_LICENSE_KEY.",
+    inputSchema: {},
+  },
+  async () =>
+    text({
+      licenseKeySet: Boolean(licenseKey()),
+      skills: (design.skills ?? []).map((skill) => ({ name: skill.name, tier: skill.tier, description: skill.description })),
+      use: "get_skill({ name }) returns the skill's instructions so you can follow them without installing it.",
+    })
+)
+
+server.registerTool(
+  "get_skill",
+  {
+    title: "Get a WunderUI agent skill",
+    description:
+      "Returns one skill's instructions (its SKILL.md) from wunderui.com, so the agent can follow the workflow without installing the skill. Pro skills are sent only with a valid Pro key in WUNDERUI_LICENSE_KEY. Scripts the skill mentions come with the installed skill (wunderui.com/skills).",
+    inputSchema: { name: z.string().describe("Skill name, e.g. wunderui-theme or wunderui-screen") },
+  },
+  async ({ name }) => {
+    const r = await fetch(`${siteUrl()}/api/skills/${encodeURIComponent(name)}`, { headers: authHeaders(), signal: AbortSignal.timeout(10000) }).catch(() => null)
+    if (!r) return text("wunderui.com is not reachable — install the skill from https://wunderui.com/skills instead.")
+    const body = await r.json().catch(() => null)
+    if (r.status === 401) return text(`${name} is a Pro skill. Set WUNDERUI_LICENSE_KEY to your WunderUI Pro key (https://wunderui.com/#pricing).`)
+    if (!r.ok || !body?.skill) return text(`No skill called "${name}". Available: ${(design.skills ?? []).map((s) => s.name).join(", ")}`)
+    return text(body.skill)
+  }
+)
+
+server.registerTool(
+  "get_block_source",
+  {
+    title: "Get a WunderUI block's source (Pro)",
+    description:
+      "The React source of a UI block (e.g. category 'app', block 'billing'), optionally one screen, plus the shared helpers it imports. Needs a WunderUI Pro key in WUNDERUI_LICENSE_KEY. Use https://wunderui.com/api/registry/index to see every block.",
+    inputSchema: {
+      category: z.string(),
+      block: z.string(),
+      screen: z.string().optional(),
+    },
+  },
+  async ({ category, block, screen }) => {
+    if (!licenseKey()) return text("Blocks come with WunderUI Pro. Set WUNDERUI_LICENSE_KEY to your Pro key (https://wunderui.com/#pricing), or browse the free previews at https://wunderui.com/blocks.")
+    const url = `${siteUrl()}/api/registry/block/${encodeURIComponent(category)}/${encodeURIComponent(block)}${screen ? `?screen=${encodeURIComponent(screen)}` : ""}`
+    const r = await fetch(url, { headers: authHeaders(), signal: AbortSignal.timeout(15000) }).catch(() => null)
+    if (!r) return text("wunderui.com is not reachable.")
+    if (r.status === 401) return text("The key was not accepted for blocks (blocks need a Pro key).")
+    if (!r.ok) return text(`No block ${category}/${block}${screen ? ` screen ${screen}` : ""}.`)
+    return text(await r.json())
+  }
+)
+
 /* --------------------------------------------------------------------- run */
 
 async function main() {

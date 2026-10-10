@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "WunderUI — a design system and component library for React.",
   "site": "https://wunderui.com",
-  "generatedAt": "2026-10-08",
+  "generatedAt": "2026-10-09",
   "install": {
     "available": "Core and Pro licence holders (the wunderui-core download from the purchase). Not on the public npm registry.",
     "package": "Unzip the wunderui-core download, run `npm install && npm run build` in it once, then in your project: `npm pack <wunderui-core>/packages/react --pack-destination .wunderui` and `npm install ./.wunderui/<the .tgz>`. The wunderui-setup agent skill does all of it.",
@@ -20,12 +20,12 @@
     "charts": "recharts"
   },
   "counts": {
-    "components": 201,
+    "components": 204,
     "categories": 12,
-    "exports": 594,
+    "exports": 603,
     "templates": 5,
     "free": 76,
-    "pro": 125
+    "pro": 128
   },
   "plans": {
     "free": "WunderUI Free: the components with tier \"free\" are open source under the MIT License (https://github.com/wunder-ui/wunderui) — any project, commercial included. Every \"pro\" component needs WunderUI Core or Pro.",
@@ -69,10 +69,10 @@
       "--success": "#1AD598",
       "--success-foreground": "#17181A",
       "--chart-1": "var(--brand-600)",
-      "--chart-2": "#F3654A",
+      "--chart-2": "#12AFF0",
       "--chart-3": "#A584F3",
-      "--chart-4": "#FACA4A",
-      "--chart-5": "#1AD598",
+      "--chart-4": "#1AD598",
+      "--chart-5": "#A2A3A3",
       "--radius": "0.75rem",
       "--sidebar": "#F9FBFC",
       "--sidebar-foreground": "#000000",
@@ -288,10 +288,10 @@
       "--success": "#1AD598",
       "--success-foreground": "#17181A",
       "--chart-1": "var(--brand-600)",
-      "--chart-2": "#F3654A",
-      "--chart-3": "#A584F3",
-      "--chart-4": "#FACA4A",
-      "--chart-5": "#1AD598",
+      "--chart-2": "#3CC2F5",
+      "--chart-3": "#B79CF6",
+      "--chart-4": "#3DDBA6",
+      "--chart-5": "#6E7078",
       "--sidebar": "#17181A",
       "--sidebar-foreground": "#FFFFFF",
       "--sidebar-primary": "var(--brand-600)",
@@ -422,10 +422,15 @@
       "**Never fade in the LCP element.** An element at `opacity: 0` is not an LCP candidate, so a 600ms hero fade adds 600ms to your LCP. Render headline copy at full opacity; animate `transform` only.",
       "**Restrain the travel.** Anything anchored to a trigger moves `--travel-xs` or `--travel-sm`. A menu that slides 20px looks like it fell in.",
       "**One overshoot per screen.** `ease-overshoot` is punctuation. Two of them on one view and the interface reads as a toy.",
-      "**Reduced motion is opt-in, not a kill switch.** Wrap the animation in `@media (prefers-reduced-motion: no-preference)` so the still state is the default and you cannot forget a selector.",
+      "**Reduced motion is opt-in, not a kill switch.** Wrap the animation in `@media (prefers-reduced-motion: no-preference)` so the still state is the default and you cannot forget a selector. Reduced means calmer, not nothing: drop transforms and travel, keep opacity and colour changes (rule 15).",
       "**Never `transition-all`.** Name the properties — `transition-[opacity,transform]` — or use bare `transition`, which covers colour, shadow, transform and opacity but no layout property. `transition-all` animates things you did not mean to animate, including on first paint.",
       "**Loading keeps its height.** A skeleton occupies the same box as the content it stands in for, and crossfades — it never collapses and reflows.",
-      "**A looping ambient animation is the one place `ease-in-out` belongs.** A shimmer that runs forever has no entrance and no exit, so symmetry is correct there and nowhere else."
+      "**A looping ambient animation is the one place `ease-in-out` belongs.** A shimmer that runs forever has no entrance and no exit, so symmetry is correct there and nowhere else.",
+      "**Animate by frequency.** Keyboard-driven and 100+/day actions (command palette, shortcuts, moving between tooltips) get no motion; tens a day get a short fade; rare moments may delight. Tooltips skip their entrance when another one was just open (`data-open:data-instant:animate-none`).",
+      "**Anchored surfaces grow from their trigger.** Popover, dropdown, tooltip, hover card and select use `origin-(--transform-origin)`. Never start from `scale(0)` — start at 0.92–0.97 with opacity. Centred dialogs are exempt.",
+      "**Toggles stay interruptible.** Animate switches, checkboxes, tabs and other repeated state changes with transitions — they retarget from wherever they are — never with keyframes bound to the state, which restart from zero. An overshoot transition (`transition-transform duration-base ease-overshoot`) still swings past the end.",
+      "**Hover only where hover exists.** Tailwind v4's `hover:` is already gated to `(hover: hover)`; hand-written `:hover` in CSS goes inside `@media (hover: hover) and (pointer: fine)`, so a tap on a phone does not leave a hover state stuck.",
+      "**Reduced motion keeps the fade.** WunderUI's global rule zeroes the scale, slide, spin and blur of every `animate-in` / `animate-out` and every transform transition, and keeps opacity and colour — so do not add `motion-reduce:transition-none` or `motion-reduce:animate-none` to a fade."
     ],
     "recipes": {
       "Overlay enter and exit": "/* Dialog, sheet, popover, dropdown, context menu — one pattern for all of them.\n   Base UI exposes data-open / data-closed; tw-animate-css turns them into keyframes. */\n<Dialog.Popup className=\"\n  data-open:animate-in   data-open:fade-in-0   data-open:zoom-in-92\n  data-open:slide-in-from-bottom-2\n  data-open:duration-slow  data-open:ease-overshoot\n  data-closed:animate-out  data-closed:fade-out-0 data-closed:zoom-out-96\n  data-closed:duration-fast data-closed:ease-exit\n\" />",
@@ -1118,7 +1123,7 @@
         "AreaChart"
       ],
       "props": "function AreaChart({ data, index, categories, colors, height, stacked, curveType, variant, fillOpacity, dashed, outline, fillOnly, strokeWidth, strokeWidths, showGrid, showAxis, showTooltip, showLegend, yDomain, baseline, yTicks, xTicks, xAxisFormatter, sparkline, yAxisFormatter, valueFormatter, animate, loading, className, }: AreaChartProps): React.JSX.Element;",
-      "example": "<AreaChart data={data} index=\"month\" categories={[\"revenue\", \"cost\"]} />",
+      "example": "<ChartCard title=\"Revenue\" value=\"$84,250\" delta={{ value: \"18.2%\", caption: \"vs last year\" }} periods={[\"12M\", \"30D\"]}>\n  <AreaChart data={data} index=\"month\" categories={[\"revenue\"]} height={200} />\n</ChartCard>",
       "docs": "https://wunderui.com/components/area-chart"
     },
     {
@@ -1131,8 +1136,8 @@
       "exports": [
         "BarChart"
       ],
-      "props": "function BarChart({ data, index, categories, colors, height, layout, stacked, stackGap, radius, barSize, maxBarSize, barGap, lollipop, segments, background, showGrid, showAxis, showTooltip, showLegend, yAxisFormatter, yDomain, yTicks, valueFormatter, animate, loading, className, }: BarChartProps): React.JSX.Element;",
-      "example": "<BarChart data={data} index=\"month\" categories={[\"revenue\", \"cost\"]} stacked={false} />",
+      "props": "function BarChart({ data, index, categories, colors, height, layout, stacked, stackGap, radius, barSize, maxBarSize, barGap, lollipop, segments, background, showGrid, showAxis, showTooltip, showLegend, yAxisFormatter, yDomain, yTicks, valueFormatter, animate, highlight, loading, className, }: BarChartProps): React.JSX.Element;",
+      "example": "<ChartCard title=\"Active users\" value=\"349k\" delta={{ value: \"6.4%\", caption: \"this week\" }} periods={[\"Week\", \"Month\"]}>\n  <BarChart data={data} index=\"day\" categories={[\"users\"]} height={200} highlight={3} />\n</ChartCard>",
       "docs": "https://wunderui.com/components/bar-chart"
     },
     {
@@ -1147,7 +1152,7 @@
         "LineChartReferenceLine"
       ],
       "props": "function LineChart({ data, index, categories, colors, height, showGrid, showAxis, showXAxis, showTooltip, showLegend, showDots, endDot, curved, curveType, dashed, area, strokeWidth, strokeWidths, xTicks, xAxisFormatter, yDomain, yTicks, activeIndex, referenceLines, yAxisFormatter, valueFormatter, animate, loading, className, }: LineChartProps): React.JSX.Element;",
-      "example": "<LineChart data={data} index=\"month\" categories={[\"revenue\", \"cost\"]} curved />",
+      "example": "<ChartCard title=\"Monthly revenue\" value=\"$94k\" delta={{ value: \"46.9%\", caption: \"vs 2025\" }} legend={[{ label: \"2026\" }, { label: \"2025\", color: \"var(--chart-5)\" }]}>\n  <LineChart data={data} index=\"month\" categories={[\"y2026\", \"y2025\"]} colors={[\"var(--chart-1)\", \"var(--chart-5)\"]} dashed={[\"y2025\"]} height={200} />\n</ChartCard>",
       "docs": "https://wunderui.com/components/line-chart"
     },
     {
@@ -1161,7 +1166,7 @@
         "ComposedChart"
       ],
       "props": "function ComposedChart({ data, index, bars, lines, colors, height, showGrid, showAxis, showTooltip, valueFormatter, animate, loading, className, }: ComposedChartProps): React.JSX.Element;",
-      "example": "<ComposedChart data={data} index=\"month\" bars={[\"revenue\"]} lines={[\"cost\"]} />",
+      "example": "<ChartCard title=\"Revenue and cost\" value=\"$365k\" delta={{ value: \"12.8%\", caption: \"margin up\" }} legend={[{ label: \"Revenue\" }, { label: \"Cost\", color: \"var(--chart-2)\" }]}>\n  <ComposedChart data={data} index=\"month\" bars={[\"revenue\"]} lines={[\"cost\"]} height={200} />\n</ChartCard>",
       "docs": "https://wunderui.com/components/composed-chart"
     },
     {
@@ -1175,7 +1180,7 @@
         "PieChart"
       ],
       "props": "function PieChart({ data, colors, height, donut, variant, innerRadius, paddingAngle, cornerRadius, startAngle, endAngle, track, centerLabel, legend, showLabel, showTooltip, valueFormatter, animate, loading, className, }: PieChartProps): React.JSX.Element;",
-      "example": "<PieChart data={[{ name: \"Direct\", value: 42 }]} donut />",
+      "example": "<ChartCard title=\"Traffic sources\" description=\"Last 30 days\">\n  <PieChart data={data} variant=\"donut\" legend=\"right\" height={180} centerLabel={{ label: \"Visits\", value: \"48,230\" }} cornerRadius={4} />\n</ChartCard>",
       "docs": "https://wunderui.com/components/pie-chart"
     },
     {
@@ -1189,7 +1194,7 @@
         "RadarChart"
       ],
       "props": "function RadarChart({ data, index, categories, colors, height, showTooltip, fillOpacity, showDots, animate, loading, className, }: RadarChartProps): React.JSX.Element;",
-      "example": "<RadarChart data={data} index=\"metric\" categories={[\"a\", \"b\"]} />",
+      "example": "<ChartCard title=\"Team profile\" description=\"Two teams compared\" legend={[{ label: \"Team A\" }, { label: \"Team B\", color: \"var(--chart-2)\" }]}>\n  <RadarChart data={data} index=\"metric\" categories={[\"a\", \"b\"]} height={240} />\n</ChartCard>",
       "docs": "https://wunderui.com/components/radar-chart"
     },
     {
@@ -1203,7 +1208,7 @@
         "RadialChart"
       ],
       "props": "function RadialChart({ data, colors, height, showTooltip, innerRadius, centerLabel, animate, loading, className, }: RadialChartProps): React.JSX.Element;",
-      "example": "<RadialChart data={[{ name: \"Goal\", value: 72 }]} />",
+      "example": "<ChartCard title=\"Quarterly goal\" value=\"72%\" description=\"$360k of $500k · 23 days left\">\n  <RadialChart data={[{ name: \"Goal\", value: 72 }]} height={200} />\n</ChartCard>",
       "docs": "https://wunderui.com/components/radial-chart"
     },
     {
@@ -1290,6 +1295,55 @@
       "props": null,
       "example": "import { ColumnChart } from \"@wunderui/react\"\n\n<ColumnChart data={data} index=\"month\" categories={[\"revenue\", \"cost\"]} />",
       "docs": "https://wunderui.com/components/column-chart"
+    },
+    {
+      "slug": "heatmap",
+      "title": "Heatmap",
+      "category": "Charts",
+      "description": "A grid of rounded cells whose shade shows how much happened — commits per day, tickets per hour, deploys per week.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "Heatmap",
+        "HeatmapCell",
+        "HeatmapProps"
+      ],
+      "props": "function Heatmap({ data, rowLabels, columnLabels, max, levels, color, cellSize, gap, legend, valueFormatter, cellLabel, animate, tooltip, onCellHover, className, \"aria-label\": ariaLabel, }: HeatmapProps): React.JSX.Element;",
+      "example": null,
+      "docs": "https://wunderui.com/components/heatmap"
+    },
+    {
+      "slug": "status-strip",
+      "title": "Status Strip",
+      "category": "Charts",
+      "description": "A row of day bars from a status page — green when all was well, amber when degraded, red for an outage.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "StatusStrip",
+        "StatusStripDay",
+        "StatusStripProps",
+        "StatusStripStatus"
+      ],
+      "props": "function StatusStrip({ days, startLabel, endLabel, height, animate, tooltip, onDayHover, className, \"aria-label\": ariaLabel, }: StatusStripProps): React.JSX.Element;",
+      "example": null,
+      "docs": "https://wunderui.com/components/status-strip"
+    },
+    {
+      "slug": "gauge",
+      "title": "Gauge",
+      "category": "Charts",
+      "description": "One value against its limit on a half circle, with a needle that swings in and re-aims with a spring.",
+      "group": "Data & Charts",
+      "tier": "pro",
+      "exports": [
+        "Gauge",
+        "GaugeProps",
+        "GaugeSegment"
+      ],
+      "props": "function Gauge({ value, max, label, format, minLabel, maxLabel, color, dangerAt, ticks, size, animate, className, \"aria-label\": ariaLabel, }: GaugeProps): React.JSX.Element;",
+      "example": null,
+      "docs": "https://wunderui.com/components/gauge"
     },
     {
       "slug": "agenda",
@@ -3772,6 +3826,80 @@
         "Badge"
       ],
       "url": "https://wunderui.com/templates/sign-in"
+    }
+  ],
+  "skills": [
+    {
+      "name": "wunderui-screen",
+      "tier": "free",
+      "group": "free",
+      "description": "Builds a complete React screen with WunderUI from a one-sentence request, within the user's plan (Free uses only the free components) — picks the components and a matching block layout, fills props from design.json, adds the empty, loading and error states that generated screens usually forget, uses motion tokens instead of raw milliseconds, and finishes with a typecheck and a build. Use when the user asks for a page, screen, view, dashboard, settings page, table view, form or similar in a project that uses WunderUI (@wunderui/react)."
+    },
+    {
+      "name": "wunderui-setup",
+      "tier": "free",
+      "group": "free",
+      "description": "Sets up WunderUI in a React project from scratch to the first rendered screen — detects the framework, Tailwind version and existing tokens, puts DESIGN.md and design.json into the project, registers the WunderUI MCP server, wires styles.css and the @source path, renders a probe component and writes a setup report. Use when the user wants to install, add, set up or connect WunderUI (or \"@wunderui/react\") in a project, or asks why WunderUI components render unstyled."
+    },
+    {
+      "name": "wunderui-theme",
+      "tier": "free",
+      "group": "free",
+      "description": "Generates a complete WunderUI brand theme from one brand colour (hex) — optionally an accent colour, a radius preference and a font — the eleven-step brand scale (--brand-50 … --brand-1000), the brand tokens derived from it (primary, primary-foreground, text-link, ring, tint and tint text, chart 1) for light and dark, a WCAG AA check of every key pair with shades moved automatically until they pass, and one CSS file to import after @wunderui/react/styles.css (globally or for one subtree), plus a report. Use when the user wants to rebrand, theme or white-label WunderUI, use their own brand / primary / accent colour, change the radius or font of the library, asks for a \"design system from my colour\", or wants to check an existing WunderUI theme file for contrast."
+    },
+    {
+      "name": "wunderui-token-check",
+      "tier": "free",
+      "group": "free",
+      "description": "Finds hard-coded colours, spacing and radii that bypass the WunderUI design tokens, maps each literal to the nearest token with a measured distance (ΔE for colour, px for spacing and radius), separates safe swaps from values too far from any token, replaces the safe ones and reports how much the look changed. Use when the user asks to check or clean up tokens, remove hardcoded colours/hex values, make a codebase use the design system, or before a theming or dark-mode change in a WunderUI project."
+    },
+    {
+      "name": "wunderui-a11y",
+      "tier": "pro",
+      "group": "coding",
+      "description": "Accessibility check per component or screen in a WunderUI project — renders every variant, walks the focus order and checks that focus is visible, measures WCAG AA contrast of every text in light and dark, verifies the reduced-motion fallback, and delivers each finding with a patch instead of just a report. Use when the user asks for an accessibility or a11y check, WCAG contrast, keyboard or focus review, or a reduced-motion check of a component, page or pull request."
+    },
+    {
+      "name": "wunderui-agent-ui",
+      "tier": "pro",
+      "group": "coding",
+      "description": "Builds the interface of an AI agent with WunderUI's agent components — describes the run (steps, tools, costs, approvals), picks RunTimeline, ApprovalCard, CostMeter, AgentStatus, RunError and their relatives, plays through every state including failure and abort, applies the agent motion tokens and checks the approval moment separately. Use when the user asks for an agent run view, an agent dashboard, a tool-call transcript, a human-in-the-loop approval, a cost or usage view, or any UI that shows what an AI agent is doing, in a project that uses @wunderui/react."
+    },
+    {
+      "name": "wunderui-compose",
+      "tier": "pro",
+      "group": "coding",
+      "description": "Composes WunderUI blocks into a complete page — clarifies the page's goal and audience, proposes a block order that follows the visitor's questions, inserts the blocks and fills them with real content, checks the rhythm (one notable effect per section) and protects the LCP element from entrance animation. Use when the user asks for a landing page, marketing page, pricing page, product page, about page or any multi-section page assembled from WunderUI blocks or sections."
+    },
+    {
+      "name": "wunderui-figma-screen",
+      "tier": "pro",
+      "group": "figma",
+      "description": "Builds a screen in Figma from the WunderUI library — real component instances instead of drawn rectangles, every fill and text bound to the theme variables and text styles, auto layout throughout, a light frame first, then the dark frame as a clone with the Dark mode and a 390 px mobile frame — and checks the result with screenshots and an audit (unbound paints, unstyled text, absolute children). Use when the user asks to design, mock up or build a screen, page or dashboard in Figma with WunderUI, or to turn a React screen or a description into a Figma frame."
+    },
+    {
+      "name": "wunderui-figma-sync",
+      "tier": "pro",
+      "group": "figma",
+      "description": "Keeps Figma variables and the project's CSS tokens (styles.css) identical in both directions — reads the Figma variable collections and text styles through the Figma MCP server, diffs them against the CSS custom properties (colour per light/dark mode, spacing, radius, type, motion), lists every conflict with the measured difference, asks which side wins and writes only in that direction, then reports what changed. Use when the user asks to sync Figma and code, compare design tokens with Figma, update styles.css from Figma, push token changes into Figma, or check for design↔code drift in a WunderUI project."
+    },
+    {
+      "name": "wunderui-motion-audit",
+      "tier": "pro",
+      "group": "coding",
+      "description": "Audits a codebase's animations and transitions against the WunderUI motion rules — transition-all, raw millisecond durations, ease-in-out and other generic curves, scroll-driven animations without an @supports fallback, missing prefers-reduced-motion handling, layout-property animation and fades on the LCP element — justifies every finding with the rule from DESIGN.md, proposes and applies a patch with motion tokens and verifies the build. Use when the user asks for a motion or animation audit, wants transitions to feel less generic, asks about reduced motion, or before shipping UI built with WunderUI."
+    },
+    {
+      "name": "wunderui-refactor",
+      "tier": "pro",
+      "group": "coding",
+      "description": "Migrates an existing React app to WunderUI — scans the project and detects the UI stack per file (shadcn/ui, Radix primitives, MUI, Chakra, Headless UI, Mantine, hand-built components and hard-coded Tailwind colours), maps every component to its WunderUI equivalent with prop notes, writes a migration plan with effort and order, applies the safe codemods (shadcn imports → @wunderui/react, raw colours → token utilities) and measures before → after (raw colours, foreign UI imports, WunderUI coverage) with the project's typecheck. Use when the user wants to switch to WunderUI, migrate or refactor an app from shadcn, MUI, Chakra, Mantine or Headless UI, replace a component library, estimate how much work a switch is, or asks \"how do I move this project to WunderUI\"."
+    },
+    {
+      "name": "wunderui-uiux-design-auditor",
+      "tier": "pro",
+      "group": null,
+      "description": "Evidence-based UI/UX and accessibility audit of any product — live websites, landing pages, component libraries / front-end code (React, Vue, Svelte, HTML/CSS, Tailwind) and Figma files — against a 497-rule catalog (WCAG 2.2 A/AA, platform guidance, design-system rules). Produces findings with evidence, severity and acceptance criteria, a coverage matrix, a change plan and a client-ready HTML report. Read-only. Use when the user asks for a UI/UX audit, accessibility or WCAG check, design review, landing-page review, design-system or Figma audit, design↔code (token) comparison, or a re-check after fixes."
     }
   ]
 }

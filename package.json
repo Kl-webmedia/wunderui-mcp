@@ -1,6 +1,7 @@
 {
   "name": "wunderui-mcp",
-  "version": "1.0.3",
+  "version": "1.1.0",
+  "mcpName": "io.github.Kl-webmedia/wunderui-mcp",
   "description": "MCP server that gives AI coding agents the WunderUI design system: tokens, component props, templates and starters. Works with Claude Code, Cursor, Windsurf, Cline and Codex.",
   "keywords": [
     "mcp",
