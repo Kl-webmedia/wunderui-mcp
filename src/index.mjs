@@ -377,7 +377,16 @@ server.registerTool(
 
 const siteUrl = () => (process.env.WUNDERUI_SITE ?? design.site ?? "https://wunderui.com").replace(/\/$/, "")
 const licenseKey = () => process.env.WUNDERUI_LICENSE_KEY?.trim() || null
-const authHeaders = () => (licenseKey() ? { authorization: `Bearer ${licenseKey()}` } : {})
+/** The key goes to wunderui.com (or a local dev server) only, never to another WUNDERUI_SITE. */
+const keyAllowed = () => {
+  try {
+    const { protocol, hostname } = new URL(siteUrl())
+    return (protocol === "https:" && (hostname === "wunderui.com" || hostname === "www.wunderui.com")) || ["localhost", "127.0.0.1", "[::1]"].includes(hostname)
+  } catch {
+    return false
+  }
+}
+const authHeaders = () => (licenseKey() && keyAllowed() ? { authorization: `Bearer ${licenseKey()}` } : {})
 let instructions = null
 try {
   instructions = readFileSync(resolve(dataDir, "INSTRUCTIONS.md"), "utf8")

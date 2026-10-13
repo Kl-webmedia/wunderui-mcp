@@ -2,7 +2,7 @@
 
 > Design context for AI coding agents. Paste this into your prompt, or let your
 > agent pull it from https://wunderui.com/DESIGN.md.
-> Generated from the WunderUI source on 2026-10-09 · @wunderui/react@0.1.0
+> Generated from the WunderUI source on 2026-10-13 · @wunderui/react@0.1.0
 
 WunderUI is a React component library and design system: 204
 documented components in 6 groups, built on Base UI
@@ -11,9 +11,9 @@ kanban, charts, an application shell and a full AI chat set.
 
 ## Install
 
-Core and Pro licence holders (the wunderui-core download from the purchase). Not on the public npm registry.
+Core and Pro licence holders (the private GitHub repository wunder-ui/wunderui-core; Polar invites your GitHub account after the purchase). Not on the public npm registry.
 
-Unzip the wunderui-core download, run `npm install && npm run build` in it once, then in your project: `npm pack <wunderui-core>/packages/react --pack-destination .wunderui` and `npm install ./.wunderui/<the .tgz>`. The wunderui-setup agent skill does all of it.
+Accept the GitHub invitation, `git clone https://github.com/wunder-ui/wunderui-core`, run `npm install && npm run build` in it once, then in your project: `mkdir .wunderui`, `npm pack <wunderui-core>/packages/react --pack-destination .wunderui` and `npm install ./.wunderui/<the .tgz>`. The wunderui-setup agent skill does all of it.
 
 Do not run `npm install @wunderui/react` — the package is not published, the command fails. Free plan: the 76 free components are MIT source at https://github.com/wunder-ui/wunderui — add them with `npx wunderui-cli add <name>` (files, dependencies and styles), or copy components/, lib/ and styles/wunderui.css (each free component in design.json has a sourceRaw URL). Core and Pro components come with a plan (https://wunderui.com/#pricing).
 
@@ -41,7 +41,7 @@ import { Button, Card } from "@wunderui/react"
 7. **Prefer a composite over rebuilding one.** Before writing a table, a board, a stat row or a chat bubble by hand, check the task table and the inventory below — it probably exists.
 8. **Charts take a `loading` prop**; do not build your own skeleton.
 9. **A KPI chart ends on the trend line.** In a metric card, a sparkline or mini chart beside the value sits on the same horizontal line as the bottom of the trend chip — `MetricCard` does this by default for `MetricSparkline`. Never centre it vertically or let it float above the chip.
-10. **Motion comes from tokens too.** Duration is `duration-instant|fast|base|slow|deliberate|ambient`, easing is `ease-entrance|exit|move|overshoot`. Never write a raw `duration-300` and never write `ease-in-out` — both are the default every generator reaches for, and both read as mechanical.
+10. **Motion comes from tokens too.** Duration is `duration-instant|fast|base|slow|deliberate|ambient`, easing is `ease-entrance|exit|move|overshoot|spring`. Never write a raw `duration-300` and never write `ease-in-out` — both are the default every generator reaches for, and both read as mechanical.
 11. **Agent UI has its own components.** A run's state, its steps, an approval gate, its spend and its failure each have one — `AgentStatus`, `RunTimeline`, `ApprovalCard`, `CostMeter`, `RunError`. Do not assemble these from badges and divs.
 
 ## Do and don't
@@ -536,6 +536,14 @@ XLarge (0 16 32 -4 / 16%). Shadow colours: `--effect-shadow`, `--effect-shadow-2
 Font family comes from the host app through `--font-sans`; WunderUI maps
 `--font-heading` to the same stack. The documentation site uses Inter.
 
+### Density
+
+Compact is the default: controls are 32, 36, 40, 44 and 48 px (`sm` to `2xl`), one scale for
+buttons and fields, text stays 14 px. `data-density="comfortable"` on `<html>` or any ancestor
+restores the roomier sizes (36 to 56 px); it nests in both directions. In code: `<Density value>`,
+`DensityProvider` and `useDensity()`. Do not hard-code control heights (`h-9`, `h-11`) — use
+the component sizes so density keeps working. Portals (menus, dialogs) read the page's density.
+
 ## Motion
 
 Motion is tokenised like everything else. Duration and easing are never written
@@ -569,6 +577,7 @@ on an `animate-in` the same way it works on a `transition`.
 | `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Anything leaving. Accelerates away. |
 | `ease-move` | `cubic-bezier(0.65, 0, 0.35, 1)` | Anything repositioning while staying on screen. |
 | `ease-overshoot` | `cubic-bezier(0.34, 1.35, 0.64, 1)` | Dialog, popover, switch. At most one per screen. |
+| `ease-spring` | `linear(0, 0.35 9%, 0.78 19%, 1.04 27%, 1.1 32%, 1.03 41%, 0.98 50%, 1.01 62%, 1)` | A sampled spring: one soft overshoot, then it settles. Something physical landing — a thumb, an arrow, a released sheet. Never on a data value. |
 
 ### Travel
 
@@ -588,7 +597,7 @@ on an `animate-in` the same way it works on a `transition`.
 3. **Entrances decelerate, exits accelerate.** `ease-entrance` in, `ease-exit` out — and the exit is one step shorter on the duration scale, never the entrance duration reversed.
 4. **Never fade in the LCP element.** An element at `opacity: 0` is not an LCP candidate, so a 600ms hero fade adds 600ms to your LCP. Render headline copy at full opacity; animate `transform` only.
 5. **Restrain the travel.** Anything anchored to a trigger moves `--travel-xs` or `--travel-sm`. A menu that slides 20px looks like it fell in.
-6. **One overshoot per screen.** `ease-overshoot` is punctuation. Two of them on one view and the interface reads as a toy.
+6. **One overshoot per screen.** `ease-overshoot` is punctuation. Two of them on one view and the interface reads as a toy. Never on a data value: a bar, gauge or bubble that swings past its number shows a wrong number for a moment.
 7. **Reduced motion is opt-in, not a kill switch.** Wrap the animation in `@media (prefers-reduced-motion: no-preference)` so the still state is the default and you cannot forget a selector. Reduced means calmer, not nothing: drop transforms and travel, keep opacity and colour changes (rule 15).
 8. **Never `transition-all`.** Name the properties — `transition-[opacity,transform]` — or use bare `transition`, which covers colour, shadow, transform and opacity but no layout property. `transition-all` animates things you did not mean to animate, including on first paint.
 9. **Loading keeps its height.** A skeleton occupies the same box as the content it stands in for, and crossfades — it never collapses and reflows.
@@ -684,7 +693,7 @@ Agent skills that build and check with these rules (https://wunderui.com/skills)
 - **wunderui-figma-sync** (Pro) — Keeps Figma variables and the project's CSS tokens (styles.css) identical in both directions — reads the Figma variable collections and text styles through the Figma MCP server, diffs them against the CSS custom properties (colour per light/dark mode, spacing, radius, type, motion), lists every conflict with the measured difference, asks which side wins and writes only in that direction, then reports what changed.
 - **wunderui-motion-audit** (Pro) — Audits a codebase's animations and transitions against the WunderUI motion rules — transition-all, raw millisecond durations, ease-in-out and other generic curves, scroll-driven animations without an @supports fallback, missing prefers-reduced-motion handling, layout-property animation and fades on the LCP element — justifies every finding with the rule from DESIGN.md, proposes and applies a patch with motion tokens and verifies the build.
 - **wunderui-refactor** (Pro) — Migrates an existing React app to WunderUI — scans the project and detects the UI stack per file (shadcn/ui, Radix primitives, MUI, Chakra, Headless UI, Mantine, hand-built components and hard-coded Tailwind colours), maps every component to its WunderUI equivalent with prop notes, writes a migration plan with effort and order, applies the safe codemods (shadcn imports → @wunderui/react, raw colours → token utilities) and measures before → after (raw colours, foreign UI imports, WunderUI coverage) with the project's typecheck.
-- **wunderui-uiux-design-auditor** (Pro) — Evidence-based UI/UX and accessibility audit of any product — live websites, landing pages, component libraries / front-end code (React, Vue, Svelte, HTML/CSS, Tailwind) and Figma files — against a 497-rule catalog (WCAG 2.2 A/AA, platform guidance, design-system rules).
+- **wunderui-uiux-design-auditor** (Pro) — Evidence-based UI/UX and accessibility audit of any product — live websites, landing pages, component libraries / front-end code (React, Vue, Svelte, HTML/CSS, Tailwind) and Figma files — against a 505-rule catalog (WCAG 2.2 A/AA, platform guidance, design-system rules, responsive behaviour from 320 to 1440 px).
 
 ## Component inventory
 
@@ -912,7 +921,7 @@ Agent skills that build and check with these rules (https://wunderui.com/skills)
 | `ProjectCard` | Pro | A clickable project tile with a colored cover, a name and a short line of detail. | — |
 | `FileCard` | Pro | A file tile with a preview, a name and details, plus optional selection, a menu and a deleted state. | FileCardProps |
 | `StatusBar` | Pro | The phone status bar with the time, for the top of a mobile screen mockup. | — |
-| `TabItem` | Pro | A single underlined tab that shows a count while it is active, used inside a Tab Bar. | — |
+| `TabItem` | Pro | A single underlined tab that shows a count while it is active, used inside a Tab Bar. | TabItemProps |
 | `TabBar` | Pro | A horizontal row of underlined tabs on a bottom border that scrolls sideways when space runs out. | — |
 | `TimelineEvent` | Pro | One entry in an activity feed or history, with an avatar or status dot and a line to the next entry. | TimelineEventProps |
 | `Price` | Pro | A price with an optional billing period, a crossed-out old price and a savings badge. | PriceProps |
@@ -1525,7 +1534,7 @@ A gradient-filled area chart for visualizing trends over time.
 ```
 
 ```ts
-function AreaChart({ data, index, categories, colors, height, stacked, curveType, variant, fillOpacity, dashed, outline, fillOnly, strokeWidth, strokeWidths, showGrid, showAxis, showTooltip, showLegend, yDomain, baseline, yTicks, xTicks, xAxisFormatter, sparkline, yAxisFormatter, valueFormatter, animate, loading, className, }: AreaChartProps): React.JSX.Element;
+function AreaChart({ data, index, categories, colors, height, stacked, curveType, variant, fillOpacity, dashed, outline, fillOnly, strokeWidth, strokeWidths, showGrid, showAxis, showTooltip, showLegend, yDomain, baseline, yTicks, xTicks, xAxisFormatter, sparkline, yAxisFormatter, valueFormatter, animate, loading, className, "aria-label": ariaLabel, }: AreaChartProps): React.JSX.Element;
 ```
 
 #### BarChart
@@ -1539,7 +1548,7 @@ Compares categorical data with grouped or stacked bars.
 ```
 
 ```ts
-function BarChart({ data, index, categories, colors, height, layout, stacked, stackGap, radius, barSize, maxBarSize, barGap, lollipop, segments, background, showGrid, showAxis, showTooltip, showLegend, yAxisFormatter, yDomain, yTicks, valueFormatter, animate, highlight, loading, className, }: BarChartProps): React.JSX.Element;
+function BarChart({ data, index, categories, colors, height, layout, stacked, stackGap, radius, barSize, maxBarSize, barGap, lollipop, segments, background, showGrid, showAxis, showTooltip, showLegend, yAxisFormatter, yDomain, yTicks, valueFormatter, animate, highlight, loading, className, "aria-label": ariaLabel, }: BarChartProps): React.JSX.Element;
 ```
 
 #### LineChart
@@ -1553,7 +1562,7 @@ Plots one or more series as smooth or linear lines.
 ```
 
 ```ts
-function LineChart({ data, index, categories, colors, height, showGrid, showAxis, showXAxis, showTooltip, showLegend, showDots, endDot, curved, curveType, dashed, area, strokeWidth, strokeWidths, xTicks, xAxisFormatter, yDomain, yTicks, activeIndex, referenceLines, yAxisFormatter, valueFormatter, animate, loading, className, }: LineChartProps): React.JSX.Element;
+function LineChart({ data, index, categories, colors, height, showGrid, showAxis, showXAxis, showTooltip, showLegend, showDots, endDot, curved, curveType, dashed, area, strokeWidth, strokeWidths, xTicks, xAxisFormatter, yDomain, yTicks, activeIndex, referenceLines, yAxisFormatter, valueFormatter, animate, loading, className, "aria-label": ariaLabel, }: LineChartProps): React.JSX.Element;
 ```
 
 #### ComposedChart
@@ -1567,7 +1576,7 @@ Combines bars and a trend line in a single chart.
 ```
 
 ```ts
-function ComposedChart({ data, index, bars, lines, colors, height, showGrid, showAxis, showTooltip, valueFormatter, animate, loading, className, }: ComposedChartProps): React.JSX.Element;
+function ComposedChart({ data, index, bars, lines, colors, height, showGrid, showAxis, showTooltip, valueFormatter, animate, loading, className, "aria-label": ariaLabel, }: ComposedChartProps): React.JSX.Element;
 ```
 
 #### PieChart
@@ -1581,7 +1590,7 @@ Shows proportions of a whole, with an optional donut mode.
 ```
 
 ```ts
-function PieChart({ data, colors, height, donut, variant, innerRadius, paddingAngle, cornerRadius, startAngle, endAngle, track, centerLabel, legend, showLabel, showTooltip, valueFormatter, animate, loading, className, }: PieChartProps): React.JSX.Element;
+function PieChart({ data, colors, height, donut, variant, innerRadius, paddingAngle, cornerRadius, startAngle, endAngle, track, centerLabel, legend, showLabel, showTooltip, valueFormatter, animate, loading, className, "aria-label": ariaLabel, }: PieChartProps): React.JSX.Element;
 ```
 
 #### RadarChart
@@ -1595,7 +1604,7 @@ Compares multiple series across shared axes on a polar grid.
 ```
 
 ```ts
-function RadarChart({ data, index, categories, colors, height, showTooltip, fillOpacity, showDots, animate, loading, className, }: RadarChartProps): React.JSX.Element;
+function RadarChart({ data, index, categories, colors, height, showTooltip, fillOpacity, showDots, animate, loading, className, "aria-label": ariaLabel, }: RadarChartProps): React.JSX.Element;
 ```
 
 #### RadialChart
@@ -1609,7 +1618,7 @@ A circular progress-style chart for a single goal value.
 ```
 
 ```ts
-function RadialChart({ data, colors, height, showTooltip, innerRadius, centerLabel, animate, loading, className, }: RadialChartProps): React.JSX.Element;
+function RadialChart({ data, colors, height, showTooltip, innerRadius, centerLabel, animate, loading, className, "aria-label": ariaLabel, }: RadialChartProps): React.JSX.Element;
 ```
 
 #### RadialGauge
@@ -1625,7 +1634,7 @@ import { ChartCard, RadialGauge } from "@wunderui/react"
 ```
 
 ```ts
-function RadialGauge({ data, colors, max, height, thickness, paddingAngle, cornerRadius, track, centerLabel, legend, showTooltip, valueFormatter, animate, loading, className, }: RadialGaugeProps): React.JSX.Element;
+function RadialGauge({ data, colors, max, height, thickness, paddingAngle, cornerRadius, track, centerLabel, legend, showTooltip, valueFormatter, animate, loading, className, "aria-label": ariaLabel, }: RadialGaugeProps): React.JSX.Element;
 ```
 
 #### BubbleChart
@@ -1637,7 +1646,7 @@ A scatter plot where marker size encodes a third dimension of the data.
 ```
 
 ```ts
-function BubbleChart({ data, xKey, yKey, sizeKey, name, color, height, sizeRange, showGrid, showAxis, showTooltip, valueFormatter, groupKey, colors, animate, loading, className, }: BubbleChartProps): React.JSX.Element;
+function BubbleChart({ data, xKey, yKey, sizeKey, name, color, height, sizeRange, showGrid, showAxis, showTooltip, valueFormatter, groupKey, colors, animate, loading, className, "aria-label": ariaLabel, }: BubbleChartProps): React.JSX.Element;
 ```
 
 #### CandlestickChart
@@ -1656,7 +1665,7 @@ An OHLC (open/high/low/close) chart for visualizing price movement over time.
 ```
 
 ```ts
-function CandlestickChart({ data, index, height, upColor, downColor, lines, bandKey, volumeKey, lastPrice, yAxisSide, yDomain, yTicks, xTicks, yAxisFormatter, xAxisFormatter, showGrid, showAxis, showTooltip, showLegend, priceLabel, animate, loading, className, }: CandlestickChartProps): React.JSX.Element;
+function CandlestickChart({ data, index, height, upColor, downColor, lines, bandKey, volumeKey, lastPrice, yAxisSide, yDomain, yTicks, xTicks, yAxisFormatter, xAxisFormatter, showGrid, showAxis, showTooltip, showLegend, priceLabel, animate, loading, className, "aria-label": ariaLabel, }: CandlestickChartProps): React.JSX.Element;
 ```
 
 #### Sparkline
@@ -1686,7 +1695,7 @@ Shows drop-off across sequential stages, each with a label and value.
 ```
 
 ```ts
-function FunnelChart({ data, series, labels, max, height, color, variant, direction, fillOpacity, showAxis, showHeader, showTooltip, seriesLabel, yAxisFormatter, animate, loading, className, }: FunnelChartProps): React.JSX.Element;
+function FunnelChart({ data, series, labels, max, height, color, variant, direction, fillOpacity, showAxis, showHeader, showTooltip, seriesLabel, yAxisFormatter, animate, loading, className, "aria-label": ariaLabel, }: FunnelChartProps): React.JSX.Element;
 ```
 
 #### ColumnChart
@@ -1720,7 +1729,7 @@ function StatusStrip({ days, startLabel, endLabel, height, animate, tooltip, onD
 One value against its limit on a half circle, with a needle that swings in and re-aims with a spring.
 
 ```ts
-function Gauge({ value, max, label, format, minLabel, maxLabel, color, dangerAt, ticks, size, animate, className, "aria-label": ariaLabel, }: GaugeProps): React.JSX.Element;
+function Gauge({ value: rawValue, max, label, format, minLabel, maxLabel, color, dangerAt, ticks, size, animate, className, "aria-label": ariaLabel, }: GaugeProps): React.JSX.Element;
 ```
 
 #### Agenda
@@ -2108,12 +2117,14 @@ A pill-shaped single-select toggle group, like a compact tab bar.
 ```
 
 ```ts
-function Segment({ options, value, onValueChange, size, className, }: {
+function Segment({ options, value, onValueChange, size, className, "aria-label": ariaLabel, }: {
     options: SegmentOption[];
     value: string;
     onValueChange: (value: string) => void;
     size?: SegmentSize;
     className?: string;
+    /** Names the group for screen readers, e.g. "Version". */
+    "aria-label"?: string;
 }): React.JSX.Element;
 type SegmentSize = "xs" | "sm" | "md" | "lg";
 ```
@@ -2594,8 +2605,13 @@ Copy / retry / thumbs up-down actions shown under an assistant message.
 ```
 
 ```ts
-function ChatMessageActions({ className }: {
+function ChatMessageActions({ className, onCopy, onRegenerate, feedback, onFeedback, }: {
     className?: string;
+    onCopy?: () => void;
+    onRegenerate?: () => void;
+    /** The rating already given; marks the matching thumb as pressed. */
+    feedback?: "up" | "down";
+    onFeedback?: (value: "up" | "down") => void;
 }): React.JSX.Element;
 ```
 
@@ -2726,7 +2742,7 @@ An auto-resizing chat input with attach and send buttons.
 ```
 
 ```ts
-function PromptInput({ value, onValueChange, onSubmit, placeholder, models, model, defaultModel, onModelChange, tools, className, }: {
+function PromptInput({ value, onValueChange, onSubmit, placeholder, models, model, defaultModel, onModelChange, tools, onAttach, className, }: {
     value: string;
     onValueChange: (value: string) => void;
     onSubmit?: () => void;
@@ -2738,6 +2754,8 @@ function PromptInput({ value, onValueChange, onSubmit, placeholder, models, mode
     onModelChange?: (id: string) => void;
     /** Extra buttons after the attach button (link, web search …). */
     tools?: React.ReactNode;
+    /** Called by the attach (paperclip) button — open your file picker here. */
+    onAttach?: () => void;
     className?: string;
 }): React.JSX.Element;
 ```
@@ -3362,7 +3380,7 @@ What an agent asks to access, one scope per row, with a countdown until the requ
 <ScopeList
   scopes={[
     { title: "Read the docs site", detail: "apps/docs · 412 files" },
-    { title: "Open a pull request", detail: "Kl-webmedia/wunderui · branch tokens-sync" },
+    { title: "Open a pull request", detail: "wunder-ui/wunderui · branch tokens-sync" },
   ]}
   expiresAt={request.expiresAt}
 />
@@ -4120,13 +4138,7 @@ const [tab, setTab] = useState("All")
 ```
 
 ```ts
-function TabItem({ active, count, children, onClick, className }: {
-    active?: boolean;
-    count?: React.ReactNode;
-    children: React.ReactNode;
-    onClick?: () => void;
-    className?: string;
-}): React.JSX.Element;
+function TabItem({ active, count, children, onClick, className, ...props }: TabItemProps): React.JSX.Element;
 ```
 
 #### TabBar
@@ -4147,9 +4159,10 @@ const [tab, setTab] = useState("Overview")
 ```
 
 ```ts
-function TabBar({ children, className }: {
+function TabBar({ children, className, "aria-label": ariaLabel }: {
     children: React.ReactNode;
     className?: string;
+    "aria-label"?: string;
 }): React.JSX.Element;
 ```
 
@@ -4869,7 +4882,7 @@ A password input with a button to show or hide what was typed.
 <PasswordField
   label="Password"
   placeholder="Enter your password"
-  labelTrailing={<a href="/reset" className="text-xs font-medium text-text-link hover:underline">Forgot password?</a>}
+  labelTrailing={<a href="/reset" data-hit className="text-xs font-medium text-text-link hover:underline">Forgot password?</a>}
 />
 ```
 
@@ -4949,7 +4962,7 @@ function FormActions({ children, align, className }: {
 
 Full pages assembled only from WunderUI components:
 
-- **Analytics dashboard** — KPI row, two charts, a transactions table and an activity rail — the page every internal tool starts with. (AppLayout, KPIGroup, AreaChart, BarChart, DataGrid, Timeline) · https://wunderui.com/templates/dashboard
+- **SaaS Dashboard** — A whole SaaS app on the Analytics Dashboard app shell: 18 analytics dashboards, sales, files, team, billing, notifications, search, onboarding and upgrade prompts, with a live demo. (Sidebar, SidebarGroup, AreaChart, Table, Dialog, CommandItemRow) · https://wunderui.com/templates/dashboard
 - **Settings page** — Profile, preferences, notifications and a danger zone, grouped into sections with real form controls. (AppLayout, Input, Textarea, Switch, RadioGroup, Alert) · https://wunderui.com/templates/settings
 - **AI inbox** — Conversation list, threaded messages with tool calls and sources, and a prompt input that sends. (ChatListView, ChatMessage, ChatTool, ChainOfThought, PromptInput) · https://wunderui.com/templates/inbox
 - **Agent workspace** — Run list, a run's timeline with an approval waiting inside it, and a context rail with sources, tools and spend. (AgentGrid, AgentStatus, RunTimeline, ApprovalCard, CostMeter, RunError) · https://wunderui.com/templates/agent-workspace
