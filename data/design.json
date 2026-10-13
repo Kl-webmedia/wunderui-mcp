@@ -22,7 +22,7 @@
   "counts": {
     "components": 204,
     "categories": 12,
-    "exports": 615,
+    "exports": 617,
     "templates": 5,
     "free": 76,
     "pro": 128
@@ -2110,12 +2110,14 @@
         "ComboboxInput",
         "ComboboxInputGroup",
         "ComboboxItem",
+        "ComboboxItemGroup",
         "ComboboxList",
         "ComboboxPopup",
         "ComboboxPortal",
+        "ComboboxProps",
         "ComboboxTrigger"
       ],
-      "props": "function Combobox(props: Combobox.Root.Props<any, any>): React.JSX.Element;",
+      "props": "function Combobox<Value, Multiple extends boolean | undefined = false, Item = Value>(props: ComboboxProps<Value, Multiple, Item>): React.JSX.Element;",
       "example": "<Combobox items={frameworks} value={value} onValueChange={setValue}>\n  <ComboboxInputGroup>\n    <ComboboxInput placeholder=\"Search...\" />\n    <ComboboxTrigger />\n  </ComboboxInputGroup>\n  <ComboboxPopup>\n    <ComboboxEmpty>No results.</ComboboxEmpty>\n    <ComboboxList>\n      {(item) => <ComboboxItem key={item} value={item}>{item}</ComboboxItem>}\n    </ComboboxList>\n  </ComboboxPopup>\n</Combobox>",
       "docs": "https://wunderui.com/components/combobox",
       "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/combobox.tsx",
@@ -2138,8 +2140,8 @@
         "AutocompletePopup",
         "AutocompletePortal"
       ],
-      "props": "function Autocomplete(props: Autocomplete.Root.Props<any>): React.JSX.Element;",
-      "example": "<Autocomplete items={fruits}>\n  <AutocompleteInputGroup>\n    <AutocompleteInput placeholder=\"Type a fruit...\" />\n  </AutocompleteInputGroup>\n  <AutocompletePopup>\n    <AutocompleteEmpty>No matches.</AutocompleteEmpty>\n    <AutocompleteList>\n      {(item) => <AutocompleteItem key={item}>{item}</AutocompleteItem>}\n    </AutocompleteList>\n  </AutocompletePopup>\n</Autocomplete>",
+      "props": "function Autocomplete<ItemValue>({ items, ...props }: Autocomplete.Root.Props<ItemValue>): React.JSX.Element;",
+      "example": "<Autocomplete items={fruits}>\n  <AutocompleteInputGroup>\n    <AutocompleteInput placeholder=\"Type a fruit...\" />\n  </AutocompleteInputGroup>\n  <AutocompletePopup>\n    <AutocompleteEmpty>No matches.</AutocompleteEmpty>\n    <AutocompleteList>\n      {(item) => <AutocompleteItem key={item} value={item}>{item}</AutocompleteItem>}\n    </AutocompleteList>\n  </AutocompletePopup>\n</Autocomplete>",
       "docs": "https://wunderui.com/components/autocomplete",
       "source": "https://github.com/wunder-ui/wunderui/blob/main/components/ui/autocomplete.tsx",
       "sourceRaw": "https://raw.githubusercontent.com/wunder-ui/wunderui/main/components/ui/autocomplete.tsx"
@@ -2371,7 +2373,7 @@
       "exports": [
         "AgentStatus"
       ],
-      "props": "function AgentStatus({ status, since, label, showElapsed, size, className, }: {\n    status: AgentRunStatus;\n    /** When the run entered this status. Drives the elapsed counter. */\n    since?: Date | string | number;\n    /** Overrides the default status label. */\n    label?: string;\n    showElapsed?: boolean;\n    size?: \"sm\" | \"default\";\n    className?: string;\n}): React.JSX.Element;\ntype AgentRunStatus = \"idle\" | \"running\" | \"waiting\" | \"done\" | \"failed\" | \"cancelled\";",
+      "props": "function AgentStatus({ status, since, endedAt, label, showElapsed, size, className, }: {\n    status: AgentRunStatus;\n    /** When the run entered this status (or started, together with `endedAt`). Drives the elapsed counter. */\n    since?: Date | string | number;\n    /** When a finished run ended. With `since`, the pill shows the final duration `endedAt − since`. */\n    endedAt?: Date | string | number;\n    /** Overrides the default status label. */\n    label?: string;\n    showElapsed?: boolean;\n    size?: \"sm\" | \"default\";\n    className?: string;\n}): React.JSX.Element;\ntype AgentRunStatus = \"idle\" | \"running\" | \"waiting\" | \"done\" | \"failed\" | \"cancelled\";",
       "example": "<AgentStatus status=\"running\" since={run.startedAt} />",
       "docs": "https://wunderui.com/components/agent-status"
     },
@@ -2897,7 +2899,7 @@
         "RatingLabel",
         "RatingType"
       ],
-      "props": "function Rating({ value, onValueChange, max, type, label, readOnly, className, }: {\n    value: number;\n    onValueChange?: (value: number) => void;\n    max?: number;\n    type?: RatingType;\n    label?: RatingLabel;\n    readOnly?: boolean;\n    className?: string;\n}): React.JSX.Element;\ntype RatingType = \"stars\" | \"hearts\" | \"emojis\" | \"scale\";\ntype RatingLabel = \"none\" | \"left\" | \"right\" | \"tooltip\";",
+      "props": "function Rating({ value, onValueChange, max, type, label, readOnly, className, \"aria-label\": ariaLabel, \"aria-labelledby\": ariaLabelledBy, }: {\n    value: number;\n    onValueChange?: (value: number) => void;\n    max?: number;\n    type?: RatingType;\n    label?: RatingLabel;\n    readOnly?: boolean;\n    className?: string;\n    /** Names the group (\"Rating\" by default); read-only, it replaces \"Rated 3.5 out of 5\". */\n    \"aria-label\"?: string;\n    /** Id of a visible label that names the group, instead of `aria-label`. */\n    \"aria-labelledby\"?: string;\n}): React.JSX.Element;\ntype RatingType = \"stars\" | \"hearts\" | \"emojis\" | \"scale\";\ntype RatingLabel = \"none\" | \"left\" | \"right\" | \"tooltip\";",
       "example": "<Rating value={value} onValueChange={setValue} max={5} />",
       "docs": "https://wunderui.com/components/rating",
       "source": "https://github.com/wunder-ui/wunderui/blob/main/components/wunderui/rating.tsx",
@@ -3339,7 +3341,7 @@
         "OtpCodeInput",
         "OtpCodeInputProps"
       ],
-      "props": "function OtpCodeInput({ length, value, onValueChange, onComplete, invalid, disabled, autoFocus, className, }: OtpCodeInputProps): React.JSX.Element;",
+      "props": "function OtpCodeInput({ length, value, onValueChange, onComplete, invalid, disabled, autoFocus, \"aria-label\": ariaLabel, className, }: OtpCodeInputProps): React.JSX.Element;",
       "example": "const [code, setCode] = useState(\"\")\n\n<OtpCodeInput length={6} value={code} onValueChange={setCode} onComplete={(value) => verify(value)} autoFocus />",
       "docs": "https://wunderui.com/components/otp-code-input"
     },
@@ -3702,7 +3704,7 @@
         "TextFieldProps"
       ],
       "props": "function TextField({ label, labelTrailing, optional, helper, error, leading, trailing, size, id: idProp, className, wrapperClassName, ...props }: TextFieldProps): React.JSX.Element;",
-      "example": "<TextField\n  label=\"Work email\"\n  type=\"email\"\n  placeholder=\"name@company.com\"\n  leading={<Mail className=\"size-4\" />}\n  value={email}\n  onChange={(e) => setEmail(e.target.value)}\n  helper=\"We'll send a sign-in link to this address.\"\n  error={valid ? undefined : \"Enter a full email address, like alina@wunderui.dev.\"}\n/>\n<TextField label=\"Company\" optional placeholder=\"WunderUI\" leading={<Building2 className=\"size-4\" />} />",
+      "example": "<TextField\n  label=\"Work email\"\n  type=\"email\"\n  placeholder=\"name@example.com\"\n  leading={<Mail className=\"size-4\" />}\n  value={email}\n  onChange={(e) => setEmail(e.target.value)}\n  helper=\"We'll send a sign-in link to this address.\"\n  error={valid ? undefined : \"Enter a full email address, like alina@wunderui.dev.\"}\n/>\n<TextField label=\"Company\" optional placeholder=\"WunderUI\" leading={<Building2 className=\"size-4\" />} />",
       "docs": "https://wunderui.com/components/text-field"
     },
     {

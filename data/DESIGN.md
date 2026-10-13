@@ -828,7 +828,7 @@ Agent skills that build and check with these rules (https://wunderui.com/skills)
 | `InputGroup` | Free | Groups an input with leading/trailing addons — icons, buttons, or text. | InputGroupAddon |
 | `NumberField` | Free | A numeric input with increment/decrement buttons. | NumberFieldDecrement, NumberFieldGroup, NumberFieldIncrement, NumberFieldInput |
 | `OtpField` | Free | A segmented input for one-time passwords and verification codes. | OtpFieldInput |
-| `Combobox` | Free | An input combined with a filterable list of predefined items to select. | ComboboxEmpty, ComboboxGroup, ComboboxGroupLabel, ComboboxInput, ComboboxInputGroup, ComboboxItem, ComboboxList, ComboboxPopup, ComboboxPortal, ComboboxTrigger |
+| `Combobox` | Free | An input combined with a filterable list of predefined items to select. | ComboboxEmpty, ComboboxGroup, ComboboxGroupLabel, ComboboxInput, ComboboxInputGroup, ComboboxItem, ComboboxItemGroup, ComboboxList, ComboboxPopup, ComboboxPortal, ComboboxProps, ComboboxTrigger |
 | `Autocomplete` | Free | An input that suggests options as you type. | AutocompleteEmpty, AutocompleteInput, AutocompleteInputGroup, AutocompleteItem, AutocompleteList, AutocompletePopup, AutocompletePortal |
 | `Calendar` | Free | A month-grid date picker with single or range selection. | CalendarProps |
 | `DatePicker` | Free | A Calendar inside a Popover, with Cancel/Apply actions. | DatePickerProps |
@@ -2527,7 +2527,7 @@ An input combined with a filterable list of predefined items to select.
 ```
 
 ```ts
-function Combobox(props: Combobox.Root.Props<any, any>): React.JSX.Element;
+function Combobox<Value, Multiple extends boolean | undefined = false, Item = Value>(props: ComboboxProps<Value, Multiple, Item>): React.JSX.Element;
 ```
 
 #### Autocomplete
@@ -2542,14 +2542,14 @@ An input that suggests options as you type.
   <AutocompletePopup>
     <AutocompleteEmpty>No matches.</AutocompleteEmpty>
     <AutocompleteList>
-      {(item) => <AutocompleteItem key={item}>{item}</AutocompleteItem>}
+      {(item) => <AutocompleteItem key={item} value={item}>{item}</AutocompleteItem>}
     </AutocompleteList>
   </AutocompletePopup>
 </Autocomplete>
 ```
 
 ```ts
-function Autocomplete(props: Autocomplete.Root.Props<any>): React.JSX.Element;
+function Autocomplete<ItemValue>({ items, ...props }: Autocomplete.Root.Props<ItemValue>): React.JSX.Element;
 ```
 
 #### Calendar
@@ -2817,10 +2817,12 @@ A pill showing what a run is doing right now, with a live elapsed counter.
 ```
 
 ```ts
-function AgentStatus({ status, since, label, showElapsed, size, className, }: {
+function AgentStatus({ status, since, endedAt, label, showElapsed, size, className, }: {
     status: AgentRunStatus;
-    /** When the run entered this status. Drives the elapsed counter. */
+    /** When the run entered this status (or started, together with `endedAt`). Drives the elapsed counter. */
     since?: Date | string | number;
+    /** When a finished run ended. With `since`, the pill shows the final duration `endedAt − since`. */
+    endedAt?: Date | string | number;
     /** Overrides the default status label. */
     label?: string;
     showElapsed?: boolean;
@@ -3739,7 +3741,7 @@ An interactive star rating input.
 ```
 
 ```ts
-function Rating({ value, onValueChange, max, type, label, readOnly, className, }: {
+function Rating({ value, onValueChange, max, type, label, readOnly, className, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledBy, }: {
     value: number;
     onValueChange?: (value: number) => void;
     max?: number;
@@ -3747,6 +3749,10 @@ function Rating({ value, onValueChange, max, type, label, readOnly, className, }
     label?: RatingLabel;
     readOnly?: boolean;
     className?: string;
+    /** Names the group ("Rating" by default); read-only, it replaces "Rated 3.5 out of 5". */
+    "aria-label"?: string;
+    /** Id of a visible label that names the group, instead of `aria-label`. */
+    "aria-labelledby"?: string;
 }): React.JSX.Element;
 type RatingType = "stars" | "hearts" | "emojis" | "scale";
 type RatingLabel = "none" | "left" | "right" | "tooltip";
@@ -4366,7 +4372,7 @@ const [code, setCode] = useState("")
 ```
 
 ```ts
-function OtpCodeInput({ length, value, onValueChange, onComplete, invalid, disabled, autoFocus, className, }: OtpCodeInputProps): React.JSX.Element;
+function OtpCodeInput({ length, value, onValueChange, onComplete, invalid, disabled, autoFocus, "aria-label": ariaLabel, className, }: OtpCodeInputProps): React.JSX.Element;
 ```
 
 #### BackupCode
@@ -4860,7 +4866,7 @@ A text input with a label, helper or error text, and optional icons or add-ons o
 <TextField
   label="Work email"
   type="email"
-  placeholder="name@company.com"
+  placeholder="name@example.com"
   leading={<Mail className="size-4" />}
   value={email}
   onChange={(e) => setEmail(e.target.value)}
