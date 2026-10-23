@@ -1,10 +1,10 @@
 {
   "$schema": "https://wunderui.com/design.schema.json",
   "name": "@wunderui/react",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "WunderUI — a design system and component library for React.",
   "site": "https://wunderui.com",
-  "generatedAt": "2026-10-22",
+  "generatedAt": "2026-10-23",
   "install": {
     "available": "Core and Pro licence holders: the full library from the private GitHub repository wunder-ui/wunderui-core (Polar invites your GitHub account after the purchase). The npm package of the same name is WunderUI Free (free components only).",
     "package": "Accept the GitHub invitation, `git clone https://github.com/wunder-ui/wunderui-core`, run `npm install && npm run build` in it once, then in your project: `mkdir .wunderui`, `npm pack <wunderui-core>/packages/react --pack-destination .wunderui` and `npm install ./.wunderui/<the .tgz>`. The wunderui-setup agent skill does all of it.",
@@ -21,19 +21,19 @@
     "typeExports": 216,
     "allExportNames": 729,
     "catalogExports": 558,
-    "chartsEntry": {"exports":116,"typeExports":101,"catalogExports":86},
-    "otherExports": 165,
+    "chartsEntry": {"exports":126,"typeExports":108,"catalogExports":86},
+    "otherExports": 175,
     "exportsMethod": "TypeScript compiler API: checker.getExportsOfModule(packages/react/src/index.ts). valueExports = exported values (components, hooks, functions, constants); typeExports = type-only exports; allExportNames = both, unique. catalogExports = names listed in components[].exports (values and types); otherExports = value exports outside the catalogue (hooks, providers, utilities, parts).",
-    "props": 3317,
-    "propsWithValues": 314,
-    "propsWithDefault": 666,
+    "props": 3318,
+    "propsWithValues": 315,
+    "propsWithDefault": 667,
     "templates": 5,
     "free": 83,
     "pro": 139,
     "guidesAnatomyAuthored": 195,
     "guidesBestPracticesAuthored": 195,
     "guidesWithThemingVariables": 211,
-    "hooks": 16
+    "hooks": 18
   },
   "plans": {
     "free": "WunderUI Free: the components with tier \"free\" are open source under the MIT License (https://github.com/wunder-ui/wunderui) — any project, commercial included. Every \"pro\" component needs WunderUI Core or Pro.",
@@ -2114,7 +2114,7 @@
       "group": "Core Elements",
       "tier": "free",
       "exports": ["Checkbox"],
-      "props": "function Checkbox({ className, ...props }: Checkbox.Root.Props): React.JSX.Element;",
+      "props": "function Checkbox({ className, inputRef, ...props }: Checkbox.Root.Props): React.JSX.Element;",
       "api": [
         {
           "name": "Checkbox",
@@ -2296,7 +2296,7 @@
       "group": "Core Elements",
       "tier": "free",
       "exports": ["Switch","SwitchItemCell"],
-      "props": "function Switch({ className, size, ...props }: Switch.Root.Props & {\n    size?: \"sm\" | \"default\";\n}): React.JSX.Element;",
+      "props": "function Switch({ className, size, inputRef, ...props }: Switch.Root.Props & {\n    size?: \"sm\" | \"default\";\n}): React.JSX.Element;",
       "api": [
         {
           "name": "Switch",
@@ -8338,7 +8338,7 @@
       "slug": "line-chart",
       "title": "Line Chart",
       "category": "Charts",
-      "description": "Line chart for trends over time: straight, smooth and stepped lines, comparisons, bands, forecasts and thresholds, with tooltip, keyboard navigation and a data table.",
+      "description": "Line chart for trends over time: smooth lines (straight on request) and stepped lines, comparisons, bands, forecasts and thresholds, with tooltip, keyboard navigation and a data table.",
       "group": "Data & Charts",
       "tier": "pro",
       "import": "@wunderui/react/charts",
@@ -26052,7 +26052,7 @@
       "group": "Feedback & Overlays",
       "tier": "free",
       "exports": ["TrendChip","TrendCaret","TrendChipIcon"],
-      "props": "function TrendChip({ value, direction, icon, className, }: {\n    value: string;\n    /** Figma Trend Chip · Trend; `flat` is the old name for `neutral`. */\n    direction?: \"up\" | \"down\" | \"neutral\" | \"flat\";\n    /** Figma Trend Chip · Icon; the same glyph turns for `down`. */\n    icon?: TrendChipIcon;\n    className?: string;\n}): React.JSX.Element;\ntype TrendChipIcon = \"trending\" | \"arrow\" | \"arrow-diagonal\" | \"triangle\" | \"circle-trending\" | \"circle-diagonal\" | \"circle-arrow\";",
+      "props": "function TrendChip({ value, direction, icon, sentiment, className, }: {\n    value: string;\n    /** Figma Trend Chip · Trend; `flat` is the old name for `neutral`. */\n    direction?: \"up\" | \"down\" | \"neutral\" | \"flat\";\n    /** Figma Trend Chip · Icon; the same glyph turns for `down`. */\n    icon?: TrendChipIcon;\n    /**\n     * Figma Trend Chip · Sentiment: whether the change is good or bad. `auto` colours by direction\n     * (up green, down red); use `positive` for a fall that is good (churn, cost) or `negative` for\n     * a rise that is bad. The arrow always follows `direction`.\n     */\n    sentiment?: \"auto\" | \"positive\" | \"negative\" | \"neutral\";\n    className?: string;\n}): React.JSX.Element;\ntype TrendChipIcon = \"trending\" | \"arrow\" | \"arrow-diagonal\" | \"triangle\" | \"circle-trending\" | \"circle-diagonal\" | \"circle-arrow\";",
       "api": [
         {
           "name": "TrendChip",
@@ -26072,6 +26072,13 @@
               "values": ["triangle","trending","arrow","arrow-diagonal","circle-trending","circle-diagonal","circle-arrow"],
               "default": "\"trending\"",
               "description": "Figma Trend Chip · Icon; the same glyph turns for `down`."
+            },
+            {
+              "name": "sentiment",
+              "type": "\"auto\" | \"positive\" | \"negative\" | \"neutral\"",
+              "values": ["positive","negative","auto","neutral"],
+              "default": "\"auto\"",
+              "description": "Figma Trend Chip · Sentiment: whether the change is good or bad. `auto` colours by direction (up green, down red); use `positive` for a fall that is good (churn, cost) or `negative` for a rise that is bad. The arrow always follows `directi…"
             }
           ]
         },
@@ -32081,7 +32088,7 @@
       "file": "components/ui/chart.tsx",
       "slug": "use-chart-animation",
       "docs": "https://wunderui.com/hooks/use-chart-animation",
-      "summary": "The draw-in animation props every WunderUI chart passes to its Recharts series.",
+      "summary": "Legacy: the draw-in animation props for Recharts series, used by the legacy Recharts charts the templates still use.",
       "guide": "Returns `isAnimationActive`, `animationDuration`, `animationEasing` and `animationBegin` for a Recharts series. The series draw in once on mount and then stop animating, so a resize or new data does not replay the draw-in. Under reduced motion they never animate.",
       "signature": "useChartAnimation(animate?: boolean, appear?: ChartAppearState | undefined): { isAnimationActive: boolean; animationDuration: number; animationEasing: \"ease-out\"; animationBegin: number; }",
       "params": [
@@ -32098,6 +32105,7 @@
         ]
       },
       "notes": [
+        "Legacy. The chart system in `@wunderui/react/charts` draws in on its own; for a reload use `useChartReload`, for hover marks `useGlide`, for counting values `useAnimatedNumber`.",
         "Use it only in a custom chart built from Recharts parts; the WunderUI charts already call it.",
         "Pass `animate={false}` to switch the draw-in off, for example in a table of many small charts.",
         "With `useInViewAppear`, pass its `state` as the second argument: the series then animate exactly while the appear sequence runs."
@@ -32108,7 +32116,7 @@
           "code": "import { Line, LineChart } from \"recharts\"\nimport { useChartAnimation } from \"@wunderui/react\"\n\nexport function TrendLine({ data }: { data: { day: string; value: number }[] }) {\n  const animation = useChartAnimation()\n  return (\n    <LineChart width={320} height={120} data={data}>\n      <Line dataKey=\"value\" stroke=\"var(--chart-1)\" dot={false} {...animation} />\n    </LineChart>\n  )\n}"
         }
       ],
-      "related": [{"slug":"line-chart","label":"Line Chart"}],
+      "legacy": "Legacy: used by the legacy Recharts charts that the templates still use. The charts of @wunderui/react/charts animate on their own; for your own chart card see",
       "guideSource": "authored"
     },
     {
@@ -32196,13 +32204,15 @@
         "properties": [{"name":"ref","type":"React.Dispatch<React.SetStateAction<T | null>>"},{"name":"state","type":"ChartAppearState"}]
       },
       "notes": [
+        "The new charts of `@wunderui/react/charts` use this hook internally (in their frame, the sparklines and the status tracker), so a chart from that entry needs no extra wiring; use it yourself only for a custom chart root.",
         "`static` means no motion: `animate={false}`, reduced motion, a background tab or a browser without IntersectionObserver.",
         "`ready={false}` (the chart shows its loading skeleton) resets it, so the series arrive with the motion once the data does.",
-        "The styles for `data-chart-appear` ship in the WunderUI stylesheet; the hook only sets the state."
+        "The styles for `data-chart-appear` ship in the WunderUI stylesheet; the hook only sets the state.",
+        "Inside a dashboard load sequence (`LoadSequenceContext` is `pending` or `loading`, see useLoadSequence) it waits for the sequence to play, so the chart starts when its card lands — at the card's `--load-content-delay` — not at mount."
       ],
       "examples": [
         {
-          "title": "A custom chart root",
+          "title": "A custom chart root (legacy Recharts series)",
           "code": "import { useChartAnimation, useInViewAppear } from \"@wunderui/react\"\n\nexport function RevenueChart({ data, loading }: { data: Point[]; loading: boolean }) {\n  const { ref, state } = useInViewAppear<HTMLDivElement>(true, !loading)\n  const animation = useChartAnimation(true, state)\n  return (\n    <div ref={ref} data-chart-appear={state} className=\"h-48\">\n      {/* Recharts series receive {...animation} */}\n    </div>\n  )\n}"
         }
       ],
@@ -32970,6 +32980,14 @@
       "description": "The 19 Funnel Chart variants of the Figma catalogue (names in kebab-case)."
     },
     {
+      "name": "FUNNEL_HEADROOM",
+      "import": "@wunderui/react/charts",
+      "kind": "utility",
+      "tier": "pro",
+      "file": "components/ui/charts/funnel-chart.tsx",
+      "description": "Space between the highest point of a funnel area and the top of its plot (under the KPI header)."
+    },
+    {
       "name": "GAUGE_CHART_VARIANTS",
       "import": "@wunderui/react/charts",
       "kind": "utility",
@@ -33019,12 +33037,62 @@
       "description": "The 21 Line Chart variants of the Figma catalogue (names in kebab-case)."
     },
     {
+      "name": "LOAD_SKELETON_DELAY",
+      "import": "@wunderui/react/charts",
+      "kind": "utility",
+      "tier": "pro",
+      "file": "components/ui/load-sequence.tsx",
+      "description": "How long the data may take before the skeletons show (ms)."
+    },
+    {
+      "name": "LOAD_SKELETON_MIN",
+      "import": "@wunderui/react/charts",
+      "kind": "utility",
+      "tier": "pro",
+      "file": "components/ui/load-sequence.tsx",
+      "description": "Once the skeletons show, they stay at least this long (ms), so they never flash."
+    },
+    {
+      "name": "LoadSequenceContext",
+      "import": "@wunderui/react/charts",
+      "kind": "part",
+      "tier": "pro",
+      "file": "components/ui/load-sequence.tsx",
+      "description": "The phase of the load sequence around this element; null outside one.",
+      "props": [],
+      "inherits": {"from":["React.ProviderProps"],"count":2}
+    },
+    {
       "name": "NETWORK_CHART_VARIANTS",
       "import": "@wunderui/react/charts",
       "kind": "utility",
       "tier": "pro",
       "file": "components/ui/charts/network-chart.tsx",
       "description": "The 4 Network Chart variants of the Figma catalogue (names in kebab-case)."
+    },
+    {
+      "name": "NumberRoll",
+      "import": "@wunderui/react/charts",
+      "kind": "part",
+      "tier": "pro",
+      "file": "components/ui/load-sequence.tsx",
+      "description": "A number that rolls in like an odometer: each digit column rolls up and settles on its value, left to right, a short blur while moving. The value renders as plain text on the server, before and after the roll and under reduced motion, so i…",
+      "props": [
+        {"name":"value","type":"string | number","required":true,"description":"The formatted value, exactly as it should read at the end."},
+        {
+          "name": "delay",
+          "type": "number",
+          "default": "0",
+          "description": "Extra wait before the first digit moves (ms), on top of the card's --load-delay."
+        },
+        {"name":"onDone","type":"() => void","description":"Called when the last digit has settled."},
+        {
+          "name": "play",
+          "type": "boolean",
+          "description": "Roll now. Defaults to the surrounding load sequence (rolls while it plays); outside one the value is shown as plain text."
+        }
+      ],
+      "inherits": {"from":["React.HTMLAttributes"],"count":279}
     },
     {
       "name": "PIE_CHART_VARIANTS",
@@ -33342,6 +33410,14 @@
       "description": "The colour for a line, a point or a thin stroke of a series (see LINE_COLORS); fills keep `resolveChartColor`."
     },
     {
+      "name": "loadDelays",
+      "import": "@wunderui/react/charts",
+      "kind": "utility",
+      "tier": "pro",
+      "file": "components/ui/load-sequence.tsx",
+      "description": "When each card appears, in ms after the page starts building, for the slots of `readingOrder`: strictly top to bottom — a row starts 40 ms after the last card of the row above, the cards of a row follow each other 25 ms apart — capped at 4…"
+    },
+    {
       "name": "logDomain",
       "import": "@wunderui/react/charts",
       "kind": "utility",
@@ -33372,9 +33448,25 @@
       "file": "components/ui/charts/chart-motion.tsx",
       "description": "Reads a duration token (e.g. \"--duration-base\") in ms; falls back when unavailable (SSR, tests)."
     },
+    {
+      "name": "readingOrder",
+      "import": "@wunderui/react/charts",
+      "kind": "utility",
+      "tier": "pro",
+      "file": "components/ui/load-sequence.tsx",
+      "description": "Reading order of a set of boxes (their top-left corners in px): rows top to bottom — a box whose top lies within `tolerance` of the row's first box joins that row — and left to right inside a row. Returns the row and column of every box, i…"
+    },
     {"name":"resolveChartColor","import":"@wunderui/react/charts","kind":"utility","tier":"pro","file":"components/ui/charts/chart-utils.ts"},
     {"name":"seriesColor","import":"@wunderui/react/charts","kind":"utility","tier":"pro","file":"components/ui/charts/chart-utils.ts"},
     {"name":"seriesLabel","import":"@wunderui/react/charts","kind":"utility","tier":"pro","file":"components/ui/charts/chart-utils.ts"},
+    {
+      "name": "splitNumberRoll",
+      "import": "@wunderui/react/charts",
+      "kind": "utility",
+      "tier": "pro",
+      "file": "components/ui/load-sequence.tsx",
+      "description": "Splits a formatted value (\"$48,200\", \"3.4h\", \"+12.5%\", \"1.2M\") into the parts NumberRoll draws: digits roll (one full turn plus their value, so every column moves), everything else — signs, currency, separators, units — stays put. `index`…"
+    },
     {
       "name": "spreadLabels",
       "import": "@wunderui/react/charts",
@@ -33405,7 +33497,31 @@
       "kind": "hook",
       "tier": "pro",
       "file": "components/ui/charts/chart-motion.tsx",
-      "description": "The number on screen while it counts from the previous value to `value` (duration token, default --duration-slow, --ease-entrance). Retargets mid-way when the value changes again (sliding across a chart). Null and non-finite values are pas…"
+      "description": "The number on screen while it counts from the previous value to `value` (duration token, default --duration-slow, --ease-entrance). Retargets mid-way when the value changes again (sliding across a chart). Null and non-finite values are pas…",
+      "slug": "use-animated-number",
+      "docs": "https://wunderui.com/hooks/use-animated-number",
+      "summary": "A number that counts from its previous value to the new one, for chart headlines and KPI values.",
+      "guide": "Returns the value to show while it counts. The count uses the `--duration-slow` token and the entrance curve by default; pass another duration token as the second argument. When the value changes mid-count (a pointer sliding across a chart), it turns towards the new target instead of starting over. The `AnimatedNumber` component wraps the hook with a formatter.",
+      "signature": "useAnimatedNumber(value: number | null | undefined, token?: string): number | null",
+      "params": [{"name":"value","type":"number | null | undefined"},{"name":"token","type":"string","optional":true,"default":"\"--duration-slow\""}],
+      "returns": {"type":"number | null"},
+      "notes": [
+        "Under reduced motion the number changes at once, without counting.",
+        "Screen readers should get the final value only: `AnimatedNumber` hides the counting digits from them and adds the final value as visually hidden text. Do the same when you use the hook directly.",
+        "`null` and values that are not finite are passed through, so a missing value shows as your placeholder."
+      ],
+      "examples": [
+        {
+          "title": "The value of the hovered point",
+          "code": "import { ChartCard, LineChart } from \"@wunderui/react/charts\"\n\nexport function Revenue({ data }: { data: { month: string; revenue: number }[] }) {\n  const [active, setActive] = React.useState<number | null>(null)\n  const value = data[active ?? data.length - 1].revenue\n  return (\n    <ChartCard title=\"Revenue\" value={value} valueFormatter={(v) => `$${Math.round(v).toLocaleString(\"en-US\")}`}>\n      <LineChart data={data} index=\"month\" series={[{ key: \"revenue\" }]} onActiveIndexChange={setActive} label=\"Revenue by month\" />\n    </ChartCard>\n  )\n}"
+        },
+        {
+          "title": "The hook on its own",
+          "code": "import { useAnimatedNumber } from \"@wunderui/react/charts\"\n\nfunction Total({ value }: { value: number }) {\n  const shown = useAnimatedNumber(value, \"--duration-base\")\n  return (\n    <p className=\"text-3xl font-semibold tabular-nums\">\n      <span aria-hidden=\"true\">{Math.round(shown ?? 0).toLocaleString(\"en-US\")}</span>\n      <span className=\"sr-only\">{value.toLocaleString(\"en-US\")}</span>\n    </p>\n  )\n}"
+        }
+      ],
+      "related": [{"slug":"chart-card","label":"Chart Card"},{"slug":"metric-card","label":"Metric Card"}],
+      "guideSource": "authored"
     },
     {
       "name": "useChartInteraction",
@@ -33413,7 +33529,88 @@
       "kind": "hook",
       "tier": "pro",
       "file": "components/ui/charts/use-chart-interaction.ts",
-      "description": "Pointer and keyboard behaviour shared by the cartesian charts: - pointer move → active point (tooltip), leave → none; - ← → (↑ ↓ for horizontal charts), Home, End walk the points and announce them in the live region; Esc clears point and r…"
+      "description": "Pointer and keyboard behaviour shared by the cartesian charts: - pointer move → active point (tooltip), leave → none; - ← → (↑ ↓ for horizontal charts), Home, End walk the points and announce them in the live region; Esc clears point and r…",
+      "slug": "use-chart-interaction",
+      "docs": "https://wunderui.com/hooks/use-chart-interaction",
+      "summary": "Pointer and keyboard behaviour of a chart: the active point, arrow keys, range selection and the live announcement.",
+      "guide": "The behaviour the WunderUI cartesian charts share, for a chart you draw yourself. Pointer movement sets the active point and leaving clears it; the arrow keys (up and down on horizontal charts), Home and End walk the points and announce each one; Escape clears point and range. With `rangeSelectable`, dragging across the plot or Shift with the arrow keys selects a range. Spread `handlers` on the focusable plot element and render `announcement` in a polite live region.",
+      "signature": "useChartInteraction(o: ChartInteractionOptions): { active: number | null; range: ChartRange | null; announcement: string; handlers: { onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => void; onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => void; onPointerDown: (e: React.Poin…",
+      "params": [
+        {
+          "name": "o",
+          "type": "ChartInteractionOptions",
+          "properties": [
+            {"name":"count","type":"number","description":"Number of categories / points."},
+            {
+              "name": "activeIndex",
+              "type": "number | null | undefined",
+              "optional": true,
+              "description": "Controlled active point (Hover state); `null` = none."
+            },
+            {"name":"defaultActiveIndex","type":"number | null | undefined","optional":true},
+            {"name":"onActiveIndexChange","type":"((index: number | null) => void) | undefined","optional":true},
+            {
+              "name": "selectedRange",
+              "type": "ChartRange | null | undefined",
+              "optional": true,
+              "description": "Controlled selected range (Selected Range state), inclusive indices."
+            },
+            {"name":"defaultSelectedRange","type":"ChartRange | null | undefined","optional":true},
+            {"name":"onSelectedRangeChange","type":"((range: ChartRange | null) => void) | undefined","optional":true},
+            {
+              "name": "rangeSelectable",
+              "type": "boolean | undefined",
+              "optional": true,
+              "description": "Drag (pointer) and Shift + arrow keys (keyboard) select a range."
+            },
+            {
+              "name": "vertical",
+              "type": "boolean | undefined",
+              "optional": true,
+              "description": "Categories run top to bottom (horizontal bar charts): up/down keys, y pointer."
+            },
+            {"name":"invert","type":"(px: number) => number","description":"Pixel position inside the plot → category index."},
+            {
+              "name": "invertPoint",
+              "type": "((x: number, y: number) => number | null) | undefined",
+              "optional": true,
+              "description": "2-D hit test for radial charts (pie, radar …): plot coordinates → index, or null outside every mark."
+            },
+            {"name":"describe","type":"(index: number) => string","description":"Sentence for the live region when the keyboard lands on a point."},
+            {"name":"describeRange","type":"((range: ChartRange) => string) | undefined","optional":true}
+          ]
+        }
+      ],
+      "returns": {
+        "type": "{ active: number | null; range: ChartRange | null; announcement: string; handlers: { onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => void; onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => void; onPointerDown: (e: React.Poin…",
+        "properties": [
+          {"name":"active","type":"number | null"},
+          {"name":"range","type":"ChartRange | null"},
+          {"name":"announcement","type":"string"},
+          {
+            "name": "handlers",
+            "type": "{ onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => void; onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => void; onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void; onPointerUp: (e: React.PointerEvent<HTMLDivEleme…"
+          }
+        ]
+      },
+      "notes": [
+        "The active point and the range can be controlled (`activeIndex`, `selectedRange`) or left to the hook (`defaultActiveIndex`, `defaultSelectedRange`).",
+        "`invert` maps a pointer position inside the plot to a category index; radial charts pass `invertPoint` for a 2-D hit test instead.",
+        "`describe` writes the sentence the live region reads for a point, for example \"March: $84,250\".",
+        "Give the plot element `tabIndex={0}`, a role and a label, and a visible focus ring."
+      ],
+      "examples": [
+        {
+          "title": "A focusable custom plot",
+          "code": "import { useChartInteraction } from \"@wunderui/react/charts\"\n\nexport function Dots({ values, width }: { values: number[]; width: number }) {\n  const step = width / values.length\n  const ui = useChartInteraction({\n    count: values.length,\n    invert: (px) => Math.max(0, Math.min(values.length - 1, Math.floor(px / step))),\n    describe: (i) => `Day ${i + 1}: ${values[i]}`,\n  })\n  return (\n    <div tabIndex={0} role=\"group\" aria-label=\"Daily values\" className=\"rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring\" {...ui.handlers}>\n      <svg width={width} height={80} aria-hidden=\"true\">\n        {values.map((v, i) => (\n          <circle key={i} cx={i * step + step / 2} cy={70 - v} r={ui.active === i ? 6 : 4} fill=\"var(--chart-1)\" />\n        ))}\n      </svg>\n      <p aria-live=\"polite\" className=\"sr-only\">{ui.announcement}</p>\n    </div>\n  )\n}"
+        },
+        {
+          "title": "Range selection",
+          "code": "const ui = useChartInteraction({\n  count: data.length,\n  rangeSelectable: true,\n  onSelectedRangeChange: (range) => setRange(range),\n  invert,\n  describe,\n  describeRange: ([a, b]) => `${data[a].month} to ${data[b].month}`,\n})"
+        }
+      ],
+      "related": [{"slug":"line-chart","label":"Line Chart"},{"slug":"candlestick-chart","label":"Candlestick Chart"}],
+      "guideSource": "authored"
     },
     {
       "name": "useChartLegend",
@@ -33421,7 +33618,35 @@
       "kind": "hook",
       "tier": "pro",
       "file": "components/ui/charts/chart-legend.tsx",
-      "description": "State for a toggleable legend: `hidden` goes to the chart's `hiddenSeries` and the legend's `hidden`, `toggle` to the legend's `onToggle`. At least one series always stays on."
+      "description": "State for a toggleable legend: `hidden` goes to the chart's and the legend's `hiddenSeries`, `toggle` to the legend's `onToggle` (or the ChartCard's `onLegendToggle`). At least one series always stays on.",
+      "slug": "use-chart-legend",
+      "docs": "https://wunderui.com/hooks/use-chart-legend",
+      "summary": "Keeps track of which series a chart legend has switched off.",
+      "guide": "Give it the chart's series and pass `hidden` to the chart's `hiddenSeries`, `toggle` to the card's `onLegendToggle` and `items` to its `legend`. A ChartCard with two or more series already does this on its own; reach for the hook when the legend and the chart live apart, or when other parts of the page need to know which series are visible.",
+      "signature": "useChartLegend(series: readonly ChartSeries[], initialHidden?: readonly string[]): { hidden: string[]; toggle: (key: string) => void; items: ChartLegendItem[]; }",
+      "params": [{"name":"series","type":"readonly ChartSeries[]"},{"name":"initialHidden","type":"readonly string[]","optional":true,"default":"[]"}],
+      "returns": {
+        "type": "{ hidden: string[]; toggle: (key: string) => void; items: ChartLegendItem[]; }",
+        "properties": [{"name":"hidden","type":"string[]"},{"name":"toggle","type":"(key: string) => void"},{"name":"items","type":"ChartLegendItem[]"}]
+      },
+      "notes": [
+        "The last visible series cannot be switched off, so the chart never ends up empty.",
+        "Keys match either the series `key` or its `label`, so a legend built from labels works too.",
+        "Each badge is a toggle button with `aria-pressed`; a switched-off badge shows its label one step lighter and its dot dimmed.",
+        "One series needs no legend toggle: ChartCard shows a plain badge then."
+      ],
+      "examples": [
+        {
+          "title": "A legend outside the card",
+          "code": "import { ChartLegend, LineChart, useChartLegend } from \"@wunderui/react/charts\"\n\nconst series = [\n  { key: \"revenue\", label: \"Revenue\", color: \"indigo\" },\n  { key: \"costs\", label: \"Costs\", color: \"orange\" },\n]\n\nexport function RevenueVsCosts({ data }: { data: { month: string; revenue: number; costs: number }[] }) {\n  const legend = useChartLegend(series)\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <ChartLegend items={legend.items} hiddenSeries={legend.hidden} onToggle={legend.toggle} />\n      <LineChart data={data} index=\"month\" series={series} hiddenSeries={legend.hidden} label=\"Revenue and costs\" />\n    </div>\n  )\n}"
+        },
+        {
+          "title": "Start with a series switched off",
+          "code": "const legend = useChartLegend(series, [\"costs\"])\n\n<ChartCard title=\"Revenue\" legend={legend.items} hiddenSeries={legend.hidden} onLegendToggle={legend.toggle}>\n  <LineChart data={data} index=\"month\" series={series} hiddenSeries={legend.hidden} label=\"Revenue and costs\" />\n</ChartCard>"
+        }
+      ],
+      "related": [{"slug":"chart-card","label":"Chart Card"},{"slug":"line-chart","label":"Line Chart"}],
+      "guideSource": "authored"
     },
     {
       "name": "useChartReload",
@@ -33429,7 +33654,42 @@
       "kind": "hook",
       "tier": "pro",
       "file": "components/ui/charts/chart-motion.tsx",
-      "description": "Reload behaviour for a chart card's refresh button: loading skeleton while the task runs (at least two --duration-deliberate, so the skeleton is readable), then the chart enters again."
+      "description": "Reload behaviour for a chart card's refresh button: loading skeleton while the task runs (at least two --duration-deliberate, so the skeleton is readable), then the chart enters again.",
+      "slug": "use-chart-reload",
+      "docs": "https://wunderui.com/hooks/use-chart-reload",
+      "summary": "Drives the reload button of a chart card: loading skeleton, your task, then the chart draws in again.",
+      "guide": "`reload()` switches `state` to `loading`, runs the task you pass (fetching new data, for example) and waits at least two `--duration-deliberate` steps, so the skeleton is readable rather than a flash. Then `state` returns to `ready` and `version` goes up; pass it as `animationKey` so the chart plays its enter sequence again.",
+      "signature": "useChartReload(): ChartReload",
+      "params": [],
+      "returns": {
+        "type": "ChartReload",
+        "properties": [
+          {"name":"state","type":"\"ready\" | \"loading\""},
+          {"name":"version","type":"number","description":"Bumped after every reload; pass it as `animationKey` to replay the enter sequence."},
+          {
+            "name": "reload",
+            "type": "(task?: () => unknown | Promise<unknown>) => Promise<void>",
+            "description": "Shows the loading state, runs `task` (or waits briefly), then draws the chart in again."
+          }
+        ]
+      },
+      "notes": [
+        "Pass `state` to the chart and to the ChartCard: both show their loading skeletons from it.",
+        "Under reduced motion the chart comes back without the draw-in; the loading state still shows.",
+        "Errors thrown by the task still end the loading state; handle them in the task."
+      ],
+      "examples": [
+        {
+          "title": "Reload button on a chart card",
+          "code": "import { BarChart, ChartCard, useChartReload } from \"@wunderui/react/charts\"\n\nexport function Signups({ data }: { data: { week: string; signups: number }[] }) {\n  const loader = useChartReload()\n  return (\n    <ChartCard title=\"Sign-ups\" onReload={() => void loader.reload()} state={loader.state}>\n      <BarChart data={data} index=\"week\" series={[{ key: \"signups\", label: \"Sign-ups\" }]} state={loader.state} animationKey={loader.version} label=\"Sign-ups per week\" />\n    </ChartCard>\n  )\n}"
+        },
+        {
+          "title": "Reload with a fetch",
+          "code": "const loader = useChartReload()\nconst [rows, setRows] = React.useState(initialRows)\n\nconst refresh = () => loader.reload(async () => {\n  const res = await fetch(\"/api/signups\")\n  setRows(await res.json())\n})"
+        }
+      ],
+      "related": [{"slug":"chart-card","label":"Chart Card"},{"slug":"bar-chart","label":"Bar Chart"}],
+      "guideSource": "authored"
     },
     {
       "name": "useChartWidth",
@@ -33445,7 +33705,129 @@
       "kind": "hook",
       "tier": "pro",
       "file": "components/ui/charts/chart-motion.tsx",
-      "description": "Keeps the last active index while the hover marks fade out, and flags the frame they reappear."
+      "description": "Keeps the last active index while the hover marks fade out, and flags the frame they reappear.",
+      "slug": "use-glide",
+      "docs": "https://wunderui.com/hooks/use-glide",
+      "summary": "Lets hover marks glide from point to point and fade out in place, instead of jumping or vanishing.",
+      "guide": "Give it the active index (or `null`). `index` keeps the last active point while the marks fade out, `visible` says whether they show, and `snap` is true for the one frame they appear, so they jump into place the first time and glide from then on. Pair it with `GlideGroup`, an SVG group that moves by a CSS transform on the `duration-slow` token and the entrance curve.",
+      "signature": "useGlide(active: number | null): Glide",
+      "params": [{"name":"active","type":"number | null"}],
+      "returns": {
+        "type": "Glide",
+        "properties": [
+          {"name":"index","type":"number | null","description":"Index to draw the hover marks at (the active one, or the last one while fading out)."},
+          {"name":"visible","type":"boolean"},
+          {
+            "name": "snap",
+            "type": "boolean",
+            "description": "True for the frame the marks appear: they jump into place instead of gliding from the old spot."
+          }
+        ]
+      },
+      "notes": [
+        "Under reduced motion `GlideGroup` only fades; it does not move.",
+        "Only `transform` and `opacity` animate, so a gliding mark never causes layout work.",
+        "Give the marks `aria-hidden`; the chart's live region announces the active point."
+      ],
+      "examples": [
+        {
+          "title": "A gliding hover dot in a custom SVG chart",
+          "code": "import { GlideGroup, useGlide } from \"@wunderui/react/charts\"\n\nfunction HoverDot({ active, points }: { active: number | null; points: { x: number; y: number }[] }) {\n  const glide = useGlide(active)\n  const p = points[glide.index ?? 0]\n  return (\n    <GlideGroup x={p.x} y={p.y} visible={glide.visible} snap={glide.snap}>\n      <circle r={5} fill=\"var(--chart-1)\" className=\"stroke-card\" strokeWidth={2} />\n    </GlideGroup>\n  )\n}"
+        }
+      ],
+      "related": [{"slug":"line-chart","label":"Line Chart"},{"slug":"area-chart","label":"Area Chart"}],
+      "guideSource": "authored"
+    },
+    {
+      "name": "useLoadPhase",
+      "import": "@wunderui/react/charts",
+      "kind": "hook",
+      "tier": "pro",
+      "file": "components/ui/load-sequence.tsx",
+      "description": "The phase of the surrounding load sequence (null when there is none)."
+    },
+    {
+      "name": "useLoadSequence",
+      "import": "@wunderui/react/charts",
+      "kind": "hook",
+      "tier": "pro",
+      "file": "components/ui/load-sequence.tsx",
+      "description": "Runs a dashboard page's load sequence: \"pending\" (server render, until the root is on screen and the tab is visible) → \"loading\" (only when the data is still not ready after LOAD_SKELETON_DELAY; shown for at least LOAD_SKELETON_MIN) → \"pla…",
+      "slug": "use-load-sequence",
+      "docs": "https://wunderui.com/hooks/use-load-sequence",
+      "summary": "Opens every dashboard page the same way: the cards build up top to bottom, then numbers roll, charts draw in and bars fill — with skeletons first only when the data takes longer.",
+      "guide": "Attach the hook to the root of your app shell, spread `data-load={phase}` on it and `data-load-main` on the page area, and pass the page's path as `replayKey` so every page opens with the sequence. The shell stays visible; nothing flies in. In `prepare`, mark each card with `data-load-item` and give it `--load-delay` (when it appears) and `--load-content-delay` (when its content starts); `readingOrder` and `loadDelays` turn card positions into rows, columns and delays (strictly top to bottom: a row 40 ms after the last card above it, +25 ms per card, the page built within about half a second). A card appears in place — opacity only, `--duration-fast`. Provide the phase through `LoadSequenceContext`: the charts of `@wunderui/react/charts` hold their enter sequence until `play` and start at `--load-content-delay`, and `NumberRoll` rolls its digits while it is `play`. Bars marked `data-load-fill` grow from their start edge. Pass `ready={false}` while the data loads: if it is still not there after `LOAD_SKELETON_DELAY` (400 ms) the phase turns `loading` — show skeletons in the cards' places — and stays there at least `LOAD_SKELETON_MIN` (500 ms) so it never flashes; data that arrives within the delay shows no skeleton.",
+      "signature": "useLoadSequence(ref: React.RefObject<HTMLElement | null>, options?: LoadSequenceOptions): LoadPhase",
+      "params": [
+        {
+          "name": "ref",
+          "type": "React.RefObject<HTMLElement | null>",
+          "properties": [{"name":"current","type":"HTMLElement | null","description":"The current value of the ref."}]
+        },
+        {
+          "name": "options",
+          "type": "LoadSequenceOptions",
+          "optional": true,
+          "default": "{}",
+          "properties": [
+            {
+              "name": "enabled",
+              "type": "boolean | undefined",
+              "optional": true,
+              "description": "Off: the phase is \"done\" from the start (nothing hidden, nothing moves)."
+            },
+            {
+              "name": "replayKey",
+              "type": "string | number | undefined",
+              "optional": true,
+              "description": "Change it to play the sequence again: the page's path (every page opens with it) or a replay button."
+            },
+            {
+              "name": "ready",
+              "type": "boolean | undefined",
+              "optional": true,
+              "description": "Whether the page's data is there. While it is not, the sequence waits after LOAD_SKELETON_DELAY the phase turns \"loading\" (show skeletons)."
+            },
+            {
+              "name": "prepare",
+              "type": "((root: HTMLElement, reduced: boolean) => LoadSequencePlan | null) | undefined",
+              "optional": true,
+              "description": "Called once the shell is on screen and the data is ready, right before the phase turns \"play\": mark the cards, set their delays, return how long the sequence runs. Return null while the content is not laid out yet (it is asked again on the…"
+            }
+          ]
+        }
+      ],
+      "returns": {"type":"LoadPhase"},
+      "notes": [
+        "Every page opens with it: pass the route's path as `replayKey`. Re-renders on the same page never replay it.",
+        "Under reduced motion nothing animates: the page is shown as it is (nothing is held back), numbers and charts show their final state, and a skeleton for a longer load has no shimmer.",
+        "`NumberRoll` renders the formatted value as plain text on the server, before and after the roll, so it hydrates without a mismatch and always ends exact. Use tabular figures so the digit columns keep their width.",
+        "While `pending` and `loading` the page area's children are held back by the stylesheet (the shell is not). Add `<noscript><style>[data-load-main]>*{opacity:1!important}</style></noscript>` so pages without JavaScript still show their content."
+      ],
+      "examples": [
+        {
+          "title": "A dashboard shell with a load sequence",
+          "code": "import * as React from \"react\"\nimport { LoadSequenceContext, loadDelays, readingOrder, useLoadSequence } from \"@wunderui/react/charts\"\n\nexport function DashboardLayout({ children, path, ready }: { children: React.ReactNode; path: string; ready: boolean }) {\n  const ref = React.useRef<HTMLDivElement>(null)\n  const phase = useLoadSequence(ref, {\n    replayKey: path, // every page opens with the sequence\n    ready, // false while the data loads: skeletons after 400 ms\n    prepare: (root, reduced) => {\n      const cards = Array.from(root.querySelectorAll<HTMLElement>(\"[data-card]\"))\n      if (!cards.length) return null // not rendered yet: asked again next frame\n      const delays = loadDelays(readingOrder(cards.map((c) => c.getBoundingClientRect()).map((r) => ({ top: r.top, left: r.left }))))\n      let last = 0\n      cards.forEach((card, i) => {\n        const delay = reduced ? 0 : delays[i]\n        card.setAttribute(\"data-load-item\", \"\")\n        card.style.setProperty(\"--load-delay\", `${delay}ms`)\n        card.style.setProperty(\"--load-content-delay\", `${delay + 150}ms`)\n        last = Math.max(last, delay)\n      })\n      return { duration: last + 2000, finish: () => cards.forEach((c) => c.removeAttribute(\"data-load-item\")) }\n    },\n  })\n  return (\n    <div ref={ref} data-load={phase}>\n      <main data-load-main=\"\">\n        <LoadSequenceContext.Provider value={phase}>{children}</LoadSequenceContext.Provider>\n      </main>\n    </div>\n  )\n}"
+        },
+        {
+          "title": "Skeletons only for longer loads",
+          "code": "const { data, isLoading } = useQuery(...)\nconst phase = useLoadSequence(ref, { replayKey: path, ready: !isLoading, prepare })\n\n// \"loading\" only when the data takes longer than LOAD_SKELETON_DELAY (400 ms), then at least LOAD_SKELETON_MIN (500 ms)\n{phase === \"loading\" ? <DashboardSkeleton /> : <Dashboard data={data} />}"
+        },
+        {
+          "title": "A KPI value that rolls in",
+          "code": "import { NumberRoll } from \"@wunderui/react/charts\"\n\n// rolls while the surrounding load sequence plays; plain text otherwise\n<NumberRoll value=\"$48,200\" className=\"text-3xl font-bold tabular-nums\" />"
+        },
+        {
+          "title": "Replay button",
+          "code": "const [replay, setReplay] = React.useState(0)\nconst phase = useLoadSequence(ref, { replayKey: replay, prepare })\n\n<Button onClick={() => setReplay((n) => n + 1)}>Replay</Button>"
+        }
+      ],
+      "related": [
+        {"slug":"use-animated-number","label":"useAnimatedNumber"},
+        {"slug":"use-in-view-appear","label":"useInViewAppear"},
+        {"slug":"metric-card","label":"Metric Card"}
+      ],
+      "guideSource": "authored"
     },
     {
       "name": "usePrefersReducedMotion",

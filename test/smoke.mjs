@@ -25,6 +25,8 @@ const calls = [
   ["get_component", { name: "data-grid" }],
   ["get_component", { name: "StatCard" }],
   ["get_component", { name: "nope" }],
+  ["get_component", { name: "useToast" }, ["signature", "returns", "/hooks/use-toast"]],
+  ["get_component", { name: "Button" }, ["anatomy", "bestPractices", "themingVariables", "--primary"]],
   ["get_tokens", { format: "css", theme: "light" }],
   ["get_tokens", { format: "tailwind" }],
   ["get_design_md", { section: "rules" }],
@@ -38,11 +40,13 @@ const calls = [
 ]
 
 let failed = 0
-for (const [name, args] of calls) {
+for (const [name, args, expect = []] of calls) {
   try {
     const result = await client.callTool({ name, arguments: args })
     const body = result.content?.[0]?.text ?? ""
     if (!body.trim()) throw new Error("empty response")
+    const missing = expect.filter((needle) => !body.includes(needle))
+    if (missing.length) throw new Error(`missing in the answer: ${missing.join(", ")}`)
     console.log(`ok  ${name}(${JSON.stringify(args)}) → ${body.length} chars | ${body.slice(0, 90).replace(/\s+/g, " ")}…`)
   } catch (error) {
     failed += 1

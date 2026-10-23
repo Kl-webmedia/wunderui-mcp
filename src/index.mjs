@@ -218,13 +218,31 @@ server.registerTool(
   {
     title: "Get a WunderUI component",
     description:
-      "Everything needed to use one component correctly: its exported names, the TypeScript prop signature straight from the build, the import line and a link to its documentation page.",
+      "Everything needed to use one component correctly: its exported names, the TypeScript prop signature straight from the build, a props table per export (type, allowed values, default, required, description), its anatomy (parts and data-slot names), best practices, the CSS variables it reads with their defaults, the import line and a link to its documentation page. Also answers for hooks (signature, parameters, return value, notes), providers and utilities (useToast, ThemeProvider …).",
     inputSchema: {
       name: z.string().describe('Export name ("DataGrid"), slug ("data-grid") or title ("Data Grid")'),
     },
   },
   async ({ name }) => {
     const component = findComponent(name)
+    const other = component ? null : (design.otherExports ?? []).find((entry) => normalize(entry.name) === normalize(name))
+    if (other) {
+      return text({
+        name: other.name,
+        kind: other.kind,
+        plan: other.tier ?? "pro",
+        description: other.summary ?? other.description ?? undefined,
+        guide: other.guide ?? undefined,
+        import: `import { ${other.name} } from "${design.name}"`,
+        signature: other.signature ?? undefined,
+        params: other.params?.length ? other.params : undefined,
+        returns: other.returns ?? undefined,
+        notes: other.notes ?? undefined,
+        examples: other.examples ?? undefined,
+        propsTable: other.props ? [{ name: other.name, props: other.props, inherits: other.inherits }] : undefined,
+        docs: other.docs ?? undefined,
+      })
+    }
     if (!component) {
       const suggestions = design.components
         .filter((candidate) => matches(candidate, name))
@@ -249,6 +267,13 @@ server.registerTool(
       exports: component.exports,
       example: component.example ?? undefined,
       props: component.props ?? "No generated signature — see the documentation page.",
+      // per export: name, type, values (literal unions), default, required, description; DOM attributes summed up in inherits
+      propsTable: component.api?.length ? component.api : undefined,
+      // the guide: parts (export, data-slot, required, a sentence), do/don't/when notes, and the CSS
+      // variables the component reads with their defaults; `source` "generated" = drafted from the code
+      anatomy: component.anatomy ?? undefined,
+      bestPractices: component.bestPractices ?? undefined,
+      themingVariables: component.themingVariables ?? undefined,
       docs: component.docs,
     })
   }

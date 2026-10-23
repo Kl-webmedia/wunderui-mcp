@@ -48,7 +48,7 @@ claude mcp add wunderui -- npx -y wunderui-mcp
 
 ## Installing WunderUI itself
 
-The server describes the library; it does not ship it. `@wunderui/react` is not on the public npm registry: Core and Pro licence holders install it from the wunderui-core download (the `wunderui-setup` agent skill does it for you), and the server tells agents exactly that. The Free plan covers the Figma preview and the documentation at [wunderui.com](https://wunderui.com).
+The server describes the library; it does not ship it. `@wunderui/react` on npm is WunderUI Free (the free components only). Core and Pro licence holders install the full library from the wunderui-core download (the `wunderui-setup` agent skill does it for you), and the server tells agents exactly that.
 
 ## Where the data comes from
 

@@ -2,7 +2,7 @@
 
 > Design context for AI coding agents. Paste this into your prompt, or let your
 > agent pull it from https://wunderui.com/DESIGN.md.
-> Generated from the WunderUI source on 2026-10-22 · @wunderui/react@0.1.0
+> Generated from the WunderUI source on 2026-10-23 · @wunderui/react@0.3.0
 
 WunderUI is a React component library and design system: 222
 documented components in 6 groups, built on Base UI
@@ -764,7 +764,7 @@ Agent skills that build and check with these rules (https://wunderui.com/skills)
 
 | Component | Plan | What it does | Related exports |
 | --- | --- | --- | --- |
-| `LineChart` (`@wunderui/react/charts`) | Pro | Line chart for trends over time: straight, smooth and stepped lines, comparisons, bands, forecasts and thresholds, with tooltip, keyboard navigation and a data table. | LineChartBand, LineChartProps, LineChartVariant |
+| `LineChart` (`@wunderui/react/charts`) | Pro | Line chart for trends over time: smooth lines (straight on request) and stepped lines, comparisons, bands, forecasts and thresholds, with tooltip, keyboard navigation and a data table. | LineChartBand, LineChartProps, LineChartVariant |
 | `BarChart` (`@wunderui/react/charts`) | Pro | Bar chart for comparing values: grouped, horizontal, diverging, top-k and highlighted bars, with tooltip, keyboard navigation and a data table. | BarChartProps, BarChartVariant |
 | `AreaChart` (`@wunderui/react/charts`) | Pro | Area chart for volumes over time: gradients, steps, ranges, a horizon graph, differences and target lines. | AreaChartProps, AreaChartVariant |
 | `ComposedChart` (`@wunderui/react/charts`) | Pro | Bars, lines and areas in one plot, with an optional second value axis. | ComposedChartProps, ComposedChartVariant |
@@ -988,7 +988,7 @@ Exports of `@wunderui/react` that are not components of their own: hooks, provid
 ### Hooks
 
 - `useAppLayout` (Pro) — Opens the navigation drawer and the side panel of the surrounding AppLayout. `useAppLayout(): AppLayoutState | null` · https://wunderui.com/hooks/use-app-layout
-- `useChartAnimation` (Pro) — The draw-in animation props every WunderUI chart passes to its Recharts series. `useChartAnimation(animate?: boolean, appear?: ChartAppearState | undefined): { isAnimationActive: boolean; animationDuration: number; animationEasing: "ease-out"; animationBegin: number; }` · https://wunderui.com/hooks/use-chart-animation
+- `useChartAnimation` (Pro) — Legacy: the draw-in animation props for Recharts series, used by the legacy Recharts charts the templates still use. `useChartAnimation(animate?: boolean, appear?: ChartAppearState | undefined): { isAnimationActive: boolean; animationDuration: number; animationEasing: "ease-out"; animationBegin: number; }` · https://wunderui.com/hooks/use-chart-animation
 - `useDataTableUrlState` (Pro) — Keeps the page, sorting, filters and search of a DataTable in the address bar. `useDataTableUrlState(options?: DataTableUrlStateOptions & { search?: string; }): { initialState: DataTableQuery; onQueryChange: (query: DataTableQuery) => void; }` · https://wunderui.com/hooks/use-data-table-url-state
 - `useDensity` (Free) — Reads and changes the density of the nearest DensityProvider. `useDensity(): DensityContextValue` · https://wunderui.com/hooks/use-density
 - `useInViewAppear` (Pro) — Plays a chart's appear sequence once, when the chart scrolls into view. `useInViewAppear<T>(animate?: boolean, ready?: boolean, threshold?: number): { ref: React.Dispatch<React.SetStateAction<T | null>>; state: ChartAppearState; }` · https://wunderui.com/hooks/use-in-view-appear
@@ -996,12 +996,14 @@ Exports of `@wunderui/react` that are not components of their own: hooks, provid
 - `useRouteFocus` (Pro) — Moves focus to the new page heading after a client-side route change. `useRouteFocus<T>(routeKey: unknown): React.RefObject<T | null>` · https://wunderui.com/hooks/use-route-focus
 - `useScrollSpy` (Free) — Tells which section of a page or a scroll container is being read. `useScrollSpy(ids: string[], root?: React.RefObject<HTMLElement | null> | undefined, enabled?: boolean): readonly [string | undefined, React.Dispatch<React.SetStateAction<string | undefined>>]` · https://wunderui.com/hooks/use-scroll-spy
 - `useToast` (Free) — Shows, updates and closes toasts from anywhere below a Toaster. `useToast<Data>(): UseToastManagerReturnValue<Data>` · https://wunderui.com/hooks/use-toast
-- `useAnimatedNumber` from `@wunderui/react/charts` (Pro) — The number on screen while it counts from the previous value to `value` (duration token, default --duration-slow, --ease-entrance).
-- `useChartInteraction` from `@wunderui/react/charts` (Pro) — Pointer and keyboard behaviour shared by the cartesian charts: - pointer move → active point (tooltip), leave → none; - ← → (↑ ↓ for horizontal charts), Home, End walk the points and announce them in the live region; Esc clears point and r…
-- `useChartLegend` from `@wunderui/react/charts` (Pro) — State for a toggleable legend: `hidden` goes to the chart's `hiddenSeries` and the legend's `hidden`, `toggle` to the legend's `onToggle`.
-- `useChartReload` from `@wunderui/react/charts` (Pro) — Reload behaviour for a chart card's refresh button: loading skeleton while the task runs (at least two --duration-deliberate, so the skeleton is readable), then the chart enters again.
+- `useAnimatedNumber` from `@wunderui/react/charts` (Pro) — A number that counts from its previous value to the new one, for chart headlines and KPI values. `useAnimatedNumber(value: number | null | undefined, token?: string): number | null` · https://wunderui.com/hooks/use-animated-number
+- `useChartInteraction` from `@wunderui/react/charts` (Pro) — Pointer and keyboard behaviour of a chart: the active point, arrow keys, range selection and the live announcement. `useChartInteraction(o: ChartInteractionOptions): { active: number | null; range: ChartRange | null; announcement: string; handlers: { onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => void; onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => void; onPointerDown: (e: React.Poin…` · https://wunderui.com/hooks/use-chart-interaction
+- `useChartLegend` from `@wunderui/react/charts` (Pro) — Keeps track of which series a chart legend has switched off. `useChartLegend(series: readonly ChartSeries[], initialHidden?: readonly string[]): { hidden: string[]; toggle: (key: string) => void; items: ChartLegendItem[]; }` · https://wunderui.com/hooks/use-chart-legend
+- `useChartReload` from `@wunderui/react/charts` (Pro) — Drives the reload button of a chart card: loading skeleton, your task, then the chart draws in again. `useChartReload(): ChartReload` · https://wunderui.com/hooks/use-chart-reload
 - `useChartWidth` from `@wunderui/react/charts` (Pro) — Width of a box, measured before the first paint and kept current with a ResizeObserver.
-- `useGlide` from `@wunderui/react/charts` (Pro) — Keeps the last active index while the hover marks fade out, and flags the frame they reappear.
+- `useGlide` from `@wunderui/react/charts` (Pro) — Lets hover marks glide from point to point and fade out in place, instead of jumping or vanishing. `useGlide(active: number | null): Glide` · https://wunderui.com/hooks/use-glide
+- `useLoadPhase` from `@wunderui/react/charts` (Pro) — The phase of the surrounding load sequence (null when there is none).
+- `useLoadSequence` from `@wunderui/react/charts` (Pro) — Opens every dashboard page the same way: the cards build up top to bottom, then numbers roll, charts draw in and bars fill — with skeletons first only when the data takes longer. `useLoadSequence(ref: React.RefObject<HTMLElement | null>, options?: LoadSequenceOptions): LoadPhase` · https://wunderui.com/hooks/use-load-sequence
 - `usePrefersReducedMotion` from `@wunderui/react/charts` (Pro) — True when the visitor asked for reduced motion (read once on mount).
 
 ### Providers
@@ -1052,6 +1054,8 @@ Exports of `@wunderui/react` that are not components of their own: hooks, provid
 - `ChartSkeleton` from `@wunderui/react/charts` (Pro) — Loading placeholder in the shape of the chart (Figma State – Loading): a muted area for line charts, muted columns or rows for bar charts.
 - `ChartTooltip` from `@wunderui/react/charts` (Pro) — The tooltip card of the Figma states (Hover): title with an optional delta chip, then one row per series — dot, label, value.
 - `GlideGroup` from `@wunderui/react/charts` (Pro) — An SVG group placed by a CSS transform that glides to its new position (duration-slow, ease-entrance) and fades in and out.
+- `LoadSequenceContext` from `@wunderui/react/charts` (Pro) — The phase of the load sequence around this element; null outside one.
+- `NumberRoll` from `@wunderui/react/charts` (Pro) — A number that rolls in like an odometer: each digit column rolls up and settles on its value, left to right, a short blur while moving.
 - `PolarShell` from `@wunderui/react/charts` (Pro) — Shell of the radial charts — the polar twin of CartesianShell: size, states (skeleton ring/pie, empty, error), 2-D hover with the gliding tooltip, keyboard walk over the slices, live region, data table and the enter sequence (marks remount…
 
 ### Utilities
@@ -1113,10 +1117,13 @@ Exports of `@wunderui/react` that are not components of their own: hooks, provid
 - `COMPOSED_CHART_VARIANTS` from `@wunderui/react/charts` (Pro) — The 4 Composed Chart variants of the Figma catalogue (names in kebab-case).
 - `DISTRIBUTION_CHART_VARIANTS` from `@wunderui/react/charts` (Pro) — The 9 Distribution Chart variants of the Figma catalogue (names in kebab-case).
 - `FUNNEL_CHART_VARIANTS` from `@wunderui/react/charts` (Pro) — The 19 Funnel Chart variants of the Figma catalogue (names in kebab-case).
+- `FUNNEL_HEADROOM` from `@wunderui/react/charts` (Pro) — Space between the highest point of a funnel area and the top of its plot (under the KPI header).
 - `GAUGE_CHART_VARIANTS` from `@wunderui/react/charts` (Pro) — The 4 Gauge variants of the Figma catalogue (names in kebab-case).
 - `HEATMAP_CHART_VARIANTS` from `@wunderui/react/charts` (Pro) — The 5 Heatmap variants of the Figma catalogue (names in kebab-case).
 - `HOVER_TEXT` from `@wunderui/react/charts` (Pro) — Text on a hovered (two steps lighter) fill: the near-black token reads on every step in both themes.
 - `LINE_CHART_VARIANTS` from `@wunderui/react/charts` (Pro) — The 21 Line Chart variants of the Figma catalogue (names in kebab-case).
+- `LOAD_SKELETON_DELAY` from `@wunderui/react/charts` (Pro) — How long the data may take before the skeletons show (ms).
+- `LOAD_SKELETON_MIN` from `@wunderui/react/charts` (Pro) — Once the skeletons show, they stay at least this long (ms), so they never flash.
 - `NETWORK_CHART_VARIANTS` from `@wunderui/react/charts` (Pro) — The 4 Network Chart variants of the Figma catalogue (names in kebab-case).
 - `PIE_CHART_VARIANTS` from `@wunderui/react/charts` (Pro) — The 15 Pie Chart variants of the Figma catalogue (names in kebab-case).
 - `PLOT` from `@wunderui/react/charts` (Pro) — Plot frame: Figma large card (1416 × 434), tightened after the owner review (Oct 21 2026) — grid 12 px from the top, x labels 22 px below it.
@@ -1150,13 +1157,16 @@ Exports of `@wunderui/react` that are not components of their own: hooks, provid
 - `labelOn` from `@wunderui/react/charts` (Pro) — Text colour for a label drawn on a chart fill: white or near-black, whichever has the higher contrast (≥ 4.5:1) on that fill at that opacity over the card, in light and dark (variables `--chart-on-<token>-<opacity>` in styles.css).
 - `labelStride` from `@wunderui/react/charts` (Pro) — Every k-th label so neighbouring labels keep at least `gap` px between them.
 - `lineColor` from `@wunderui/react/charts` (Pro) — The colour for a line, a point or a thin stroke of a series (see LINE_COLORS); fills keep `resolveChartColor`.
+- `loadDelays` from `@wunderui/react/charts` (Pro) — When each card appears, in ms after the page starts building, for the slots of `readingOrder`: strictly top to bottom — a row starts 40 ms after the last card of the row above, the cards of a row follow each other 25 ms apart — capped at 4…
 - `logDomain` from `@wunderui/react/charts` (Pro) — Log axis: whole decades from the smallest positive value to the largest.
 - `niceDomain` from `@wunderui/react/charts` (Pro) — The value axis of the Figma cards: a fixed number of equal intervals (default 6 → 7 grid lines), always including 0, so the grid starts at the lowest value and every bar or area stands on the bottom grid line (owner rules, Sep 25 2026).
 - `prefersReducedMotion` from `@wunderui/react/charts` (Pro)
 - `readDuration` from `@wunderui/react/charts` (Pro) — Reads a duration token (e.g.
+- `readingOrder` from `@wunderui/react/charts` (Pro) — Reading order of a set of boxes (their top-left corners in px): rows top to bottom — a box whose top lies within `tolerance` of the row's first box joins that row — and left to right inside a row.
 - `resolveChartColor` from `@wunderui/react/charts` (Pro)
 - `seriesColor` from `@wunderui/react/charts` (Pro)
 - `seriesLabel` from `@wunderui/react/charts` (Pro)
+- `splitNumberRoll` from `@wunderui/react/charts` (Pro) — Splits a formatted value ("$48,200", "3.4h", "+12.5%", "1.2M") into the parts NumberRoll draws: digits roll (one full turn plus their value, so every column moves), everything else — signs, currency, separators, units — stays put.
 - `spreadLabels` from `@wunderui/react/charts` (Pro) — Moves label positions apart so neighbours keep `gap` px (order kept, nulls skipped, clamped to [min, max]).
 - `svgId` from `@wunderui/react/charts` (Pro) — SVG-safe id fragment from React.useId().
 - `toNumber` from `@wunderui/react/charts` (Pro) — A finite number or null (null = gap: missing, NaN, Infinity, non-numeric).
@@ -1591,7 +1601,7 @@ A single choice that is on or off, with an indeterminate state for “some selec
 ```
 
 ```ts
-function Checkbox({ className, ...props }: Checkbox.Root.Props): React.JSX.Element;
+function Checkbox({ className, inputRef, ...props }: Checkbox.Root.Props): React.JSX.Element;
 ```
 
 | Prop | Type | Default |
@@ -1642,7 +1652,7 @@ A toggle control for a binary setting.
 ```
 
 ```ts
-function Switch({ className, size, ...props }: Switch.Root.Props & {
+function Switch({ className, size, inputRef, ...props }: Switch.Root.Props & {
     size?: "sm" | "default";
 }): React.JSX.Element;
 ```
@@ -2699,7 +2709,7 @@ Theming: reads `--border`, `--card`, `--foreground`, `--muted`, `--muted-foregro
 
 #### LineChart (@wunderui/react/charts)
 
-Line chart for trends over time: straight, smooth and stepped lines, comparisons, bands, forecasts and thresholds, with tooltip, keyboard navigation and a data table.
+Line chart for trends over time: smooth lines (straight on request) and stepped lines, comparisons, bands, forecasts and thresholds, with tooltip, keyboard navigation and a data table.
 
 `import { LineChart } from "@wunderui/react/charts"`
 
@@ -9154,12 +9164,18 @@ A small pill showing a change, up or down, in seven icon styles.
 ```
 
 ```ts
-function TrendChip({ value, direction, icon, className, }: {
+function TrendChip({ value, direction, icon, sentiment, className, }: {
     value: string;
     /** Figma Trend Chip · Trend; `flat` is the old name for `neutral`. */
     direction?: "up" | "down" | "neutral" | "flat";
     /** Figma Trend Chip · Icon; the same glyph turns for `down`. */
     icon?: TrendChipIcon;
+    /**
+     * Figma Trend Chip · Sentiment: whether the change is good or bad. `auto` colours by direction
+     * (up green, down red); use `positive` for a fall that is good (churn, cost) or `negative` for
+     * a rise that is bad. The arrow always follows `direction`.
+     */
+    sentiment?: "auto" | "positive" | "negative" | "neutral";
     className?: string;
 }): React.JSX.Element;
 type TrendChipIcon = "trending" | "arrow" | "arrow-diagonal" | "triangle" | "circle-trending" | "circle-diagonal" | "circle-arrow";
@@ -9171,6 +9187,7 @@ type TrendChipIcon = "trending" | "arrow" | "arrow-diagonal" | "triangle" | "cir
 | `className` | `string` | — |
 | `direction` | `"up" \| "down" \| "neutral" \| "flat"` | `"up"` |
 | `icon` | `"triangle" \| "trending" \| "arrow" \| "arrow-diagonal" \| "circle-trending" \| "circle-diagonal" \| "circle-arrow"` | `"trending"` |
+| `sentiment` | `"auto" \| "positive" \| "negative" \| "neutral"` | `"auto"` |
 
 Anatomy:
 
