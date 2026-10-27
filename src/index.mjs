@@ -19,7 +19,10 @@
 import { readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
-import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js"
+import {
+  McpServer,
+  ResourceTemplate,
+} from "@modelcontextprotocol/sdk/server/mcp.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod"
 
@@ -33,18 +36,35 @@ let source = "bundled"
 /** Swap in the live data from the site; any failure keeps the bundled copy. */
 async function refresh() {
   if (process.env.WUNDERUI_OFFLINE === "1") return
-  const site = (process.env.WUNDERUI_SITE ?? design.site ?? "https://wunderui.com").replace(/\/$/, "")
+  const site = (
+    process.env.WUNDERUI_SITE ??
+    design.site ??
+    "https://wunderui.com"
+  ).replace(/\/$/, "")
   try {
     const [json, md] = await Promise.all([
-      fetch(`${site}/design.json`, { signal: AbortSignal.timeout(5000) }).then((r) => (r.ok ? r.json() : null)),
-      fetch(`${site}/DESIGN.md`, { signal: AbortSignal.timeout(5000) }).then((r) => (r.ok ? r.text() : null)),
+      fetch(`${site}/design.json`, { signal: AbortSignal.timeout(5000) }).then(
+        (r) => (r.ok ? r.json() : null)
+      ),
+      fetch(`${site}/DESIGN.md`, { signal: AbortSignal.timeout(5000) }).then(
+        (r) => (r.ok ? r.text() : null)
+      ),
     ])
-    if (!json || !Array.isArray(json.components) || !json.components.length || !md) return
-    if (String(json.generatedAt ?? "") < String(design.generatedAt ?? "")) return
+    if (
+      !json ||
+      !Array.isArray(json.components) ||
+      !json.components.length ||
+      !md
+    )
+      return
+    if (String(json.generatedAt ?? "") < String(design.generatedAt ?? ""))
+      return
     design = json
     designMd = md
     source = site
-    console.error(`wunderui MCP: using live data from ${site} (generated ${design.generatedAt})`)
+    console.error(
+      `wunderui MCP: using live data from ${site} (generated ${design.generatedAt})`
+    )
   } catch {
     // offline or the site is down: the bundled copy is complete on its own
   }
@@ -53,17 +73,27 @@ async function refresh() {
 /* ------------------------------------------------------------------ helpers */
 
 const text = (value) => ({
-  content: [{ type: "text", text: typeof value === "string" ? value : JSON.stringify(value, null, 2) }],
+  content: [
+    {
+      type: "text",
+      text: typeof value === "string" ? value : JSON.stringify(value, null, 2),
+    },
+  ],
 })
 
-const normalize = (value) => String(value).toLowerCase().replace(/[^a-z0-9]/g, "")
+const normalize = (value) =>
+  String(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "")
 
 /** Accepts an export name ("DataGrid"), a slug ("data-grid") or a title. */
 function findComponent(name) {
   const key = normalize(name)
   return (
     design.components.find((component) => normalize(component.slug) === key) ??
-    design.components.find((component) => component.exports.some((exported) => normalize(exported) === key)) ??
+    design.components.find((component) =>
+      component.exports.some((exported) => normalize(exported) === key)
+    ) ??
     design.components.find((component) => normalize(component.title) === key) ??
     null
   )
@@ -71,7 +101,13 @@ function findComponent(name) {
 
 function matches(component, query) {
   const haystack = normalize(
-    [component.title, component.slug, component.description, component.category, ...component.exports].join(" ")
+    [
+      component.title,
+      component.slug,
+      component.description,
+      component.category,
+      ...component.exports,
+    ].join(" ")
   )
   return normalize(query)
     .split(/\s+/)
@@ -95,14 +131,18 @@ function componentDetail(component) {
     title: component.title,
     category: component.category,
     plan: component.tier ?? "pro",
-    planNote: (component.tier ?? "pro") === "free" ? "Free: MIT source, any project — fetch it from sourceRaw." : "Needs WunderUI Core or Pro.",
+    planNote:
+      (component.tier ?? "pro") === "free"
+        ? "Free: MIT source, any project — fetch it from sourceRaw."
+        : "Needs WunderUI Core or Pro.",
     source: component.source ?? undefined,
     sourceRaw: component.sourceRaw ?? undefined,
     description: component.description,
     import: `import { ${component.exports.slice(0, 4).join(", ")} } from "${design.name}"`,
     exports: component.exports,
     example: component.example ?? undefined,
-    props: component.props ?? "No generated signature — see the documentation page.",
+    props:
+      component.props ?? "No generated signature — see the documentation page.",
     // per export: name, type, values (literal unions), default, required, description; DOM attributes summed up in inherits
     propsTable: component.api?.length ? component.api : undefined,
     // the guide: parts (export, data-slot, required, a sentence), do/don't/when notes, and the CSS
@@ -219,21 +259,38 @@ server.registerTool(
   {
     title: "List WunderUI components",
     description:
-      "The WunderUI component inventory: name, category, plan (free or pro) and one-line description. Filter by category, plan or a free-text query. Call this first to find out whether a component already exists before building one by hand. On the Free plan use only components with plan \"free\".",
+      'The WunderUI component inventory: name, category, plan (free or pro) and one-line description. Filter by category, plan or a free-text query. Call this first to find out whether a component already exists before building one by hand. On the Free plan use only components with plan "free".',
     inputSchema: {
-      category: z.string().optional().describe(`One of: ${design.categories.join(", ")}`),
-      query: z.string().optional().describe("Free text, matched against name, description and category"),
-      plan: z.enum(["free", "pro"]).optional().describe("Only components of this plan. Free = open source under MIT (github.com/wunder-ui/wunderui); pro needs WunderUI Core or Pro."),
+      category: z
+        .string()
+        .optional()
+        .describe(`One of: ${design.categories.join(", ")}`),
+      query: z
+        .string()
+        .optional()
+        .describe("Free text, matched against name, description and category"),
+      plan: z
+        .enum(["free", "pro"])
+        .optional()
+        .describe(
+          "Only components of this plan. Free = open source under MIT (github.com/wunder-ui/wunderui); pro needs WunderUI Core or Pro."
+        ),
     },
   },
   async ({ category, query, plan }) => {
     let results = design.components
-    if (plan) results = results.filter((component) => (component.tier ?? "pro") === plan)
+    if (plan)
+      results = results.filter(
+        (component) => (component.tier ?? "pro") === plan
+      )
     if (category) {
       const key = normalize(category)
-      results = results.filter((component) => normalize(component.category) === key)
+      results = results.filter(
+        (component) => normalize(component.category) === key
+      )
     }
-    if (query) results = results.filter((component) => matches(component, query))
+    if (query)
+      results = results.filter((component) => matches(component, query))
 
     return text({
       count: results.length,
@@ -249,12 +306,20 @@ server.registerTool(
     description:
       "Everything needed to use one component correctly: its exported names, the TypeScript prop signature straight from the build, a props table per export (type, allowed values, default, required, description), its anatomy (parts and data-slot names), best practices, the CSS variables it reads with their defaults, the import line and a link to its documentation page. Also answers for hooks (signature, parameters, return value, notes), providers and utilities (useToast, ThemeProvider …).",
     inputSchema: {
-      name: z.string().describe('Export name ("DataGrid"), slug ("data-grid") or title ("Data Grid")'),
+      name: z
+        .string()
+        .describe(
+          'Export name ("DataGrid"), slug ("data-grid") or title ("Data Grid")'
+        ),
     },
   },
   async ({ name }) => {
     const component = findComponent(name)
-    const other = component ? null : (design.otherExports ?? []).find((entry) => normalize(entry.name) === normalize(name))
+    const other = component
+      ? null
+      : (design.otherExports ?? []).find(
+          (entry) => normalize(entry.name) === normalize(name)
+        )
     if (other) {
       return text({
         name: other.name,
@@ -268,7 +333,9 @@ server.registerTool(
         returns: other.returns ?? undefined,
         notes: other.notes ?? undefined,
         examples: other.examples ?? undefined,
-        propsTable: other.props ? [{ name: other.name, props: other.props, inherits: other.inherits }] : undefined,
+        propsTable: other.props
+          ? [{ name: other.name, props: other.props, inherits: other.inherits }]
+          : undefined,
         docs: other.docs ?? undefined,
       })
     }
@@ -294,7 +361,10 @@ server.registerTool(
     description:
       "The design tokens for light and dark, in the format you need. Use these instead of hardcoding colours; overriding them is how WunderUI is themed.",
     inputSchema: {
-      format: z.enum(["json", "css", "tailwind"]).default("json").describe("json, a CSS block, or Tailwind @theme mappings"),
+      format: z
+        .enum(["json", "css", "tailwind"])
+        .default("json")
+        .describe("json, a CSS block, or Tailwind @theme mappings"),
       theme: z.enum(["light", "dark", "both"]).default("both"),
     },
   },
@@ -331,7 +401,18 @@ server.registerTool(
       "The complete design context as one markdown document: install steps, the rules an agent should follow, every token, the component inventory with props, and starter snippets. Pull this once at the start of a build.",
     inputSchema: {
       section: z
-        .enum(["all", "rules", "donts", "tasks", "tokens", "inventory", "reference", "props", "templates", "starters"])
+        .enum([
+          "all",
+          "rules",
+          "donts",
+          "tasks",
+          "tokens",
+          "inventory",
+          "reference",
+          "props",
+          "templates",
+          "starters",
+        ])
         .default("all")
         .describe(
           "Return the whole document or just one section. 'tasks' maps an intent to a component, 'donts' holds the do/don't pairs, 'reference' every component with example and props."
@@ -367,7 +448,8 @@ server.registerTool(
       "Full pages assembled only from WunderUI components — a dashboard, a settings page, an AI inbox and a sign-in screen. Start from one of these instead of an empty file.",
     inputSchema: {},
   },
-  async () => text({ count: design.templates.length, templates: design.templates })
+  async () =>
+    text({ count: design.templates.length, templates: design.templates })
 )
 
 server.registerTool(
@@ -408,18 +490,29 @@ server.registerTool(
 
 /* ---------------------------------------------- skills, instructions, Pro */
 
-const siteUrl = () => (process.env.WUNDERUI_SITE ?? design.site ?? "https://wunderui.com").replace(/\/$/, "")
+const siteUrl = () =>
+  (process.env.WUNDERUI_SITE ?? design.site ?? "https://wunderui.com").replace(
+    /\/$/,
+    ""
+  )
 const licenseKey = () => process.env.WUNDERUI_LICENSE_KEY?.trim() || null
 /** The key goes to wunderui.com (or a local dev server) only, never to another WUNDERUI_SITE. */
 const keyAllowed = () => {
   try {
     const { protocol, hostname } = new URL(siteUrl())
-    return (protocol === "https:" && (hostname === "wunderui.com" || hostname === "www.wunderui.com")) || ["localhost", "127.0.0.1", "[::1]"].includes(hostname)
+    return (
+      (protocol === "https:" &&
+        (hostname === "wunderui.com" || hostname === "www.wunderui.com")) ||
+      ["localhost", "127.0.0.1", "[::1]"].includes(hostname)
+    )
   } catch {
     return false
   }
 }
-const authHeaders = () => (licenseKey() && keyAllowed() ? { authorization: `Bearer ${licenseKey()}` } : {})
+const authHeaders = () =>
+  licenseKey() && keyAllowed()
+    ? { authorization: `Bearer ${licenseKey()}` }
+    : {}
 let instructions = null
 try {
   instructions = readFileSync(resolve(dataDir, "INSTRUCTIONS.md"), "utf8")
@@ -435,8 +528,14 @@ server.registerTool(
   },
   async () => {
     if (instructions) return text(instructions)
-    const r = await fetch(`${siteUrl()}/INSTRUCTIONS.md`, { signal: AbortSignal.timeout(8000) }).catch(() => null)
-    return text(r?.ok ? await r.text() : "INSTRUCTIONS.md is not available offline; use get_design_md.")
+    const r = await fetch(`${siteUrl()}/INSTRUCTIONS.md`, {
+      signal: AbortSignal.timeout(8000),
+    }).catch(() => null)
+    return text(
+      r?.ok
+        ? await r.text()
+        : "INSTRUCTIONS.md is not available offline; use get_design_md."
+    )
   }
 )
 
@@ -451,7 +550,11 @@ server.registerTool(
   async () =>
     text({
       licenseKeySet: Boolean(licenseKey()),
-      skills: (design.skills ?? []).map((skill) => ({ name: skill.name, tier: skill.tier, description: skill.description })),
+      skills: (design.skills ?? []).map((skill) => ({
+        name: skill.name,
+        tier: skill.tier,
+        description: skill.description,
+      })),
       use: "get_skill({ name }) returns the skill's instructions so you can follow them without installing it.",
     })
 )
@@ -462,14 +565,30 @@ server.registerTool(
     title: "Get a WunderUI agent skill",
     description:
       "Returns one skill's instructions (its SKILL.md) from wunderui.com, so the agent can follow the workflow without installing the skill. Pro skills are sent only with a valid Pro key in WUNDERUI_LICENSE_KEY. Scripts the skill mentions come with the installed skill (wunderui.com/skills).",
-    inputSchema: { name: z.string().describe("Skill name, e.g. wunderui-theme or wunderui-screen") },
+    inputSchema: {
+      name: z
+        .string()
+        .describe("Skill name, e.g. wunderui-theme or wunderui-screen"),
+    },
   },
   async ({ name }) => {
-    const r = await fetch(`${siteUrl()}/api/skills/${encodeURIComponent(name)}`, { headers: authHeaders(), signal: AbortSignal.timeout(10000) }).catch(() => null)
-    if (!r) return text("wunderui.com is not reachable — install the skill from https://wunderui.com/skills instead.")
+    const r = await fetch(
+      `${siteUrl()}/api/skills/${encodeURIComponent(name)}`,
+      { headers: authHeaders(), signal: AbortSignal.timeout(10000) }
+    ).catch(() => null)
+    if (!r)
+      return text(
+        "wunderui.com is not reachable — install the skill from https://wunderui.com/skills instead."
+      )
     const body = await r.json().catch(() => null)
-    if (r.status === 401) return text(`${name} is a Pro skill. Set WUNDERUI_LICENSE_KEY to your WunderUI Pro key (https://wunderui.com/#pricing).`)
-    if (!r.ok || !body?.skill) return text(`No skill called "${name}". Available: ${(design.skills ?? []).map((s) => s.name).join(", ")}`)
+    if (r.status === 401)
+      return text(
+        `${name} is a Pro skill. Set WUNDERUI_LICENSE_KEY to your WunderUI Pro key (https://wunderui.com/#pricing).`
+      )
+    if (!r.ok || !body?.skill)
+      return text(
+        `No skill called "${name}". Available: ${(design.skills ?? []).map((s) => s.name).join(", ")}`
+      )
     return text(body.skill)
   }
 )
@@ -487,12 +606,24 @@ server.registerTool(
     },
   },
   async ({ category, block, screen }) => {
-    if (!licenseKey()) return text("Blocks come with WunderUI Pro. Set WUNDERUI_LICENSE_KEY to your Pro key (https://wunderui.com/#pricing), or browse the free previews at https://wunderui.com/blocks.")
+    if (!licenseKey())
+      return text(
+        "Blocks come with WunderUI Pro. Set WUNDERUI_LICENSE_KEY to your Pro key (https://wunderui.com/#pricing), or browse the free previews at https://wunderui.com/blocks."
+      )
     const url = `${siteUrl()}/api/registry/block/${encodeURIComponent(category)}/${encodeURIComponent(block)}${screen ? `?screen=${encodeURIComponent(screen)}` : ""}`
-    const r = await fetch(url, { headers: authHeaders(), signal: AbortSignal.timeout(15000) }).catch(() => null)
+    const r = await fetch(url, {
+      headers: authHeaders(),
+      signal: AbortSignal.timeout(15000),
+    }).catch(() => null)
     if (!r) return text("wunderui.com is not reachable.")
-    if (r.status === 401) return text("The key was not accepted for blocks (blocks need a Pro key).")
-    if (!r.ok) return text(`No block ${category}/${block}${screen ? ` screen ${screen}` : ""}.`)
+    if (r.status === 401)
+      return text(
+        "The key was not accepted for blocks (blocks need a Pro key)."
+      )
+    if (!r.ok)
+      return text(
+        `No block ${category}/${block}${screen ? ` screen ${screen}` : ""}.`
+      )
     return text(await r.json())
   }
 )
@@ -500,15 +631,26 @@ server.registerTool(
 /* ---------------------------------------------------------------- resources */
 
 // Read-only context a client can attach without a tool call. The tools stay for clients without resource support.
-const jsonResource = (uri, value) => ({ contents: [{ uri: uri.href, mimeType: "application/json", text: JSON.stringify(value, null, 2) }] })
-const markdownResource = (uri, value) => ({ contents: [{ uri: uri.href, mimeType: "text/markdown", text: value }] })
+const jsonResource = (uri, value) => ({
+  contents: [
+    {
+      uri: uri.href,
+      mimeType: "application/json",
+      text: JSON.stringify(value, null, 2),
+    },
+  ],
+})
+const markdownResource = (uri, value) => ({
+  contents: [{ uri: uri.href, mimeType: "text/markdown", text: value }],
+})
 
 server.registerResource(
   "design-md",
   "wunderui://design-md",
   {
     title: "WunderUI DESIGN.md",
-    description: "The complete design context as markdown: rules for agents, tokens, the component inventory with props and starter snippets.",
+    description:
+      "The complete design context as markdown: rules for agents, tokens, the component inventory with props and starter snippets.",
     mimeType: "text/markdown",
   },
   async (uri) => markdownResource(uri, designMd)
@@ -519,7 +661,8 @@ server.registerResource(
   "wunderui://design-json",
   {
     title: "WunderUI design.json",
-    description: "Machine-readable design data: tokens, the component inventory with prop signatures, templates, skills and counts.",
+    description:
+      "Machine-readable design data: tokens, the component inventory with prop signatures, templates, skills and counts.",
     mimeType: "application/json",
   },
   async (uri) => jsonResource(uri, design)
@@ -530,7 +673,8 @@ server.registerResource(
   "wunderui://tokens",
   {
     title: "WunderUI design tokens",
-    description: "Light and dark token values. Use them instead of hardcoded colours.",
+    description:
+      "Light and dark token values. Use them instead of hardcoded colours.",
     mimeType: "application/json",
   },
   async (uri) => jsonResource(uri, design.tokens)
@@ -541,10 +685,16 @@ server.registerResource(
   "wunderui://instructions",
   {
     title: "WunderUI short rules",
-    description: "The always-on rules for building with WunderUI. Text to keep in CLAUDE.md or AGENTS.md.",
+    description:
+      "The always-on rules for building with WunderUI. Text to keep in CLAUDE.md or AGENTS.md.",
     mimeType: "text/markdown",
   },
-  async (uri) => markdownResource(uri, instructions ?? "INSTRUCTIONS.md is not bundled. Read wunderui://design-md instead.")
+  async (uri) =>
+    markdownResource(
+      uri,
+      instructions ??
+        "INSTRUCTIONS.md is not bundled. Read wunderui://design-md instead."
+    )
 )
 
 server.registerResource(
@@ -552,10 +702,15 @@ server.registerResource(
   "wunderui://components",
   {
     title: "WunderUI component inventory",
-    description: "Every component with category, plan and one-line description. One resource per component: wunderui://components/{slug}.",
+    description:
+      "Every component with category, plan and one-line description. One resource per component: wunderui://components/{slug}.",
     mimeType: "application/json",
   },
-  async (uri) => jsonResource(uri, { count: design.components.length, components: design.components.map(componentSummary) })
+  async (uri) =>
+    jsonResource(uri, {
+      count: design.components.length,
+      components: design.components.map(componentSummary),
+    })
 )
 
 server.registerResource(
@@ -572,12 +727,16 @@ server.registerResource(
   }),
   {
     title: "WunderUI component",
-    description: "One component: exports, prop signature, props table, anatomy, best practices and theming variables.",
+    description:
+      "One component: exports, prop signature, props table, anatomy, best practices and theming variables.",
     mimeType: "application/json",
   },
   async (uri, { slug }) => {
     const component = findComponent(String(slug))
-    if (!component) throw new Error(`No component named "${slug}". Read wunderui://components for the list.`)
+    if (!component)
+      throw new Error(
+        `No component named "${slug}". Read wunderui://components for the list.`
+      )
     return jsonResource(uri, componentDetail(component))
   }
 )

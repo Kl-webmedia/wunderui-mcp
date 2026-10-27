@@ -1,6 +1,6 @@
 # WunderUI MCP
 
-An MCP server that gives an AI coding agent the [WunderUI](https://wunderui.com) design system: design tokens, the component inventory with real prop signatures, page templates and starter snippets. The agent builds *with* the library instead of reinventing a data grid out of raw divs.
+An MCP server that gives an AI coding agent the [WunderUI](https://wunderui.com) design system: design tokens, the component inventory with real prop signatures, page templates and starter snippets. The agent builds _with_ the library instead of reinventing a data grid out of raw divs.
 
 ```bash
 claude mcp add wunderui -- npx -y wunderui-mcp
@@ -10,19 +10,19 @@ Works with Claude Code, Cursor, Windsurf, Cline, Codex, VS Code and any other cl
 
 ## Tools
 
-| Tool | What the agent gets |
-| --- | --- |
-| `list_components` | The inventory, filterable by category, plan (free or pro) or free text |
-| `get_component` | Exports, the TypeScript prop signature, the import line, an example, the docs URL |
-| `get_tokens` | Light and dark tokens as JSON, a CSS block, or Tailwind `@theme` mappings |
-| `get_design_md` | The full DESIGN.md, or one section (`rules`, `donts`, `tasks`, `tokens`, `inventory`, `reference`, `templates`, `starters`) |
-| `list_templates` | The full-page templates and what each is built from |
-| `get_starter` | Copy-paste TSX: app shell, dashboard, data grid, AI chat, theming |
-| `get_library_info` | Package name, version, install commands, stack, counts, data source |
-| `get_instructions` | The short, always-on rules (components, tokens, motion, copy) for CLAUDE.md / AGENTS.md |
-| `list_skills` | The WunderUI agent skills, free and Pro |
-| `get_skill` | One skill's instructions (SKILL.md), so the agent can follow it without installing — Pro skills need `WUNDERUI_LICENSE_KEY` |
-| `get_block_source` | The React source of a UI block and its shared helpers — needs a Pro key in `WUNDERUI_LICENSE_KEY` |
+| Tool               | What the agent gets                                                                                                         |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| `list_components`  | The inventory, filterable by category, plan (free or pro) or free text                                                      |
+| `get_component`    | Exports, the TypeScript prop signature, the import line, an example, the docs URL                                           |
+| `get_tokens`       | Light and dark tokens as JSON, a CSS block, or Tailwind `@theme` mappings                                                   |
+| `get_design_md`    | The full DESIGN.md, or one section (`rules`, `donts`, `tasks`, `tokens`, `inventory`, `reference`, `templates`, `starters`) |
+| `list_templates`   | The full-page templates and what each is built from                                                                         |
+| `get_starter`      | Copy-paste TSX: app shell, dashboard, data grid, AI chat, theming                                                           |
+| `get_library_info` | Package name, version, install commands, stack, counts, data source                                                         |
+| `get_instructions` | The short, always-on rules (components, tokens, motion, copy) for CLAUDE.md / AGENTS.md                                     |
+| `list_skills`      | The WunderUI agent skills, free and Pro                                                                                     |
+| `get_skill`        | One skill's instructions (SKILL.md), so the agent can follow it without installing — Pro skills need `WUNDERUI_LICENSE_KEY` |
+| `get_block_source` | The React source of a UI block and its shared helpers — needs a Pro key in `WUNDERUI_LICENSE_KEY`                           |
 
 Every component carries its plan. On the Free plan, an agent should only use components marked `free`; the others need WunderUI Core or Pro.
 
@@ -30,13 +30,13 @@ Every component carries its plan. On the Free plan, an agent should only use com
 
 Clients that support MCP resources can attach the design context without a tool call. Read-only, and the same data as the tools above:
 
-| Resource URI | What it holds |
-| --- | --- |
-| `wunderui://design-md` | The full DESIGN.md (markdown) |
-| `wunderui://design-json` | The machine-readable design data (tokens, inventory, templates, skills) |
-| `wunderui://tokens` | Light and dark token values |
-| `wunderui://instructions` | The short rules for CLAUDE.md / AGENTS.md |
-| `wunderui://components` | The component inventory: name, category, plan, description |
+| Resource URI                   | What it holds                                                            |
+| ------------------------------ | ------------------------------------------------------------------------ |
+| `wunderui://design-md`         | The full DESIGN.md (markdown)                                            |
+| `wunderui://design-json`       | The machine-readable design data (tokens, inventory, templates, skills)  |
+| `wunderui://tokens`            | Light and dark token values                                              |
+| `wunderui://instructions`      | The short rules for CLAUDE.md / AGENTS.md                                |
+| `wunderui://components`        | The component inventory: name, category, plan, description               |
 | `wunderui://components/{slug}` | One component in full (one resource per component, listed by the server) |
 
 The tools stay for clients without resource support.
@@ -71,10 +71,10 @@ The server describes the library; it does not ship it. `@wunderui/react` on npm 
 
 The server starts with the bundled copy and answers immediately. In the background it fetches the current `design.json` and `DESIGN.md` from wunderui.com and switches to them when they are at least as new, so agents see new components without a package update. `get_library_info` reports which source is in use.
 
-| Variable | Effect |
-| --- | --- |
-| `WUNDERUI_OFFLINE=1` | never touch the network, use the bundled copy |
-| `WUNDERUI_SITE=<url>` | fetch the live data from another origin |
+| Variable                     | Effect                                                                                                                    |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `WUNDERUI_OFFLINE=1`         | never touch the network, use the bundled copy                                                                             |
+| `WUNDERUI_SITE=<url>`        | fetch the live data from another origin                                                                                   |
 | `WUNDERUI_LICENSE_KEY=<key>` | your WunderUI Pro key — unlocks Pro skills (`get_skill`) and block source (`get_block_source`); sent only to wunderui.com |
 
 ## Without MCP

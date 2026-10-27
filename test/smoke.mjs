@@ -13,7 +13,13 @@ const entry = resolve(here, "../src/index.mjs")
 
 const client = new Client({ name: "wunderui-smoke", version: "1.0.0" })
 // pass the environment through, so WUNDERUI_SITE / WUNDERUI_LICENSE_KEY reach the server under test
-await client.connect(new StdioClientTransport({ command: process.execPath, args: [entry], env: { ...process.env } }))
+await client.connect(
+  new StdioClientTransport({
+    command: process.execPath,
+    args: [entry],
+    env: { ...process.env },
+  })
+)
 
 const { tools } = await client.listTools()
 console.log(`tools: ${tools.map((tool) => tool.name).join(", ")}`)
@@ -25,8 +31,16 @@ const calls = [
   ["get_component", { name: "data-grid" }],
   ["get_component", { name: "StatCard" }],
   ["get_component", { name: "nope" }],
-  ["get_component", { name: "useToast" }, ["signature", "returns", "/hooks/use-toast"]],
-  ["get_component", { name: "Button" }, ["anatomy", "bestPractices", "themingVariables", "--primary"]],
+  [
+    "get_component",
+    { name: "useToast" },
+    ["signature", "returns", "/hooks/use-toast"],
+  ],
+  [
+    "get_component",
+    { name: "Button" },
+    ["anatomy", "bestPractices", "themingVariables", "--primary"],
+  ],
   ["get_tokens", { format: "css", theme: "light" }],
   ["get_tokens", { format: "tailwind" }],
   ["get_design_md", { section: "rules" }],
@@ -46,8 +60,11 @@ for (const [name, args, expect = []] of calls) {
     const body = result.content?.[0]?.text ?? ""
     if (!body.trim()) throw new Error("empty response")
     const missing = expect.filter((needle) => !body.includes(needle))
-    if (missing.length) throw new Error(`missing in the answer: ${missing.join(", ")}`)
-    console.log(`ok  ${name}(${JSON.stringify(args)}) → ${body.length} chars | ${body.slice(0, 90).replace(/\s+/g, " ")}…`)
+    if (missing.length)
+      throw new Error(`missing in the answer: ${missing.join(", ")}`)
+    console.log(
+      `ok  ${name}(${JSON.stringify(args)}) → ${body.length} chars | ${body.slice(0, 90).replace(/\s+/g, " ")}…`
+    )
   } catch (error) {
     failed += 1
     console.error(`FAIL ${name}(${JSON.stringify(args)}): ${error.message}`)
@@ -56,7 +73,9 @@ for (const [name, args, expect = []] of calls) {
 
 const { resources } = await client.listResources()
 const { resourceTemplates } = await client.listResourceTemplates()
-console.log(`resources: ${resources.length} listed, ${resourceTemplates.length} template(s)`)
+console.log(
+  `resources: ${resources.length} listed, ${resourceTemplates.length} template(s)`
+)
 
 const resourceChecks = [
   ["wunderui://design-md", "WunderUI"],
@@ -71,7 +90,8 @@ for (const [uri, needle] of resourceChecks) {
     const { contents } = await client.readResource({ uri })
     const body = contents[0]?.text ?? ""
     if (!body.trim()) throw new Error("empty response")
-    if (!body.includes(needle)) throw new Error(`missing in the answer: ${needle}`)
+    if (!body.includes(needle))
+      throw new Error(`missing in the answer: ${needle}`)
     console.log(`ok  resource ${uri} → ${body.length} chars`)
   } catch (error) {
     failed += 1
@@ -80,5 +100,9 @@ for (const [uri, needle] of resourceChecks) {
 }
 
 await client.close()
-console.log(failed === 0 ? `\nAll ${calls.length} calls passed.` : `\n${failed} of ${calls.length} calls failed.`)
+console.log(
+  failed === 0
+    ? `\nAll ${calls.length} calls passed.`
+    : `\n${failed} of ${calls.length} calls failed.`
+)
 process.exit(failed === 0 ? 0 : 1)
