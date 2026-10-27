@@ -54,6 +54,31 @@ for (const [name, args, expect = []] of calls) {
   }
 }
 
+const { resources } = await client.listResources()
+const { resourceTemplates } = await client.listResourceTemplates()
+console.log(`resources: ${resources.length} listed, ${resourceTemplates.length} template(s)`)
+
+const resourceChecks = [
+  ["wunderui://design-md", "WunderUI"],
+  ["wunderui://design-json", "components"],
+  ["wunderui://tokens", "--primary"],
+  ["wunderui://instructions", "WunderUI"],
+  ["wunderui://components", "data-grid"],
+  ["wunderui://components/data-grid", "exports"],
+]
+for (const [uri, needle] of resourceChecks) {
+  try {
+    const { contents } = await client.readResource({ uri })
+    const body = contents[0]?.text ?? ""
+    if (!body.trim()) throw new Error("empty response")
+    if (!body.includes(needle)) throw new Error(`missing in the answer: ${needle}`)
+    console.log(`ok  resource ${uri} → ${body.length} chars`)
+  } catch (error) {
+    failed += 1
+    console.error(`FAIL resource ${uri}: ${error.message}`)
+  }
+}
+
 await client.close()
 console.log(failed === 0 ? `\nAll ${calls.length} calls passed.` : `\n${failed} of ${calls.length} calls failed.`)
 process.exit(failed === 0 ? 0 : 1)

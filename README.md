@@ -26,6 +26,21 @@ Works with Claude Code, Cursor, Windsurf, Cline, Codex, VS Code and any other cl
 
 Every component carries its plan. On the Free plan, an agent should only use components marked `free`; the others need WunderUI Core or Pro.
 
+## Resources
+
+Clients that support MCP resources can attach the design context without a tool call. Read-only, and the same data as the tools above:
+
+| Resource URI | What it holds |
+| --- | --- |
+| `wunderui://design-md` | The full DESIGN.md (markdown) |
+| `wunderui://design-json` | The machine-readable design data (tokens, inventory, templates, skills) |
+| `wunderui://tokens` | Light and dark token values |
+| `wunderui://instructions` | The short rules for CLAUDE.md / AGENTS.md |
+| `wunderui://components` | The component inventory: name, category, plan, description |
+| `wunderui://components/{slug}` | One component in full (one resource per component, listed by the server) |
+
+The tools stay for clients without resource support.
+
 ## Install
 
 **Claude Code**

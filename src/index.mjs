@@ -19,7 +19,7 @@
 import { readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
+import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod"
 
@@ -77,6 +77,41 @@ function matches(component, query) {
     .split(/\s+/)
     .filter(Boolean)
     .every((term) => haystack.includes(term))
+}
+
+/** One row of the inventory: shared by list_components and the wunderui://components resource. */
+const componentSummary = (component) => ({
+  name: component.exports[0] ?? component.title,
+  category: component.category,
+  plan: component.tier ?? "pro",
+  description: component.description,
+  docs: component.docs,
+})
+
+/** The full answer for one component: shared by get_component and wunderui://components/{slug}. */
+function componentDetail(component) {
+  return {
+    name: component.exports[0],
+    title: component.title,
+    category: component.category,
+    plan: component.tier ?? "pro",
+    planNote: (component.tier ?? "pro") === "free" ? "Free: MIT source, any project — fetch it from sourceRaw." : "Needs WunderUI Core or Pro.",
+    source: component.source ?? undefined,
+    sourceRaw: component.sourceRaw ?? undefined,
+    description: component.description,
+    import: `import { ${component.exports.slice(0, 4).join(", ")} } from "${design.name}"`,
+    exports: component.exports,
+    example: component.example ?? undefined,
+    props: component.props ?? "No generated signature — see the documentation page.",
+    // per export: name, type, values (literal unions), default, required, description; DOM attributes summed up in inherits
+    propsTable: component.api?.length ? component.api : undefined,
+    // the guide: parts (export, data-slot, required, a sentence), do/don't/when notes, and the CSS
+    // variables the component reads with their defaults; `source` "generated" = drafted from the code
+    anatomy: component.anatomy ?? undefined,
+    bestPractices: component.bestPractices ?? undefined,
+    themingVariables: component.themingVariables ?? undefined,
+    docs: component.docs,
+  }
 }
 
 const STARTERS = {
@@ -202,13 +237,7 @@ server.registerTool(
 
     return text({
       count: results.length,
-      components: results.map((component) => ({
-        name: component.exports[0] ?? component.title,
-        category: component.category,
-        plan: component.tier ?? "pro",
-        description: component.description,
-        docs: component.docs,
-      })),
+      components: results.map(componentSummary),
     })
   }
 )
@@ -254,28 +283,7 @@ server.registerTool(
         hint: "Call list_components to see every component.",
       })
     }
-    return text({
-      name: component.exports[0],
-      title: component.title,
-      category: component.category,
-      plan: component.tier ?? "pro",
-      planNote: (component.tier ?? "pro") === "free" ? "Free: MIT source, any project — fetch it from sourceRaw." : "Needs WunderUI Core or Pro.",
-      source: component.source ?? undefined,
-      sourceRaw: component.sourceRaw ?? undefined,
-      description: component.description,
-      import: `import { ${component.exports.slice(0, 4).join(", ")} } from "${design.name}"`,
-      exports: component.exports,
-      example: component.example ?? undefined,
-      props: component.props ?? "No generated signature — see the documentation page.",
-      // per export: name, type, values (literal unions), default, required, description; DOM attributes summed up in inherits
-      propsTable: component.api?.length ? component.api : undefined,
-      // the guide: parts (export, data-slot, required, a sentence), do/don't/when notes, and the CSS
-      // variables the component reads with their defaults; `source` "generated" = drafted from the code
-      anatomy: component.anatomy ?? undefined,
-      bestPractices: component.bestPractices ?? undefined,
-      themingVariables: component.themingVariables ?? undefined,
-      docs: component.docs,
-    })
+    return text(componentDetail(component))
   }
 )
 
@@ -486,6 +494,91 @@ server.registerTool(
     if (r.status === 401) return text("The key was not accepted for blocks (blocks need a Pro key).")
     if (!r.ok) return text(`No block ${category}/${block}${screen ? ` screen ${screen}` : ""}.`)
     return text(await r.json())
+  }
+)
+
+/* ---------------------------------------------------------------- resources */
+
+// Read-only context a client can attach without a tool call. The tools stay for clients without resource support.
+const jsonResource = (uri, value) => ({ contents: [{ uri: uri.href, mimeType: "application/json", text: JSON.stringify(value, null, 2) }] })
+const markdownResource = (uri, value) => ({ contents: [{ uri: uri.href, mimeType: "text/markdown", text: value }] })
+
+server.registerResource(
+  "design-md",
+  "wunderui://design-md",
+  {
+    title: "WunderUI DESIGN.md",
+    description: "The complete design context as markdown: rules for agents, tokens, the component inventory with props and starter snippets.",
+    mimeType: "text/markdown",
+  },
+  async (uri) => markdownResource(uri, designMd)
+)
+
+server.registerResource(
+  "design-json",
+  "wunderui://design-json",
+  {
+    title: "WunderUI design.json",
+    description: "Machine-readable design data: tokens, the component inventory with prop signatures, templates, skills and counts.",
+    mimeType: "application/json",
+  },
+  async (uri) => jsonResource(uri, design)
+)
+
+server.registerResource(
+  "tokens",
+  "wunderui://tokens",
+  {
+    title: "WunderUI design tokens",
+    description: "Light and dark token values. Use them instead of hardcoded colours.",
+    mimeType: "application/json",
+  },
+  async (uri) => jsonResource(uri, design.tokens)
+)
+
+server.registerResource(
+  "instructions",
+  "wunderui://instructions",
+  {
+    title: "WunderUI short rules",
+    description: "The always-on rules for building with WunderUI. Text to keep in CLAUDE.md or AGENTS.md.",
+    mimeType: "text/markdown",
+  },
+  async (uri) => markdownResource(uri, instructions ?? "INSTRUCTIONS.md is not bundled. Read wunderui://design-md instead.")
+)
+
+server.registerResource(
+  "components",
+  "wunderui://components",
+  {
+    title: "WunderUI component inventory",
+    description: "Every component with category, plan and one-line description. One resource per component: wunderui://components/{slug}.",
+    mimeType: "application/json",
+  },
+  async (uri) => jsonResource(uri, { count: design.components.length, components: design.components.map(componentSummary) })
+)
+
+server.registerResource(
+  "component",
+  new ResourceTemplate("wunderui://components/{slug}", {
+    list: async () => ({
+      resources: design.components.map((component) => ({
+        uri: `wunderui://components/${component.slug}`,
+        name: component.slug,
+        title: component.title,
+        mimeType: "application/json",
+      })),
+    }),
+  }),
+  {
+    title: "WunderUI component",
+    description: "One component: exports, prop signature, props table, anatomy, best practices and theming variables.",
+    mimeType: "application/json",
+  },
+  async (uri, { slug }) => {
+    const component = findComponent(String(slug))
+    if (!component) throw new Error(`No component named "${slug}". Read wunderui://components for the list.`)
+    return jsonResource(uri, componentDetail(component))
   }
 )
 
