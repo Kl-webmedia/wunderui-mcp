@@ -3,11 +3,17 @@ on:
   push:
     tags: ["v*.*.*"]
   workflow_dispatch:
+    inputs:
+      registry_only:
+        description: "Only publish server.json to the MCP Registry (the npm version must already exist)"
+        type: boolean
+        default: false
 permissions:
   contents: read
   id-token: write
 jobs:
   publish:
+    if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.registry_only) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,3 +32,48 @@ jobs:
           code=$?
           cat publish.log
           if [ $code -ne 0 ]; then grep -E "npm error|ERR" publish.log | head -8 | while read -r l; do echo "::error::$l"; done; exit $code; fi
+
+  # The MCP Registry (registry.modelcontextprotocol.io) lists server.json. It is published here
+  # after every npm release so the registry never falls behind npm again (it sat on 1.1.0 while
+  # npm had 1.2.1). Authentication is GitHub OIDC: the namespace io.github.Kl-webmedia/* belongs
+  # to this repository's owner, so no token or secret is needed.
+  registry:
+    needs: [publish]
+    if: ${{ always() && (needs.publish.result == 'success' || needs.publish.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: server.json and package.json must name the same version
+        run: |
+          pkg=$(node -p "require('./package.json').version")
+          srv=$(node -p "require('./server.json').version")
+          npmv=$(node -p "require('./server.json').packages[0].version")
+          echo "package.json $pkg · server.json $srv · server.json packages[0] $npmv"
+          if [ "$pkg" != "$srv" ] || [ "$pkg" != "$npmv" ]; then
+            echo "::error::server.json is at $srv/$npmv but package.json at $pkg — bump server.json before tagging"
+            exit 1
+          fi
+      - name: Wait until the npm registry serves this version (the registry validates the package)
+        run: |
+          v=$(node -p "require('./package.json').version")
+          for i in $(seq 1 24); do
+            if npm view "wunderui-mcp@$v" version >/dev/null 2>&1; then echo "npm has wunderui-mcp@$v"; exit 0; fi
+            echo "waiting for npm ($i/24)…"; sleep 10
+          done
+          echo "::error::wunderui-mcp@$v is not on npm after 4 minutes"; exit 1
+      - name: Install mcp-publisher
+        run: |
+          curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+          ./mcp-publisher --version
+      - name: Validate server.json
+        run: ./mcp-publisher validate
+      - name: Publish to the MCP Registry (GitHub OIDC, no secret)
+        run: |
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish
+      - name: Show the registry entry
+        run: |
+          sleep 5
+          curl -fsS "https://registry.modelcontextprotocol.io/v0/servers?search=wunderui" | node -e '
+            let s=""; process.stdin.on("data",d=>s+=d).on("end",()=>{ const j=JSON.parse(s);
+            for (const e of j.servers||[]) console.log(e.server?.name, e.server?.version, e._meta?.["io.modelcontextprotocol.registry/official"]?.status||""); })'

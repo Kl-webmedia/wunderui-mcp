@@ -94,6 +94,12 @@ npm run smoke
 
 Starts the server with a real MCP client and calls every tool once.
 
+## Releasing
+
+1. Bump the version in `package.json` **and** in `server.json` (top-level `version` and `packages[0].version` — the workflow refuses to publish when they differ).
+2. Commit, tag `vX.Y.Z` and push the tag. The `Publish to npm` workflow publishes to npm (Trusted Publishing) and then publishes `server.json` to the [MCP Registry](https://registry.modelcontextprotocol.io) with GitHub OIDC — no tokens.
+3. If the registry ever falls behind npm, run the workflow by hand (Actions → Publish to npm → Run workflow) with **registry_only** ticked; it publishes the current `server.json` for a version that already exists on npm.
+
 ## Licence
 
 The server code is MIT. The WunderUI components it describes are licensed per plan, see [wunderui.com/pricing](https://wunderui.com/#pricing).
